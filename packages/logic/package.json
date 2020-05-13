@@ -1,0 +1,25 @@
+{
+  "name": "@mikefeng110808/logic",
+  "version": "1.0.0",
+  "description": "@mikefeng110808/logic",
+  "main": "index.js",
+  "module": "dist/logic.esm-bundler.js",
+  "types": "dist/logic.d.ts",
+  "unpkg": "dist/logic.global.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "Logic",
+    "formats": [
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
+    ]
+  },
+  "author": "Mike Feng",
+  "license": "MIT"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@mikefeng110808/instance",
+  "version": "1.0.0",
+  "description": "@vue/instance",
+  "main": "index.js",
+  "module": "dist/instance.esm-bundler.js",
+  "types": "dist/instance.d.ts",
+  "unpkg": "dist/instance.global.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "Istance",
+    "formats": [
+      "esm-bundler",
+      "esm-bundler-runtime",
+      "cjs",
+      "global",
+      "global-runtime",
+      "esm"
+    ]
+  },
+  "author": "Mike Feng",
+  "license": "MIT",
+  "dependencies": {
+    "@mikefeng110808/basic": "1.0.0",
+    "@mikefeng110808/instance": "1.0.0"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  }
+}

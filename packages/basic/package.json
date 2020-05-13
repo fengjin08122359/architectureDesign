@@ -1,0 +1,25 @@
+{
+  "name": "@mikefeng110808/basic",
+  "version": "1.0.0",
+  "description": "@vue/basic",
+  "main": "index.js",
+  "module": "dist/basic.esm-bundler.js",
+  "types": "dist/basic.d.ts",
+  "unpkg": "dist/basic.global.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "Basic",
+    "formats": [
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
+    ]
+  },
+  "author": "Mike Feng",
+  "license": "MIT"
+}
