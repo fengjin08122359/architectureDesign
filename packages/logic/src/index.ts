@@ -1,7 +1,7 @@
-export { ItemList, optionsPayload, templatePayload } from "./ui/index";
+export { UIList, optionsPayload, templatePayload } from "./ui/index";
 export {
-  SingleItem,
-  SingleItemPayload,
-  SingleItemValuePayload,
+  SingleUI,
+  SingleUIPayload,
+  SingleUIValuePayload,
   validPayload,
-} from "./ui/SingleItem";
+} from "./ui/SingleUI";

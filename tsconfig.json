@@ -19,7 +19,10 @@
     "rootDir": ".",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@mikefeng110808/*": ["packages/*/src"]
+    }
   },
   "include": [
     "packages/global.d.ts",

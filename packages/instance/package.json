@@ -1,7 +1,7 @@
 {
   "name": "@mikefeng110808/instance",
   "version": "1.0.0",
-  "description": "@vue/instance",
+  "description": "@mikefeng110808/instance",
   "main": "index.js",
   "module": "dist/instance.esm-bundler.js",
   "types": "dist/instance.d.ts",
@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@mikefeng110808/basic": "1.0.0",
-    "@mikefeng110808/instance": "1.0.0"
+    "@mikefeng110808/logic": "1.0.0"
   },
   "devDependencies": {
     "lodash": "^4.17.15"

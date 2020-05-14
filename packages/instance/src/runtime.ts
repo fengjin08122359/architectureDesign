@@ -1,4 +1,2 @@
-// This entry exports the runtime only, and is built as
-// `dist/vue.esm-bundler.js` which is used by default for bundlers.
-
-import "./devCheck";
+export * from "@mikefeng110808/basic";
+export * from "@mikefeng110808/logic";

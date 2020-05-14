@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "debugger": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand --no-cache --no-watchman",
+    "debugger": "node --inspect-brk ./node_modules/jest/bin/jest --runInBand --no-cache ",
     "build": "node scripts/build.js",
     "lint": "prettier --write --parser typescript \"packages/**/*.ts?(x)\""
   },

@@ -1,7 +1,7 @@
 {
   "name": "@mikefeng110808/basic",
   "version": "1.0.0",
-  "description": "@vue/basic",
+  "description": "@mikefeng110808/basic",
   "main": "index.js",
   "module": "dist/basic.esm-bundler.js",
   "types": "dist/basic.d.ts",

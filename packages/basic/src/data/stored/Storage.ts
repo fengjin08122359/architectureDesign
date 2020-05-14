@@ -1,7 +1,7 @@
 class Storage {
   storage: any;
   constructor() {
-    this.storage = [];
+    this.storage = {};
   }
   /**
    *get
@@ -37,7 +37,7 @@ class Storage {
    * @memberof Storage
    */
   public clear() {
-    this.storage = [];
+    this.storage = {};
   }
 }
 export { Storage };
