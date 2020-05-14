@@ -1,0 +1,1875 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/logic!",
+  "docComment": "",
+  "name": "@mikefeng110808/logic",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/logic!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/logic!optionsPayload:interface",
+          "docComment": "/**\n * optionsPayload\n *\n * @param needValidHidden - \n *\n * @param key - : string  @interface optionsPayload\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface optionsPayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "optionsPayload",
+          "members": [
+            {
+              "kind": "IndexSignature",
+              "canonicalReference": "@mikefeng110808/logic!optionsPayload:index(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "[key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!optionsPayload#needValidHidden:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "needValidHidden: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "needValidHidden",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/logic!SingleUI:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare class SingleUI "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SingleUI",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `SingleUI` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(params: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "params",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#canRender:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "canRender: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "canRender",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#dataFind:member(1)",
+              "docComment": "/**\n * dataFind\n *\n * @param data -  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dataFind(data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "data",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "dataFind"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getAllItems:member(1)",
+              "docComment": "/**\n * setKeyValue\n *\n * @returns SingleUI[]  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getAllItems(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUI",
+                  "canonicalReference": "@mikefeng110808/logic!~SingleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getAllItems"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getCanRender:member(1)",
+              "docComment": "/**\n * getCanRender\n *\n * @returns boolean  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getCanRender(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getCanRender"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getKey:member(1)",
+              "docComment": "/**\n * getKey\n *\n * @returns string  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getKey(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getKey"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getKeyValue:member(1)",
+              "docComment": "/**\n * getKeyValue\n *\n * @returns SingleUIValuePayload  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getKeyValue(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getKeyValue"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getValid:member(1)",
+              "docComment": "/**\n * getValid\n *\n * @returns Promise<validPayload>  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValid(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "validPayload",
+                  "canonicalReference": "@mikefeng110808/logic!validPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getValid"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#getValue:member(1)",
+              "docComment": "/**\n * getValue\n *\n * @returns any  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValue(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getValue"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#hasChange:member(1)",
+              "docComment": "/**\n * hasChange\n *\n * @returns boolean  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "hasChange(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "hasChange"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#onChange:member(1)",
+              "docComment": "/**\n * onChange\n *\n * @param  - ({val, oldVal})\n *\n * @returns ({val, oldVal})  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "onChange({ val, oldVal }: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        val: any;\n        oldVal: any;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ val, oldVal }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "onChange"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#props:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIProps",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "props",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#rawComponents:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rawComponents: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "rawComponents",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#rawData:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rawData: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "rawData",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#render:member(1)",
+              "docComment": "/**\n * render\n *\n * @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "render(...res: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "res",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "render"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#save:member(1)",
+              "docComment": "/**\n * save\n *\n * @param value -  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "save(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "save"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#setDisabled:member(1)",
+              "docComment": "/**\n * setDisabled\n *\n * @param flag - \n *\n * @returns boolean  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setDisabled(flag?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "flag",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "setDisabled"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#setKeyValue:member(1)",
+              "docComment": "/**\n * setKeyValue\n *\n * @param  - {SingleUIValuePayload} ({ key, value, children })  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setKeyValue({ key, value, children }: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ key, value, children }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "setKeyValue"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#valid:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "valid: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "valid",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#value:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface",
+          "docComment": "/**\n * SingleUIPayload\n *\n * @param key - \n *\n * @param props - \n *\n * @param valid - \n *\n * @param type - \n *\n * @param value - \n *\n * @param children -  @interface SingleUIPayload\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SingleUIPayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SingleUIPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#props:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIProps",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "props",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#rawComponents:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rawComponents?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "rawComponents",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#valid:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "valid?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "valid",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIPayload#value:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface",
+          "docComment": "/**\n * SingleUIValuePayload\n *\n * @param key - \n *\n * @param value - \n *\n * @param children -  @interface SingleUIValuePayload\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SingleUIValuePayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SingleUIValuePayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload#value:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/logic!templatePayload:interface",
+          "docComment": "/**\n * templatePayload\n *\n * @param key - \n *\n * @param value -  @interface templatePayload\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface templatePayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "templatePayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!templatePayload#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!templatePayload#value:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUI",
+                  "canonicalReference": "@mikefeng110808/logic!~SingleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/logic!UIList:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class UIList "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "UIList",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/logic!UIList:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `UIList` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(list: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "optionsPayload",
+                  "canonicalReference": "@mikefeng110808/logic!optionsPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "list",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#addTemplate:member(1)",
+              "docComment": "/**\n * addTemplate\n *\n * @param template -  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addTemplate({ key, value }: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "templatePayload",
+                  "canonicalReference": "@mikefeng110808/logic!templatePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ key, value }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "addTemplate"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#getAllItems:member(1)",
+              "docComment": "/**\n * getAllItems\n *\n * @returns SingleUI[]  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getAllItems(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUI",
+                  "canonicalReference": "@mikefeng110808/logic!~SingleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getAllItems"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#getNeedRender:member(1)",
+              "docComment": "/**\n * getNeedRender\n *\n * @returns string[]  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getNeedRender(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getNeedRender"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#getTemplate:member(1)",
+              "docComment": "/**\n * getTemplate\n *\n * @returns templatePayload[]  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getTemplate(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "templatePayload",
+                  "canonicalReference": "@mikefeng110808/logic!templatePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getTemplate"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#getValid:member(1)",
+              "docComment": "/**\n * getValid\n *\n * @returns Promise<validPayload>  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValid(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "validPayload",
+                  "canonicalReference": "@mikefeng110808/logic!validPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getValid"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#getValue:member(1)",
+              "docComment": "/**\n * getValue\n *\n * @returns SingleUIValuePayload[]  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValue(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getValue"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#list:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "list: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "list",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#load:member(1)",
+              "docComment": "/**\n * render\n *\n * @returns Promise  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "load(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "load"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#loadComponents:member(1)",
+              "docComment": "/**\n * loadComponents\n *\n * @returns Promise  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "loadComponents(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<unknown>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "loadComponents"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#needValidHidden:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "needValidHidden: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "needValidHidden",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#options:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "optionsPayload",
+                  "canonicalReference": "@mikefeng110808/logic!optionsPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "options",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#rawList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rawList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "rawList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#render:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "render(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "render"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#reset:member(1)",
+              "docComment": "/**\n * reset\n *\n * @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reset(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "reset"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#save:member(1)",
+              "docComment": "/**\n * save\n *\n * @param data -  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "save(data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "data",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  }
+                }
+              ],
+              "name": "save"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/logic!validPayload:interface",
+          "docComment": "/**\n * validPayload\n *\n * @param success - \n *\n * @param message - \n *\n * @param type -  @interface validPayload\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface validPayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "validPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!validPayload#message:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "message: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "message",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!validPayload#success:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "success: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "success",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/logic!validPayload#type:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

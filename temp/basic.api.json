@@ -1,0 +1,1884 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/basic!",
+  "docComment": "",
+  "name": "@mikefeng110808/basic",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/basic!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!Auth:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare class Auth "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Auth",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!Auth:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Auth` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Auth#add:member(1)",
+              "docComment": "/**\n * add\n *\n * @param judge -  @memberof Auth\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add(judge: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Judge",
+                  "canonicalReference": "@mikefeng110808/basic!~Judge:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "judge",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/basic!Auth#judgeList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "judgeList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Judge",
+                  "canonicalReference": "@mikefeng110808/basic!~Judge:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "judgeList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Auth#match:member(1)",
+              "docComment": "/**\n * match\n *\n * @param res - []\n *\n * @returns {Promise}  @memberof Auth\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "match(...res: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<unknown>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "res",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "match"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Auth#remove:member(1)",
+              "docComment": "/**\n * add\n *\n * @param name -  @memberof Auth\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "remove"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!DataList:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class DataList "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "DataList",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!DataList:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `DataList` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!DataList#add:member(1)",
+              "docComment": "/**\n * add\n *\n * @param data -  @memberof DataList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add(data: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Data",
+                  "canonicalReference": "@mikefeng110808/basic!Data:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "data",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!DataList#get:member(1)",
+              "docComment": "/**\n * get\n *\n * @param name -  @memberof DataList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get(name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Data",
+                  "canonicalReference": "@mikefeng110808/basic!Data:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "get"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!DataList#remove:member(1)",
+              "docComment": "/**\n * remove\n *\n * @param name -  @memberof DataList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "remove"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!ErrorCode:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ErrorCode "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ErrorCode",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!ErrorCode:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ErrorCode` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!ErrorCode#collect:member(1)",
+              "docComment": "/**\n * collect\n *\n * @param data -  @memberof ErrorCode\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "collect(data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "data",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "collect"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!ErrorCode#get:member(1)",
+              "docComment": "/**\n * get\n *\n * @memberof ErrorCode\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "get"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!EventDispatcher:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare class EventDispatcher "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EventDispatcher",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!EventDispatcher:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `EventDispatcher` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!EventDispatcher#addEventListener:member(1)",
+              "docComment": "/**\n * addEventListener\n *\n * @param name - \n *\n * @param listener -  @memberof EventDispatcher\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addEventListener(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", listener: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Listener",
+                  "canonicalReference": "@mikefeng110808/basic!~Listener:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "listener",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "addEventListener"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!EventDispatcher#dispatchEvent:member(1)",
+              "docComment": "/**\n * dispatchEvent\n *\n * @param name - \n *\n * @param message -  @memberof EventDispatcher\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispatchEvent(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", message?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "message",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "dispatchEvent"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!EventDispatcher.getInstance:member(1)",
+              "docComment": "/**\n * EventDispatcher\n *\n * @static\n *\n * @returns {EventDispatcher}  @memberof EventDispatcher\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getInstance(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EventDispatcher",
+                  "canonicalReference": "@mikefeng110808/basic!~EventDispatcher:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getInstance"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!EventDispatcher#removeEventListener:member(1)",
+              "docComment": "/**\n * removeEventListener\n *\n * @param name -  @memberof EventDispatcher\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeEventListener(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "removeEventListener"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!HanderList:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class HanderList "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HanderList",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!HanderList:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `HanderList` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!HanderList#add:member(1)",
+              "docComment": "/**\n * add\n *\n * @param handler -  @memberof HanderList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add(handler: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Handler",
+                  "canonicalReference": "@mikefeng110808/basic!Handler:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "handler",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!HanderList#get:member(1)",
+              "docComment": "/**\n * get\n *\n * @param input - \n *\n * @returns {HandlerRes[]}  @memberof HanderList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get(input?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        name: string;\n        res: any;\n    }[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "input",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "get"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/basic!HanderList#handlers:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected handlers: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Handler",
+                  "canonicalReference": "@mikefeng110808/basic!Handler:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "handlers",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!HanderList#remove:member(1)",
+              "docComment": "/**\n * remove\n *\n * @param name -  @memberof HanderList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "remove"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!Intercept:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Intercept extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "HanderList",
+              "canonicalReference": "@mikefeng110808/basic!HanderList:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Intercept",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!Intercept:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Intercept` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Intercept#addIntercept:member(1)",
+              "docComment": "/**\n * addIntercept\n *\n * @param handler -  @memberof Intercept\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addIntercept(handler: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterceptHandler",
+                  "canonicalReference": "@mikefeng110808/basic!~InterceptHandler:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "handler",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "addIntercept"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Intercept#getIntercept:member(1)",
+              "docComment": "/**\n * getIntercept\n *\n * @param input -  @memberof Intercept\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getIntercept(input: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "input",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "getIntercept"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/basic!Intercept#handlers:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected handlers: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InterceptHandler",
+                  "canonicalReference": "@mikefeng110808/basic!~InterceptHandler:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "handlers",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Intercept#removeIntercept:member(1)",
+              "docComment": "/**\n * removeIntercept\n *\n * @param name -  @memberof Intercept\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeIntercept(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "removeIntercept"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!Log:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Log "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Log",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!Log:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Log` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#debug:member(1)",
+              "docComment": "/**\n * debug\n *\n * @param rest - []  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "debug(...rest: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "rest",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "debug"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#error:member(1)",
+              "docComment": "/**\n * error\n *\n * @param rest - []  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "error(...rest: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "rest",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "error"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#get:member(1)",
+              "docComment": "/**\n * error\n *\n * @param name -  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get(name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "get"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#info:member(1)",
+              "docComment": "/**\n * info\n *\n * @param rest - []  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "info(...rest: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "rest",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "info"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#log:member(1)",
+              "docComment": "/**\n * log\n *\n * @param rest - []  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "log(...rest: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "rest",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "log"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Log#warn:member(1)",
+              "docComment": "/**\n * warn\n *\n * @param rest - []  @memberof Log\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "warn(...rest: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "rest",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "warn"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!ObserverSubject:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare class ObserverSubject implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "Subject",
+              "canonicalReference": "@mikefeng110808/basic!~Subject:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ObserverSubject",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!ObserverSubject:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ObserverSubject` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!ObserverSubject#notifyObservers:member(1)",
+              "docComment": "/**\n * notifyObservers\n *\n * @param target - \n *\n * @param observers -  @memberof ObserverSubject\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "notifyObservers(target: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", observers?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observer",
+                  "canonicalReference": "@mikefeng110808/basic!~Observer:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "target",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "observers",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "name": "notifyObservers"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!ObserverSubject#registerObserver:member(1)",
+              "docComment": "/**\n * registerObserver\n *\n * @param observer -  @memberof ObserverSubject\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "registerObserver(observer: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observer",
+                  "canonicalReference": "@mikefeng110808/basic!~Observer:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "observer",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "registerObserver"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!ObserverSubject#removeObserver:member(1)",
+              "docComment": "/**\n * removeObserver\n *\n * @param observer -  @memberof ObserverSubject\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeObserver(observer: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Observer",
+                  "canonicalReference": "@mikefeng110808/basic!~Observer:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "observer",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "removeObserver"
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/basic!Storage_2:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare class Storage "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Storage_2",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Storage` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2#clear:member(1)",
+              "docComment": "/**\n * clear\n *\n * @memberof Storage\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "clear(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "clear"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2#get:member(1)",
+              "docComment": "/**\n * get\n *\n * @param key -  @memberof Storage\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "get"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2#remove:member(1)",
+              "docComment": "/**\n * remove\n *\n * @param key -  @memberof Storage\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "remove"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2#set:member(1)",
+              "docComment": "/**\n * set\n *\n * @param key - \n *\n * @param value -  @memberof Storage\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "set(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "set"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/basic!Storage_2#storage:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "storage: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "storage",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

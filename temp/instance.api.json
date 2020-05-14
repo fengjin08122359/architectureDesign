@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/instance!",
+  "docComment": "",
+  "name": "@mikefeng110808/instance",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/instance!",
+      "name": "",
+      "members": []
+    }
+  ]
+}
