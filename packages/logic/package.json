@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/logic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "@mikefeng110808/logic",
   "main": "index.js",
   "module": "dist/logic.esm-bundler.js",
