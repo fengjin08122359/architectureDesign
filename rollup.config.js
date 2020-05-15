@@ -2,6 +2,7 @@ import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
+import babel from 'rollup-plugin-babel'
 
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
@@ -143,7 +144,10 @@ function createConfig(format, output, plugins = []) {
         isNodeBuild
       ),
       ...nodePlugins,
-      ...plugins
+      ...plugins,
+      babel({
+        exclude: 'node_modules/**' // 只编译我们的源代码
+      })
     ],
     output,
     onwarn: (msg, warn) => {
