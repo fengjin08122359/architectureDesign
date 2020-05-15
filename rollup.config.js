@@ -147,7 +147,6 @@ function createConfig(format, output, plugins = []) {
       ...plugins,
       getBabelOutputPlugin({
         presets: ['@babel/preset-env']
-        exclude: 'node_modules/**' // 只编译我们的源代码
       })
     ],
     output,

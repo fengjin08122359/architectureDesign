@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.9.6",
     "@ls-lint/ls-lint": "^1.8.1",
     "@microsoft/api-extractor": "^7.8.0",
     "@rollup/plugin-babel": "^5.0.0",
