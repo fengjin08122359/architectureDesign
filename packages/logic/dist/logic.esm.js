@@ -348,7 +348,7 @@
       }
       /**
        *convert
-       * @private
+       * @protected
        * @param {SingleUIPayload} item
        * @memberof UIList
        */

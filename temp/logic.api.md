@@ -93,6 +93,7 @@ export interface templatePayload {
 export class UIList {
     constructor(list: any[], options?: optionsPayload);
     addTemplate({ key, value }: templatePayload): void;
+    protected convert(item: SingleUIPayload): SingleUI;
     getAllItems(): SingleUI[];
     getNeedRender(): string[];
     getTemplate(): templatePayload[];

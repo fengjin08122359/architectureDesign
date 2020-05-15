@@ -329,7 +329,7 @@ var Logic = function (exports) {
       }
       /**
        *convert
-       * @private
+       * @protected
        * @param {SingleUIPayload} item
        * @memberof UIList
        */

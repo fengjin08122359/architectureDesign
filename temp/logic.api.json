@@ -1327,6 +1327,52 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#convert:member(1)",
+              "docComment": "/**\n * convert  @protected\n *\n * @param item -  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected convert(item: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUI",
+                  "canonicalReference": "@mikefeng110808/logic!~SingleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "item",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "convert"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@mikefeng110808/logic!UIList#getAllItems:member(1)",
               "docComment": "/**\n * getAllItems\n *\n * @returns SingleUI[]  @memberof UIList\n */\n",
               "excerptTokens": [

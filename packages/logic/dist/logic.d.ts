@@ -200,11 +200,11 @@ export declare class UIList {
     getTemplate(): templatePayload[];
     /**
      *convert
-     * @private
+     * @protected
      * @param {SingleUIPayload} item
      * @memberof UIList
      */
-    private convert;
+    protected convert(item: SingleUIPayload): SingleUI;
     /**
      *getValid
      *

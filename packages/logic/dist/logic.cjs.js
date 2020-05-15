@@ -332,7 +332,7 @@ var UIList = /*#__PURE__*/function () {
     }
     /**
      *convert
-     * @private
+     * @protected
      * @param {SingleUIPayload} item
      * @memberof UIList
      */

@@ -82,11 +82,11 @@ export class UIList {
   }
   /**
    *convert
-   * @private
+   * @protected
    * @param {SingleUIPayload} item
    * @memberof UIList
    */
-  private convert(item: SingleUIPayload) {
+  protected convert(item: SingleUIPayload) {
     var target = this.templateList.find((i) => i.key == item.type);
     if (target && target.value) {
       return new target.value(item);
