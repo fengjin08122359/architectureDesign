@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/instance",
-  "version": "1.0.2-alpha.6",
+  "version": "1.0.2-alpha.7",
   "description": "@mikefeng110808/instance",
   "main": "index.js",
   "module": "dist/instance.esm-bundler.js",
@@ -25,10 +25,15 @@
   "author": "Mike Feng",
   "license": "MIT",
   "dependencies": {
-    "@mikefeng110808/basic": "1.0.2-alpha.6",
-    "@mikefeng110808/logic": "1.0.2-alpha.6"
+    "@mikefeng110808/basic": "1.0.2-alpha.7",
+    "@mikefeng110808/logic": "1.0.2-alpha.7"
   },
   "devDependencies": {
     "lodash": "^4.17.15"
-  }
+  },
+  "keywords": [
+    "core-builder",
+    "builder",
+    "typescript"
+  ]
 }
