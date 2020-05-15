@@ -34,9 +34,9 @@ const outputConfigs = {
   },
   esm: {
     file: resolve(`dist/${name}.esm.js`),
-    format: `es`
+    format: `esm`
   },
-  // main "vue" package only
+  // main "instance" package only
   'esm-bundler-runtime': {
     file: resolve(`dist/${name}.runtime.esm-bundler.js`),
     format: `es`
@@ -146,7 +146,8 @@ function createConfig(format, output, plugins = []) {
       ...nodePlugins,
       ...plugins,
       getBabelOutputPlugin({
-        presets: ['@babel/preset-env']
+        allowAllFormats: true,
+        presets: [['@babel/preset-env', { modules: 'umd' }]]
       })
     ],
     output,

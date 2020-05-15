@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/instance",
-  "version": "1.0.2-alpha.3",
+  "version": "1.0.2-alpha.4",
   "description": "@mikefeng110808/instance",
   "main": "index.js",
   "module": "dist/instance.esm-bundler.js",
