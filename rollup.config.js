@@ -22,7 +22,7 @@ let hasTSChecked = false
 const outputConfigs = {
   'esm-bundler': {
     file: resolve(`dist/${name}.esm-bundler.js`),
-    format: `es`
+    format: `es`,
   },
   cjs: {
     file: resolve(`dist/${name}.cjs.js`),
@@ -144,11 +144,7 @@ function createConfig(format, output, plugins = []) {
         isNodeBuild
       ),
       ...nodePlugins,
-      ...plugins,
-      getBabelOutputPlugin({
-        allowAllFormats: true,
-        presets: [['@babel/preset-env', { modules: 'umd' }]]
-      })
+      ...plugins
     ],
     output,
     onwarn: (msg, warn) => {
@@ -207,7 +203,12 @@ function createReplacePlugin(
 function createProductionConfig(format) {
   return createConfig(format, {
     file: resolve(`dist/${name}.${format}.prod.js`),
-    format: outputConfigs[format].format
+    format: outputConfigs[format].format,
+    plugins: [
+    getBabelOutputPlugin({
+      allowAllFormats: true,
+      presets: [['@babel/preset-env', { modules: 'umd' }]]
+    })]
   })
 }
 
