@@ -2,7 +2,7 @@ import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
-import babel from 'rollup-plugin-babel'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
@@ -145,7 +145,8 @@ function createConfig(format, output, plugins = []) {
       ),
       ...nodePlugins,
       ...plugins,
-      babel({
+      getBabelOutputPlugin({
+        presets: ['@babel/preset-env']
         exclude: 'node_modules/**' // 只编译我们的源代码
       })
     ],
