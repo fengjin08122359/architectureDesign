@@ -1,11 +1,11 @@
 {
-  "name": "@mikefeng110808/instance",
+  "name": "@mikefeng110808/vue-instance",
   "version": "1.0.2-alpha.9",
-  "description": "@mikefeng110808/instance",
+  "description": "@mikefeng110808/vue-instance",
   "main": "index.js",
-  "module": "dist/instance.esm-bundler.js",
-  "types": "dist/instance.d.ts",
-  "unpkg": "dist/instance.global.js",
+  "module": "dist/vue-instance.esm-bundler.js",
+  "types": "dist/vue-instance.d.ts",
+  "unpkg": "dist/vue-instance.global.js",
   "files": [
     "index.js",
     "dist"
@@ -25,8 +25,10 @@
   "author": "Mike Feng",
   "license": "MIT",
   "dependencies": {
-    "@mikefeng110808/basic": "1.0.2-alpha.7",
-    "@mikefeng110808/logic": "1.0.2-alpha.7"
+    "@mikefeng110808/instance": "1.0.2-alpha.8",
+    "vue": "1.0.2-alpha.9",
+    "axios": "^0.19.2",
+    "websocket": "^1.0.31"
   },
   "devDependencies": {
     "lodash": "^4.17.15"
