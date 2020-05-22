@@ -4,6 +4,8 @@
 
 ```ts
 
+import { DataList } from '@mikefeng110808/basic';
+
 // @public
 export interface optionsPayload {
     // (undocumented)
@@ -93,12 +95,18 @@ export interface templatePayload {
 export class UIList {
     constructor(list: any[], options?: optionsPayload);
     addTemplate({ key, value }: templatePayload): void;
-    protected convert(item: SingleUIPayload): SingleUI;
+    // (undocumented)
+    classTarget: typeof UIList;
+    // (undocumented)
+    componentHasRendered: DataList;
+    // (undocumented)
+    convertSinlgeUI(item: SingleUIPayload): SingleUI;
     getAllItems(): SingleUI[];
     getNeedRender(): string[];
     getTemplate(): templatePayload[];
     getValid(): Promise<validPayload>;
     getValue(): SingleUIValuePayload[];
+    handleComponentKey(key: string): Promise<unknown>;
     // (undocumented)
     list: any[];
     load(): Promise<void>;

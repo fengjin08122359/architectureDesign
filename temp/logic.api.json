@@ -1326,13 +1326,71 @@
               "name": "addTemplate"
             },
             {
-              "kind": "Method",
-              "canonicalReference": "@mikefeng110808/logic!UIList#convert:member(1)",
-              "docComment": "/**\n * convert  @protected\n *\n * @param item -  @memberof UIList\n */\n",
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#classTarget:member",
+              "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected convert(item: "
+                  "text": "classTarget: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UIList",
+                  "canonicalReference": "@mikefeng110808/logic!UIList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "classTarget",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/logic!UIList#componentHasRendered:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "componentHasRendered: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataList",
+                  "canonicalReference": "@mikefeng110808/logic!DataList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "componentHasRendered",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#convertSinlgeUI:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "convertSinlgeUI(item: "
                 },
                 {
                   "kind": "Reference",
@@ -1369,7 +1427,7 @@
                   }
                 }
               ],
-              "name": "convert"
+              "name": "convertSinlgeUI"
             },
             {
               "kind": "Method",
@@ -1539,6 +1597,55 @@
               "overloadIndex": 1,
               "parameters": [],
               "name": "getValue"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#handleComponentKey:member(1)",
+              "docComment": "/**\n * handleComponentKey\n *\n * @param key - \n *\n * @returns Promise  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "handleComponentKey(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<unknown>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "handleComponentKey"
             },
             {
               "kind": "Property",

@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/logic",
-  "version": "1.0.2-alpha.7",
+  "version": "1.0.2-alpha.8",
   "description": "@mikefeng110808/logic",
   "main": "index.js",
   "module": "dist/logic.esm-bundler.js",
@@ -22,6 +22,12 @@
   },
   "author": "Mike Feng",
   "license": "MIT",
+  "dependencies": {
+    "@mikefeng110808/basic": "1.0.2-alpha.7"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
   "keywords": [
     "ui-builder",
     "builder",

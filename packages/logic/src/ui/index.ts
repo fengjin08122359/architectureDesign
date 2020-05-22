@@ -4,6 +4,7 @@ import {
   SingleUIValuePayload,
   validPayload,
 } from "./SingleUI";
+import { DataList } from "@mikefeng110808/basic";
 
 /**
  *templatePayload
@@ -32,13 +33,17 @@ export class UIList {
   needValidHidden: any;
   rawList: SingleUIPayload[];
   list: any[];
+  componentHasRendered: DataList
   private templateList: templatePayload[];
+  classTarget: typeof UIList;
   constructor(list: any[], options?: optionsPayload) {
     this.options = options || { needValidHidden: false };
     this.needValidHidden = this.options.needValidHidden;
     this.rawList = list;
     this.list = [];
     this.templateList = [];
+    this.componentHasRendered = new DataList()
+    this.classTarget = new.target
     this.reset();
   }
   /**
@@ -50,7 +55,7 @@ export class UIList {
     this.list = this.rawList.map((item) => {
       var target = this.convert(item); // 需要根据类型判断使用的
       if (target.children) {
-        target.children = new UIList(target.children, this.options).list;
+        target.children = new this.classTarget(target.children, this.options).list;
       }
       return target;
     }, []);
@@ -82,17 +87,20 @@ export class UIList {
   }
   /**
    *convert
-   * @protected
+   * @private
    * @param {SingleUIPayload} item
    * @memberof UIList
    */
-  protected convert(item: SingleUIPayload) {
+  private convert(item: SingleUIPayload) {
     var target = this.templateList.find((i) => i.key == item.type);
     if (target && target.value) {
       return new target.value(item);
     } else {
-      return new SingleUI(item);
+      return this.convertSinlgeUI(item);
     }
+  } 
+  convertSinlgeUI (item:SingleUIPayload) {
+    return new SingleUI(item);
   }
   /**
    *getValid
@@ -160,9 +168,14 @@ export class UIList {
    * @memberof UIList
    */
   loadComponents() {
-    return new Promise((resolve) => {
-      resolve();
-    });
+    return new Promise(resolve => {
+      var needRender = this.getNeedRender();
+      Promise.all(needRender.map(key => {
+        return this.handleComponentKey(key)
+      })).then(() => {
+        resolve()
+      })
+    })
   }
   /**
    *getNeedRender
@@ -186,12 +199,32 @@ export class UIList {
    */
   load() {
     return this.loadComponents().then(() => {
+      var keys = this.componentHasRendered.get('key').map(item => item.data)
       this.getAllItems().forEach((item) => {
-        item.canRender = true;
+        if (item.canRender === false) {
+          item.canRender = item.rawComponents.map((target) => {
+            return keys.includes(target) 
+          }).reduce((total, current) => total && current, true)
+        }
       });
     });
   }
   render(): any[] {
     return this.getAllItems().map((item) => item.render());
+  }
+  /**
+   *handleComponentKey
+   * @param {any} key
+   * @returns Promise
+   * @memberof UIList
+   */
+  handleComponentKey (key:string) {
+    return new Promise(resolve => {
+      this.componentHasRendered.add({
+        name: 'key',
+        data: key
+      })
+      resolve() 
+    })
   }
 }

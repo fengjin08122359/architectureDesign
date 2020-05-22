@@ -1,3 +1,4 @@
+import { DataList } from '@mikefeng110808/basic';
 
 /**
  *optionsPayload
@@ -177,7 +178,9 @@ export declare class UIList {
     needValidHidden: any;
     rawList: SingleUIPayload[];
     list: any[];
+    componentHasRendered: DataList;
     private templateList;
+    classTarget: typeof UIList;
     constructor(list: any[], options?: optionsPayload);
     /**
      *reset
@@ -200,11 +203,12 @@ export declare class UIList {
     getTemplate(): templatePayload[];
     /**
      *convert
-     * @protected
+     * @private
      * @param {SingleUIPayload} item
      * @memberof UIList
      */
-    protected convert(item: SingleUIPayload): SingleUI;
+    private convert;
+    convertSinlgeUI(item: SingleUIPayload): SingleUI;
     /**
      *getValid
      *
@@ -249,6 +253,13 @@ export declare class UIList {
      */
     load(): Promise<void>;
     render(): any[];
+    /**
+     *handleComponentKey
+     * @param {any} key
+     * @returns Promise
+     * @memberof UIList
+     */
+    handleComponentKey(key: string): Promise<unknown>;
 }
 
 /**

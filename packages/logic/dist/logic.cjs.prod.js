@@ -10,6 +10,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
+var basic = require('@mikefeng110808/basic');
+
 var SingleUI = /*#__PURE__*/function () {
   function SingleUI(params) {
     _classCallCheck(this, SingleUI);
@@ -269,6 +271,8 @@ var UIList = /*#__PURE__*/function () {
     this.rawList = list;
     this.list = [];
     this.templateList = [];
+    this.componentHasRendered = new basic.DataList();
+    this.classTarget = this instanceof UIList ? this.constructor : void 0;
     this.reset();
   }
   /**
@@ -288,7 +292,7 @@ var UIList = /*#__PURE__*/function () {
 
 
         if (target.children) {
-          target.children = new UIList(target.children, _this3.options).list;
+          target.children = new _this3.classTarget(target.children, _this3.options).list;
         }
 
         return target;
@@ -332,7 +336,7 @@ var UIList = /*#__PURE__*/function () {
     }
     /**
      *convert
-     * @protected
+     * @private
      * @param {SingleUIPayload} item
      * @memberof UIList
      */
@@ -347,8 +351,13 @@ var UIList = /*#__PURE__*/function () {
       if (target && target.value) {
         return new target.value(item);
       } else {
-        return new SingleUI(item);
+        return this.convertSinlgeUI(item);
       }
+    }
+  }, {
+    key: "convertSinlgeUI",
+    value: function convertSinlgeUI(item) {
+      return new SingleUI(item);
     }
     /**
      *getValid
@@ -440,8 +449,16 @@ var UIList = /*#__PURE__*/function () {
   }, {
     key: "loadComponents",
     value: function loadComponents() {
+      var _this6 = this;
+
       return new Promise(function (resolve) {
-        resolve();
+        var needRender = _this6.getNeedRender();
+
+        Promise.all(needRender.map(function (key) {
+          return _this6.handleComponentKey(key);
+        })).then(function () {
+          resolve();
+        });
       });
     }
     /**
@@ -467,11 +484,21 @@ var UIList = /*#__PURE__*/function () {
   }, {
     key: "load",
     value: function load() {
-      var _this6 = this;
+      var _this7 = this;
 
       return this.loadComponents().then(function () {
-        _this6.getAllItems().forEach(function (item) {
-          item.canRender = true;
+        var keys = _this7.componentHasRendered.get('key').map(function (item) {
+          return item.data;
+        });
+
+        _this7.getAllItems().forEach(function (item) {
+          if (item.canRender === false) {
+            item.canRender = item.rawComponents.map(function (target) {
+              return keys.includes(target);
+            }).reduce(function (total, current) {
+              return total && current;
+            }, true);
+          }
         });
       });
     }
@@ -480,6 +507,27 @@ var UIList = /*#__PURE__*/function () {
     value: function render() {
       return this.getAllItems().map(function (item) {
         return item.render();
+      });
+    }
+    /**
+     *handleComponentKey
+     * @param {any} key
+     * @returns Promise
+     * @memberof UIList
+     */
+
+  }, {
+    key: "handleComponentKey",
+    value: function handleComponentKey(key) {
+      var _this8 = this;
+
+      return new Promise(function (resolve) {
+        _this8.componentHasRendered.add({
+          name: 'key',
+          data: key
+        });
+
+        resolve();
       });
     }
   }]);

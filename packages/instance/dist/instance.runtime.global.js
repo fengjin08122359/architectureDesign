@@ -576,6 +576,8 @@ var Istance = (function (exports) {
           this.rawList = list;
           this.list = [];
           this.templateList = [];
+          this.componentHasRendered = new DataList();
+          this.classTarget = new.target;
           this.reset();
       }
       /**
@@ -587,7 +589,7 @@ var Istance = (function (exports) {
           this.list = this.rawList.map((item) => {
               var target = this.convert(item); // 需要根据类型判断使用的
               if (target.children) {
-                  target.children = new UIList(target.children, this.options).list;
+                  target.children = new this.classTarget(target.children, this.options).list;
               }
               return target;
           }, []);
@@ -620,7 +622,7 @@ var Istance = (function (exports) {
       }
       /**
        *convert
-       * @protected
+       * @private
        * @param {SingleUIPayload} item
        * @memberof UIList
        */
@@ -630,8 +632,11 @@ var Istance = (function (exports) {
               return new target.value(item);
           }
           else {
-              return new SingleUI(item);
+              return this.convertSinlgeUI(item);
           }
+      }
+      convertSinlgeUI(item) {
+          return new SingleUI(item);
       }
       /**
        *getValid
@@ -697,8 +702,13 @@ var Istance = (function (exports) {
        * @memberof UIList
        */
       loadComponents() {
-          return new Promise((resolve) => {
-              resolve();
+          return new Promise(resolve => {
+              var needRender = this.getNeedRender();
+              Promise.all(needRender.map(key => {
+                  return this.handleComponentKey(key);
+              })).then(() => {
+                  resolve();
+              });
           });
       }
       /**
@@ -719,13 +729,33 @@ var Istance = (function (exports) {
        */
       load() {
           return this.loadComponents().then(() => {
+              var keys = this.componentHasRendered.get('key').map(item => item.data);
               this.getAllItems().forEach((item) => {
-                  item.canRender = true;
+                  if (item.canRender === false) {
+                      item.canRender = item.rawComponents.map((target) => {
+                          return keys.includes(target);
+                      }).reduce((total, current) => total && current, true);
+                  }
               });
           });
       }
       render() {
           return this.getAllItems().map((item) => item.render());
+      }
+      /**
+       *handleComponentKey
+       * @param {any} key
+       * @returns Promise
+       * @memberof UIList
+       */
+      handleComponentKey(key) {
+          return new Promise(resolve => {
+              this.componentHasRendered.add({
+                  name: 'key',
+                  data: key
+              });
+              resolve();
+          });
       }
   }
 
