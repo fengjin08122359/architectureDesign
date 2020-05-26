@@ -26,13 +26,13 @@ export class VueLog extends Log {
     console.error = (function (log) {
       return  (...rest: any) => {
         that.error(rest)
+        errorCode.collect(rest)
         log(rest)
       }
     })(console.error);
     console.debug = (function (log) {
       return  (...rest: any) => {
         that.debug(rest)
-        errorCode.collect(rest)
         log(rest)
       }
     })(console.debug);

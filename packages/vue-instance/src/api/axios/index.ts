@@ -1,20 +1,24 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { httpIntercept } from '../basic'
 
-interface AxiosOpt {
-  method: string;
-  url: any;
-  responseType: any;
-  data: {};
-  formData: any
-  timeout: number
+export interface  HttpInstanceParam {
+  baseURL: string;
+}
+
+export interface AxiosOpt {
+  method?: string;
+  url?: any;
+  responseType?: any;
+  data?: {};
+  formData?: any
+  timeout?: number
   [x: string]: any;
 }
 
 
 export class HttpInstance {
   baseURL: string
-  constructor (param: { baseURL: string }) {
+  constructor (param: HttpInstanceParam) {
     this.baseURL = param.baseURL || ''
     this.init()
   }
@@ -43,7 +47,7 @@ export class HttpInstance {
     const publicParams = {
       ts: Date.now()
     }
-    const method = opts.method.toUpperCase()
+    const method = (opts.method || 'get').toUpperCase()
     const httpDefaultOpts:any = {
       method,
       baseURL: this.baseURL,

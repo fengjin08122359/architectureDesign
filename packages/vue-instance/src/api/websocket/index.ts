@@ -67,4 +67,7 @@ export class WebSocketInstance {
   send (msg: any) {
     this.client && this.client.send(msg);
   }
+  end () {
+    this.client.close()
+  }
 }

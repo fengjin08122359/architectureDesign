@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/vue-instance",
-  "version": "1.0.2-alpha.9",
+  "version": "1.0.2-alpha.10",
   "description": "@mikefeng110808/vue-instance",
   "main": "index.js",
   "module": "dist/vue-instance.esm-bundler.js",
@@ -15,17 +15,15 @@
     "name": "Istance",
     "formats": [
       "esm-bundler",
-      "esm-bundler-runtime",
       "cjs",
       "global",
-      "global-runtime",
       "esm"
     ]
   },
   "author": "Mike Feng",
   "license": "MIT",
   "dependencies": {
-    "@mikefeng110808/instance": "1.0.2-alpha.8",
+    "@mikefeng110808/instance": "1.0.2-alpha.10",
     "vue": "1.0.2-alpha.9",
     "axios": "^0.19.2",
     "websocket": "^1.0.31"
@@ -34,7 +32,7 @@
     "lodash": "^4.17.15"
   },
   "keywords": [
-    "core-builder",
+    "vue-builder",
     "builder",
     "typescript"
   ]

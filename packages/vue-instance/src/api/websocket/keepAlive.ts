@@ -64,6 +64,12 @@ export class KeepAlive {
     }
     wsIntercept.getIntercept('close', 'keepalive')
   }
+  close () {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    wsIntercept.getIntercept('close', 'keepalive')
+  }
   end () {
     this.ws.endClient()
   }

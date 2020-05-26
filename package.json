@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.2-alpha.9",
+  "version": "1.0.2-alpha.10",
   "description": "",
   "workspaces": [
     "packages/*"
@@ -28,6 +28,7 @@
     "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-replace": "^2.3.2",
     "@types/jest": "^25.2.1",
+    "@types/websocket": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "axios": "^0.19.2",
@@ -64,7 +65,7 @@
     "tsd": "^0.11.0",
     "typescript": "^3.8.3",
     "typescript-eslint": "0.0.1-alpha.0",
-    "vue": "1.0.2-alpha.9",
+    "vue": "^2.6.11",
     "websocket": "^1.0.31"
   },
   "lint-staged": {

@@ -13,7 +13,7 @@ files.forEach(shortName => {
     return
   }
 
-  const name = shortName === `vue` ? shortName : `@vue/${shortName}`
+  const name = shortName === `instance` ? shortName : `@mikefeng110808/${shortName}`
   const pkgPath = path.join(packagesDir, shortName, `package.json`)
   const pkgExists = fs.existsSync(pkgPath)
   if (pkgExists) {
@@ -34,15 +34,14 @@ files.forEach(shortName => {
       types: `dist/${shortName}.d.ts`,
       repository: {
         type: 'git',
-        url: 'git+https://github.com/vuejs/vue.git'
+        url: 'git+https://github.com/fengjin08122359/architectureDesign.git'
       },
-      keywords: ['vue'],
-      author: 'Evan You',
+      keywords: ['mikefeng110808'],
+      author: 'Mike Feng ',
       license: 'MIT',
       bugs: {
-        url: 'https://github.com/vuejs/vue/issues'
+        url: 'https://github.com/fengjin08122359/architectureDesign/issues'
       },
-      homepage: `https://github.com/vuejs/vue/tree/dev/packages/${shortName}#readme`
     }
     fs.writeFileSync(pkgPath, JSON.stringify(json, null, 2))
   }
