@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.2-alpha.10",
+  "version": "1.0.2-alpha.11",
   "description": "",
   "workspaces": [
     "packages/*"

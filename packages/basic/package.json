@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/basic",
-  "version": "1.0.2-alpha.10",
+  "version": "1.0.2-alpha.11",
   "description": "@mikefeng110808/basic",
   "main": "index.js",
   "module": "dist/basic.esm-bundler.js",
