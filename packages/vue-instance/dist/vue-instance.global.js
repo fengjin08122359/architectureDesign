@@ -4,6 +4,53 @@ var Istance = (function (exports, axios, websocket) {
   axios = axios && Object.prototype.hasOwnProperty.call(axios, 'default') ? axios['default'] : axios;
   websocket = websocket && Object.prototype.hasOwnProperty.call(websocket, 'default') ? websocket['default'] : websocket;
 
+  class Auth {
+      constructor() {
+          this.judgeList = [];
+      }
+      /**
+       *add
+       *
+       * @param {Judge} judge
+       * @memberof Auth
+       */
+      add(judge) {
+          this.judgeList.push(judge);
+      }
+      /**
+       *add
+       *
+       * @param {string} name
+       * @memberof Auth
+       */
+      remove(name) {
+          this.judgeList = this.judgeList.filter((item) => item.name !== name);
+      }
+      /**
+       *match
+       *
+       * @param {any[]} res[]
+       * @returns {Promise}
+       * @memberof Auth
+       */
+      match(...res) {
+          var matchList = this.judgeList.map((current) => {
+              return current.fun(res);
+          }, []);
+          var currentList = this.judgeList.map((item) => item);
+          return new Promise((resolve) => {
+              Promise.all(matchList).then((result) => {
+                  result.forEach((item, index) => {
+                      if (item) {
+                          resolve(currentList[index].name);
+                      }
+                  });
+                  resolve("");
+              });
+          });
+      }
+  }
+
   class DataList {
       constructor() {
           this.datas = [];
@@ -260,6 +307,90 @@ var Istance = (function (exports, axios, websocket) {
           this.EventList.filter((event) => event.name === name)
               .map((event) => event.listener)
               .forEach((listener) => listener(message));
+      }
+  }
+
+  class ObserverSubject {
+      constructor() {
+          this.observers = [];
+      }
+      /**
+       *registerObserver
+       *
+       * @param {Observer} observer
+       * @memberof ObserverSubject
+       */
+      registerObserver(observer) {
+          //注册观察者
+          this.observers.push(observer);
+      }
+      /**
+       *removeObserver
+       *
+       * @param {Observer} observer
+       * @memberof ObserverSubject
+       */
+      removeObserver(observer) {
+          //注销观察者
+          let index = this.observers.indexOf(observer);
+          if (index !== -1) {
+              this.observers.splice(index, 1);
+          }
+      }
+      /**
+       *notifyObservers
+       *
+       * @param {any} target
+       * @param {Array<Observer>} observers
+       * @memberof ObserverSubject
+       */
+      notifyObservers(target, observers = this.observers) {
+          // 通知观察者
+          for (let observer of observers) {
+              observer.update(target); // 更新
+          }
+      }
+  }
+
+  class Storage {
+      constructor() {
+          this.storage = {};
+      }
+      /**
+       *get
+       *
+       * @param {string} key
+       * @memberof Storage
+       */
+      get(key) {
+          return this.storage[key];
+      }
+      /**
+       *set
+       *
+       * @param {string} key
+       * @param {any} value
+       * @memberof Storage
+       */
+      set(key, value) {
+          this.storage[key] = value;
+      }
+      /**
+       *remove
+       *
+       * @param {string} key
+       * @memberof Storage
+       */
+      remove(key) {
+          this.storage[key] = undefined;
+      }
+      /**
+       *clear
+       *
+       * @memberof Storage
+       */
+      clear() {
+          this.storage = {};
       }
   }
 
@@ -631,45 +762,6 @@ var Istance = (function (exports, axios, websocket) {
       }
   }
 
-  class VueUI extends SingleUI {
-      constructor(params) {
-          super(params);
-      }
-      render(render) {
-          if (!this.getCanRender()) {
-              return render.createElement();
-          }
-          else {
-              return this.renderInstance(render);
-          }
-      }
-      renderInstance(render) {
-          return render.createElement('div', // 标签名称
-          {
-              ...render.context,
-              attrs: this
-          }, [this.props.label, render.vueRoot.$slots.default]);
-      }
-  }
-  class VueUIList extends UIList {
-      constructor(list, options) {
-          super(list, options);
-          this.componentHasRendered = new DataList();
-      }
-      handleComponentKey(key) {
-          return new Promise(resolve => {
-              this.componentHasRendered.add({
-                  name: 'key',
-                  data: key
-              });
-              resolve();
-          });
-      }
-      getRenderList(render) {
-          return this.getAllItems().map(item => item.render(render));
-      }
-  }
-
   class VueLog extends Log {
       constructor() {
           super();
@@ -934,7 +1026,57 @@ var Istance = (function (exports, axios, websocket) {
       }
   }
 
+  class VueUI extends SingleUI {
+      constructor(params) {
+          super(params);
+      }
+      render(render) {
+          if (!this.getCanRender()) {
+              return render.createElement();
+          }
+          else {
+              return this.renderInstance(render);
+          }
+      }
+      renderInstance(render) {
+          return render.createElement('div', // 标签名称
+          {
+              ...render.context,
+              attrs: this
+          }, [this.props.label, render.vueRoot.$slots.default]);
+      }
+  }
+  class VueUIList extends UIList {
+      constructor(list, options) {
+          super(list, options);
+          this.componentHasRendered = new DataList();
+      }
+      handleComponentKey(key) {
+          return new Promise(resolve => {
+              this.componentHasRendered.add({
+                  name: 'key',
+                  data: key
+              });
+              resolve();
+          });
+      }
+      getRenderList(render) {
+          return this.getAllItems().map(item => item.render(render));
+      }
+  }
+
+  exports.Auth = Auth;
+  exports.DataList = DataList;
+  exports.ErrorCode = ErrorCode;
+  exports.EventDispatcher = EventDispatcher;
+  exports.HanderList = HanderList;
   exports.HttpInstance = HttpInstance;
+  exports.Intercept = Intercept;
+  exports.Log = Log;
+  exports.ObserverSubject = ObserverSubject;
+  exports.SingleUI = SingleUI;
+  exports.Storage = Storage;
+  exports.UIList = UIList;
   exports.VueUI = VueUI;
   exports.VueUIList = VueUIList;
   exports.WebSocketInstance = WebSocketInstance;

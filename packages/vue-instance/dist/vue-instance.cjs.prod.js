@@ -6,11 +6,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -42,93 +42,19 @@ var axios = _interopDefault(require('axios'));
 
 var websocket = _interopDefault(require('websocket'));
 
-var VueUI = /*#__PURE__*/function (_instance$SingleUI) {
-  _inherits(VueUI, _instance$SingleUI);
-
-  var _super = _createSuper(VueUI);
-
-  function VueUI(params) {
-    _classCallCheck(this, VueUI);
-
-    return _super.call(this, params);
-  }
-
-  _createClass(VueUI, [{
-    key: "render",
-    value: function render(_render) {
-      if (!this.getCanRender()) {
-        return _render.createElement();
-      } else {
-        return this.renderInstance(_render);
-      }
-    }
-  }, {
-    key: "renderInstance",
-    value: function renderInstance(render) {
-      return render.createElement('div', // 标签名称
-      _objectSpread(_objectSpread({}, render.context), {}, {
-        attrs: this
-      }), [this.props.label, render.vueRoot.$slots["default"]]);
-    }
-  }]);
-
-  return VueUI;
-}(instance.SingleUI);
-
-var VueUIList = /*#__PURE__*/function (_instance$UIList) {
-  _inherits(VueUIList, _instance$UIList);
-
-  var _super2 = _createSuper(VueUIList);
-
-  function VueUIList(list, options) {
-    var _this;
-
-    _classCallCheck(this, VueUIList);
-
-    _this = _super2.call(this, list, options);
-    _this.componentHasRendered = new instance.DataList();
-    return _this;
-  }
-
-  _createClass(VueUIList, [{
-    key: "handleComponentKey",
-    value: function handleComponentKey(key) {
-      var _this2 = this;
-
-      return new Promise(function (resolve) {
-        _this2.componentHasRendered.add({
-          name: 'key',
-          data: key
-        });
-
-        resolve();
-      });
-    }
-  }, {
-    key: "getRenderList",
-    value: function getRenderList(render) {
-      return this.getAllItems().map(function (item) {
-        return item.render(render);
-      });
-    }
-  }]);
-
-  return VueUIList;
-}(instance.UIList);
-
 var VueLog = /*#__PURE__*/function (_instance$Log) {
   _inherits(VueLog, _instance$Log);
 
-  var _super3 = _createSuper(VueLog);
+  var _super = _createSuper(VueLog);
 
   function VueLog() {
-    var _this3;
+    var _this;
 
     _classCallCheck(this, VueLog);
 
-    _this3 = _super3.call(this);
+    _this = _super.call(this);
 
-    var that = _assertThisInitialized(_this3);
+    var that = _assertThisInitialized(_this);
 
     console.log = function (log) {
       return function () {
@@ -186,7 +112,7 @@ var VueLog = /*#__PURE__*/function (_instance$Log) {
       };
     }(console.debug);
 
-    return _this3;
+    return _this;
   }
 
   return VueLog;
@@ -210,15 +136,15 @@ var HttpInstance = /*#__PURE__*/function () {
   _createClass(HttpInstance, [{
     key: "init",
     value: function init() {
-      var _this4 = this;
+      var _this2 = this;
 
       axios.interceptors.request.use(function (config) {
-        return _this4.convertRequest(config);
+        return _this2.convertRequest(config);
       }, function (error) {
         return Promise.reject(error);
       });
       axios.interceptors.response.use(function (response) {
-        return _this4.convertResponse(response);
+        return _this2.convertResponse(response);
       }, function (error) {
         return Promise.reject(error);
       });
@@ -236,7 +162,7 @@ var HttpInstance = /*#__PURE__*/function () {
   }, {
     key: "create",
     value: function create(opts) {
-      var _this5 = this;
+      var _this3 = this;
 
       var publicParams = {
         ts: Date.now()
@@ -279,9 +205,9 @@ var HttpInstance = /*#__PURE__*/function () {
 
       var promise = new Promise(function (resolve, reject) {
         axios(httpDefaultOpts).then(function (response) {
-          _this5.handleSuccess(response, resolve, opts);
+          _this3.handleSuccess(response, resolve, opts);
         })["catch"](function (error) {
-          _this5.handleError(error, reject, opts);
+          _this3.handleError(error, reject, opts);
         });
       });
       return promise;
@@ -325,7 +251,7 @@ var KeepAlive = /*#__PURE__*/function () {
   _createClass(KeepAlive, [{
     key: "init",
     value: function init() {
-      var _this6 = this;
+      var _this4 = this;
 
       this.pong = 0;
       this.connnectNumber = 0;
@@ -336,7 +262,7 @@ var KeepAlive = /*#__PURE__*/function () {
 
       this.check();
       this.interval = setInterval(function () {
-        _this6.check();
+        _this4.check();
       }, this.checkTime * 1000);
     }
   }, {
@@ -513,6 +439,83 @@ var WebSocketInstance = /*#__PURE__*/function () {
   return WebSocketInstance;
 }();
 
+var VueUI = /*#__PURE__*/function (_instance$SingleUI) {
+  _inherits(VueUI, _instance$SingleUI);
+
+  var _super2 = _createSuper(VueUI);
+
+  function VueUI(params) {
+    _classCallCheck(this, VueUI);
+
+    return _super2.call(this, params);
+  }
+
+  _createClass(VueUI, [{
+    key: "render",
+    value: function render(_render) {
+      if (!this.getCanRender()) {
+        return _render.createElement();
+      } else {
+        return this.renderInstance(_render);
+      }
+    }
+  }, {
+    key: "renderInstance",
+    value: function renderInstance(render) {
+      return render.createElement('div', // 标签名称
+      _objectSpread(_objectSpread({}, render.context), {}, {
+        attrs: this
+      }), [this.props.label, render.vueRoot.$slots["default"]]);
+    }
+  }]);
+
+  return VueUI;
+}(instance.SingleUI);
+
+var VueUIList = /*#__PURE__*/function (_instance$UIList) {
+  _inherits(VueUIList, _instance$UIList);
+
+  var _super3 = _createSuper(VueUIList);
+
+  function VueUIList(list, options) {
+    var _this5;
+
+    _classCallCheck(this, VueUIList);
+
+    _this5 = _super3.call(this, list, options);
+    _this5.componentHasRendered = new instance.DataList();
+    return _this5;
+  }
+
+  _createClass(VueUIList, [{
+    key: "handleComponentKey",
+    value: function handleComponentKey(key) {
+      var _this6 = this;
+
+      return new Promise(function (resolve) {
+        _this6.componentHasRendered.add({
+          name: 'key',
+          data: key
+        });
+
+        resolve();
+      });
+    }
+  }, {
+    key: "getRenderList",
+    value: function getRenderList(render) {
+      return this.getAllItems().map(function (item) {
+        return item.render(render);
+      });
+    }
+  }]);
+
+  return VueUIList;
+}(instance.UIList);
+
+Object.keys(instance).forEach(function (k) {
+  if (k !== 'default') exports[k] = instance[k];
+});
 exports.HttpInstance = HttpInstance;
 exports.VueUI = VueUI;
 exports.VueUIList = VueUIList;

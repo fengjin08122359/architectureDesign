@@ -1,45 +1,7 @@
-import { SingleUI, UIList, DataList, Log, ErrorCode, EventDispatcher, Intercept } from '@mikefeng110808/instance';
+import { Log, ErrorCode, EventDispatcher, Intercept, SingleUI, UIList, DataList } from '@mikefeng110808/instance';
+export * from '@mikefeng110808/instance';
 import axios from 'axios';
 import websocket from 'websocket';
-
-class VueUI extends SingleUI {
-    constructor(params) {
-        super(params);
-    }
-    render(render) {
-        if (!this.getCanRender()) {
-            return render.createElement();
-        }
-        else {
-            return this.renderInstance(render);
-        }
-    }
-    renderInstance(render) {
-        return render.createElement('div', // 标签名称
-        {
-            ...render.context,
-            attrs: this
-        }, [this.props.label, render.vueRoot.$slots.default]);
-    }
-}
-class VueUIList extends UIList {
-    constructor(list, options) {
-        super(list, options);
-        this.componentHasRendered = new DataList();
-    }
-    handleComponentKey(key) {
-        return new Promise(resolve => {
-            this.componentHasRendered.add({
-                name: 'key',
-                data: key
-            });
-            resolve();
-        });
-    }
-    getRenderList(render) {
-        return this.getAllItems().map(item => item.render(render));
-    }
-}
 
 class VueLog extends Log {
     constructor() {
@@ -302,6 +264,45 @@ class WebSocketInstance {
     }
     end() {
         this.client.close();
+    }
+}
+
+class VueUI extends SingleUI {
+    constructor(params) {
+        super(params);
+    }
+    render(render) {
+        if (!this.getCanRender()) {
+            return render.createElement();
+        }
+        else {
+            return this.renderInstance(render);
+        }
+    }
+    renderInstance(render) {
+        return render.createElement('div', // 标签名称
+        {
+            ...render.context,
+            attrs: this
+        }, [this.props.label, render.vueRoot.$slots.default]);
+    }
+}
+class VueUIList extends UIList {
+    constructor(list, options) {
+        super(list, options);
+        this.componentHasRendered = new DataList();
+    }
+    handleComponentKey(key) {
+        return new Promise(resolve => {
+            this.componentHasRendered.add({
+                name: 'key',
+                data: key
+            });
+            resolve();
+        });
+    }
+    getRenderList(render) {
+        return this.getAllItems().map(item => item.render(render));
     }
 }
 

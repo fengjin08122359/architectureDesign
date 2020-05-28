@@ -8,45 +8,6 @@ var instance = require('@mikefeng110808/instance');
 var axios = _interopDefault(require('axios'));
 var websocket = _interopDefault(require('websocket'));
 
-class VueUI extends instance.SingleUI {
-    constructor(params) {
-        super(params);
-    }
-    render(render) {
-        if (!this.getCanRender()) {
-            return render.createElement();
-        }
-        else {
-            return this.renderInstance(render);
-        }
-    }
-    renderInstance(render) {
-        return render.createElement('div', // 标签名称
-        {
-            ...render.context,
-            attrs: this
-        }, [this.props.label, render.vueRoot.$slots.default]);
-    }
-}
-class VueUIList extends instance.UIList {
-    constructor(list, options) {
-        super(list, options);
-        this.componentHasRendered = new instance.DataList();
-    }
-    handleComponentKey(key) {
-        return new Promise(resolve => {
-            this.componentHasRendered.add({
-                name: 'key',
-                data: key
-            });
-            resolve();
-        });
-    }
-    getRenderList(render) {
-        return this.getAllItems().map(item => item.render(render));
-    }
-}
-
 class VueLog extends instance.Log {
     constructor() {
         super();
@@ -311,6 +272,48 @@ class WebSocketInstance {
     }
 }
 
+class VueUI extends instance.SingleUI {
+    constructor(params) {
+        super(params);
+    }
+    render(render) {
+        if (!this.getCanRender()) {
+            return render.createElement();
+        }
+        else {
+            return this.renderInstance(render);
+        }
+    }
+    renderInstance(render) {
+        return render.createElement('div', // 标签名称
+        {
+            ...render.context,
+            attrs: this
+        }, [this.props.label, render.vueRoot.$slots.default]);
+    }
+}
+class VueUIList extends instance.UIList {
+    constructor(list, options) {
+        super(list, options);
+        this.componentHasRendered = new instance.DataList();
+    }
+    handleComponentKey(key) {
+        return new Promise(resolve => {
+            this.componentHasRendered.add({
+                name: 'key',
+                data: key
+            });
+            resolve();
+        });
+    }
+    getRenderList(render) {
+        return this.getAllItems().map(item => item.render(render));
+    }
+}
+
+Object.keys(instance).forEach(function (k) {
+  if (k !== 'default') exports[k] = instance[k];
+});
 exports.HttpInstance = HttpInstance;
 exports.VueUI = VueUI;
 exports.VueUIList = VueUIList;

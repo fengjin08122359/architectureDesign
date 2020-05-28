@@ -115,4 +115,6 @@ export declare class WebSocketInstance {
 
 export declare const wsIntercept: Intercept;
 
+export * from "@mikefeng110808/instance";
+
 export { }

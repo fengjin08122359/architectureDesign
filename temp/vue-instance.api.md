@@ -144,6 +144,8 @@ export class WebSocketInstance {
 export const wsIntercept: Intercept;
 
 
+export * from "@mikefeng110808/instance";
+
 // (No @packageDocumentation comment for this package)
 
 ```
