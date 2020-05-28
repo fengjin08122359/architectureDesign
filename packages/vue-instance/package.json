@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/vue-instance",
-  "version": "1.0.2-alpha.11",
+  "version": "1.0.2-alpha.12",
   "description": "@mikefeng110808/vue-instance",
   "main": "index.js",
   "module": "dist/vue-instance.esm-bundler.js",
@@ -22,9 +22,12 @@
   },
   "author": "Mike Feng",
   "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.6.11"
+  },
   "dependencies": {
-    "@mikefeng110808/instance": "1.0.2-alpha.11",
-    "vue": "1.0.2-alpha.9",
+    "@mikefeng110808/instance": "1.0.2-alpha.12",
+    "vue": "^2.6.11",
     "axios": "^0.19.2",
     "websocket": "^1.0.31"
   },
