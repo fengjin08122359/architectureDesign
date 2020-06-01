@@ -1,3 +1,7 @@
+## [1.0.2-alpha.15](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.14...v1.0.2-alpha.15) (2020-06-01)
+
+
+
 ## [1.0.2-alpha.14](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.13...v1.0.2-alpha.14) (2020-06-01)
 
 
