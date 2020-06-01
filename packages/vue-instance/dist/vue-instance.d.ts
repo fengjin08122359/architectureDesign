@@ -95,6 +95,7 @@ export declare class VueUI extends SingleUI {
 export declare class VueUIList extends UIList {
     componentHasRendered: DataList;
     constructor(list: any[], options?: optionsPayload);
+    convertSinlgeUI(item: SingleUIPayload): VueUI;
     handleComponentKey(key: string): Promise<unknown>;
     getRenderList(render: VueRenderPayload): any[];
 }

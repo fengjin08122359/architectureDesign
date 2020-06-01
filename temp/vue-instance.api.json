@@ -1116,6 +1116,52 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@mikefeng110808/vue-instance!VueUIList#convertSinlgeUI:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "convertSinlgeUI(item: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/vue-instance!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VueUI",
+                  "canonicalReference": "@mikefeng110808/vue-instance!VueUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "item",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "convertSinlgeUI"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@mikefeng110808/vue-instance!VueUIList#getRenderList:member(1)",
               "docComment": "",
               "excerptTokens": [

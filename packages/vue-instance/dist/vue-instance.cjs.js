@@ -297,6 +297,9 @@ class VueUIList extends instance.UIList {
         super(list, options);
         this.componentHasRendered = new instance.DataList();
     }
+    convertSinlgeUI(item) {
+        return new VueUI(item);
+    }
     handleComponentKey(key) {
         return new Promise(resolve => {
             this.componentHasRendered.add({

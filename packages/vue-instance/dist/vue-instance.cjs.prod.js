@@ -488,6 +488,11 @@ var VueUIList = /*#__PURE__*/function (_instance$UIList) {
   }
 
   _createClass(VueUIList, [{
+    key: "convertSinlgeUI",
+    value: function convertSinlgeUI(item) {
+      return new VueUI(item);
+    }
+  }, {
     key: "handleComponentKey",
     value: function handleComponentKey(key) {
       var _this6 = this;

@@ -37,6 +37,9 @@ export class VueUIList extends UIList {
     super(list, options)
     this.componentHasRendered = new DataList()
   }
+  convertSinlgeUI(item: SingleUIPayload) {
+    return new VueUI(item)
+  }
   handleComponentKey (key:string) {
     return new Promise(resolve => {
       this.componentHasRendered.add({

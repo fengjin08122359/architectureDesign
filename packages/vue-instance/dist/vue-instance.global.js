@@ -1051,6 +1051,9 @@ var Istance = (function (exports, axios, websocket) {
           super(list, options);
           this.componentHasRendered = new DataList();
       }
+      convertSinlgeUI(item) {
+          return new VueUI(item);
+      }
       handleComponentKey(key) {
           return new Promise(resolve => {
               this.componentHasRendered.add({

@@ -108,6 +108,8 @@ export class VueUIList extends UIList {
     // (undocumented)
     componentHasRendered: DataList;
     // (undocumented)
+    convertSinlgeUI(item: SingleUIPayload): VueUI;
+    // (undocumented)
     getRenderList(render: VueRenderPayload): any[];
     // (undocumented)
     handleComponentKey(key: string): Promise<unknown>;
