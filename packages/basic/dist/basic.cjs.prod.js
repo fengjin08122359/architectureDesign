@@ -437,6 +437,89 @@ var Log = /*#__PURE__*/function () {
   return Log;
 }();
 
+var Debounce = /*#__PURE__*/function () {
+  function Debounce() {
+    _classCallCheck(this, Debounce);
+
+    this.timeout = null;
+  }
+
+  _createClass(Debounce, [{
+    key: "do",
+    value: function _do(handle, wait) {
+      var _this2 = this;
+
+      if (this.timeout !== null) {
+        clearTimeout(this.timeout);
+      }
+
+      this.timeout = setTimeout(function () {
+        handle.apply(_this2, handle.arguments);
+        _this2.timeout = null;
+      }, wait);
+    }
+  }]);
+
+  return Debounce;
+}();
+
+var Throttle = /*#__PURE__*/function () {
+  function Throttle() {
+    _classCallCheck(this, Throttle);
+
+    this.timeout = null;
+    this.lastTriggerTime = null;
+    this.lastExecutedTime = null;
+    this.executeOncePerWait = false;
+    this.immediate = false;
+  }
+
+  _createClass(Throttle, [{
+    key: "do",
+    value: function _do(handle, wait) {
+      var _arguments = arguments,
+          _this3 = this;
+
+      !this.executeOncePerWait && (this.lastTriggerTime = Date.now());
+      var callNow = this.immediate && !this.timeout;
+
+      if (!this.timeout) {
+        this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+        this.timeout = setTimeout(function () {
+          _this3.later(handle, wait, _arguments);
+        }, wait);
+      }
+
+      if (callNow) {
+        this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+        handle.apply(this, arguments);
+      }
+    }
+  }, {
+    key: "later",
+    value: function later(handle, wait, args) {
+      var _this4 = this;
+
+      var last = Date.now() - ((this.executeOncePerWait ? this.lastExecutedTime : this.lastTriggerTime) || 0);
+
+      if (last < wait && last > 0) {
+        setTimeout(function () {
+          _this4.later(handle, wait, args);
+        }, wait - last);
+      } else {
+        if (!this.immediate) {
+          this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+          handle.apply(this, args);
+        }
+
+        this.timeout = null;
+      }
+    }
+  }]);
+
+  return Throttle;
+}();
+
 var EventDispatcher = /*#__PURE__*/function () {
   function EventDispatcher() {
     _classCallCheck(this, EventDispatcher);
@@ -644,6 +727,7 @@ var Storage = /*#__PURE__*/function () {
 
 exports.Auth = Auth;
 exports.DataList = DataList;
+exports.Debounce = Debounce;
 exports.ErrorCode = ErrorCode;
 exports.EventDispatcher = EventDispatcher;
 exports.HanderList = HanderList;
@@ -651,3 +735,4 @@ exports.Intercept = Intercept;
 exports.Log = Log;
 exports.ObserverSubject = ObserverSubject;
 exports.Storage = Storage;
+exports.Throttle = Throttle;

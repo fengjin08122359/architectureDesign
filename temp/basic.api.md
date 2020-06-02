@@ -26,6 +26,15 @@ export class DataList {
 }
 
 // @public (undocumented)
+export class Debounce {
+    constructor();
+    // (undocumented)
+    do(handle: (...args: any[]) => void, wait: number): void;
+    // (undocumented)
+    timeout: any;
+}
+
+// @public (undocumented)
 export class ErrorCode {
     constructor();
     collect(data: any): void;
@@ -103,6 +112,25 @@ class Storage_2 {
 }
 
 export { Storage_2 as Storage }
+
+// @public (undocumented)
+export class Throttle {
+    constructor();
+    // (undocumented)
+    do(handle: (...args: any[]) => void, wait: number): void;
+    // (undocumented)
+    executeOncePerWait: boolean;
+    // (undocumented)
+    immediate: boolean;
+    // (undocumented)
+    lastExecutedTime: number | null;
+    // (undocumented)
+    lastTriggerTime: number | null;
+    // (undocumented)
+    later(handle: (...args: any[]) => void, wait: number, args: any[]): void;
+    // (undocumented)
+    timeout: any;
+}
 
 
 // (No @packageDocumentation comment for this package)

@@ -259,6 +259,59 @@ var Basic = (function (exports) {
       }
   }
 
+  class Debounce {
+      constructor() {
+          this.timeout = null;
+      }
+      do(handle, wait) {
+          if (this.timeout !== null) {
+              clearTimeout(this.timeout);
+          }
+          this.timeout = setTimeout(() => {
+              handle.apply(this, handle.arguments);
+              this.timeout = null;
+          }, wait);
+      }
+  }
+  class Throttle {
+      constructor() {
+          this.timeout = null;
+          this.lastTriggerTime = null;
+          this.lastExecutedTime = null;
+          this.executeOncePerWait = false;
+          this.immediate = false;
+      }
+      do(handle, wait) {
+          !this.executeOncePerWait && (this.lastTriggerTime = Date.now());
+          const callNow = this.immediate && !this.timeout;
+          if (!this.timeout) {
+              this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+              this.timeout = setTimeout(() => {
+                  this.later(handle, wait, arguments);
+              }, wait);
+          }
+          if (callNow) {
+              this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+              handle.apply(this, arguments);
+          }
+      }
+      later(handle, wait, args) {
+          const last = Date.now() - ((this.executeOncePerWait ? this.lastExecutedTime : this.lastTriggerTime) || 0);
+          if (last < wait && last > 0) {
+              setTimeout(() => {
+                  this.later(handle, wait, args);
+              }, wait - last);
+          }
+          else {
+              if (!this.immediate) {
+                  this.executeOncePerWait && (this.lastExecutedTime = Date.now());
+                  handle.apply(this, args);
+              }
+              this.timeout = null;
+          }
+      }
+  }
+
   class EventDispatcher {
       constructor() {
           this.EventList = new Array();
@@ -393,6 +446,7 @@ var Basic = (function (exports) {
 
   exports.Auth = Auth;
   exports.DataList = DataList;
+  exports.Debounce = Debounce;
   exports.ErrorCode = ErrorCode;
   exports.EventDispatcher = EventDispatcher;
   exports.HanderList = HanderList;
@@ -400,6 +454,7 @@ var Basic = (function (exports) {
   exports.Log = Log;
   exports.ObserverSubject = ObserverSubject;
   exports.Storage = Storage;
+  exports.Throttle = Throttle;
 
   return exports;
 

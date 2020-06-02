@@ -63,6 +63,12 @@ export declare class DataList {
     get(name?: string): Data[];
 }
 
+export declare class Debounce {
+    timeout: any;
+    constructor();
+    do(handle: (...args: any[]) => void, wait: number): void;
+}
+
 export declare class ErrorCode {
     private dataList;
     constructor();
@@ -358,6 +364,17 @@ declare interface Subject {
     registerObserver(observer: Observer): void;
     removeObserver(observer: Observer): void;
     notifyObservers(observers?: Array<Observer>): void;
+}
+
+export declare class Throttle {
+    timeout: any;
+    lastTriggerTime: number | null;
+    lastExecutedTime: number | null;
+    executeOncePerWait: boolean;
+    immediate: boolean;
+    constructor();
+    do(handle: (...args: any[]) => void, wait: number): void;
+    later(handle: (...args: any[]) => void, wait: number, args: any[]): void;
 }
 
 export { }
