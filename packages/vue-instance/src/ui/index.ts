@@ -5,6 +5,7 @@ export interface VueRenderPayload {
   createElement:CreateElement
   vueRoot:Vue
   context:RenderContext<Record<never, any>>
+  [x:string]: any
 }
 
 export class VueUI extends SingleUI{

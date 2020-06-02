@@ -84,6 +84,7 @@ export declare interface VueRenderPayload {
     createElement: CreateElement;
     vueRoot: Vue_2;
     context: RenderContext<Record<never, any>>;
+    [x: string]: any;
 }
 
 export declare class VueUI extends SingleUI {

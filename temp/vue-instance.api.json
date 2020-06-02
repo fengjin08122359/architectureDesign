@@ -766,6 +766,48 @@
           "name": "VueRenderPayload",
           "members": [
             {
+              "kind": "IndexSignature",
+              "canonicalReference": "@mikefeng110808/vue-instance!VueRenderPayload:index(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "[x: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "x",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
               "kind": "PropertySignature",
               "canonicalReference": "@mikefeng110808/vue-instance!VueRenderPayload#context:member",
               "docComment": "",

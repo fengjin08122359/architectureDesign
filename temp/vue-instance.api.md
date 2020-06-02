@@ -86,6 +86,8 @@ export const routerIntercept: Intercept;
 // @public (undocumented)
 export interface VueRenderPayload {
     // (undocumented)
+    [x: string]: any;
+    // (undocumented)
     context: RenderContext<Record<never, any>>;
     // (undocumented)
     createElement: CreateElement;
