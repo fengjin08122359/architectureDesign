@@ -447,14 +447,15 @@ var Debounce = /*#__PURE__*/function () {
   _createClass(Debounce, [{
     key: "do",
     value: function _do(handle, wait) {
-      var _this2 = this;
+      var _arguments = arguments,
+          _this2 = this;
 
       if (this.timeout !== null) {
         clearTimeout(this.timeout);
       }
 
       this.timeout = setTimeout(function () {
-        handle.apply(_this2, handle.arguments);
+        handle.apply(_this2, _arguments);
         _this2.timeout = null;
       }, wait);
     }
@@ -477,7 +478,7 @@ var Throttle = /*#__PURE__*/function () {
   _createClass(Throttle, [{
     key: "do",
     value: function _do(handle, wait) {
-      var _arguments = arguments,
+      var _arguments2 = arguments,
           _this3 = this;
 
       !this.executeOncePerWait && (this.lastTriggerTime = Date.now());
@@ -486,7 +487,7 @@ var Throttle = /*#__PURE__*/function () {
       if (!this.timeout) {
         this.executeOncePerWait && (this.lastExecutedTime = Date.now());
         this.timeout = setTimeout(function () {
-          _this3.later(handle, wait, _arguments);
+          _this3.later(handle, wait, _arguments2);
         }, wait);
       }
 

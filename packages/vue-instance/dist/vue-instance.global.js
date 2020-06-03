@@ -271,7 +271,7 @@ var Istance = (function (exports, axios, websocket) {
               clearTimeout(this.timeout);
           }
           this.timeout = setTimeout(() => {
-              handle.apply(this, handle.arguments);
+              handle.apply(this, arguments);
               this.timeout = null;
           }, wait);
       }
