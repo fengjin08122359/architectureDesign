@@ -150,6 +150,26 @@ var DataList = /*#__PURE__*/function () {
         return name === "" || data.name === name;
       });
     }
+    /**
+     *get
+     *
+     * @param {string} name
+     * @return {any} any
+     * @memberof DataList
+     */
+
+  }, {
+    key: "find",
+    value: function find() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var target = this.datas.find(function (data) {
+        return data.name === name;
+      });
+      var empty = this.datas.find(function (data) {
+        return data.name === '';
+      });
+      return target ? target.data : empty ? empty.data : null;
+    }
   }]);
 
   return DataList;

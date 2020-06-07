@@ -41,4 +41,16 @@ export class DataList {
   get(name: string = "") {
     return this.datas.filter((data) => name === "" || data.name === name);
   }
+  /**
+   *get
+   *
+   * @param {string} name
+   * @return {any} any
+   * @memberof DataList
+   */
+  find (name: string = ""): any{
+    var target = this.datas.find((data) => data.name === name)
+    var empty = this.datas.find((data) => data.name === '')
+    return target ? target.data : empty ? empty.data : null;
+  }
 }

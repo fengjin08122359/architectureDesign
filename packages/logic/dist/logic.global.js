@@ -210,6 +210,18 @@ var Logic = (function (exports) {
       get(name = "") {
           return this.datas.filter((data) => name === "" || data.name === name);
       }
+      /**
+       *get
+       *
+       * @param {string} name
+       * @return {any} any
+       * @memberof DataList
+       */
+      find(name = "") {
+          var target = this.datas.find((data) => data.name === name);
+          var empty = this.datas.find((data) => data.name === '');
+          return target ? target.data : empty ? empty.data : null;
+      }
   }
 
   class UIList {

@@ -61,6 +61,14 @@ export declare class DataList {
      * @memberof DataList
      */
     get(name?: string): Data[];
+    /**
+     *get
+     *
+     * @param {string} name
+     * @return {any} any
+     * @memberof DataList
+     */
+    find(name?: string): any;
 }
 
 export declare class Debounce {

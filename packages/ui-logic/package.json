@@ -1,18 +1,18 @@
 {
-  "name": "@mikefeng110808/logic",
+  "name": "@mikefeng110808/ui-logic",
   "version": "1.0.2-alpha.18",
-  "description": "@mikefeng110808/logic",
+  "description": "@mikefeng110808/ui-logic",
   "main": "index.js",
-  "module": "dist/logic.esm-bundler.js",
-  "types": "dist/logic.d.ts",
-  "unpkg": "dist/logic.global.js",
+  "module": "dist/ui-logic.esm-bundler.js",
+  "types": "dist/ui-logic.d.ts",
+  "unpkg": "dist/ui-logic.global.js",
   "files": [
     "index.js",
     "dist"
   ],
   "sideEffects": false,
   "buildOptions": {
-    "name": "Logic",
+    "name": "ui-logic",
     "formats": [
       "esm-bundler",
       "cjs",
@@ -23,6 +23,7 @@
   "author": "Mike Feng",
   "license": "MIT",
   "dependencies": {
+    "@mikefeng110808/logic": "1.0.2-alpha.18",
     "@mikefeng110808/basic": "1.0.2-alpha.18"
   },
   "devDependencies": {

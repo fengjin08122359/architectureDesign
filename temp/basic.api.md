@@ -21,6 +21,7 @@ export class DataList {
     constructor();
     // Warning: (ae-forgotten-export) The symbol "Data" needs to be exported by the entry point index.d.ts
     add(data: Data): void;
+    find(name?: string): any;
     get(name?: string): Data[];
     remove(name: string): void;
 }
