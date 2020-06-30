@@ -3,7 +3,7 @@ import { Position } from "../Position";
 import { Style } from "../Style";
 
 
-export class UI {
+export class ContainerUI {
     dom: HTMLElement;
     eventBind: EventBind;
     position: Position;

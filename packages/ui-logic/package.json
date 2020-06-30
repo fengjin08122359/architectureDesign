@@ -12,7 +12,7 @@
   ],
   "sideEffects": false,
   "buildOptions": {
-    "name": "ui-logic",
+    "name": "uiLogic",
     "formats": [
       "esm-bundler",
       "cjs",

@@ -72,7 +72,6 @@ function createConfig(format, output, plugins = []) {
     console.log(require('chalk').yellow(`invalid format: "${format}"`))
     process.exit(1)
   }
-
   output.sourcemap = !!process.env.SOURCE_MAP
   output.externalLiveBindings = false
 
@@ -86,7 +85,9 @@ function createConfig(format, output, plugins = []) {
   if (isGlobalBuild) {
     output.name = packageOptions.name
   }
-
+  output.globals = {
+    vue: 'vue'
+  }
   const shouldEmitDeclarations = process.env.TYPES != null && !hasTSChecked
 
   const tsPlugin = ts({
@@ -111,16 +112,28 @@ function createConfig(format, output, plugins = []) {
 
   const external =
     isGlobalBuild || isRawESMBuild
-      ? []
-      : [
-          ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {})
-        ]
+      ? packageOptions.enableNonBrowserBranches
+          ? // externalize postcss for @vue/compiler-sfc
+          // because @rollup/plugin-commonjs cannot bundle it properly
+            ['vue', 'lodash']
+          : // normal browser builds - non-browser only imports are tree-shaken,
+            // they are only listed here to suppress warnings.
+            []
+        : [
+            ...Object.keys(pkg.dependencies || {}),
+            ...Object.keys(pkg.peerDependencies || {})
+          ]
 
   const nodePlugins = packageOptions.enableNonBrowserBranches
     ? [
-        require('@rollup/plugin-node-resolve')(),
-        require('@rollup/plugin-commonjs')()
+        require('@rollup/plugin-node-resolve').nodeResolve({
+          preferBuiltins: true
+        }),
+        require('@rollup/plugin-commonjs')({
+          sourceMap: false
+        }),
+        require('rollup-plugin-node-builtins')(),
+        require('rollup-plugin-node-globals')()
       ]
     : []
 
