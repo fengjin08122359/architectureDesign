@@ -1,5 +1,3 @@
-import { PositionPayload } from "../Position"
-
 export class Style {
     style: CSSStyleDeclaration
     constructor (dom: HTMLElement) {
@@ -9,3 +7,4 @@ export class Style {
         this.style[key] = value
     }
 }
+

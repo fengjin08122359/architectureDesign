@@ -12,8 +12,9 @@ export interface ComponentSingleUIPayload extends UIPayload {
 export class ComponentSingleUI extends UI {
     editable: boolean;
     insertable: boolean
-    constructor (dom: HTMLElement) {
-        super(dom)
+    constructor (dom?: HTMLElement) {
+        var d = dom || document.createElement('div')
+        super(d)
         this.editable = true
         this.insertable = false
     }
@@ -21,17 +22,15 @@ export class ComponentSingleUI extends UI {
 
 export interface ComponentMultipleUIPayload extends ComponentSingleUIPayload {
     children: DataList
-    selfProp: SelfProp
     id: string;
 }
 
 export class ComponentMultipleUI extends ComponentSingleUI{
     children: DataList
-    selfProp: SelfProp
-    constructor (dom:HTMLElement) {
-        super(dom)
+    constructor (dom?: HTMLElement) {
+        var d = dom || document.createElement('div')
+        super(d)
         this.children = new DataList()
-        this.selfProp = new SelfProp()
     }
     combi (ui: ComponentMultipleUI) {
         if (this.findUI(ui).length > 0) {
@@ -50,11 +49,5 @@ export class ComponentMultipleUI extends ComponentSingleUI{
     }
     findUI (ui: ComponentMultipleUI) {
         return this.children.get(ui.id)
-    }
-}
-
-export class SelfProp {
-    constructor () {
-
     }
 }

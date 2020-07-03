@@ -18,7 +18,7 @@ export default class EditorTemplate extends Vue {
 </script>
 
 <style lang="less" scoped>
-@toolWidth:100px;
+@toolWidth:200px;
 .editorTemplate {
   position: fixed;
   left:0;

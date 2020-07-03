@@ -31,6 +31,6 @@
     "packages/*/__tests__",
     "__tests__",
     "test-dts",
-    "packages/*/src",
+    "packages/*/src/*.vue",
   ]
 }

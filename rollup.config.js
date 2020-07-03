@@ -89,6 +89,7 @@ function createConfig(format, output, plugins = []) {
   }
   output.globals = {
     vue: 'Vue',
+    postcss: 'postcss',
     "vue-property-decorator": "VueClassComponent",
     "vue-class-component": "VueClassComponent"
   }
@@ -119,7 +120,7 @@ function createConfig(format, output, plugins = []) {
       ? packageOptions.enableNonBrowserBranches
           ? // externalize postcss for @vue/compiler-sfc
           // because @rollup/plugin-commonjs cannot bundle it properly
-            ['vue', "vue-class-component"]
+            ['vue', "vue-class-component" , 'postcss']
           : // normal browser builds - non-browser only imports are tree-shaken,
             // they are only listed here to suppress warnings.
             []

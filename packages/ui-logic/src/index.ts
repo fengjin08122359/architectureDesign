@@ -1,3 +1,4 @@
+export { SelfProp } from './UI'
 export {
   Position,
   PositionPayload,
@@ -16,10 +17,8 @@ export {
   ComponentSingleUI,
   ComponentSingleUIPayload,
   ComponentMultipleUI,
-  ComponentMultipleUIPayload,
-  SelfProp
+  ComponentMultipleUIPayload
 } from './ComponentUI'
-
 
 export let gennerateUUID = () => {
   return new Date().getTime().toString()

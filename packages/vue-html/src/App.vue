@@ -5,6 +5,7 @@
 </template>
 <script>
 import EditorTemplate from "./pages/EditorTemplate.vue";
+
 export default {
   name: "App",
   components:{

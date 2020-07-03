@@ -1,3 +1,12 @@
+## [1.0.2-alpha.20](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.19...v1.0.2-alpha.20) (2020-07-03)
+
+
+### Bug Fixes
+
+* vue ts html template ([bcb15dc](https://github.com/fengjin08122359/architectureDesign/commit/bcb15dc83d7f6ba0e6346a4e29a5651d1ef3e76e))
+
+
+
 ## [1.0.2-alpha.19](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.17...v1.0.2-alpha.19) (2020-06-07)
 
 
