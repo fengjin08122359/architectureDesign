@@ -4,6 +4,32 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var basic = require('@mikefeng110808/basic');
 
+class EventBind {
+    constructor(dom) {
+        this.dom = dom;
+        this.dataList = new basic.DataList();
+    }
+    bind(key, event, options) {
+        if (this.dataList.get(key).length > 0) {
+            this.unbind(key);
+        }
+        this.dom.addEventListener(key, event, options);
+        this.dataList.add({
+            name: key,
+            data: {
+                event,
+                options
+            }
+        });
+    }
+    unbind(key) {
+        this.dataList.get(key).forEach((item) => {
+            this.dom.removeEventListener(key, item.data.event, item.data.options);
+        });
+        this.dataList.remove(key);
+    }
+}
+
 class Position {
     constructor(dom) {
         this.dom = dom;
@@ -33,58 +59,28 @@ class Style {
     }
 }
 
-class EventBind {
+class ContainerUI extends UI {
     constructor(dom) {
-        this.dom = dom;
-        this.dataList = new basic.DataList();
-    }
-    bind(key, event, options) {
-        if (this.dataList.get(key).length > 0) {
-            this.unbind(key);
-        }
-        this.dom.addEventListener(key, event, options);
-        this.dataList.add({
-            name: key,
-            data: {
-                event,
-                options
-            }
-        });
-    }
-    unbind(key) {
-        this.dataList.get(key).forEach((item) => {
-            this.dom.removeEventListener(key, item.data.event, item.data.options);
-        });
-        this.dataList.remove(key);
+        var d = dom || document.createElement('div');
+        super(d);
+        this.editable = false;
+        this.insertable = true;
     }
 }
 
-class ContainerUI {
+class ComponentSingleUI extends UI {
     constructor(dom) {
-        this.dom = dom || document.createElement('div');
-        this.eventBind = new EventBind(this.dom);
-        this.position = new Position(this.dom);
-    }
-}
-
-let gennerateUUID = () => {
-    return new Date().getTime().toString();
-};
-
-class ComponentSingleUI {
-    constructor(dom) {
-        this.dom = dom;
-        this.style = new Style(dom);
-        this.eventBind = new EventBind(dom);
-        this.position = new Position(dom);
+        var d = dom || document.createElement('div');
+        super(d);
+        this.editable = true;
+        this.insertable = false;
     }
 }
 class ComponentMultipleUI extends ComponentSingleUI {
     constructor(dom) {
-        super(dom);
-        this.id = gennerateUUID();
+        var d = dom || document.createElement('div');
+        super(d);
         this.children = new basic.DataList();
-        this.selfProp = new SelfProp();
     }
     combi(ui) {
         if (this.findUI(ui).length > 0) {
@@ -103,6 +99,27 @@ class ComponentMultipleUI extends ComponentSingleUI {
     }
     findUI(ui) {
         return this.children.get(ui.id);
+    }
+}
+
+let gennerateUUID = () => {
+    return new Date().getTime().toString();
+};
+
+class UI {
+    constructor(dom) {
+        this.id = gennerateUUID();
+        this.dom = dom;
+        this.eventBind = new EventBind(this.dom);
+        this.position = new Position(this.dom);
+        this.style = new Style(this.dom);
+        this.selfProp = new SelfProp();
+    }
+    setDom(dom) {
+        this.dom = dom;
+        this.eventBind = new EventBind(this.dom);
+        this.position = new Position(this.dom);
+        this.style = new Style(this.dom);
     }
 }
 class SelfProp {

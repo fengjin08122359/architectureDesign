@@ -252,8 +252,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Data",
-                  "canonicalReference": "@mikefeng110808/basic!Data:interface"
+                  "text": "DataPayload",
+                  "canonicalReference": "@mikefeng110808/basic!DataPayload:interface"
                 },
                 {
                   "kind": "Content",
@@ -349,8 +349,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Data",
-                  "canonicalReference": "@mikefeng110808/basic!Data:interface"
+                  "text": "DataPayload",
+                  "canonicalReference": "@mikefeng110808/basic!DataPayload:interface"
                 },
                 {
                   "kind": "Content",
@@ -425,6 +425,72 @@
             }
           ],
           "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/basic!DataPayload:interface",
+          "docComment": "/**\n * Data\n *\n * @param string - \n *\n * @param any -  @interface Data\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface DataPayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "DataPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/basic!DataPayload#data:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "data: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "data",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/basic!DataPayload#name:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "Class",

@@ -19,11 +19,18 @@ export class Auth {
 // @public (undocumented)
 export class DataList {
     constructor();
-    // Warning: (ae-forgotten-export) The symbol "Data" needs to be exported by the entry point index.d.ts
-    add(data: Data): void;
+    add(data: DataPayload): void;
     find(name?: string): any;
-    get(name?: string): Data[];
+    get(name?: string): DataPayload[];
     remove(name: string): void;
+}
+
+// @public
+export interface DataPayload {
+    // (undocumented)
+    data: any;
+    // (undocumented)
+    name: string;
 }
 
 // @public (undocumented)

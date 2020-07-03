@@ -1,0 +1,1906 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/ui-logic!",
+  "docComment": "",
+  "name": "@mikefeng110808/ui-logic",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/ui-logic!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ComponentMultipleUI extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentSingleUI",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUI:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ComponentMultipleUI",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ComponentMultipleUI` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataList",
+                  "canonicalReference": "@mikefeng110808/ui-logic!DataList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI#combi:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "combi(ui: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ComponentMultipleUI",
+                  "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ui",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "combi"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI#findUI:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findUI(ui: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ComponentMultipleUI",
+                  "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "import(\"../../../basic/src\")."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataPayload",
+                  "canonicalReference": "@mikefeng110808/ui-logic!DataPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ui",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "findUI"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI#unCombi:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unCombi(ui: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ComponentMultipleUI",
+                  "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ui",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "unCombi"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUIPayload:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ComponentMultipleUIPayload extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentSingleUIPayload",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUIPayload:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ComponentMultipleUIPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUIPayload#children:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "children: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataList",
+                  "canonicalReference": "@mikefeng110808/ui-logic!DataList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "children",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentMultipleUIPayload#id:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "id",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUI:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ComponentSingleUI extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "UI",
+              "canonicalReference": "@mikefeng110808/ui-logic!UI:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ComponentSingleUI",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUI:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ComponentSingleUI` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUI#editable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "editable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "editable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUI#insertable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "insertable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUIPayload:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ComponentSingleUIPayload extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "UIPayload",
+              "canonicalReference": "@mikefeng110808/ui-logic!UIPayload:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ComponentSingleUIPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUIPayload#editable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "editable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "editable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ComponentSingleUIPayload#insertable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "insertable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!ContainerUI:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ContainerUI extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "UI",
+              "canonicalReference": "@mikefeng110808/ui-logic!UI:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ContainerUI",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!ContainerUI:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ContainerUI` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!ContainerUI#editable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "editable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "editable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!ContainerUI#insertable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "insertable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/ui-logic!ContainerUIPayload:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ContainerUIPayload extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "UIPayload",
+              "canonicalReference": "@mikefeng110808/ui-logic!UIPayload:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ContainerUIPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ContainerUIPayload#editable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "editable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "editable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!ContainerUIPayload#insertable:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "insertable: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "insertable",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!EventBind:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class EventBind "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EventBind",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!EventBind:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `EventBind` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!EventBind#bind:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "bind<K extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElementEventMap",
+                  "canonicalReference": "!HTMLElementEventMap:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "K"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", event: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EventListener",
+                  "canonicalReference": "!EventListener:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AddEventListenerOptions",
+                  "canonicalReference": "!AddEventListenerOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "event",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  }
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 10
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "K",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "bind"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!EventBind#dataList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dataList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DataList",
+                  "canonicalReference": "@mikefeng110808/ui-logic!DataList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "dataList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!EventBind#dom:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dom: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "dom",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!EventBind#unbind:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unbind<K extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElementEventMap",
+                  "canonicalReference": "!HTMLElementEventMap:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "K"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "K",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "unbind"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-logic!gennerateUUID:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "gennerateUUID: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => string"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "gennerateUUID",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!Position_2:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Position "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Position_2",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Position` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#bottom:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "bottom: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "bottom",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#display:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "display: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "display",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#dom:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dom: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "dom",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#height:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "height: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "height",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#left:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "left: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "left",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#overflow:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "overflow: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "overflow",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#position:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "position: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "position",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#right:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "right: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "right",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#setKeyValue:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setKeyValue<K extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof ("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PositionPayload",
+                  "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSStyleDeclaration",
+                  "canonicalReference": "!CSSStyleDeclaration:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "K"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 8
+                  }
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 9,
+                    "endIndex": 10
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "K",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 6
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "setKeyValue"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#top:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "top: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "top",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#width:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "width: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "width",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Position_2#zIndex:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "zIndex: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "zIndex",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface PositionPayload "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PositionPayload",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#bottom:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "bottom?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "bottom",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#display:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "display?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "display",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#height:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "height?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "height",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#left:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "left?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "left",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#overflow:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "overflow?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "overflow",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#position:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "position?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "position",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#right:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "right?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "right",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#top:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "top?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "top",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#width:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "width?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "width",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@mikefeng110808/ui-logic!PositionPayload#zIndex:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "zIndex?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "zIndex",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!SelfProp:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class SelfProp "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SelfProp",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!SelfProp:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `SelfProp` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-logic!Style:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Style "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Style",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-logic!Style:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `Style` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(dom: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HTMLElement",
+                  "canonicalReference": "!HTMLElement:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dom",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-logic!Style#setKeyValue:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setKeyValue<K extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof ("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSStyleDeclaration",
+                  "canonicalReference": "!CSSStyleDeclaration:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "K"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 9,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  }
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 8
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "K",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 4
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "setKeyValue"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-logic!Style#style:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "style: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CSSStyleDeclaration",
+                  "canonicalReference": "!CSSStyleDeclaration:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "style",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

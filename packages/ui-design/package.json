@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/ui-design",
-  "version": "1.0.2-alpha.20",
+  "version": "1.0.2-alpha.22",
   "description": "@mikefeng110808/ui-design",
   "main": "index.js",
   "module": "dist/ui-design.esm-bundler.js",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@mikefeng110808/ui-generate": "1.0.2-alpha.19",
-    "@mikefeng110808/ui-logic": "1.0.2-alpha.20"
+    "@mikefeng110808/ui-logic": "1.0.2-alpha.22"
   },
   "devDependencies": {
     "lodash": "^4.17.15"

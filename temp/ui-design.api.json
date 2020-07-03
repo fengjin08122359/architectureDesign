@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/ui-design!",
+  "docComment": "",
+  "name": "@mikefeng110808/ui-design",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/ui-design!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!basicModules:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "basicModules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentSingleUI",
+              "canonicalReference": "@mikefeng110808/ui-design!ComponentSingleUI:class"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "basicModules",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!continerModules:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "continerModules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ContainerUI",
+              "canonicalReference": "@mikefeng110808/ui-design!ContainerUI:class"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "continerModules",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!mergeModules:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "mergeModules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentMultipleUI",
+              "canonicalReference": "@mikefeng110808/ui-design!ComponentMultipleUI:class"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "mergeModules",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        }
+      ]
+    }
+  ]
+}

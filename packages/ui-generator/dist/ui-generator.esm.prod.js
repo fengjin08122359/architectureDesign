@@ -1,0 +1,1 @@
+class t{constructor(){this.width=100,this.height=100,this.children=[]}changeSize({width:t=this.width,height:h=this.height}){this.width=t,this.height=h}}let h=()=>(new Date).getTime().toString();export{t as Module,h as gennerateUUID};

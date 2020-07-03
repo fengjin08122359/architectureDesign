@@ -1,0 +1,1 @@
+var uiGenerator=function(t){"use strict";return t.Module=class{constructor(){this.width=100,this.height=100,this.children=[]}changeSize({width:t=this.width,height:i=this.height}){this.width=t,this.height=i}},t.gennerateUUID=()=>(new Date).getTime().toString(),t}({});

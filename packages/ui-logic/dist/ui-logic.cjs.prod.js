@@ -28,6 +28,45 @@ Object.defineProperty(exports, '__esModule', {
 
 var basic = require('@mikefeng110808/basic');
 
+var EventBind = /*#__PURE__*/function () {
+  function EventBind(dom) {
+    _classCallCheck(this, EventBind);
+
+    this.dom = dom;
+    this.dataList = new basic.DataList();
+  }
+
+  _createClass(EventBind, [{
+    key: "bind",
+    value: function bind(key, event, options) {
+      if (this.dataList.get(key).length > 0) {
+        this.unbind(key);
+      }
+
+      this.dom.addEventListener(key, event, options);
+      this.dataList.add({
+        name: key,
+        data: {
+          event: event,
+          options: options
+        }
+      });
+    }
+  }, {
+    key: "unbind",
+    value: function unbind(key) {
+      var _this = this;
+
+      this.dataList.get(key).forEach(function (item) {
+        _this.dom.removeEventListener(key, item.data.event, item.data.options);
+      });
+      this.dataList.remove(key);
+    }
+  }]);
+
+  return EventBind;
+}();
+
 var Position = /*#__PURE__*/function () {
   function Position(dom) {
     _classCallCheck(this, Position);
@@ -73,81 +112,60 @@ var Style = /*#__PURE__*/function () {
   return Style;
 }();
 
-var EventBind = /*#__PURE__*/function () {
-  function EventBind(dom) {
-    _classCallCheck(this, EventBind);
+var ContainerUI = /*#__PURE__*/function (_UI) {
+  _inherits(ContainerUI, _UI);
 
-    this.dom = dom;
-    this.dataList = new basic.DataList();
+  var _super = _createSuper(ContainerUI);
+
+  function ContainerUI(dom) {
+    var _this2;
+
+    _classCallCheck(this, ContainerUI);
+
+    var d = dom || document.createElement('div');
+    _this2 = _super.call(this, d);
+    _this2.editable = false;
+    _this2.insertable = true;
+    return _this2;
   }
 
-  _createClass(EventBind, [{
-    key: "bind",
-    value: function bind(key, event, options) {
-      if (this.dataList.get(key).length > 0) {
-        this.unbind(key);
-      }
+  return ContainerUI;
+}(UI);
 
-      this.dom.addEventListener(key, event, options);
-      this.dataList.add({
-        name: key,
-        data: {
-          event: event,
-          options: options
-        }
-      });
-    }
-  }, {
-    key: "unbind",
-    value: function unbind(key) {
-      var _this = this;
+var ComponentSingleUI = /*#__PURE__*/function (_UI2) {
+  _inherits(ComponentSingleUI, _UI2);
 
-      this.dataList.get(key).forEach(function (item) {
-        _this.dom.removeEventListener(key, item.data.event, item.data.options);
-      });
-      this.dataList.remove(key);
-    }
-  }]);
+  var _super2 = _createSuper(ComponentSingleUI);
 
-  return EventBind;
-}();
+  function ComponentSingleUI(dom) {
+    var _this3;
 
-var ContainerUI = function ContainerUI(dom) {
-  _classCallCheck(this, ContainerUI);
+    _classCallCheck(this, ComponentSingleUI);
 
-  this.dom = dom || document.createElement('div');
-  this.eventBind = new EventBind(this.dom);
-  this.position = new Position(this.dom);
-};
+    var d = dom || document.createElement('div');
+    _this3 = _super2.call(this, d);
+    _this3.editable = true;
+    _this3.insertable = false;
+    return _this3;
+  }
 
-var gennerateUUID = function gennerateUUID() {
-  return new Date().getTime().toString();
-};
-
-var ComponentSingleUI = function ComponentSingleUI(dom) {
-  _classCallCheck(this, ComponentSingleUI);
-
-  this.dom = dom;
-  this.style = new Style(dom);
-  this.eventBind = new EventBind(dom);
-  this.position = new Position(dom);
-};
+  return ComponentSingleUI;
+}(UI);
 
 var ComponentMultipleUI = /*#__PURE__*/function (_ComponentSingleUI) {
   _inherits(ComponentMultipleUI, _ComponentSingleUI);
 
-  var _super = _createSuper(ComponentMultipleUI);
+  var _super3 = _createSuper(ComponentMultipleUI);
 
   function ComponentMultipleUI(dom) {
-    var _this2;
+    var _this4;
 
     _classCallCheck(this, ComponentMultipleUI);
 
-    _this2 = _super.call(this, dom);
-    _this2.id = gennerateUUID();
-    _this2.children = new basic.DataList();
-    _this2.selfProp = new SelfProp();
-    return _this2;
+    var d = dom || document.createElement('div');
+    _this4 = _super3.call(this, d);
+    _this4.children = new basic.DataList();
+    return _this4;
   }
 
   _createClass(ComponentMultipleUI, [{
@@ -166,10 +184,10 @@ var ComponentMultipleUI = /*#__PURE__*/function (_ComponentSingleUI) {
   }, {
     key: "unCombi",
     value: function unCombi(ui) {
-      var _this3 = this;
+      var _this5 = this;
 
       this.findUI(ui).forEach(function (item) {
-        _this3.children.remove(item.name);
+        _this5.children.remove(item.name);
       });
 
       if (this.dom.parentElement) {
@@ -185,6 +203,35 @@ var ComponentMultipleUI = /*#__PURE__*/function (_ComponentSingleUI) {
 
   return ComponentMultipleUI;
 }(ComponentSingleUI);
+
+var gennerateUUID = function gennerateUUID() {
+  return new Date().getTime().toString();
+};
+
+var UI = /*#__PURE__*/function () {
+  function UI(dom) {
+    _classCallCheck(this, UI);
+
+    this.id = gennerateUUID();
+    this.dom = dom;
+    this.eventBind = new EventBind(this.dom);
+    this.position = new Position(this.dom);
+    this.style = new Style(this.dom);
+    this.selfProp = new SelfProp();
+  }
+
+  _createClass(UI, [{
+    key: "setDom",
+    value: function setDom(dom) {
+      this.dom = dom;
+      this.eventBind = new EventBind(this.dom);
+      this.position = new Position(this.dom);
+      this.style = new Style(this.dom);
+    }
+  }]);
+
+  return UI;
+}();
 
 var SelfProp = function SelfProp() {
   _classCallCheck(this, SelfProp);
