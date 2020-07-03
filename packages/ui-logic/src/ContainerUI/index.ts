@@ -1,23 +1,17 @@
-import { EventBind } from "../EventBind";
-import { Position } from "../Position";
-import { Style } from "../Style";
+import { UI, UIPayload } from "../UI";
 
+export interface ContainerUIPayload extends UIPayload{
+    editable: boolean;
+    insertable: boolean
+}
 
-export class ContainerUI {
-    dom: HTMLElement;
-    eventBind: EventBind;
-    position: Position;
-    style: Style
+export class ContainerUI extends UI {
+    editable: boolean;
+    insertable: boolean
     constructor (dom?: HTMLElement) {
-        this.dom  = dom || document.createElement('div')
-        this.eventBind  = new EventBind(this.dom)
-        this.position = new Position(this.dom)
-        this.style = new Style(this.dom)
-    }
-    setDom (dom: HTMLElement) {
-        this.dom  = dom
-        this.eventBind  = new EventBind(this.dom)
-        this.position = new Position(this.dom)
-        this.style = new Style(this.dom)
+        var d = dom || document.createElement('div')
+        super(d)
+        this.editable = false
+        this.insertable = true
     }
 }

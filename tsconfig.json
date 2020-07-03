@@ -30,6 +30,7 @@
     "packages/*/src",
     "packages/*/__tests__",
     "__tests__",
-    "test-dts"
+    "test-dts",
+    "packages/*/src",
   ]
 }

@@ -2,6 +2,8 @@ import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
+import VuePlugin from 'rollup-plugin-vue-es5'
+import tsVuePlugin from 'rollup-plugin-ts-vue'
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 
 if (!process.env.TARGET) {
@@ -86,7 +88,9 @@ function createConfig(format, output, plugins = []) {
     output.name = packageOptions.name
   }
   output.globals = {
-    vue: 'vue'
+    vue: 'Vue',
+    "vue-property-decorator": "VueClassComponent",
+    "vue-class-component": "VueClassComponent"
   }
   const shouldEmitDeclarations = process.env.TYPES != null && !hasTSChecked
 
@@ -115,7 +119,7 @@ function createConfig(format, output, plugins = []) {
       ? packageOptions.enableNonBrowserBranches
           ? // externalize postcss for @vue/compiler-sfc
           // because @rollup/plugin-commonjs cannot bundle it properly
-            ['vue', 'lodash']
+            ['vue', "vue-class-component"]
           : // normal browser builds - non-browser only imports are tree-shaken,
             // they are only listed here to suppress warnings.
             []
@@ -136,7 +140,7 @@ function createConfig(format, output, plugins = []) {
         require('rollup-plugin-node-globals')()
       ]
     : []
-
+      console.log(external)
   return {
     input: resolve(entryFile),
     // Global and Browser ESM builds inlines everything so that they can be
@@ -157,7 +161,9 @@ function createConfig(format, output, plugins = []) {
         isNodeBuild
       ),
       ...nodePlugins,
-      ...plugins
+      ...plugins,
+      VuePlugin(),
+      // tsVuePlugin(),
     ],
     output,
     onwarn: (msg, warn) => {

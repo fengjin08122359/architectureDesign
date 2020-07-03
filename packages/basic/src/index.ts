@@ -5,6 +5,6 @@ export { Log } from "./control/Log";
 export { Throttle, Debounce } from "./control/Performance";
 export { EventDispatcher } from "./data/manage/EventDispatcher";
 export { ObserverSubject } from "./data/manage/ObserverSubject";
-export { DataList } from "./data/stored/DataList";
+export { DataList, DataPayload } from "./data/stored/DataList";
 export { HanderList } from "./data/stored/HanderList";
 export { Storage } from "./data/stored/Storage";

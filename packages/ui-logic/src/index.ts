@@ -9,13 +9,17 @@ export {
   EventBind
 } from './EventBind'
 export {
-  ContainerUI
+  ContainerUI,
+  ContainerUIPayload,
 } from './ContainerUI'
 export {
   ComponentSingleUI,
+  ComponentSingleUIPayload,
   ComponentMultipleUI,
+  ComponentMultipleUIPayload,
   SelfProp
 } from './ComponentUI'
+
 
 export let gennerateUUID = () => {
   return new Date().getTime().toString()

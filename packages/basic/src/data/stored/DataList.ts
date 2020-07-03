@@ -4,13 +4,13 @@
  * @param {data} any
  * @interface Data
  */
-export interface Data {
+export interface DataPayload {
   name: string;
   data: any;
 }
 
 export class DataList {
-  private datas: Array<Data>;
+  private datas: Array<DataPayload>;
   constructor() {
     this.datas = [];
   }
@@ -20,7 +20,7 @@ export class DataList {
    * @param {Data} data
    * @memberof DataList
    */
-  add(data: Data) {
+  add(data: DataPayload) {
     this.datas.push(data);
   }
   /**

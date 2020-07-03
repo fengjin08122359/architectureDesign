@@ -1,6 +1,7 @@
-import Vue from "Vue";
+import Vue from "vue";
 import {ContainerUI} from '@mikefeng110808/ui-logic'
-
+import App from './App.vue'
+import ElementUI from 'element-ui'
 Vue.component('UISlot', {
     data() {
         return {
@@ -32,13 +33,15 @@ Vue.component('MainSlot', {
         return h('UISlot',{})
     },
   })
+// export default new Vue({
+//     render (h, context) {
+//         return h('MainSlot',{
+//         })
+//     },
+// }).$mount("#app");
+Vue.use(ElementUI)
 export default new Vue({
-    data () {
-        return {
-        }
-    },
-    render (h, context) {
-        return h('MainSlot',{
-        })
+    render (h) {
+        return h(App)
     },
 }).$mount("#app");

@@ -1,30 +1,35 @@
 import { DataList } from "@mikefeng110808/basic"
-import { Style } from "../Style";
-import { Position } from "../Position";
-import { EventBind } from "../EventBind";
-import { gennerateUUID } from "..";
+import { UI, UIPayload } from "../UI";
 
-export class ComponentSingleUI {
-    dom: HTMLElement
-    style: Style
-    eventBind: EventBind
-    position: Position
+
+
+
+export interface ComponentSingleUIPayload extends UIPayload {
+    editable: boolean
+    insertable: boolean
+}
+
+export class ComponentSingleUI extends UI {
+    editable: boolean;
+    insertable: boolean
     constructor (dom: HTMLElement) {
-        this.dom = dom
-        this.style = new Style(dom)
-        this.eventBind  = new EventBind(dom)
-        this.position = new Position(dom)
+        super(dom)
+        this.editable = true
+        this.insertable = false
     }
-    
+}
+
+export interface ComponentMultipleUIPayload extends ComponentSingleUIPayload {
+    children: DataList
+    selfProp: SelfProp
+    id: string;
 }
 
 export class ComponentMultipleUI extends ComponentSingleUI{
     children: DataList
     selfProp: SelfProp
-    id: string;
     constructor (dom:HTMLElement) {
         super(dom)
-        this.id = gennerateUUID()
         this.children = new DataList()
         this.selfProp = new SelfProp()
     }
