@@ -51,8 +51,28 @@ export let container = [{
     params: [{
         type:'input',
         key: 'label',
-        props: {label: '标题'}
-    }]
+        props: {label: 'input'}
+    },{
+        type:'array',
+        key: 'label',
+        props: {label: 'array'}
+    },{
+        type:'object',
+        key: 'label',
+        props: {label: 'object'}
+    },{
+        type:'number',
+        key: 'label',
+        props: {label: 'number'}
+    },{
+        type:'select',
+        key: 'label',
+        props: {label: 'select'}
+    },{
+        type:'mulSelect',
+        key: 'label',
+        props: {label: 'mulSelect'}
+    },]
 },{
     name: "基本容器",
     selfProp: ContainerSelfProp,

@@ -1,10 +1,19 @@
-import { SingleUIPayload,  templatePayload } from "@mikefeng110808/logic";
+import {
+  SingleUIPayload,
+  templatePayload
+} from "@mikefeng110808/logic";
 
-import {VueUIList, VueUI, InputVueUI, VueRenderPayload} from '@mikefeng110808/vue-ui'
+import {
+  VueUIList,
+  VueUI,
+  InputVueUI,
+  ArrayVueUI,
+  VueRenderPayload
+} from '@mikefeng110808/vue-ui'
 
-export class GeneratePiece{
+export class GeneratePiece {
   uiList: VueUIList;
-  constructor () {
+  constructor() {
     this.uiList = new VueUIList()
     this.uiList.addTemplate({
       key: '',
@@ -14,21 +23,28 @@ export class GeneratePiece{
       key: 'input',
       value: InputVueUI,
     })
+    this.uiList.addTemplate({
+      key: 'array',
+      value: ArrayVueUI,
+    })
   }
-  add ({key, value}: templatePayload) {
+  add({
+    key,
+    value
+  }: templatePayload) {
     this.uiList.addTemplate({
       key: key,
       value: value,
     })
   }
-  remove (name: string) {
+  remove(name: string) {
     this.uiList.removeTemplate(name)
   }
-  generate (list:SingleUIPayload[]): VueUI[] {
+  generate(list: SingleUIPayload[]): VueUI[] {
     this.uiList.setList(list)
     return this.uiList.list
   }
-  render (render: VueRenderPayload) {
+  render(render: VueRenderPayload) {
     return this.uiList.getRenderList(render)
   }
 }

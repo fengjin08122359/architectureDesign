@@ -717,12 +717,108 @@ var VueHtml = (function (Vue, Component) {
         undefined
       );
 
+    let ArrayVueUI = class ArrayVueUI extends Vue {
+    };
+    __decorate([
+        Prop()
+    ], ArrayVueUI.prototype, "target", void 0);
+    ArrayVueUI = __decorate([
+        Component__default
+    ], ArrayVueUI);
+    var script$1 = ArrayVueUI;
+
+    /* script */
+    const __vue_script__$1 = script$1;
+
+    /* template */
+    var __vue_render__$1 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "arrayVue" },
+        [
+          _c("div", [_vm._v(_vm._s(_vm.target.props.label))]),
+          _vm._v(" "),
+          _c(
+            "el-input",
+            {
+              attrs: {
+                disabled: _vm.target.props.disabled,
+                type: _vm.target.props.inputType
+              },
+              model: {
+                value: _vm.target.value,
+                callback: function($$v) {
+                  _vm.$set(_vm.target, "value", $$v);
+                },
+                expression: "target.value"
+              }
+            },
+            [
+              _c("template", { slot: "append" }),
+              _vm._v(" "),
+              _vm.target.props.label
+                ? _c("template", { slot: "prepend" }, [
+                    _vm._v(_vm._s(_vm.target.props.label))
+                  ])
+                : _vm._e()
+            ],
+            2
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$1 = [];
+    __vue_render__$1._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$1 = undefined;
+      /* scoped */
+      const __vue_scope_id__$1 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$1 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$1 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+        __vue_inject_styles__$1,
+        __vue_script__$1,
+        __vue_scope_id__$1,
+        __vue_is_functional_template__$1,
+        __vue_module_identifier__$1,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
     class InputVueUI$1 extends VueUI {
         constructor(params) {
             super(params);
         }
         renderInstance(render) {
             return render.createElement(__vue_component__, {
+                props: { target: this }
+            });
+        }
+    }
+    class ArrayVueUI$1 extends VueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$1, {
                 props: { target: this }
             });
         }
@@ -738,6 +834,10 @@ var VueHtml = (function (Vue, Component) {
             this.uiList.addTemplate({
                 key: 'input',
                 value: InputVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'array',
+                value: ArrayVueUI$1,
             });
         }
         add({ key, value }) {
@@ -985,8 +1085,28 @@ var VueHtml = (function (Vue, Component) {
             params: [{
                     type: 'input',
                     key: 'label',
-                    props: { label: '标题' }
-                }]
+                    props: { label: 'input' }
+                }, {
+                    type: 'array',
+                    key: 'label',
+                    props: { label: 'array' }
+                }, {
+                    type: 'object',
+                    key: 'label',
+                    props: { label: 'object' }
+                }, {
+                    type: 'number',
+                    key: 'label',
+                    props: { label: 'number' }
+                }, {
+                    type: 'select',
+                    key: 'label',
+                    props: { label: 'select' }
+                }, {
+                    type: 'mulSelect',
+                    key: 'label',
+                    props: { label: 'mulSelect' }
+                },]
         }, {
             name: "基本容器",
             selfProp: ContainerSelfProp,
@@ -1140,13 +1260,13 @@ var VueHtml = (function (Vue, Component) {
     DragCol = __decorate([
         Component__default
     ], DragCol);
-    var script$1 = DragCol;
+    var script$2 = DragCol;
 
     /* script */
-    const __vue_script__$1 = script$1;
+    const __vue_script__$2 = script$2;
 
     /* template */
-    var __vue_render__$1 = function() {
+    var __vue_render__$2 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -1156,17 +1276,17 @@ var VueHtml = (function (Vue, Component) {
         [_vm._v("\n    " + _vm._s(_vm.target.name) + "\n")]
       )
     };
-    var __vue_staticRenderFns__$1 = [];
-    __vue_render__$1._withStripped = true;
+    var __vue_staticRenderFns__$2 = [];
+    __vue_render__$2._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$1 = undefined;
+      const __vue_inject_styles__$2 = undefined;
       /* scoped */
-      const __vue_scope_id__$1 = undefined;
+      const __vue_scope_id__$2 = undefined;
       /* module identifier */
-      const __vue_module_identifier__$1 = undefined;
+      const __vue_module_identifier__$2 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$1 = false;
+      const __vue_is_functional_template__$2 = false;
       /* style inject */
       
       /* style inject SSR */
@@ -1175,13 +1295,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$1 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-        __vue_inject_styles__$1,
-        __vue_script__$1,
-        __vue_scope_id__$1,
-        __vue_is_functional_template__$1,
-        __vue_module_identifier__$1,
+      const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+        __vue_inject_styles__$2,
+        __vue_script__$2,
+        __vue_scope_id__$2,
+        __vue_is_functional_template__$2,
+        __vue_module_identifier__$2,
         false,
         undefined,
         undefined,
@@ -1198,15 +1318,15 @@ var VueHtml = (function (Vue, Component) {
         }
     };
     ToolBar = __decorate([
-        Component__default({ components: { DragCol: __vue_component__$1 } })
+        Component__default({ components: { DragCol: __vue_component__$2 } })
     ], ToolBar);
-    var script$2 = ToolBar;
+    var script$3 = ToolBar;
 
     /* script */
-    const __vue_script__$2 = script$2;
+    const __vue_script__$3 = script$3;
 
     /* template */
-    var __vue_render__$2 = function() {
+    var __vue_render__$3 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -1272,68 +1392,13 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$2 = [];
-    __vue_render__$2._withStripped = true;
-
-      /* style */
-      const __vue_inject_styles__$2 = undefined;
-      /* scoped */
-      const __vue_scope_id__$2 = "data-v-24d052e5";
-      /* module identifier */
-      const __vue_module_identifier__$2 = undefined;
-      /* functional template */
-      const __vue_is_functional_template__$2 = false;
-      /* style inject */
-      
-      /* style inject SSR */
-      
-      /* style inject shadow dom */
-      
-
-      
-      const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
-        __vue_inject_styles__$2,
-        __vue_script__$2,
-        __vue_scope_id__$2,
-        __vue_is_functional_template__$2,
-        __vue_module_identifier__$2,
-        false,
-        undefined,
-        undefined,
-        undefined
-      );
-
-    let Module = class Module extends Vue {
-        mounted() {
-            this.instance.target.setDom(this.$refs.target);
-        }
-    };
-    __decorate([
-        Prop()
-    ], Module.prototype, "instance", void 0);
-    Module = __decorate([
-        Component__default
-    ], Module);
-    var script$3 = Module;
-
-    /* script */
-    const __vue_script__$3 = script$3;
-
-    /* template */
-    var __vue_render__$3 = function() {
-      var _vm = this;
-      var _h = _vm.$createElement;
-      var _c = _vm._self._c || _h;
-      return _c("div", { staticClass: "module" }, [_vm._t("default")], 2)
-    };
     var __vue_staticRenderFns__$3 = [];
     __vue_render__$3._withStripped = true;
 
       /* style */
       const __vue_inject_styles__$3 = undefined;
       /* scoped */
-      const __vue_scope_id__$3 = undefined;
+      const __vue_scope_id__$3 = "data-v-24d052e5";
       /* module identifier */
       const __vue_module_identifier__$3 = undefined;
       /* functional template */
@@ -1353,6 +1418,61 @@ var VueHtml = (function (Vue, Component) {
         __vue_scope_id__$3,
         __vue_is_functional_template__$3,
         __vue_module_identifier__$3,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let Module = class Module extends Vue {
+        mounted() {
+            this.instance.target.setDom(this.$refs.target);
+        }
+    };
+    __decorate([
+        Prop()
+    ], Module.prototype, "instance", void 0);
+    Module = __decorate([
+        Component__default
+    ], Module);
+    var script$4 = Module;
+
+    /* script */
+    const __vue_script__$4 = script$4;
+
+    /* template */
+    var __vue_render__$4 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c("div", { staticClass: "module" }, [_vm._t("default")], 2)
+    };
+    var __vue_staticRenderFns__$4 = [];
+    __vue_render__$4._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$4 = undefined;
+      /* scoped */
+      const __vue_scope_id__$4 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$4 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$4 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+        __vue_inject_styles__$4,
+        __vue_script__$4,
+        __vue_scope_id__$4,
+        __vue_is_functional_template__$4,
+        __vue_module_identifier__$4,
         false,
         undefined,
         undefined,
@@ -1395,7 +1515,7 @@ var VueHtml = (function (Vue, Component) {
     ModuleConfig = __decorate([
         Component__default({ components: { InstanceSlot } })
     ], ModuleConfig);
-    var script$4 = ModuleConfig;
+    var script$5 = ModuleConfig;
 
     const isOldIE = typeof navigator !== 'undefined' &&
         /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
@@ -1451,10 +1571,10 @@ var VueHtml = (function (Vue, Component) {
     }
 
     /* script */
-    const __vue_script__$4 = script$4;
+    const __vue_script__$5 = script$5;
 
     /* template */
-    var __vue_render__$4 = function() {
+    var __vue_render__$5 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -1496,34 +1616,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$4 = [];
-    __vue_render__$4._withStripped = true;
+    var __vue_staticRenderFns__$5 = [];
+    __vue_render__$5._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$4 = function (inject) {
+      const __vue_inject_styles__$5 = function (inject) {
         if (!inject) return
         inject("data-v-c9fd0ce2_0", { source: ".ModuleConfigList[data-v-c9fd0ce2] {\n  width: 32px;\n  height: 16px;\n}\n.ModuleConfigList span[data-v-c9fd0ce2] {\n  font-size: 14px;\n  display: inline-block;\n  cursor: pointer;\n}\n", map: {"version":3,"sources":["ModuleConfig.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;AACd;AACA;EACE,eAAe;EACf,qBAAqB;EACrB,eAAe;AACjB","file":"ModuleConfig.vue","sourcesContent":[".ModuleConfigList {\n  width: 32px;\n  height: 16px;\n}\n.ModuleConfigList span {\n  font-size: 14px;\n  display: inline-block;\n  cursor: pointer;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$4 = "data-v-c9fd0ce2";
+      const __vue_scope_id__$5 = "data-v-c9fd0ce2";
       /* module identifier */
-      const __vue_module_identifier__$4 = undefined;
+      const __vue_module_identifier__$5 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$4 = false;
+      const __vue_is_functional_template__$5 = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-        __vue_inject_styles__$4,
-        __vue_script__$4,
-        __vue_scope_id__$4,
-        __vue_is_functional_template__$4,
-        __vue_module_identifier__$4,
+      const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+        __vue_inject_styles__$5,
+        __vue_script__$5,
+        __vue_scope_id__$5,
+        __vue_is_functional_template__$5,
+        __vue_module_identifier__$5,
         false,
         createInjector,
         undefined,
@@ -1667,15 +1787,15 @@ var VueHtml = (function (Vue, Component) {
         Prop()
     ], CoverEl.prototype, "instance", void 0);
     CoverEl = __decorate([
-        Component__default({ components: { Module: __vue_component__$3, ModuleConfig: __vue_component__$4 } })
+        Component__default({ components: { Module: __vue_component__$4, ModuleConfig: __vue_component__$5 } })
     ], CoverEl);
-    var script$5 = CoverEl;
+    var script$6 = CoverEl;
 
     /* script */
-    const __vue_script__$5 = script$5;
+    const __vue_script__$6 = script$6;
 
     /* template */
-    var __vue_render__$5 = function() {
+    var __vue_render__$6 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -1722,34 +1842,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$5 = [];
-    __vue_render__$5._withStripped = true;
+    var __vue_staticRenderFns__$6 = [];
+    __vue_render__$6._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$5 = function (inject) {
+      const __vue_inject_styles__$6 = function (inject) {
         if (!inject) return
         inject("data-v-a880627e_0", { source: "\n.coverEl[data-v-a880627e] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\n}\n.coverEl[data-v-a880627e]:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\n}\n.coverEl > *[data-v-a880627e] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\n}\n.coverEl-bg[data-v-a880627e] {\r\n  position: absolute;\r\n  z-index: 99999999;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\n}\n.coverEl.active>.coverEl-bg[data-v-a880627e] {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\n}\n.selection-box[data-v-a880627e] {\r\n  border: 2px solid #03a9f4;\n}\n.ModuleConfig[data-v-a880627e]{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\n}\n.handle[data-v-a880627e] {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\n}\n.tl[data-v-a880627e] {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mt[data-v-a880627e] {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\n}\n.tr[data-v-a880627e] {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.mr[data-v-a880627e] {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\n}\n.br[data-v-a880627e] {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mb[data-v-a880627e] {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\n}\n.bl[data-v-a880627e] {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.ml[data-v-a880627e] {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAqLA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;AACA;AACA;EACA,YAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,YAAA;AACA;AAEA;EACA,kBAAA;EACA,iBAAA;EACA,uBAAA;EACA,qBAAA;EACA,oBAAA;EACA,iBAAA;EACA,SAAA;EACA,gBAAA;AACA;AACA;EACA,+BAAA;EACA,mBAAA;EACA,iBAAA;AACA;AACA;EACA,yBAAA;AACA;AACA;EACA,kBAAA;EACA,KAAA;EACA,OAAA;AACA;AACA;EACA,sBAAA;EACA,aAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,kBAAA;EACA,sBAAA;AACA;AACA;EACA,SAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,QAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,OAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :class=\"{active: activeClass}\" :style=\"style\" \r\n    @mousedown.stop.prevent=\"mouseDownHandler\" @drop=\"dropHandler\" @dragover=\"dragoverHandler\">\r\n    <div class='coverEl-bg'>\r\n      <ModuleConfig v-if='instance.canDrag' class='ModuleConfig' :instance=\"instance\"></ModuleConfig>\r\n    </div>\r\n    <Module :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.children\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n  currentEl,\r\n  clearCurrentEl,\r\n  editorInstance,\r\n  setEditorInstance,\r\n  setPx,\r\n  convertPx,\r\n  elementsFromPoint,\r\n  generateModule\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\nimport ModuleConfig from \"../components/ModuleConfig.vue\";\r\n\r\nfunction getPoint(obj) { //获取某元素以浏览器左上角为原点的坐标\r\n  var offsetTop = obj.offsetTop; //获取该元素对应父容器的上边距\r\n  var offsetLeft = obj.offsetLeft; //对应父容器的上边距\r\n  //判断是否有父容器，如果存在则累加其边距\r\n  while (obj = obj.offsetParent) {//等效 obj = obj.offsetParent;while (obj != undefined)\r\n      offsetTop += obj.offsetTop; //叠加父容器的上边距\r\n      offsetLeft += obj.offsetLeft; //叠加父容器的左边距\r\n  }\r\n  return {\r\n    offsetTop,offsetLeft\r\n  }\r\n}\r\n\r\n\r\n@Component({components: {Module, ModuleConfig}})\r\nexport default class CoverEl extends Vue {\r\n  editorInstance = editorInstance\r\n  initialAbsPos= {x: 0, y: 0}\r\n  initialRelPos= {x: 0, y: 0}\r\n  currentAbsPos=  {x: 0, y: 0}\r\n  currentRelPos=  {x: 0, y: 0}\r\n  zoom = 1\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    // console.log('style',val)\r\n    return val \r\n  }\r\n  get activeClass () {\r\n    return this.instance && this.editorInstance.active && this.editorInstance.active.moduleId == this.instance.moduleId\r\n  }\r\n\r\n  dropHandler (e) {\r\n    if (currentEl) {\r\n      let zoom = this.zoom\r\n      let current = this.instance.combi(generateModule(currentEl))\r\n      clearCurrentEl()\r\n      var mainContainer = this.$refs.bgTarget.$el\r\n      let {width='auto', height='auto'} = current.target.selfProp.getStyle()\r\n      width = convertPx(width)\r\n      height = convertPx(height)\r\n      let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n      let top = e.pageY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetTop + convertPx(this.instance.target.style.top)\r\n      let left = e.pageX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetLeft + convertPx(this.instance.target.style.left)\r\n      if (typeof height == 'number') {\r\n        top = top - (height / 2)\r\n      }\r\n      if (typeof width == 'number') {\r\n        left = left - (width / 2)\r\n      }\r\n      top = Math.round(top / zoom)\r\n      left = Math.round(left / zoom)\r\n      \r\n      current.target.style.setKeyValue('position', 'absolute')\r\n      current.target.style.setKeyValue('top', setPx(top))\r\n      current.target.style.setKeyValue('left', setPx(left))\r\n      current.target.style.setKeyValue('height', setPx(height))\r\n      current.target.style.setKeyValue('width', setPx(width))\r\n      if (this.editorInstance.isRelative) {\r\n        current.resetRelativeStyle()\r\n      }\r\n    }\r\n    \r\n      \r\n      \r\n      // comp.saveStyle({position: 'absolute', top, left, height, width})\r\n    e.preventDefault();\r\n  }\r\n  dragoverHandler (e) {\r\n    // e.dataTransfer.dropEffect = 'none'\r\n    e.preventDefault();\r\n  }\r\n  clickHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n  }\r\n  getMouseAbsPoint (e) {\r\n    return {x: e.clientX, y: e.clientY}\r\n  }\r\n  getMouseRelPoint (e) {\r\n    var mainContainer = this.$refs.bgTarget.$el\r\n    let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n    const x = e.clientX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetTop\r\n    const y = e.clientY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetLeft\r\n\r\n    return {x, y}\r\n  }\r\n  mouseDownHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n    setEditorInstance(this.instance);\r\n    let isMrs = false\r\n    this.initialAbsPos = this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.initialRelPos = this.currentRelPos = this.getMouseRelPoint(e)\r\n    var el = elementsFromPoint(e.clientX,e.clientY)\r\n    \r\n    if (this.editorInstance.active && this.editorInstance.active.canDrag) {\r\n      isMrs = true\r\n      // this.$emit('movestart')\r\n      // if (e.ctrlKey) {\r\n      //   var comp = components.register({\r\n      //     style: this.active.style,\r\n      //     raw: this.active.raw,\r\n      //     type: this.active.type,\r\n      //     childrenName: this.active.childrenName,\r\n      //     children: this.active.children,\r\n      //   })\r\n      //   comp.saveStyle({top: this.active.stylePure.top + 20, left: this.active.stylePure.left + 20})\r\n      //   rgHandle.componentsClass.setActive(comp);\r\n      //   this.activeMove = comp\r\n      // }\r\n    }\r\n    if (isMrs) {\r\n      this.$nextTick(() => {\r\n        document.documentElement.addEventListener('mousemove', this.mouseMoveHandler, true)\r\n        document.documentElement.addEventListener('mouseup', this.mouseUpHandler, true)\r\n      })\r\n    }\r\n  }\r\n  mouseMoveHandler (e) {\r\n    let zoom = this.zoom\r\n    const lastAbsX = this.currentAbsPos.x\r\n    const lastAbsY = this.currentAbsPos.y\r\n\r\n    this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.currentRelPos = this.getMouseRelPoint(e)\r\n\r\n    let offX = this.currentAbsPos.x - lastAbsX\r\n    let offY = this.currentAbsPos.y - lastAbsY\r\n    if (this.editorInstance.active) {\r\n      if (!e.ctrlKey) {\r\n        this.editorInstance.active.move(offX/zoom, offY/zoom)\r\n      }\r\n    }\r\n  }\r\n  mouseUpHandler (e) {\r\n    document.documentElement.removeEventListener('mousemove', this.mouseMoveHandler, true)\r\n    document.documentElement.removeEventListener('mouseup', this.mouseUpHandler, true)\r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n}\r\n.coverEl:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\r\n}\r\n\r\n.coverEl > * {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\r\n}\r\n\r\n.coverEl-bg {\r\n  position: absolute;\r\n  z-index: 99999999;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\r\n}\r\n.coverEl.active>.coverEl-bg {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n}\r\n.selection-box {\r\n  border: 2px solid #03a9f4;\r\n}\r\n.ModuleConfig{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\r\n}\r\n.handle {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\r\n}\r\n.tl {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mt {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\r\n}\r\n.tr {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.mr {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\r\n}\r\n.br {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mb {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\r\n}\r\n.bl {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.ml {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\r\n}\r\n</style>\r\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$5 = "data-v-a880627e";
+      const __vue_scope_id__$6 = "data-v-a880627e";
       /* module identifier */
-      const __vue_module_identifier__$5 = undefined;
+      const __vue_module_identifier__$6 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$5 = false;
+      const __vue_is_functional_template__$6 = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
-        __vue_inject_styles__$5,
-        __vue_script__$5,
-        __vue_scope_id__$5,
-        __vue_is_functional_template__$5,
-        __vue_module_identifier__$5,
+      const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
+        __vue_inject_styles__$6,
+        __vue_script__$6,
+        __vue_scope_id__$6,
+        __vue_is_functional_template__$6,
+        __vue_module_identifier__$6,
         false,
         createInjector,
         undefined,
@@ -1771,62 +1891,9 @@ var VueHtml = (function (Vue, Component) {
         }
     };
     Editor = __decorate([
-        Component__default({ components: { CoverEl: __vue_component__$5 } })
+        Component__default({ components: { CoverEl: __vue_component__$6 } })
     ], Editor);
-    var script$6 = Editor;
-
-    /* script */
-    const __vue_script__$6 = script$6;
-
-    /* template */
-    var __vue_render__$6 = function() {
-      var _vm = this;
-      var _h = _vm.$createElement;
-      var _c = _vm._self._c || _h;
-      return _c(
-        "div",
-        [_c("CoverEl", { attrs: { instance: _vm.containerModules } })],
-        1
-      )
-    };
-    var __vue_staticRenderFns__$6 = [];
-    __vue_render__$6._withStripped = true;
-
-      /* style */
-      const __vue_inject_styles__$6 = undefined;
-      /* scoped */
-      const __vue_scope_id__$6 = undefined;
-      /* module identifier */
-      const __vue_module_identifier__$6 = undefined;
-      /* functional template */
-      const __vue_is_functional_template__$6 = false;
-      /* style inject */
-      
-      /* style inject SSR */
-      
-      /* style inject shadow dom */
-      
-
-      
-      const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
-        __vue_inject_styles__$6,
-        __vue_script__$6,
-        __vue_scope_id__$6,
-        __vue_is_functional_template__$6,
-        __vue_module_identifier__$6,
-        false,
-        undefined,
-        undefined,
-        undefined
-      );
-
-    let EditorTemplate = class EditorTemplate extends Vue {
-    };
-    EditorTemplate = __decorate([
-        Component__default({ components: { ToolBar: __vue_component__$2, Editor: __vue_component__$6 } })
-    ], EditorTemplate);
-    var script$7 = EditorTemplate;
+    var script$7 = Editor;
 
     /* script */
     const __vue_script__$7 = script$7;
@@ -1838,12 +1905,7 @@ var VueHtml = (function (Vue, Component) {
       var _c = _vm._self._c || _h;
       return _c(
         "div",
-        { staticClass: "editorTemplate" },
-        [
-          _c("ToolBar", { staticClass: "ToolBar" }),
-          _vm._v(" "),
-          _c("Editor", { staticClass: "Editor" })
-        ],
+        [_c("CoverEl", { attrs: { instance: _vm.containerModules } })],
         1
       )
     };
@@ -1851,17 +1913,15 @@ var VueHtml = (function (Vue, Component) {
     __vue_render__$7._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$7 = function (inject) {
-        if (!inject) return
-        inject("data-v-5d2b63d6_0", { source: ".editorTemplate[data-v-5d2b63d6] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar[data-v-5d2b63d6] {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor[data-v-5d2b63d6] {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue","E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\pages\\EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,gBAAgB;AAClB;AACA;EACE,kBAAkB;EAClB,OAAO;EACP,YAAY;EACZ,SAAS;EACT,MAAM;EACN,cAAc;AAChB;AACA;EACE,kBAAkB;ECCpB,WAAA;EACA,QAAA;EACA,SAAA;EACA,MAAA;EACA,cAAA;EACA,YAAA;AACA","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n","<template>\r\n  <div class=\"editorTemplate\">\r\n    <ToolBar class='ToolBar'></ToolBar>\r\n    <Editor class='Editor'></Editor>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport ToolBar from \"../components/ToolBar.vue\";\r\nimport Editor from \"../components/Editor.vue\";\r\nimport { Component, Vue } from \"vue-property-decorator\";\r\n\r\n@Component({components: {ToolBar,Editor }})\r\nexport default class EditorTemplate extends Vue {\r\n \r\n}\r\n</script>\r\n\r\n<style lang=\"less\" scoped>\r\n@toolWidth:200px;\r\n.editorTemplate {\r\n  position: fixed;\r\n  left:0;\r\n  right:0;\r\n  bottom:0;\r\n  top:0;\r\n  overflow: hidden;\r\n  .ToolBar{\r\n    position: absolute;\r\n    left:0;\r\n    width:@toolWidth;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n  }\r\n  .Editor{\r\n    position: absolute;\r\n    left:@toolWidth;\r\n    right:0;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n    font-size:0\r\n  }\r\n}\r\n</style>"]}, media: undefined });
-
-      };
+      const __vue_inject_styles__$7 = undefined;
       /* scoped */
-      const __vue_scope_id__$7 = "data-v-5d2b63d6";
+      const __vue_scope_id__$7 = undefined;
       /* module identifier */
       const __vue_module_identifier__$7 = undefined;
       /* functional template */
       const __vue_is_functional_template__$7 = false;
+      /* style inject */
+      
       /* style inject SSR */
       
       /* style inject shadow dom */
@@ -1876,19 +1936,17 @@ var VueHtml = (function (Vue, Component) {
         __vue_is_functional_template__$7,
         __vue_module_identifier__$7,
         false,
-        createInjector,
+        undefined,
         undefined,
         undefined
       );
 
-    //
-
-    var script$8 = {
-      name: "App",
-      components:{
-        EditorTemplate: __vue_component__$7
-      }
+    let EditorTemplate = class EditorTemplate extends Vue {
     };
+    EditorTemplate = __decorate([
+        Component__default({ components: { ToolBar: __vue_component__$3, Editor: __vue_component__$7 } })
+    ], EditorTemplate);
+    var script$8 = EditorTemplate;
 
     /* script */
     const __vue_script__$8 = script$8;
@@ -1898,21 +1956,32 @@ var VueHtml = (function (Vue, Component) {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
-      return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
+      return _c(
+        "div",
+        { staticClass: "editorTemplate" },
+        [
+          _c("ToolBar", { staticClass: "ToolBar" }),
+          _vm._v(" "),
+          _c("Editor", { staticClass: "Editor" })
+        ],
+        1
+      )
     };
     var __vue_staticRenderFns__$8 = [];
     __vue_render__$8._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$8 = undefined;
+      const __vue_inject_styles__$8 = function (inject) {
+        if (!inject) return
+        inject("data-v-5d2b63d6_0", { source: ".editorTemplate[data-v-5d2b63d6] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar[data-v-5d2b63d6] {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor[data-v-5d2b63d6] {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue","E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\pages\\EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,gBAAgB;AAClB;AACA;EACE,kBAAkB;EAClB,OAAO;EACP,YAAY;EACZ,SAAS;EACT,MAAM;EACN,cAAc;AAChB;AACA;EACE,kBAAkB;ECCpB,WAAA;EACA,QAAA;EACA,SAAA;EACA,MAAA;EACA,cAAA;EACA,YAAA;AACA","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n","<template>\r\n  <div class=\"editorTemplate\">\r\n    <ToolBar class='ToolBar'></ToolBar>\r\n    <Editor class='Editor'></Editor>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport ToolBar from \"../components/ToolBar.vue\";\r\nimport Editor from \"../components/Editor.vue\";\r\nimport { Component, Vue } from \"vue-property-decorator\";\r\n\r\n@Component({components: {ToolBar,Editor }})\r\nexport default class EditorTemplate extends Vue {\r\n \r\n}\r\n</script>\r\n\r\n<style lang=\"less\" scoped>\r\n@toolWidth:200px;\r\n.editorTemplate {\r\n  position: fixed;\r\n  left:0;\r\n  right:0;\r\n  bottom:0;\r\n  top:0;\r\n  overflow: hidden;\r\n  .ToolBar{\r\n    position: absolute;\r\n    left:0;\r\n    width:@toolWidth;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n  }\r\n  .Editor{\r\n    position: absolute;\r\n    left:@toolWidth;\r\n    right:0;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n    font-size:0\r\n  }\r\n}\r\n</style>"]}, media: undefined });
+
+      };
       /* scoped */
-      const __vue_scope_id__$8 = undefined;
+      const __vue_scope_id__$8 = "data-v-5d2b63d6";
       /* module identifier */
       const __vue_module_identifier__$8 = undefined;
       /* functional template */
       const __vue_is_functional_template__$8 = false;
-      /* style inject */
-      
       /* style inject SSR */
       
       /* style inject shadow dom */
@@ -1926,6 +1995,57 @@ var VueHtml = (function (Vue, Component) {
         __vue_scope_id__$8,
         __vue_is_functional_template__$8,
         __vue_module_identifier__$8,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    //
+
+    var script$9 = {
+      name: "App",
+      components:{
+        EditorTemplate: __vue_component__$8
+      }
+    };
+
+    /* script */
+    const __vue_script__$9 = script$9;
+
+    /* template */
+    var __vue_render__$9 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
+    };
+    var __vue_staticRenderFns__$9 = [];
+    __vue_render__$9._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$9 = undefined;
+      /* scoped */
+      const __vue_scope_id__$9 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$9 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$9 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$9 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
+        __vue_inject_styles__$9,
+        __vue_script__$9,
+        __vue_scope_id__$9,
+        __vue_is_functional_template__$9,
+        __vue_module_identifier__$9,
         false,
         undefined,
         undefined,
@@ -61533,7 +61653,7 @@ var VueHtml = (function (Vue, Component) {
     Vue.use(ElementUI);
     var index$1 = new Vue({
         render(h) {
-            return h(__vue_component__$8);
+            return h(__vue_component__$9);
         },
     }).$mount("#app");
 
