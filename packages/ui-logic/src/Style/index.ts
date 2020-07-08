@@ -1,10 +1,12 @@
-export class Style {
-    style: CSSStyleDeclaration
-    constructor (dom: HTMLElement) {
-        this.style = dom.style
+export class Style { 
+    changed: number;
+    [x:string]: any
+    constructor () {
+        this.changed = 0
     }
     setKeyValue <K extends keyof (CSSStyleDeclaration)> (key: K, value: any) {
-        this.style[key] = value
+        this[key] = value
+        this.changed++
     }
 }
 

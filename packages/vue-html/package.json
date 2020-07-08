@@ -6,7 +6,10 @@
   "buildOptions": {
     "name": "VueHtml",
     "formats": [
-      "global"
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
     ],
     "env": "development",
     "enableNonBrowserBranches": true

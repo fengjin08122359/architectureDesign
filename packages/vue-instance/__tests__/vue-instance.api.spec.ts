@@ -1,16 +1,7 @@
-import {log, errorCode, keyFrame, HttpInstance, HttpInstanceParam, AxiosOpt, WebSocketInstance, wsIntercept} from '../src/'
+import {keyFrame, HttpInstance, HttpInstanceParam, AxiosOpt} from '../src/'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 describe("vue-instance: api", () => {
-  test("api log debug", () => {
-    console.debug(1)
-    expect(log.get('debug').length).toEqual(1)
-  })
-  test("api errorCode debug", () => {
-    console.error(1)
-    expect(log.get('error').length).toEqual(1)
-    expect(errorCode.get().length).toEqual(1)
-  })
   test("api keyFrame add and remove", () => {
     var execTime = 0
     keyFrame.addEventListener('spec-keyFrame', (message) => {
@@ -47,24 +38,24 @@ describe("vue-instance: api", () => {
       expect(res).toEqual('error')
     })
   })
-  test.only("WsInstance fetch", async () => {
-    var wsInstance = new WebSocketInstance()
-    wsIntercept.addIntercept({
-      name: 'ws-error',
-      fun: (data) => {
-        expect(data.data.type).toEqual('error')
-        return false
-      }
-    })
-    wsIntercept.addIntercept({
-      name: 'ws-close',
-      fun: (data) => {
-        expect(data.data.code).toEqual(1006)
-        expect(data.data.reason).toEqual('connection failed')
-        return false
-      }
-    })
-    wsInstance.start('ws://127.0.0.1')
-    // wsInstance.end()
-  })
+  // test.only("WsInstance fetch", async () => {
+  //   var wsInstance = new WebSocketInstance()
+  //   wsIntercept.addIntercept({
+  //     name: 'ws-error',
+  //     fun: (data) => {
+  //       expect(data.data.type).toEqual('error')
+  //       return false
+  //     }
+  //   })
+  //   wsIntercept.addIntercept({
+  //     name: 'ws-close',
+  //     fun: (data) => {
+  //       expect(data.data.code).toEqual(1006)
+  //       expect(data.data.reason).toEqual('connection failed')
+  //       return false
+  //     }
+  //   })
+  //   wsInstance.start('ws://127.0.0.1')
+  //   // wsInstance.end()
+  // })
 })

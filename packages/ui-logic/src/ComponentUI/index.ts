@@ -1,4 +1,3 @@
-import { DataList } from "@mikefeng110808/basic"
 import { UI, UIPayload } from "../UI";
 
 
@@ -12,42 +11,19 @@ export interface ComponentSingleUIPayload extends UIPayload {
 export class ComponentSingleUI extends UI {
     editable: boolean;
     insertable: boolean
-    constructor (dom?: HTMLElement) {
-        var d = dom || document.createElement('div')
-        super(d)
+    constructor () {
+        super()
         this.editable = true
         this.insertable = false
     }
 }
 
 export interface ComponentMultipleUIPayload extends ComponentSingleUIPayload {
-    children: DataList
     id: string;
 }
 
 export class ComponentMultipleUI extends ComponentSingleUI{
-    children: DataList
-    constructor (dom?: HTMLElement) {
-        var d = dom || document.createElement('div')
-        super(d)
-        this.children = new DataList()
-    }
-    combi (ui: ComponentMultipleUI) {
-        if (this.findUI(ui).length > 0) {
-            this.unCombi(ui);
-        }
-        this.children.add({name: ui.id, data: ui});
-        this.dom.append(ui.dom);
-    }
-    unCombi (ui: ComponentMultipleUI) {
-        this.findUI(ui).forEach((item) => {
-            this.children.remove(item.name);
-        });
-        if (this.dom.parentElement) {
-            this.dom.removeChild(ui.dom)
-        }
-    }
-    findUI (ui: ComponentMultipleUI) {
-        return this.children.get(ui.id)
+    constructor () {
+        super()
     }
 }

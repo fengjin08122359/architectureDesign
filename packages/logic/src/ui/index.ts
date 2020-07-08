@@ -36,7 +36,7 @@ export class UIList {
   componentHasRendered: DataList
   private templateList: templatePayload[];
   classTarget: typeof UIList;
-  constructor(list: any[], options?: optionsPayload) {
+  constructor(list: any[] = [], options?: optionsPayload) {
     this.options = options || { needValidHidden: false };
     this.needValidHidden = this.options.needValidHidden;
     this.rawList = list;
@@ -44,6 +44,16 @@ export class UIList {
     this.templateList = [];
     this.componentHasRendered = new DataList()
     this.classTarget = new.target
+    this.reset();
+  }
+  /**
+   *reset
+   * @param {SingleUIPayload} list 
+   * @memberof UIList
+   */
+  setList (list: SingleUIPayload[]) {
+    this.rawList = list;
+    this.list = [];
     this.reset();
   }
   /**
@@ -76,6 +86,15 @@ export class UIList {
         value,
       });
     }
+  }
+  /**
+   *removeTemplate
+   *
+   * @param {string} key
+   * @memberof UIList
+   */
+  removeTemplate(key: string) {
+    this.templateList = this.templateList.filter((item) => item.key !== key);
   }
   /**
    *getTemplate

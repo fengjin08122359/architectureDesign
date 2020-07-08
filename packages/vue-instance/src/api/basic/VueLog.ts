@@ -4,6 +4,8 @@ import { errorCode } from '.';
 export class VueLog extends Log {
   constructor () {
     super()
+  }
+  open () {
     var that = this
     console.log = (function (log) {
       return  (...rest: any) => {
@@ -37,5 +39,4 @@ export class VueLog extends Log {
       }
     })(console.debug);
   }
-  
 }

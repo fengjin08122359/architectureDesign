@@ -141,7 +141,6 @@ function createConfig(format, output, plugins = []) {
         require('rollup-plugin-node-globals')()
       ]
     : []
-      console.log(external)
   return {
     input: resolve(entryFile),
     // Global and Browser ESM builds inlines everything so that they can be

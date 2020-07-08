@@ -1,18 +1,18 @@
 {
-  "name": "@mikefeng110808/ui-logic",
+  "name": "@mikefeng110808/vue-ui",
   "version": "1.0.2-alpha.22",
-  "description": "@mikefeng110808/ui-logic",
+  "description": "@mikefeng110808/vue-ui",
   "main": "index.js",
-  "module": "dist/ui-logic.esm-bundler.js",
-  "types": "dist/ui-logic.d.ts",
-  "unpkg": "dist/ui-logic.global.js",
+  "module": "dist/vue-ui.esm-bundler.js",
+  "types": "dist/vue-ui.d.ts",
+  "unpkg": "dist/vue-ui.global.js",
   "files": [
     "index.js",
     "dist"
   ],
   "sideEffects": false,
   "buildOptions": {
-    "name": "uiLogic",
+    "name": "vueUi",
     "formats": [
       "esm-bundler",
       "cjs",
@@ -24,8 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@mikefeng110808/logic": "1.0.2-alpha.22",
-    "@mikefeng110808/basic": "1.0.2-alpha.22",
-    "@mikefeng110808/vue-ui": "1.0.2-alpha.22"
+    "@mikefeng110808/basic": "1.0.2-alpha.22"
   },
   "devDependencies": {
     "lodash": "^4.17.15"

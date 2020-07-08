@@ -30,7 +30,7 @@ export interface SingleUIProps {
  */
 export interface SingleUIPayload {
   key?: string;
-  props: SingleUIProps;
+  props?: SingleUIProps;
   valid?: any[];
   type?: string;
   value?: any;
@@ -74,14 +74,15 @@ class SingleUI {
   canRender: boolean;
   constructor(params: SingleUIPayload) {
     this.key = params.key || ""; //键
-    this.props = params.props || {
+    this.props = {
       label: "", //标题
       required: "", //必填提示
       data: [], //单项关联数据
       disabled: false, //禁用
       show: true, //展示
       placeholder: "", //占位符
-    }; //属性列表包含其他属性
+      ...params.props
+    } //属性列表包含其他属性
     this.valid = params.valid || []; //验证信息
     this.type = params.type || ""; // 类型
     this.value = typeof params.value == "undefined" ? "" : params.value; // 值

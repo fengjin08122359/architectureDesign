@@ -8,9 +8,8 @@ export interface ContainerUIPayload extends UIPayload{
 export class ContainerUI extends UI {
     editable: boolean;
     insertable: boolean
-    constructor (dom?: HTMLElement) {
-        var d = dom || document.createElement('div')
-        super(d)
+    constructor () {
+        super()
         this.editable = false
         this.insertable = true
     }

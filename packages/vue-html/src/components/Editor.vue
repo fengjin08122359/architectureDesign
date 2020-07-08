@@ -1,13 +1,23 @@
 <template>
-    <el-row>
-      <el-col>123123</el-col>
-    </el-row>
+<div >
+  <CoverEl :instance="containerModules"></CoverEl>
+</div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import {containerModules,editorInstance} from '../sdk'
+import CoverEl from './CoverEl.vue'
 
-@Component
+@Component({components: {CoverEl}})
 export default class Editor extends Vue {
-  @Prop() private msg!: string;
+  containerModules = containerModules
+  mounted () {
+    document.addEventListener("keydown", (event) => {
+      if (event.keyCode == 46 ) {
+        editorInstance.deleteActive()
+      }
+    }, false);
+    window["containerModules"] = containerModules
+  }
 }
 </script>

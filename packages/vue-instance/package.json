@@ -30,7 +30,8 @@
     "@mikefeng110808/instance": "1.0.2-alpha.22",
     "vue": "^2.6.11",
     "axios": "^0.19.2",
-    "websocket": "^1.0.31"
+    "websocket": "^1.0.31",
+    "element-ui": "^2.13.2"
   },
   "devDependencies": {
     "lodash": "^4.17.15"
