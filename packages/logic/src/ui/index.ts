@@ -146,11 +146,11 @@ export class UIList {
     });
   }
   /**
-   *save
+   *setValue
    * @param {SingleUIValuePayload} data
    * @memberof UIList
    */
-  save(data: SingleUIValuePayload[]) {
+  setValue(data: SingleUIValuePayload[]) {
     // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
     data.forEach((item) => {
       var target = this.list.find((target) => item.key == target.getKey());

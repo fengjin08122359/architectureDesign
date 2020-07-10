@@ -1,0 +1,37 @@
+{
+  "name": "@mikefeng110808/utils-api",
+  "version": "1.0.2-alpha.22",
+  "description": "@mikefeng110808/utils-api",
+  "main": "index.js",
+  "module": "dist/utils-api.esm-bundler.js",
+  "types": "dist/utils-api.d.ts",
+  "unpkg": "dist/utils-api.global.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "utilsApi",
+    "formats": [
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
+    ]
+  },
+  "author": "Mike Feng",
+  "license": "MIT",
+  "dependencies": {
+    "@mikefeng110808/logic": "1.0.2-alpha.22",
+    "@mikefeng110808/basic": "1.0.2-alpha.22"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
+  "keywords": [
+    "ui-builder",
+    "builder",
+    "typescript"
+  ]
+}

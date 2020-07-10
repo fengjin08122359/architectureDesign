@@ -71,6 +71,7 @@ export default class CoverEl extends Vue {
       let zoom = this.zoom
       let current = this.instance.combi(generateModule(currentEl))
       clearCurrentEl()
+      console.log(this.$refs.bgTarget)
       var mainContainer = this.$refs.bgTarget.$el
       let {width='auto', height='auto'} = current.target.selfProp.getStyle()
       width = convertPx(width)

@@ -81,8 +81,8 @@ class SingleUI {
       disabled: false, //禁用
       show: true, //展示
       placeholder: "", //占位符
-      ...params.props
-    } //属性列表包含其他属性
+      ...params.props,
+    }; //属性列表包含其他属性
     this.valid = params.valid || []; //验证信息
     this.type = params.type || ""; // 类型
     this.value = typeof params.value == "undefined" ? "" : params.value; // 值
@@ -106,11 +106,11 @@ class SingleUI {
     return result;
   }
   /**
-   *save
-   * @param {string} value
+   *setValue
+   * @param {any} value
    * @memberof SingleUI
    */
-  save(value: string) {
+  setValue(value: any) {
     var oldValue = this.value;
     this.value = value;
     if (oldValue != this.value) {
@@ -204,6 +204,7 @@ class SingleUI {
       }),
     };
   }
+
   /**
    *setKeyValue
    * @param {SingleUIValuePayload} ({ key, value, children })
@@ -211,7 +212,7 @@ class SingleUI {
    */
   setKeyValue({ key, value, children }: SingleUIValuePayload) {
     if (this.getKey() != "" && this.getKey() == key) {
-      this.save(value);
+      this.setValue(value);
       children.forEach((item: any) => {
         var target = this.children.find(
           (target: { getKey: () => any }) => item.key == target.getKey()

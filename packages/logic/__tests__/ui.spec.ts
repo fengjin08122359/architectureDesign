@@ -201,7 +201,7 @@ describe("logic: ui", () => {
     uiList.reset();
     expect(uiList.getNeedRender().length).toEqual(1);
     expect(uiList.getAllItems().length).toEqual(3);
-    uiList.save([
+    uiList.setValue([
       {
         key: "input",
         value: "223",

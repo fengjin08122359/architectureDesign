@@ -8,6 +8,10 @@ import {
   VueUI,
   InputVueUI,
   ArrayVueUI,
+  ObjectVueUI,
+  MulSelectVueUI,
+  SelectVueUI,
+  NumberVueUI,
   VueRenderPayload
 } from '@mikefeng110808/vue-ui'
 
@@ -27,6 +31,23 @@ export class GeneratePiece {
       key: 'array',
       value: ArrayVueUI,
     })
+    this.uiList.addTemplate({
+      key: 'object',
+      value: ObjectVueUI,
+    })
+    this.uiList.addTemplate({
+      key: 'mulSelect',
+      value: MulSelectVueUI,
+    })
+    this.uiList.addTemplate({
+      key: 'select',
+      value: SelectVueUI,
+    })
+    this.uiList.addTemplate({
+      key: 'number',
+      value: NumberVueUI,
+    })
+    
   }
   add({
     key,
