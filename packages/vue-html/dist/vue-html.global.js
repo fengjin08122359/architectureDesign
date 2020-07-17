@@ -60157,7 +60157,7 @@ var VueHtml = (function (Vue, Component) {
             {
                 ...render.context,
                 attrs: this
-            }, []);
+            }, [render.vueRoot.$slots.default]);
         }
     }
     class VueUIList extends UIList {
@@ -61112,9 +61112,15 @@ var VueHtml = (function (Vue, Component) {
             return this.value.map((item) => item.value);
         }
         setValue(val) {
-            this.value = val.map((item) => {
+            this.value = (val || []).map((item) => {
                 return { value: item };
             });
+            if (!Array.isArray(this.value)) {
+                this.value = [];
+            }
+            if (this.value.length == 0) {
+                this.addCol();
+            }
         }
         renderInstance(render) {
             return render.createElement(__vue_component__$1, {
@@ -61147,7 +61153,7 @@ var VueHtml = (function (Vue, Component) {
             }, {});
         }
         setValue(val) {
-            this.value = val;
+            this.value = val || {};
             this.props.objectArray = [];
             for (let [key, value] of Object.entries(this.value)) {
                 this.props.objectArray.push({
@@ -61352,7 +61358,7 @@ var VueHtml = (function (Vue, Component) {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
-      return _c("div", { staticClass: "ContainerVue" })
+      return _c("div", { staticClass: "ContainerVue" }, [_vm._t("default")], 2)
     };
     var __vue_staticRenderFns__$7 = [];
     __vue_render__$7._withStripped = true;
@@ -61380,6 +61386,334 @@ var VueHtml = (function (Vue, Component) {
         __vue_scope_id__$7,
         __vue_is_functional_template__$7,
         __vue_module_identifier__$7,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let CardContainerVueUIComponent = class CardContainerVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.tabs = [];
+            this.activeTab = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetTabs();
+        }
+        resetTabs(val = this.target.ui.selfProp.opt) {
+            this.tabs = (val.tab).map((item, index) => {
+                return {
+                    key: index.toString(),
+                    value: item.toString()
+                };
+            });
+            this.target.ui.activeCard = this.target.ui.activeCard || this.tabs[0].key || '';
+        }
+        watchTab(val) {
+            this.resetTabs(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], CardContainerVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], CardContainerVueUIComponent.prototype, "watchTab", null);
+    CardContainerVueUIComponent = __decorate([
+        Component__default
+    ], CardContainerVueUIComponent);
+    var script$8 = CardContainerVueUIComponent;
+
+    /* script */
+    const __vue_script__$8 = script$8;
+
+    /* template */
+    var __vue_render__$8 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "CardContainerVue" },
+        [
+          _c(
+            "el-tabs",
+            {
+              model: {
+                value: _vm.target.ui.activeCard,
+                callback: function($$v) {
+                  _vm.$set(_vm.target.ui, "activeCard", $$v);
+                },
+                expression: "target.ui.activeCard"
+              }
+            },
+            _vm._l(_vm.tabs, function(tab, index) {
+              return _c(
+                "el-tab-pane",
+                { key: index, attrs: { label: tab.value, name: tab.key } },
+                [_vm._t("default")],
+                2
+              )
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$8 = [];
+    __vue_render__$8._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$8 = undefined;
+      /* scoped */
+      const __vue_scope_id__$8 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$8 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$8 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
+        __vue_inject_styles__$8,
+        __vue_script__$8,
+        __vue_scope_id__$8,
+        __vue_is_functional_template__$8,
+        __vue_module_identifier__$8,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let DialogContainerVueUIComponent = class DialogContainerVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.visible = false;
+            this.title = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+        }
+    };
+    __decorate([
+        Prop()
+    ], DialogContainerVueUIComponent.prototype, "target", void 0);
+    DialogContainerVueUIComponent = __decorate([
+        Component__default
+    ], DialogContainerVueUIComponent);
+    var script$9 = DialogContainerVueUIComponent;
+
+    const isOldIE = typeof navigator !== 'undefined' &&
+        /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+    function createInjector(context) {
+        return (id, style) => addStyle(id, style);
+    }
+    let HEAD;
+    const styles = {};
+    function addStyle(id, css) {
+        const group = isOldIE ? css.media || 'default' : id;
+        const style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+        if (!style.ids.has(id)) {
+            style.ids.add(id);
+            let code = css.source;
+            if (css.map) {
+                // https://developer.chrome.com/devtools/docs/javascript-debugging
+                // this makes source maps inside style tags work properly in Chrome
+                code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+                // http://stackoverflow.com/a/26603875
+                code +=
+                    '\n/*# sourceMappingURL=data:application/json;base64,' +
+                        btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                        ' */';
+            }
+            if (!style.element) {
+                style.element = document.createElement('style');
+                style.element.type = 'text/css';
+                if (css.media)
+                    style.element.setAttribute('media', css.media);
+                if (HEAD === undefined) {
+                    HEAD = document.head || document.getElementsByTagName('head')[0];
+                }
+                HEAD.appendChild(style.element);
+            }
+            if ('styleSheet' in style.element) {
+                style.styles.push(code);
+                style.element.styleSheet.cssText = style.styles
+                    .filter(Boolean)
+                    .join('\n');
+            }
+            else {
+                const index = style.ids.size - 1;
+                const textNode = document.createTextNode(code);
+                const nodes = style.element.childNodes;
+                if (nodes[index])
+                    style.element.removeChild(nodes[index]);
+                if (nodes.length)
+                    style.element.insertBefore(textNode, nodes[index]);
+                else
+                    style.element.appendChild(textNode);
+            }
+        }
+    }
+
+    /* script */
+    const __vue_script__$9 = script$9;
+
+    /* template */
+    var __vue_render__$9 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "DialogContainerVue" },
+        [
+          !_vm.target.isCompiler
+            ? _c(
+                "div",
+                { staticClass: "DialogContainerVue-block" },
+                [_vm._t("default")],
+                2
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.target.isCompiler
+            ? _c(
+                "el-dialog",
+                {
+                  attrs: {
+                    visible: _vm.visible,
+                    "append-to-body": true,
+                    title: _vm.title
+                  },
+                  on: {
+                    "update:visible": function($event) {
+                      _vm.visible = $event;
+                    }
+                  }
+                },
+                [_vm._t("default")],
+                2
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$9 = [];
+    __vue_render__$9._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$9 = function (inject) {
+        if (!inject) return
+        inject("data-v-499cacd4_0", { source: ".DialogContainerVue .DialogContainerVue-block[data-v-499cacd4] {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n", map: {"version":3,"sources":["DialogContainerVueUI.vue"],"names":[],"mappings":"AAAA;EACE,0BAA0B;EAC1B,sBAAsB;EACtB,YAAY;AACd","file":"DialogContainerVueUI.vue","sourcesContent":[".DialogContainerVue .DialogContainerVue-block {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$9 = "data-v-499cacd4";
+      /* module identifier */
+      const __vue_module_identifier__$9 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$9 = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$9 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
+        __vue_inject_styles__$9,
+        __vue_script__$9,
+        __vue_scope_id__$9,
+        __vue_is_functional_template__$9,
+        __vue_module_identifier__$9,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let ButtonVueUIComponent = class ButtonVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.label = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.label = val.label || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], ButtonVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], ButtonVueUIComponent.prototype, "watchTab", null);
+    ButtonVueUIComponent = __decorate([
+        Component__default
+    ], ButtonVueUIComponent);
+    var script$a = ButtonVueUIComponent;
+
+    /* script */
+    const __vue_script__$a = script$a;
+
+    /* template */
+    var __vue_render__$a = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "ButtonVue" },
+        [_c("el-button", [_vm._v(_vm._s(_vm.label))])],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$a = [];
+    __vue_render__$a._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$a = undefined;
+      /* scoped */
+      const __vue_scope_id__$a = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$a = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$a = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$a = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
+        __vue_inject_styles__$a,
+        __vue_script__$a,
+        __vue_scope_id__$a,
+        __vue_is_functional_template__$a,
+        __vue_module_identifier__$a,
         false,
         undefined,
         undefined,
@@ -61554,60 +61888,12 @@ var VueHtml = (function (Vue, Component) {
                 catch (error) { }
             }
         }
-    }
-
-    class GeneratePiece {
-        constructor() {
-            this.uiList = new VueUIList();
-            this.uiList.addTemplate({
-                key: '',
-                value: VueUI,
-            });
-            this.uiList.addTemplate({
-                key: 'input',
-                value: InputVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'array',
-                value: ArrayVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'object',
-                value: ObjectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'mulSelect',
-                value: MulSelectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'select',
-                value: SelectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'number',
-                value: NumberVueUI$1,
-            });
-        }
-        add({ key, value }) {
-            if (!this.uiList.getTemplate().find(item => item.key == key)) {
-                this.uiList.addTemplate({
-                    key: key,
-                    value: value,
-                });
+        clear() {
+            for (let key of Object.keys(this)) {
+                if (styleOptions.find((item) => item == key)) {
+                    delete this[key];
+                }
             }
-        }
-        remove(name) {
-            this.uiList.removeTemplate(name);
-        }
-        generate(list) {
-            this.uiList.setList(list);
-            return this.uiList.list;
-        }
-        render(render) {
-            return this.uiList.getRenderList(render);
-        }
-        getValue() {
-            return this.uiList.getValue();
         }
     }
 
@@ -61617,6 +61903,7 @@ var VueHtml = (function (Vue, Component) {
             this.eventBind = new EventBind();
             this.style = new Style();
             this.selfProp = new SelfProp();
+            this.moduleIdList = [];
         }
         setDom(dom) {
             this.dom = dom;
@@ -61627,21 +61914,23 @@ var VueHtml = (function (Vue, Component) {
         setSelfProp(selfProp) {
             this.selfProp = selfProp;
         }
-        filterChildren(target) {
+        filterChildren(instance) {
             return true;
+        }
+        addModuleId(moduleId) {
+            this.moduleIdList.push(moduleId);
+        }
+        removeModuleId(moduleId) {
+            this.moduleIdList = this.moduleIdList.filter(item => item != moduleId);
         }
     }
     class SelfProp {
         constructor() {
-            this.value = [];
+            this.opt = {};
             this.params = [];
-            this.generatePiece = new GeneratePiece();
         }
         setParam(data = []) {
-            this.params = this.generatePiece.generate(data);
-        }
-        renderParam(render) {
-            return this.generatePiece.render(render);
+            this.params = data;
         }
         getStyle() {
             return {
@@ -61659,13 +61948,10 @@ var VueHtml = (function (Vue, Component) {
             };
         }
         getValue() {
-            return this.generatePiece.uiList.getValue();
+            return this.opt;
         }
-        setValue(val) {
-            this.generatePiece.uiList.setValue(val);
-        }
-        save() {
-            this.value = this.getValue();
+        setValue(value) {
+            this.opt = value || {};
         }
     }
 
@@ -61707,12 +61993,14 @@ var VueHtml = (function (Vue, Component) {
             var module = new ModuleInstance();
             module.setTarget(target);
             this.children.push(module);
+            this.target.addModuleId(module.moduleId);
             return module;
         }
         unCombi(moduleId) {
-            var target = this.findContainUI(this, moduleId);
-            if (target) {
-                target.children = target.children.filter(t => t.moduleId != moduleId);
+            var module = this.findContainUI(this, moduleId);
+            if (module) {
+                module.children = module.children.filter(t => t.moduleId != moduleId);
+                module.target.removeModuleId(moduleId);
             }
         }
         findContainUI(tree, moduleId) {
@@ -61751,12 +62039,13 @@ var VueHtml = (function (Vue, Component) {
                     id: this.target.id,
                     insertable: this.target.insertable,
                     editable: this.target.editable,
+                    moduleIdList: this.target.moduleIdList,
                     eventBind: {
                         inValue: this.target.eventBind.getInList().map(item => item.opt),
                         outValue: this.target.eventBind.getOutList().map(item => item.opt)
                     },
                     selfProp: {
-                        value: this.target.selfProp.value
+                        value: this.target.selfProp.opt
                     },
                     style: {
                         value: this.target.style.getValue()
@@ -61766,7 +62055,7 @@ var VueHtml = (function (Vue, Component) {
             };
         }
         getChildren() {
-            return this.children.filter(item => this.target.filterChildren(item.target));
+            return this.children.filter(item => this.target.filterChildren(item));
         }
     }
 
@@ -61872,12 +62161,6 @@ var VueHtml = (function (Vue, Component) {
         eventList.remove(id);
     };
 
-    class CardContainerUI extends ContainerUI {
-        constructor() {
-            super();
-        }
-    }
-
     class ContainerSelfProp extends SelfProp {
         constructor() {
             super();
@@ -61898,8 +62181,8 @@ var VueHtml = (function (Vue, Component) {
         }
         getStyle() {
             return {
-                width: "20%",
-                height: "100px",
+                width: "100%",
+                height: "70px",
                 background: '',
                 display: 'inline-block'
             };
@@ -61918,6 +62201,41 @@ var VueHtml = (function (Vue, Component) {
             };
         }
     }
+    class CardContainerSelfProp extends ContainerSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                tab: ['选项1']
+            };
+        }
+    }
+    class CardContainerUI extends ContainerUI {
+        constructor() {
+            super();
+            this.activeCard = '';
+        }
+        filterChildren(instance) {
+            return this.moduleIdList.find(item => item.moduleId == instance.moduleId && this.activeCard == item.tab);
+        }
+        addModuleId(moduleId) {
+            this.moduleIdList.push({
+                moduleId,
+                tab: this.activeCard
+            });
+        }
+        removeModuleId(moduleId) {
+            this.moduleIdList = this.moduleIdList.filter(item => item.moduleId != moduleId);
+        }
+    }
+    class ButtonSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                label: '提取数据'
+            };
+        }
+    }
+
     let container = [{
             id: '1',
             name: "基本容器",
@@ -61926,37 +62244,43 @@ var VueHtml = (function (Vue, Component) {
             params: [{
                     type: 'input',
                     key: 'input',
-                    props: { label: 'input' }
+                    props: { label: 'input' },
+                    value: ''
                 }, {
                     type: 'array',
                     key: 'array',
-                    props: { label: 'array' }
+                    props: { label: 'array' },
+                    value: []
                 }, {
                     type: 'object',
                     key: 'object',
-                    props: { label: 'object' }
+                    props: { label: 'object' },
+                    value: {}
                 }, {
                     type: 'number',
                     key: 'number',
-                    props: { label: 'number' }
+                    props: { label: 'number' },
+                    value: 0
                 }, {
                     type: 'select',
                     key: 'select',
-                    props: { label: 'select' }
+                    props: { label: 'select' },
+                    value: ''
                 }, {
                     type: 'mulSelect',
                     key: 'mulSelect',
-                    props: { label: 'mulSelect' }
+                    props: { label: 'mulSelect' },
+                    value: []
                 },]
         }, {
             name: "选项卡",
             id: '2',
-            selfProp: ContainerSelfProp,
+            selfProp: CardContainerSelfProp,
             UI: CardContainerUI,
             params: [{
-                    type: 'object',
+                    type: 'array',
                     key: 'tab',
-                    props: { label: '选项卡' }
+                    props: { label: '选项卡' },
                 }]
         }, {
             name: "弹窗",
@@ -61967,8 +62291,13 @@ var VueHtml = (function (Vue, Component) {
     let basic = [{
             name: "按钮",
             id: '5',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: ButtonSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'input',
+                    key: 'label',
+                    props: { label: '描述' },
+                }]
         }, {
             name: "输入框",
             id: '6',
@@ -62086,6 +62415,7 @@ var VueHtml = (function (Vue, Component) {
         constructor() {
             this.active = undefined;
             this.isRelative = true;
+            this.borderColor = '#bdbdbd';
         }
         setActive(instance) {
             this.active = instance;
@@ -62190,6 +62520,7 @@ var VueHtml = (function (Vue, Component) {
         instance.target.id = res.target.id;
         instance.target.typeId = res.target.typeId;
         instance.target.insertable = res.target.insertable;
+        instance.target.moduleIdList = res.target.moduleIdList;
         (res.target.eventBind.inValue || []).forEach((item) => {
             var event = instance.target.eventBind.addIn();
             event.setValue(item);
@@ -62205,7 +62536,8 @@ var VueHtml = (function (Vue, Component) {
         instance.target.style.setValue(res.target.style.value);
         // container.target = new ContainerUI()
         instance.children = res.children.map((item) => {
-            return restoreInstance(new ModuleInstance(), item);
+            var module = restoreInstance(new ModuleInstance(), item);
+            return module;
         });
         return instance;
     };
@@ -62323,7 +62655,7 @@ var VueHtml = (function (Vue, Component) {
             }
         }];
 
-    class GeneratePiece$1 {
+    class GeneratePiece {
         constructor() {
             this.uiList = new VueUIList();
             this.uiList.addTemplate({
@@ -62377,38 +62709,52 @@ var VueHtml = (function (Vue, Component) {
             return this.uiList.getValue();
         }
     }
-    class ModuleGenrate extends GeneratePiece$1 {
+    class ModuleGenrate extends GeneratePiece {
         constructor() {
             super();
+            this.isCompiler = false;
             this.uiList.clearTemplate();
             this.add({
                 key: '1',
                 value: ContainerVueUI
+            });
+            this.add({
+                key: '2',
+                value: CardContainerVueUI
+            });
+            this.add({
+                key: '4',
+                value: DialogContainerVueUI
+            });
+            this.add({
+                key: '5',
+                value: ButtonVueUI
             });
         }
         setTarget(ui) {
             this.uiList.setList([{
                     key: ui.id,
                     props: {
-                        ui
+                        ui,
+                        isCompiler: this.isCompiler
                     },
                     type: ui.typeId
                 }]);
         }
     }
-    class ApiGenerate extends GeneratePiece$1 {
+    class ApiGenerate extends GeneratePiece {
         constructor() {
             super();
             this.generate(apiParams);
         }
     }
-    class EventGenerate extends GeneratePiece$1 {
+    class EventGenerate extends GeneratePiece {
         constructor() {
             super();
             this.generate(eventParams);
         }
     }
-    class InEventGenerate extends GeneratePiece$1 {
+    class InEventGenerate extends GeneratePiece {
         constructor() {
             super();
             this.add({
@@ -62418,7 +62764,7 @@ var VueHtml = (function (Vue, Component) {
             this.generate(inParams);
         }
     }
-    class OutEventGenerate extends GeneratePiece$1 {
+    class OutEventGenerate extends GeneratePiece {
         constructor() {
             super();
             this.add({
@@ -62439,18 +62785,59 @@ var VueHtml = (function (Vue, Component) {
         renderInstance(render) {
             return render.createElement(__vue_component__$6, {
                 props: { target: this }
-            });
+            }, [render.vueRoot.$slots.default]);
         }
     }
-    class ContainerVueUI extends VueUI {
+    class BasicVueUI extends VueUI {
         constructor(params) {
             super(params);
             this.ui = this.props.ui;
+            this.isCompiler = this.props.isCompiler;
+        }
+        renderInstance(render) {
+            return render.createElement('div', {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class ContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
         }
         renderInstance(render) {
             return render.createElement(__vue_component__$7, {
                 props: { target: this }
-            });
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class CardContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$8, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class DialogContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$9, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class ButtonVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$a, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
         }
     }
 
@@ -62467,13 +62854,13 @@ var VueHtml = (function (Vue, Component) {
     DragCol = __decorate([
         Component__default
     ], DragCol);
-    var script$8 = DragCol;
+    var script$b = DragCol;
 
     /* script */
-    const __vue_script__$8 = script$8;
+    const __vue_script__$b = script$b;
 
     /* template */
-    var __vue_render__$8 = function() {
+    var __vue_render__$b = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62483,17 +62870,17 @@ var VueHtml = (function (Vue, Component) {
         [_vm._v("\n    " + _vm._s(_vm.target.name) + "\n")]
       )
     };
-    var __vue_staticRenderFns__$8 = [];
-    __vue_render__$8._withStripped = true;
+    var __vue_staticRenderFns__$b = [];
+    __vue_render__$b._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$8 = undefined;
+      const __vue_inject_styles__$b = undefined;
       /* scoped */
-      const __vue_scope_id__$8 = undefined;
+      const __vue_scope_id__$b = undefined;
       /* module identifier */
-      const __vue_module_identifier__$8 = undefined;
+      const __vue_module_identifier__$b = undefined;
       /* functional template */
-      const __vue_is_functional_template__$8 = false;
+      const __vue_is_functional_template__$b = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62502,13 +62889,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
-        __vue_inject_styles__$8,
-        __vue_script__$8,
-        __vue_scope_id__$8,
-        __vue_is_functional_template__$8,
-        __vue_module_identifier__$8,
+      const __vue_component__$b = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
+        __vue_inject_styles__$b,
+        __vue_script__$b,
+        __vue_scope_id__$b,
+        __vue_is_functional_template__$b,
+        __vue_module_identifier__$b,
         false,
         undefined,
         undefined,
@@ -62560,8 +62947,10 @@ var VueHtml = (function (Vue, Component) {
                 return total;
             }, {}));
         }
-        watchOpt() {
-            this.reset();
+        watchOpt(val, oldVal) {
+            if (JSON.stringify(val) != JSON.stringify(oldVal)) {
+                this.reset();
+            }
         }
     };
     __decorate([
@@ -62646,66 +63035,13 @@ var VueHtml = (function (Vue, Component) {
     ApiList$1 = __decorate([
         Component__default({ components: { InstanceSlot } })
     ], ApiList$1);
-    var script$9 = ApiList$1;
-
-    const isOldIE = typeof navigator !== 'undefined' &&
-        /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
-    function createInjector(context) {
-        return (id, style) => addStyle(id, style);
-    }
-    let HEAD;
-    const styles = {};
-    function addStyle(id, css) {
-        const group = isOldIE ? css.media || 'default' : id;
-        const style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
-        if (!style.ids.has(id)) {
-            style.ids.add(id);
-            let code = css.source;
-            if (css.map) {
-                // https://developer.chrome.com/devtools/docs/javascript-debugging
-                // this makes source maps inside style tags work properly in Chrome
-                code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
-                // http://stackoverflow.com/a/26603875
-                code +=
-                    '\n/*# sourceMappingURL=data:application/json;base64,' +
-                        btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
-                        ' */';
-            }
-            if (!style.element) {
-                style.element = document.createElement('style');
-                style.element.type = 'text/css';
-                if (css.media)
-                    style.element.setAttribute('media', css.media);
-                if (HEAD === undefined) {
-                    HEAD = document.head || document.getElementsByTagName('head')[0];
-                }
-                HEAD.appendChild(style.element);
-            }
-            if ('styleSheet' in style.element) {
-                style.styles.push(code);
-                style.element.styleSheet.cssText = style.styles
-                    .filter(Boolean)
-                    .join('\n');
-            }
-            else {
-                const index = style.ids.size - 1;
-                const textNode = document.createTextNode(code);
-                const nodes = style.element.childNodes;
-                if (nodes[index])
-                    style.element.removeChild(nodes[index]);
-                if (nodes.length)
-                    style.element.insertBefore(textNode, nodes[index]);
-                else
-                    style.element.appendChild(textNode);
-            }
-        }
-    }
+    var script$c = ApiList$1;
 
     /* script */
-    const __vue_script__$9 = script$9;
+    const __vue_script__$c = script$c;
 
     /* template */
-    var __vue_render__$9 = function() {
+    var __vue_render__$c = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62767,34 +63103,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$9 = [];
-    __vue_render__$9._withStripped = true;
+    var __vue_staticRenderFns__$c = [];
+    __vue_render__$c._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$9 = function (inject) {
+      const __vue_inject_styles__$c = function (inject) {
         if (!inject) return
         inject("data-v-64aa2f92_0", { source: ".instance-item[data-v-64aa2f92] {\n  border: 1px solid #999;\n  padding: 10px;\n}\n", map: {"version":3,"sources":["ApiList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,aAAa;AACf","file":"ApiList.vue","sourcesContent":[".instance-item {\n  border: 1px solid #999;\n  padding: 10px;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$9 = "data-v-64aa2f92";
+      const __vue_scope_id__$c = "data-v-64aa2f92";
       /* module identifier */
-      const __vue_module_identifier__$9 = undefined;
+      const __vue_module_identifier__$c = undefined;
       /* functional template */
-      const __vue_is_functional_template__$9 = false;
+      const __vue_is_functional_template__$c = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$9 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
-        __vue_inject_styles__$9,
-        __vue_script__$9,
-        __vue_scope_id__$9,
-        __vue_is_functional_template__$9,
-        __vue_module_identifier__$9,
+      const __vue_component__$c = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
+        __vue_inject_styles__$c,
+        __vue_script__$c,
+        __vue_scope_id__$c,
+        __vue_is_functional_template__$c,
+        __vue_module_identifier__$c,
         false,
         createInjector,
         undefined,
@@ -62821,13 +63157,13 @@ var VueHtml = (function (Vue, Component) {
     EventList$1 = __decorate([
         Component__default({ components: { InstanceSlot } })
     ], EventList$1);
-    var script$a = EventList$1;
+    var script$d = EventList$1;
 
     /* script */
-    const __vue_script__$a = script$a;
+    const __vue_script__$d = script$d;
 
     /* template */
-    var __vue_render__$a = function() {
+    var __vue_render__$d = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62889,34 +63225,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$a = [];
-    __vue_render__$a._withStripped = true;
+    var __vue_staticRenderFns__$d = [];
+    __vue_render__$d._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$a = function (inject) {
+      const __vue_inject_styles__$d = function (inject) {
         if (!inject) return
         inject("data-v-ca91aa34_0", { source: ".instance-item[data-v-ca91aa34] {\n  border: 1px solid #999;\n  padding: 10px;\n}\n", map: {"version":3,"sources":["EventList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,aAAa;AACf","file":"EventList.vue","sourcesContent":[".instance-item {\n  border: 1px solid #999;\n  padding: 10px;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$a = "data-v-ca91aa34";
+      const __vue_scope_id__$d = "data-v-ca91aa34";
       /* module identifier */
-      const __vue_module_identifier__$a = undefined;
+      const __vue_module_identifier__$d = undefined;
       /* functional template */
-      const __vue_is_functional_template__$a = false;
+      const __vue_is_functional_template__$d = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$a = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
-        __vue_inject_styles__$a,
-        __vue_script__$a,
-        __vue_scope_id__$a,
-        __vue_is_functional_template__$a,
-        __vue_module_identifier__$a,
+      const __vue_component__$d = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
+        __vue_inject_styles__$d,
+        __vue_script__$d,
+        __vue_scope_id__$d,
+        __vue_is_functional_template__$d,
+        __vue_module_identifier__$d,
         false,
         createInjector,
         undefined,
@@ -62939,15 +63275,15 @@ var VueHtml = (function (Vue, Component) {
         }
     };
     ToolBar = __decorate([
-        Component__default({ components: { DragCol: __vue_component__$8, ApiList: __vue_component__$9, EventList: __vue_component__$a } })
+        Component__default({ components: { DragCol: __vue_component__$b, ApiList: __vue_component__$c, EventList: __vue_component__$d } })
     ], ToolBar);
-    var script$b = ToolBar;
+    var script$e = ToolBar;
 
     /* script */
-    const __vue_script__$b = script$b;
+    const __vue_script__$e = script$e;
 
     /* template */
-    var __vue_render__$b = function() {
+    var __vue_render__$e = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63007,6 +63343,16 @@ var VueHtml = (function (Vue, Component) {
                 _vm.$set(_vm.editorInstance, "isRelative", $$v);
               },
               expression: "editorInstance.isRelative"
+            }
+          }),
+          _vm._v(" "),
+          _c("el-color-picker", {
+            model: {
+              value: _vm.editorInstance.borderColor,
+              callback: function($$v) {
+                _vm.$set(_vm.editorInstance, "borderColor", $$v);
+              },
+              expression: "editorInstance.borderColor"
             }
           }),
           _vm._v(" "),
@@ -63151,34 +63497,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$b = [];
-    __vue_render__$b._withStripped = true;
+    var __vue_staticRenderFns__$e = [];
+    __vue_render__$e._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$b = function (inject) {
+      const __vue_inject_styles__$e = function (inject) {
         if (!inject) return
-        inject("data-v-1802931d_0", { source: ".el-drawer__body {\n  overflow: auto;\n}\n", map: {"version":3,"sources":["ToolBar.vue"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB","file":"ToolBar.vue","sourcesContent":[".el-drawer__body {\n  overflow: auto;\n}\n"]}, media: undefined });
+        inject("data-v-1c4ac48d_0", { source: ".el-drawer__body {\n  overflow: auto;\n}\n", map: {"version":3,"sources":["ToolBar.vue"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB","file":"ToolBar.vue","sourcesContent":[".el-drawer__body {\n  overflow: auto;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$b = undefined;
+      const __vue_scope_id__$e = undefined;
       /* module identifier */
-      const __vue_module_identifier__$b = undefined;
+      const __vue_module_identifier__$e = undefined;
       /* functional template */
-      const __vue_is_functional_template__$b = false;
+      const __vue_is_functional_template__$e = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$b = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
-        __vue_inject_styles__$b,
-        __vue_script__$b,
-        __vue_scope_id__$b,
-        __vue_is_functional_template__$b,
-        __vue_module_identifier__$b,
+      const __vue_component__$e = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
+        __vue_inject_styles__$e,
+        __vue_script__$e,
+        __vue_scope_id__$e,
+        __vue_is_functional_template__$e,
+        __vue_module_identifier__$e,
         false,
         createInjector,
         undefined,
@@ -63203,7 +63549,7 @@ var VueHtml = (function (Vue, Component) {
                     context,
                 });
             }
-            return createElement("div", {}, list);
+            return list[0];
         },
     };
     let Module = class Module extends Vue {
@@ -63228,13 +63574,13 @@ var VueHtml = (function (Vue, Component) {
     Module = __decorate([
         Component__default({ components: { InstanceSlot: InstanceSlot$1 } })
     ], Module);
-    var script$c = Module;
+    var script$f = Module;
 
     /* script */
-    const __vue_script__$c = script$c;
+    const __vue_script__$f = script$f;
 
     /* template */
-    var __vue_render__$c = function() {
+    var __vue_render__$f = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63242,43 +63588,49 @@ var VueHtml = (function (Vue, Component) {
         "div",
         { ref: "target", staticClass: "module" },
         [
-          _c("InstanceSlot", {
-            attrs: { instance: _vm.instance, moduleGenrate: _vm.moduleGenrate }
-          }),
-          _vm._v(" "),
-          _vm._t("default")
+          _c(
+            "InstanceSlot",
+            {
+              staticClass: "instanceSlot",
+              attrs: { instance: _vm.instance, moduleGenrate: _vm.moduleGenrate }
+            },
+            [_vm._t("default")],
+            2
+          )
         ],
-        2
+        1
       )
     };
-    var __vue_staticRenderFns__$c = [];
-    __vue_render__$c._withStripped = true;
+    var __vue_staticRenderFns__$f = [];
+    __vue_render__$f._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$c = undefined;
+      const __vue_inject_styles__$f = function (inject) {
+        if (!inject) return
+        inject("data-v-b127c4c0_0", { source: ".module .instanceSlot[data-v-b127c4c0] {\n  width: 100%;\n  height: 100%;\n  box-sizing: border-box;\n}\n", map: {"version":3,"sources":["Module.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,sBAAsB;AACxB","file":"Module.vue","sourcesContent":[".module .instanceSlot {\n  width: 100%;\n  height: 100%;\n  box-sizing: border-box;\n}\n"]}, media: undefined });
+
+      };
       /* scoped */
-      const __vue_scope_id__$c = undefined;
+      const __vue_scope_id__$f = "data-v-b127c4c0";
       /* module identifier */
-      const __vue_module_identifier__$c = undefined;
+      const __vue_module_identifier__$f = undefined;
       /* functional template */
-      const __vue_is_functional_template__$c = false;
-      /* style inject */
-      
+      const __vue_is_functional_template__$f = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$c = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
-        __vue_inject_styles__$c,
-        __vue_script__$c,
-        __vue_scope_id__$c,
-        __vue_is_functional_template__$c,
-        __vue_module_identifier__$c,
+      const __vue_component__$f = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
+        __vue_inject_styles__$f,
+        __vue_script__$f,
+        __vue_scope_id__$f,
+        __vue_is_functional_template__$f,
+        __vue_module_identifier__$f,
         false,
-        undefined,
+        createInjector,
         undefined,
         undefined
       );
@@ -63310,13 +63662,13 @@ var VueHtml = (function (Vue, Component) {
     EventManage = __decorate([
         Component__default({ components: { InstanceSlot } })
     ], EventManage);
-    var script$d = EventManage;
+    var script$g = EventManage;
 
     /* script */
-    const __vue_script__$d = script$d;
+    const __vue_script__$g = script$g;
 
     /* template */
-    var __vue_render__$d = function() {
+    var __vue_render__$g = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63435,17 +63787,17 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$d = [];
-    __vue_render__$d._withStripped = true;
+    var __vue_staticRenderFns__$g = [];
+    __vue_render__$g._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$d = undefined;
+      const __vue_inject_styles__$g = undefined;
       /* scoped */
-      const __vue_scope_id__$d = undefined;
+      const __vue_scope_id__$g = undefined;
       /* module identifier */
-      const __vue_module_identifier__$d = undefined;
+      const __vue_module_identifier__$g = undefined;
       /* functional template */
-      const __vue_is_functional_template__$d = false;
+      const __vue_is_functional_template__$g = false;
       /* style inject */
       
       /* style inject SSR */
@@ -63454,13 +63806,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$d = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
-        __vue_inject_styles__$d,
-        __vue_script__$d,
-        __vue_scope_id__$d,
-        __vue_is_functional_template__$d,
-        __vue_module_identifier__$d,
+      const __vue_component__$g = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
+        __vue_inject_styles__$g,
+        __vue_script__$g,
+        __vue_scope_id__$g,
+        __vue_is_functional_template__$g,
+        __vue_module_identifier__$g,
         false,
         undefined,
         undefined,
@@ -63497,6 +63849,7 @@ var VueHtml = (function (Vue, Component) {
             this.styleSetting.splice(index, 1);
         }
         save() {
+            this.instance.target.style.clear();
             this.styleSetting.forEach((item) => {
                 this.instance.target.style.setKeyValue(item.key, item.value);
             });
@@ -63520,13 +63873,13 @@ var VueHtml = (function (Vue, Component) {
     StyleManage = __decorate([
         Component__default
     ], StyleManage);
-    var script$e = StyleManage;
+    var script$h = StyleManage;
 
     /* script */
-    const __vue_script__$e = script$e;
+    const __vue_script__$h = script$h;
 
     /* template */
-    var __vue_render__$e = function() {
+    var __vue_render__$h = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63660,17 +64013,17 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$e = [];
-    __vue_render__$e._withStripped = true;
+    var __vue_staticRenderFns__$h = [];
+    __vue_render__$h._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$e = undefined;
+      const __vue_inject_styles__$h = undefined;
       /* scoped */
-      const __vue_scope_id__$e = undefined;
+      const __vue_scope_id__$h = undefined;
       /* module identifier */
-      const __vue_module_identifier__$e = undefined;
+      const __vue_module_identifier__$h = undefined;
       /* functional template */
-      const __vue_is_functional_template__$e = false;
+      const __vue_is_functional_template__$h = false;
       /* style inject */
       
       /* style inject SSR */
@@ -63679,67 +64032,47 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$e = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
-        __vue_inject_styles__$e,
-        __vue_script__$e,
-        __vue_scope_id__$e,
-        __vue_is_functional_template__$e,
-        __vue_module_identifier__$e,
+      const __vue_component__$h = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
+        __vue_inject_styles__$h,
+        __vue_script__$h,
+        __vue_scope_id__$h,
+        __vue_is_functional_template__$h,
+        __vue_module_identifier__$h,
         false,
         undefined,
         undefined,
         undefined
       );
 
-    var InstanceSlot$2 = {
-        props: {
-            instance: {
-                type: Object,
-            },
-        },
-        computed: {
-            value() {
-                return this.instance.target.selfProp.params.map((item) => item.getKeyValue());
-            },
-        },
-        render(createElement, context) {
-            let list = [];
-            if (this.instance) {
-                list = this.instance.target.selfProp.renderParam({
-                    createElement,
-                    vueRoot: this,
-                    context,
-                });
-            }
-            return createElement("div", {}, list);
-        },
-        watch: {
-            value(val) {
-                console.log(val);
-            },
-        },
-    };
     let StyleManage$1 = class StyleManage extends Vue {
-        mounted() {
+        constructor() {
+            super(...arguments);
+            this.generator = new GeneratePiece();
         }
-        save() {
-            this.instance.target.selfProp.save();
+        created() {
+            this.generator.generate(this.instance.target.selfProp.params);
+        }
+        updateParam() {
+            this.generator.generate(this.instance.target.selfProp.params);
         }
     };
     __decorate([
         Prop()
     ], StyleManage$1.prototype, "instance", void 0);
+    __decorate([
+        Watch('instance.id')
+    ], StyleManage$1.prototype, "updateParam", null);
     StyleManage$1 = __decorate([
-        Component__default({ components: { InstanceSlot: InstanceSlot$2 } })
+        Component__default({ components: { InstanceSlot } })
     ], StyleManage$1);
-    var script$f = StyleManage$1;
+    var script$i = StyleManage$1;
 
     /* script */
-    const __vue_script__$f = script$f;
+    const __vue_script__$i = script$i;
 
     /* template */
-    var __vue_render__$f = function() {
+    var __vue_render__$i = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63752,39 +64085,34 @@ var VueHtml = (function (Vue, Component) {
             [
               _c(
                 "el-col",
-                [_c("InstanceSlot", { attrs: { instance: _vm.instance } })],
+                [
+                  _c("InstanceSlot", {
+                    attrs: {
+                      instance: _vm.instance.target.selfProp,
+                      generator: _vm.generator
+                    }
+                  })
+                ],
                 1
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.save()
-                }
-              }
-            },
-            [_vm._v("保存属性")]
           )
         ],
         1
       )
     };
-    var __vue_staticRenderFns__$f = [];
-    __vue_render__$f._withStripped = true;
+    var __vue_staticRenderFns__$i = [];
+    __vue_render__$i._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$f = undefined;
+      const __vue_inject_styles__$i = undefined;
       /* scoped */
-      const __vue_scope_id__$f = undefined;
+      const __vue_scope_id__$i = undefined;
       /* module identifier */
-      const __vue_module_identifier__$f = undefined;
+      const __vue_module_identifier__$i = undefined;
       /* functional template */
-      const __vue_is_functional_template__$f = false;
+      const __vue_is_functional_template__$i = false;
       /* style inject */
       
       /* style inject SSR */
@@ -63793,13 +64121,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$f = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
-        __vue_inject_styles__$f,
-        __vue_script__$f,
-        __vue_scope_id__$f,
-        __vue_is_functional_template__$f,
-        __vue_module_identifier__$f,
+      const __vue_component__$i = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
+        __vue_inject_styles__$i,
+        __vue_script__$i,
+        __vue_scope_id__$i,
+        __vue_is_functional_template__$i,
+        __vue_module_identifier__$i,
         false,
         undefined,
         undefined,
@@ -63823,15 +64151,15 @@ var VueHtml = (function (Vue, Component) {
         Prop()
     ], ModuleConfig.prototype, "instance", void 0);
     ModuleConfig = __decorate([
-        Component__default({ components: { PropManage: __vue_component__$f, EventManage: __vue_component__$d, StyleManage: __vue_component__$e } })
+        Component__default({ components: { PropManage: __vue_component__$i, EventManage: __vue_component__$g, StyleManage: __vue_component__$h } })
     ], ModuleConfig);
-    var script$g = ModuleConfig;
+    var script$j = ModuleConfig;
 
     /* script */
-    const __vue_script__$g = script$g;
+    const __vue_script__$j = script$j;
 
     /* template */
-    var __vue_render__$g = function() {
+    var __vue_render__$j = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -63916,35 +64244,35 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$g = [];
-    __vue_render__$g._withStripped = true;
+    var __vue_staticRenderFns__$j = [];
+    __vue_render__$j._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$g = function (inject) {
+      const __vue_inject_styles__$j = function (inject) {
         if (!inject) return
         inject("data-v-5b379b60_0", { source: ".ModuleConfigList[data-v-5b379b60] {\n  width: 32px;\n  height: 16px;\n  text-align: right;\n}\n.ModuleConfigList span[data-v-5b379b60] {\n  font-size: 14px;\n  display: inline-block;\n  cursor: pointer;\n}\n", map: {"version":3,"sources":["ModuleConfig.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,iBAAiB;AACnB;AACA;EACE,eAAe;EACf,qBAAqB;EACrB,eAAe;AACjB","file":"ModuleConfig.vue","sourcesContent":[".ModuleConfigList {\n  width: 32px;\n  height: 16px;\n  text-align: right;\n}\n.ModuleConfigList span {\n  font-size: 14px;\n  display: inline-block;\n  cursor: pointer;\n}\n"]}, media: undefined })
     ,inject("data-v-5b379b60_1", { source: ".el-drawer__body {\n  overflow: auto;\n}\n", map: {"version":3,"sources":["ModuleConfig.vue"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB","file":"ModuleConfig.vue","sourcesContent":[".el-drawer__body {\n  overflow: auto;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$g = "data-v-5b379b60";
+      const __vue_scope_id__$j = "data-v-5b379b60";
       /* module identifier */
-      const __vue_module_identifier__$g = undefined;
+      const __vue_module_identifier__$j = undefined;
       /* functional template */
-      const __vue_is_functional_template__$g = false;
+      const __vue_is_functional_template__$j = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$g = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
-        __vue_inject_styles__$g,
-        __vue_script__$g,
-        __vue_scope_id__$g,
-        __vue_is_functional_template__$g,
-        __vue_module_identifier__$g,
+      const __vue_component__$j = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
+        __vue_inject_styles__$j,
+        __vue_script__$j,
+        __vue_scope_id__$j,
+        __vue_is_functional_template__$j,
+        __vue_module_identifier__$j,
         false,
         createInjector,
         undefined,
@@ -64087,15 +64415,15 @@ var VueHtml = (function (Vue, Component) {
         Prop()
     ], CoverEl.prototype, "instance", void 0);
     CoverEl = __decorate([
-        Component__default({ components: { Module: __vue_component__$c, ModuleConfig: __vue_component__$g } })
+        Component__default({ components: { Module: __vue_component__$f, ModuleConfig: __vue_component__$j } })
     ], CoverEl);
-    var script$h = CoverEl;
+    var script$k = CoverEl;
 
     /* script */
-    const __vue_script__$h = script$h;
+    const __vue_script__$k = script$k;
 
     /* template */
-    var __vue_render__$h = function() {
+    var __vue_render__$k = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -64121,7 +64449,10 @@ var VueHtml = (function (Vue, Component) {
             attrs: { instance: _vm.instance }
           }),
           _vm._v(" "),
-          _c("div", { staticClass: "coverEl-bg total-cover" }),
+          _c("div", {
+            staticClass: "coverEl-bg total-cover",
+            style: { borderColor: _vm.editorInstance.borderColor }
+          }),
           _vm._v(" "),
           _c(
             "Module",
@@ -64139,34 +64470,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$h = [];
-    __vue_render__$h._withStripped = true;
+    var __vue_staticRenderFns__$k = [];
+    __vue_render__$k._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$h = function (inject) {
+      const __vue_inject_styles__$k = function (inject) {
         if (!inject) return
-        inject("data-v-c3fe1408_0", { source: "\n.coverEl[data-v-c3fe1408] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n  background: #fff;\n}\n.coverEl[data-v-c3fe1408]:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\n}\n.coverEl > .total-cover[data-v-c3fe1408] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 12px;\n}\n.coverEl > .coverEl-bg[data-v-c3fe1408] {\r\n  position: absolute;\r\n  z-index: 0;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\n}\n.coverEl.active>.coverEl-bg[data-v-c3fe1408] {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  z-index: 9999997;\n}\n.coverEl>.coverEl-target[data-v-c3fe1408] {\r\n  z-index: -1;\r\n  position: static;\n}\n.coverEl.active>.coverEl-target[data-v-c3fe1408] {\r\n  z-index: 9999998;\r\n  position: absolute;\n}\n.selection-box[data-v-c3fe1408] {\r\n  border: 2px solid #03a9f4;\n}\n.coverEl > .ModuleConfig[data-v-c3fe1408]{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\r\n  z-index: 0;\n}\n.coverEl.active>.ModuleConfig[data-v-c3fe1408]{\r\n  z-index: 9999999;\n}\n.handle[data-v-c3fe1408] {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\n}\n.tl[data-v-c3fe1408] {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mt[data-v-c3fe1408] {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\n}\n.tr[data-v-c3fe1408] {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.mr[data-v-c3fe1408] {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\n}\n.br[data-v-c3fe1408] {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mb[data-v-c3fe1408] {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\n}\n.bl[data-v-c3fe1408] {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.ml[data-v-c3fe1408] {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAqLA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;EACA,gBAAA;AACA;AACA;EACA,YAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,aAAA;AACA;AAEA;EACA,kBAAA;EACA,UAAA;EACA,uBAAA;EACA,qBAAA;EACA,oBAAA;EACA,iBAAA;EACA,SAAA;EACA,gBAAA;AACA;AACA;EACA,+BAAA;EACA,mBAAA;EACA,iBAAA;EACA,gBAAA;AACA;AACA;EACA,WAAA;EACA,gBAAA;AACA;AACA;EACA,gBAAA;EACA,kBAAA;AACA;AACA;EACA,yBAAA;AACA;AACA;EACA,kBAAA;EACA,KAAA;EACA,OAAA;EACA,UAAA;AACA;AACA;EACA,gBAAA;AACA;AACA;EACA,sBAAA;EACA,aAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,kBAAA;EACA,sBAAA;AACA;AACA;EACA,SAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,QAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,OAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :class=\"{active: activeClass}\" :style=\"style\" \r\n    @mousedown.stop.prevent=\"mouseDownHandler\" @drop=\"dropHandler\" @dragover=\"dragoverHandler\">\r\n    <ModuleConfig class='ModuleConfig' :instance=\"instance\"></ModuleConfig>\r\n    <div class='coverEl-bg total-cover'>\r\n      \r\n    </div>\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.getChildren()\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n  currentEl,\r\n  clearCurrentEl,\r\n  editorInstance,\r\n  setEditorInstance,\r\n  setPx,\r\n  convertPx,\r\n  elementsFromPoint,\r\n  generateModule\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\nimport ModuleConfig from \"../components/ModuleConfig.vue\";\r\n\r\nfunction getPoint(obj) { //获取某元素以浏览器左上角为原点的坐标\r\n  var offsetTop = obj.offsetTop; //获取该元素对应父容器的上边距\r\n  var offsetLeft = obj.offsetLeft; //对应父容器的上边距\r\n  //判断是否有父容器，如果存在则累加其边距\r\n  while (obj = obj.offsetParent) {//等效 obj = obj.offsetParent;while (obj != undefined)\r\n      offsetTop += obj.offsetTop; //叠加父容器的上边距\r\n      offsetLeft += obj.offsetLeft; //叠加父容器的左边距\r\n  }\r\n  return {\r\n    offsetTop,offsetLeft\r\n  }\r\n}\r\n\r\n\r\n@Component({components: {Module, ModuleConfig}})\r\nexport default class CoverEl extends Vue {\r\n  editorInstance = editorInstance\r\n  initialAbsPos= {x: 0, y: 0}\r\n  initialRelPos= {x: 0, y: 0}\r\n  currentAbsPos=  {x: 0, y: 0}\r\n  currentRelPos=  {x: 0, y: 0}\r\n  zoom = 1\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n  get activeClass () {\r\n    return this.instance && this.editorInstance.active && this.editorInstance.active.moduleId == this.instance.moduleId\r\n  }\r\n\r\n  dropHandler (e) {\r\n    if (currentEl) {\r\n      let zoom = this.zoom\r\n      let current = this.instance.combi(generateModule(currentEl))\r\n      clearCurrentEl()\r\n      var mainContainer = this.$refs.bgTarget.$el\r\n      let {width='auto', height='auto'} = current.target.selfProp.getStyle()\r\n      width = convertPx(width)\r\n      height = convertPx(height)\r\n      let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n      let top = e.pageY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetTop + convertPx(this.instance.target.style.top)\r\n      let left = e.pageX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetLeft + convertPx(this.instance.target.style.left)\r\n      if (typeof height == 'number') {\r\n        top = top - (height / 2)\r\n      }\r\n      if (typeof width == 'number') {\r\n        left = left - (width / 2)\r\n      }\r\n      top = Math.round(top / zoom)\r\n      left = Math.round(left / zoom)\r\n      \r\n      current.target.style.setKeyValue('position', 'absolute')\r\n      current.target.style.setKeyValue('top', setPx(top))\r\n      current.target.style.setKeyValue('left', setPx(left))\r\n      current.target.style.setKeyValue('height', setPx(height))\r\n      current.target.style.setKeyValue('width', setPx(width))\r\n      if (this.editorInstance.isRelative) {\r\n        current.resetRelativeStyle()\r\n      }\r\n    }\r\n    \r\n      \r\n      \r\n      // comp.saveStyle({position: 'absolute', top, left, height, width})\r\n    e.preventDefault();\r\n  }\r\n  dragoverHandler (e) {\r\n    // e.dataTransfer.dropEffect = 'none'\r\n    e.preventDefault();\r\n  }\r\n  clickHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n  }\r\n  getMouseAbsPoint (e) {\r\n    return {x: e.clientX, y: e.clientY}\r\n  }\r\n  getMouseRelPoint (e) {\r\n    var mainContainer = this.$refs.bgTarget.$el\r\n    let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n    const x = e.clientX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetTop\r\n    const y = e.clientY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetLeft\r\n\r\n    return {x, y}\r\n  }\r\n  mouseDownHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n    setEditorInstance(this.instance);\r\n    let isMrs = false\r\n    this.initialAbsPos = this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.initialRelPos = this.currentRelPos = this.getMouseRelPoint(e)\r\n    var el = elementsFromPoint(e.clientX,e.clientY)\r\n    \r\n    if (this.editorInstance.active && this.editorInstance.active.canDragFilter()) {\r\n      isMrs = true\r\n      // this.$emit('movestart')\r\n      // if (e.ctrlKey) {\r\n      //   var comp = components.register({\r\n      //     style: this.active.style,\r\n      //     raw: this.active.raw,\r\n      //     type: this.active.type,\r\n      //     childrenName: this.active.childrenName,\r\n      //     children: this.active.children,\r\n      //   })\r\n      //   comp.saveStyle({top: this.active.stylePure.top + 20, left: this.active.stylePure.left + 20})\r\n      //   rgHandle.componentsClass.setActive(comp);\r\n      //   this.activeMove = comp\r\n      // }\r\n    }\r\n    if (isMrs) {\r\n      this.$nextTick(() => {\r\n        document.documentElement.addEventListener('mousemove', this.mouseMoveHandler, true)\r\n        document.documentElement.addEventListener('mouseup', this.mouseUpHandler, true)\r\n      })\r\n    }\r\n  }\r\n  mouseMoveHandler (e) {\r\n    let zoom = this.zoom\r\n    const lastAbsX = this.currentAbsPos.x\r\n    const lastAbsY = this.currentAbsPos.y\r\n    \r\n    this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.currentRelPos = this.getMouseRelPoint(e)\r\n\r\n    let offX = this.currentAbsPos.x - lastAbsX\r\n    let offY = this.currentAbsPos.y - lastAbsY\r\n    if (this.editorInstance.active) {\r\n      if (!e.ctrlKey) {\r\n        this.editorInstance.active.move(offX/zoom, offY/zoom)\r\n      }\r\n    }\r\n  }\r\n  mouseUpHandler (e) {\r\n    document.documentElement.removeEventListener('mousemove', this.mouseMoveHandler, true)\r\n    document.documentElement.removeEventListener('mouseup', this.mouseUpHandler, true)\r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n  background: #fff;\r\n}\r\n.coverEl:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 12px;\r\n}\r\n\r\n.coverEl > .coverEl-bg {\r\n  position: absolute;\r\n  z-index: 0;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\r\n}\r\n.coverEl.active>.coverEl-bg {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  z-index: 9999997;\r\n}\r\n.coverEl>.coverEl-target {\r\n  z-index: -1;\r\n  position: static;\r\n}\r\n.coverEl.active>.coverEl-target {\r\n  z-index: 9999998;\r\n  position: absolute;\r\n}\r\n.selection-box {\r\n  border: 2px solid #03a9f4;\r\n}\r\n.coverEl > .ModuleConfig{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\r\n  z-index: 0;\r\n}\r\n.coverEl.active>.ModuleConfig{\r\n  z-index: 9999999;\r\n}\r\n.handle {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\r\n}\r\n.tl {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mt {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\r\n}\r\n.tr {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.mr {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\r\n}\r\n.br {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mb {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\r\n}\r\n.bl {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.ml {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\r\n}\r\n</style>\r\n"]}, media: undefined });
+        inject("data-v-0ba5de8e_0", { source: "\n.coverEl[data-v-0ba5de8e] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n  background: #fff;\n}\n.coverEl[data-v-0ba5de8e]:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\n}\n.coverEl > .total-cover[data-v-0ba5de8e] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 12px;\n}\n.coverEl > .coverEl-bg[data-v-0ba5de8e] {\r\n  position: absolute;\r\n  z-index: 1;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\n}\n.coverEl.active>.coverEl-bg[data-v-0ba5de8e] {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  z-index: 9999997;\n}\n.coverEl>.coverEl-target[data-v-0ba5de8e] {\r\n  z-index: 2;\r\n  position: absolute;\n}\n.coverEl.active>.coverEl-target[data-v-0ba5de8e] {\r\n  z-index: 9999998;\r\n  position: absolute;\n}\n.selection-box[data-v-0ba5de8e] {\r\n  border: 2px solid #03a9f4;\n}\n.coverEl > .ModuleConfig[data-v-0ba5de8e]{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\r\n  z-index: 0;\n}\n.coverEl.active>.ModuleConfig[data-v-0ba5de8e]{\r\n  z-index: 9999999;\n}\n.handle[data-v-0ba5de8e] {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\n}\n.tl[data-v-0ba5de8e] {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mt[data-v-0ba5de8e] {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\n}\n.tr[data-v-0ba5de8e] {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.mr[data-v-0ba5de8e] {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\n}\n.br[data-v-0ba5de8e] {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\n}\n.mb[data-v-0ba5de8e] {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\n}\n.bl[data-v-0ba5de8e] {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\n}\n.ml[data-v-0ba5de8e] {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAqLA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;EACA,gBAAA;AACA;AACA;EACA,YAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,aAAA;AACA;AAEA;EACA,kBAAA;EACA,UAAA;EACA,uBAAA;EACA,qBAAA;EACA,oBAAA;EACA,iBAAA;EACA,SAAA;EACA,gBAAA;AACA;AACA;EACA,+BAAA;EACA,mBAAA;EACA,iBAAA;EACA,gBAAA;AACA;AACA;EACA,UAAA;EACA,kBAAA;AACA;AACA;EACA,gBAAA;EACA,kBAAA;AACA;AACA;EACA,yBAAA;AACA;AACA;EACA,kBAAA;EACA,KAAA;EACA,OAAA;EACA,UAAA;AACA;AACA;EACA,gBAAA;AACA;AACA;EACA,sBAAA;EACA,aAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,kBAAA;EACA,sBAAA;AACA;AACA;EACA,SAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,QAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,SAAA;EACA,WAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA;AACA;EACA,YAAA;EACA,UAAA;EACA,mBAAA;EACA,mBAAA;AACA;AACA;EACA,MAAA;EACA,OAAA;EACA,YAAA;EACA,gBAAA;EACA,iBAAA;EACA,qBAAA;EACA,kCAAA;EACA,iBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :class=\"{active: activeClass}\" :style=\"style\" \r\n    @mousedown.stop.prevent=\"mouseDownHandler\" @drop=\"dropHandler\" @dragover=\"dragoverHandler\">\r\n    <ModuleConfig class='ModuleConfig' :instance=\"instance\"></ModuleConfig>\r\n    <div class='coverEl-bg total-cover' :style=\"{borderColor: editorInstance.borderColor}\">\r\n      \r\n    </div>\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.getChildren()\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n  currentEl,\r\n  clearCurrentEl,\r\n  editorInstance,\r\n  setEditorInstance,\r\n  setPx,\r\n  convertPx,\r\n  elementsFromPoint,\r\n  generateModule\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\nimport ModuleConfig from \"../components/ModuleConfig.vue\";\r\n\r\nfunction getPoint(obj) { //获取某元素以浏览器左上角为原点的坐标\r\n  var offsetTop = obj.offsetTop; //获取该元素对应父容器的上边距\r\n  var offsetLeft = obj.offsetLeft; //对应父容器的上边距\r\n  //判断是否有父容器，如果存在则累加其边距\r\n  while (obj = obj.offsetParent) {//等效 obj = obj.offsetParent;while (obj != undefined)\r\n      offsetTop += obj.offsetTop; //叠加父容器的上边距\r\n      offsetLeft += obj.offsetLeft; //叠加父容器的左边距\r\n  }\r\n  return {\r\n    offsetTop,offsetLeft\r\n  }\r\n}\r\n\r\n\r\n@Component({components: {Module, ModuleConfig}})\r\nexport default class CoverEl extends Vue {\r\n  editorInstance = editorInstance\r\n  initialAbsPos= {x: 0, y: 0}\r\n  initialRelPos= {x: 0, y: 0}\r\n  currentAbsPos=  {x: 0, y: 0}\r\n  currentRelPos=  {x: 0, y: 0}\r\n  zoom = 1\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n  get activeClass () {\r\n    return this.instance && this.editorInstance.active && this.editorInstance.active.moduleId == this.instance.moduleId\r\n  }\r\n\r\n  dropHandler (e) {\r\n    if (currentEl) {\r\n      let zoom = this.zoom\r\n      let current = this.instance.combi(generateModule(currentEl))\r\n      clearCurrentEl()\r\n      var mainContainer = this.$refs.bgTarget.$el\r\n      let {width='auto', height='auto'} = current.target.selfProp.getStyle()\r\n      width = convertPx(width)\r\n      height = convertPx(height)\r\n      let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n      let top = e.pageY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetTop + convertPx(this.instance.target.style.top)\r\n      let left = e.pageX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetLeft + convertPx(this.instance.target.style.left)\r\n      if (typeof height == 'number') {\r\n        top = top - (height / 2)\r\n      }\r\n      if (typeof width == 'number') {\r\n        left = left - (width / 2)\r\n      }\r\n      top = Math.round(top / zoom)\r\n      left = Math.round(left / zoom)\r\n      \r\n      current.target.style.setKeyValue('position', 'absolute')\r\n      current.target.style.setKeyValue('top', setPx(top))\r\n      current.target.style.setKeyValue('left', setPx(left))\r\n      current.target.style.setKeyValue('height', setPx(height))\r\n      current.target.style.setKeyValue('width', setPx(width))\r\n      if (this.editorInstance.isRelative) {\r\n        current.resetRelativeStyle()\r\n      }\r\n    }\r\n    \r\n      \r\n      \r\n      // comp.saveStyle({position: 'absolute', top, left, height, width})\r\n    e.preventDefault();\r\n  }\r\n  dragoverHandler (e) {\r\n    // e.dataTransfer.dropEffect = 'none'\r\n    e.preventDefault();\r\n  }\r\n  clickHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n  }\r\n  getMouseAbsPoint (e) {\r\n    return {x: e.clientX, y: e.clientY}\r\n  }\r\n  getMouseRelPoint (e) {\r\n    var mainContainer = this.$refs.bgTarget.$el\r\n    let { offsetTop, offsetLeft} = getPoint(mainContainer)\r\n    const x = e.clientX + mainContainer.scrollLeft - mainContainer.offsetLeft - this.$el.offsetLeft - offsetTop\r\n    const y = e.clientY + mainContainer.scrollTop - mainContainer.offsetTop - this.$el.offsetTop - offsetLeft\r\n\r\n    return {x, y}\r\n  }\r\n  mouseDownHandler (e) {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n    setEditorInstance(this.instance);\r\n    let isMrs = false\r\n    this.initialAbsPos = this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.initialRelPos = this.currentRelPos = this.getMouseRelPoint(e)\r\n    var el = elementsFromPoint(e.clientX,e.clientY)\r\n    \r\n    if (this.editorInstance.active && this.editorInstance.active.canDragFilter()) {\r\n      isMrs = true\r\n      // this.$emit('movestart')\r\n      // if (e.ctrlKey) {\r\n      //   var comp = components.register({\r\n      //     style: this.active.style,\r\n      //     raw: this.active.raw,\r\n      //     type: this.active.type,\r\n      //     childrenName: this.active.childrenName,\r\n      //     children: this.active.children,\r\n      //   })\r\n      //   comp.saveStyle({top: this.active.stylePure.top + 20, left: this.active.stylePure.left + 20})\r\n      //   rgHandle.componentsClass.setActive(comp);\r\n      //   this.activeMove = comp\r\n      // }\r\n    }\r\n    if (isMrs) {\r\n      this.$nextTick(() => {\r\n        document.documentElement.addEventListener('mousemove', this.mouseMoveHandler, true)\r\n        document.documentElement.addEventListener('mouseup', this.mouseUpHandler, true)\r\n      })\r\n    }\r\n  }\r\n  mouseMoveHandler (e) {\r\n    let zoom = this.zoom\r\n    const lastAbsX = this.currentAbsPos.x\r\n    const lastAbsY = this.currentAbsPos.y\r\n    \r\n    this.currentAbsPos = this.getMouseAbsPoint(e)\r\n    this.currentRelPos = this.getMouseRelPoint(e)\r\n\r\n    let offX = this.currentAbsPos.x - lastAbsX\r\n    let offY = this.currentAbsPos.y - lastAbsY\r\n    if (this.editorInstance.active) {\r\n      if (!e.ctrlKey) {\r\n        this.editorInstance.active.move(offX/zoom, offY/zoom)\r\n      }\r\n    }\r\n  }\r\n  mouseUpHandler (e) {\r\n    document.documentElement.removeEventListener('mousemove', this.mouseMoveHandler, true)\r\n    document.documentElement.removeEventListener('mouseup', this.mouseUpHandler, true)\r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n  background: #fff;\r\n}\r\n.coverEl:hover {\r\n  cursor: move;\r\n  /* pointer-events: auto; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 12px;\r\n}\r\n\r\n.coverEl > .coverEl-bg {\r\n  position: absolute;\r\n  z-index: 1;\r\n  background: transparent;\r\n  border-color: #bdbdbd;\r\n  border-style: dashed;\r\n  border-width: 1px;\r\n  padding:0;\r\n  overflow: hidden;\r\n}\r\n.coverEl.active>.coverEl-bg {\r\n  border-color: #03a9f4!important;\r\n  border-style: solid;\r\n  border-width: 1px;\r\n  z-index: 9999997;\r\n}\r\n.coverEl>.coverEl-target {\r\n  z-index: 2;\r\n  position: absolute;\r\n}\r\n.coverEl.active>.coverEl-target {\r\n  z-index: 9999998;\r\n  position: absolute;\r\n}\r\n.selection-box {\r\n  border: 2px solid #03a9f4;\r\n}\r\n.coverEl > .ModuleConfig{\r\n  position: absolute;\r\n  top:0;\r\n  right:0;\r\n  z-index: 0;\r\n}\r\n.coverEl.active>.ModuleConfig{\r\n  z-index: 9999999;\r\n}\r\n.handle {\r\n  box-sizing: border-box;\r\n  display: none;\r\n  position: absolute;\r\n  width: 10px;\r\n  height: 10px;\r\n  font-size: 1px;\r\n  border-radius: 50%;\r\n  border: 1px solid #fff;\r\n}\r\n.tl {\r\n  top: -3px;\r\n  left: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mt {\r\n  top: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: solid none none none;\r\n  cursor: ns-resize;\r\n}\r\n.tr {\r\n  top: -3px;\r\n  right: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.mr {\r\n  top: 0;\r\n  right: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none solid none none;\r\n  cursor: ew-resize;\r\n}\r\n.br {\r\n  bottom: -3px;\r\n  right: -3px;\r\n  cursor: nwse-resize;\r\n  background: #03a9f4;\r\n}\r\n.mb {\r\n  bottom: 0;\r\n  width: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none solid none;\r\n  cursor: ns-resize;\r\n}\r\n.bl {\r\n  bottom: -3px;\r\n  left: -3px;\r\n  cursor: nesw-resize;\r\n  background: #03a9f4;\r\n}\r\n.ml {\r\n  top: 0;\r\n  left: 0;\r\n  height: 100%;\r\n  border-radius: 0;\r\n  border-width: 2px;\r\n  border-color: #03a9f4;\r\n  border-style: none none none solid;\r\n  cursor: ew-resize;\r\n}\r\n</style>\r\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$h = "data-v-c3fe1408";
+      const __vue_scope_id__$k = "data-v-0ba5de8e";
       /* module identifier */
-      const __vue_module_identifier__$h = undefined;
+      const __vue_module_identifier__$k = undefined;
       /* functional template */
-      const __vue_is_functional_template__$h = false;
+      const __vue_is_functional_template__$k = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$h = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
-        __vue_inject_styles__$h,
-        __vue_script__$h,
-        __vue_scope_id__$h,
-        __vue_is_functional_template__$h,
-        __vue_module_identifier__$h,
+      const __vue_component__$k = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
+        __vue_inject_styles__$k,
+        __vue_script__$k,
+        __vue_scope_id__$k,
+        __vue_is_functional_template__$k,
+        __vue_module_identifier__$k,
         false,
         createInjector,
         undefined,
@@ -64188,15 +64519,15 @@ var VueHtml = (function (Vue, Component) {
         }
     };
     Editor = __decorate([
-        Component__default({ components: { CoverEl: __vue_component__$h } })
+        Component__default({ components: { CoverEl: __vue_component__$k } })
     ], Editor);
-    var script$i = Editor;
+    var script$l = Editor;
 
     /* script */
-    const __vue_script__$i = script$i;
+    const __vue_script__$l = script$l;
 
     /* template */
-    var __vue_render__$i = function() {
+    var __vue_render__$l = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -64206,17 +64537,17 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$i = [];
-    __vue_render__$i._withStripped = true;
+    var __vue_staticRenderFns__$l = [];
+    __vue_render__$l._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$i = undefined;
+      const __vue_inject_styles__$l = undefined;
       /* scoped */
-      const __vue_scope_id__$i = undefined;
+      const __vue_scope_id__$l = undefined;
       /* module identifier */
-      const __vue_module_identifier__$i = undefined;
+      const __vue_module_identifier__$l = undefined;
       /* functional template */
-      const __vue_is_functional_template__$i = false;
+      const __vue_is_functional_template__$l = false;
       /* style inject */
       
       /* style inject SSR */
@@ -64225,13 +64556,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$i = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
-        __vue_inject_styles__$i,
-        __vue_script__$i,
-        __vue_scope_id__$i,
-        __vue_is_functional_template__$i,
-        __vue_module_identifier__$i,
+      const __vue_component__$l = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
+        __vue_inject_styles__$l,
+        __vue_script__$l,
+        __vue_scope_id__$l,
+        __vue_is_functional_template__$l,
+        __vue_module_identifier__$l,
         false,
         undefined,
         undefined,
@@ -64241,15 +64572,15 @@ var VueHtml = (function (Vue, Component) {
     let EditorTemplate = class EditorTemplate extends Vue {
     };
     EditorTemplate = __decorate([
-        Component__default({ components: { ToolBar: __vue_component__$b, Editor: __vue_component__$i } })
+        Component__default({ components: { ToolBar: __vue_component__$e, Editor: __vue_component__$l } })
     ], EditorTemplate);
-    var script$j = EditorTemplate;
+    var script$m = EditorTemplate;
 
     /* script */
-    const __vue_script__$j = script$j;
+    const __vue_script__$m = script$m;
 
     /* template */
-    var __vue_render__$j = function() {
+    var __vue_render__$m = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -64264,34 +64595,34 @@ var VueHtml = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$j = [];
-    __vue_render__$j._withStripped = true;
+    var __vue_staticRenderFns__$m = [];
+    __vue_render__$m._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$j = function (inject) {
+      const __vue_inject_styles__$m = function (inject) {
         if (!inject) return
         inject("data-v-5d2b63d6_0", { source: ".editorTemplate[data-v-5d2b63d6] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar[data-v-5d2b63d6] {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor[data-v-5d2b63d6] {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue","E:\\fengjin\\test\\architectureDesign\\packages\\vue-html\\src\\pages\\EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,gBAAgB;AAClB;AACA;EACE,kBAAkB;EAClB,OAAO;EACP,YAAY;EACZ,SAAS;EACT,MAAM;EACN,cAAc;AAChB;AACA;EACE,kBAAkB;ECCpB,WAAA;EACA,QAAA;EACA,SAAA;EACA,MAAA;EACA,cAAA;EACA,YAAA;AACA","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: hidden;\n}\n.editorTemplate .ToolBar {\n  position: absolute;\n  left: 0;\n  width: 200px;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n}\n.editorTemplate .Editor {\n  position: absolute;\n  left: 200px;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n","<template>\r\n  <div class=\"editorTemplate\">\r\n    <ToolBar class='ToolBar'></ToolBar>\r\n    <Editor class='Editor'></Editor>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport ToolBar from \"../components/ToolBar.vue\";\r\nimport Editor from \"../components/Editor.vue\";\r\nimport { Component, Vue } from \"vue-property-decorator\";\r\n\r\n@Component({components: {ToolBar,Editor }})\r\nexport default class EditorTemplate extends Vue {\r\n \r\n}\r\n</script>\r\n\r\n<style lang=\"less\" scoped>\r\n@toolWidth:200px;\r\n.editorTemplate {\r\n  position: fixed;\r\n  left:0;\r\n  right:0;\r\n  bottom:0;\r\n  top:0;\r\n  overflow: hidden;\r\n  .ToolBar{\r\n    position: absolute;\r\n    left:0;\r\n    width:@toolWidth;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n  }\r\n  .Editor{\r\n    position: absolute;\r\n    left:@toolWidth;\r\n    right:0;\r\n    bottom:0;\r\n    top:0;\r\n    overflow: auto;\r\n    font-size:0\r\n  }\r\n}\r\n</style>"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$j = "data-v-5d2b63d6";
+      const __vue_scope_id__$m = "data-v-5d2b63d6";
       /* module identifier */
-      const __vue_module_identifier__$j = undefined;
+      const __vue_module_identifier__$m = undefined;
       /* functional template */
-      const __vue_is_functional_template__$j = false;
+      const __vue_is_functional_template__$m = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$j = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
-        __vue_inject_styles__$j,
-        __vue_script__$j,
-        __vue_scope_id__$j,
-        __vue_is_functional_template__$j,
-        __vue_module_identifier__$j,
+      const __vue_component__$m = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
+        __vue_inject_styles__$m,
+        __vue_script__$m,
+        __vue_scope_id__$m,
+        __vue_is_functional_template__$m,
+        __vue_module_identifier__$m,
         false,
         createInjector,
         undefined,
@@ -64300,34 +64631,34 @@ var VueHtml = (function (Vue, Component) {
 
     //
 
-    var script$k = {
+    var script$n = {
       name: "App",
       components:{
-        EditorTemplate: __vue_component__$j
+        EditorTemplate: __vue_component__$m
       }
     };
 
     /* script */
-    const __vue_script__$k = script$k;
+    const __vue_script__$n = script$n;
 
     /* template */
-    var __vue_render__$k = function() {
+    var __vue_render__$n = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
       return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
     };
-    var __vue_staticRenderFns__$k = [];
-    __vue_render__$k._withStripped = true;
+    var __vue_staticRenderFns__$n = [];
+    __vue_render__$n._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$k = undefined;
+      const __vue_inject_styles__$n = undefined;
       /* scoped */
-      const __vue_scope_id__$k = undefined;
+      const __vue_scope_id__$n = undefined;
       /* module identifier */
-      const __vue_module_identifier__$k = undefined;
+      const __vue_module_identifier__$n = undefined;
       /* functional template */
-      const __vue_is_functional_template__$k = false;
+      const __vue_is_functional_template__$n = false;
       /* style inject */
       
       /* style inject SSR */
@@ -64336,13 +64667,13 @@ var VueHtml = (function (Vue, Component) {
       
 
       
-      const __vue_component__$k = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
-        __vue_inject_styles__$k,
-        __vue_script__$k,
-        __vue_scope_id__$k,
-        __vue_is_functional_template__$k,
-        __vue_module_identifier__$k,
+      const __vue_component__$n = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
+        __vue_inject_styles__$n,
+        __vue_script__$n,
+        __vue_scope_id__$n,
+        __vue_is_functional_template__$n,
+        __vue_module_identifier__$n,
         false,
         undefined,
         undefined,
@@ -64352,7 +64683,7 @@ var VueHtml = (function (Vue, Component) {
     Vue.use(ElementUI);
     var index$1 = new Vue({
         render(h) {
-            return h(__vue_component__$k);
+            return h(__vue_component__$n);
         },
     }).$mount("#app");
 

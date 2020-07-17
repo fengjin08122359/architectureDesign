@@ -19,6 +19,7 @@
       </el-col>
     </el-row>
     <el-switch v-model="editorInstance.isRelative"></el-switch>
+    <el-color-picker v-model="editorInstance.borderColor"></el-color-picker>
     <el-row>
       <el-col>
         <el-button class="toolTitle" @click="visible = true">api列表, 事件列表</el-button>

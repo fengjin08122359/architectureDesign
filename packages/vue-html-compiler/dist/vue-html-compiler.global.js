@@ -55,6 +55,29 @@ var vueHtmlCompiler = (function (Vue, Component) {
             })(target, key);
         };
     }
+    /**
+     * decorator of a watch function
+     * @param  path the path or the expression to observe
+     * @param  WatchOption
+     * @return MethodDecorator
+     */
+    function Watch(path, options) {
+        if (options === void 0) { options = {}; }
+        var _a = options.deep, deep = _a === void 0 ? false : _a, _b = options.immediate, immediate = _b === void 0 ? false : _b;
+        return Component.createDecorator(function (componentOptions, handler) {
+            if (typeof componentOptions.watch !== 'object') {
+                componentOptions.watch = Object.create(null);
+            }
+            var watch = componentOptions.watch;
+            if (typeof watch[path] === 'object' && !Array.isArray(watch[path])) {
+                watch[path] = [watch[path]];
+            }
+            else if (typeof watch[path] === 'undefined') {
+                watch[path] = [];
+            }
+            watch[path].push({ handler: handler, deep: deep, immediate: immediate });
+        });
+    }
 
     class DataList {
         constructor() {
@@ -199,6 +222,8 @@ var vueHtmlCompiler = (function (Vue, Component) {
         });
         return uuid;
     };
+    let styleOptionsStr = "alignContent,alignItems,alignSelf,alignmentBaseline,all,animation,animationDelay,animationDirection,animationDuration,animationFillMode,animationIterationCount,animationName,animationPlayState,animationTimingFunction,backdropFilter,backfaceVisibility,background,backgroundAttachment,backgroundBlendMode,backgroundClip,backgroundColor,backgroundImage,backgroundOrigin,backgroundPosition,backgroundPositionX,backgroundPositionY,backgroundRepeat,backgroundRepeatX,backgroundRepeatY,backgroundSize,baselineShift,blockSize,border,borderBlockEnd,borderBlockEndColor,borderBlockEndStyle,borderBlockEndWidth,borderBlockStart,borderBlockStartColor,borderBlockStartStyle,borderBlockStartWidth,borderBottom,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomStyle,borderBottomWidth,borderCollapse,borderColor,borderImage,borderImageOutset,borderImageRepeat,borderImageSlice,borderImageSource,borderImageWidth,borderInlineEnd,borderInlineEndColor,borderInlineEndStyle,borderInlineEndWidth,borderInlineStart,borderInlineStartColor,borderInlineStartStyle,borderInlineStartWidth,borderLeft,borderLeftColor,borderLeftStyle,borderLeftWidth,borderRadius,borderRight,borderRightColor,borderRightStyle,borderRightWidth,borderSpacing,borderStyle,borderTop,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopStyle,borderTopWidth,borderWidth,bottom,boxShadow,boxSizing,breakAfter,breakBefore,breakInside,bufferedRendering,captionSide,caretColor,clear,clip,clipPath,clipRule,color,colorInterpolation,colorInterpolationFilters,colorRendering,colorScheme,columnCount,columnFill,columnGap,columnRule,columnRuleColor,columnRuleStyle,columnRuleWidth,columnSpan,columnWidth,columns,contain,containIntrinsicSize,content,counterIncrement,counterReset,cursor,cx,cy,d,direction,display,dominantBaseline,emptyCells,fill,fillOpacity,fillRule,filter,flex,flexBasis,flexDirection,flexFlow,flexGrow,flexShrink,flexWrap,float,floodColor,floodOpacity,font,fontDisplay,fontFamily,fontFeatureSettings,fontKerning,fontOpticalSizing,fontSize,fontStretch,fontStyle,fontVariant,fontVariantCaps,fontVariantEastAsian,fontVariantLigatures,fontVariantNumeric,fontVariationSettings,fontWeight,gap,grid,gridArea,gridAutoColumns,gridAutoFlow,gridAutoRows,gridColumn,gridColumnEnd,gridColumnGap,gridColumnStart,gridGap,gridRow,gridRowEnd,gridRowGap,gridRowStart,gridTemplate,gridTemplateAreas,gridTemplateColumns,gridTemplateRows,height,hyphens,imageOrientation,imageRendering,inlineSize,isolation,justifyContent,justifyItems,justifySelf,left,letterSpacing,lightingColor,lineBreak,lineHeight,listStyle,listStyleImage,listStylePosition,listStyleType,margin,marginBlockEnd,marginBlockStart,marginBottom,marginInlineEnd,marginInlineStart,marginLeft,marginRight,marginTop,marker,markerEnd,markerMid,markerStart,mask,maskType,maxBlockSize,maxHeight,maxInlineSize,maxWidth,maxZoom,minBlockSize,minHeight,minInlineSize,minWidth,minZoom,mixBlendMode,objectFit,objectPosition,offset,offsetDistance,offsetPath,offsetRotate,opacity,order,orientation,orphans,outline,outlineColor,outlineOffset,outlineStyle,outlineWidth,overflow,overflowAnchor,overflowWrap,overflowX,overflowY,overscrollBehavior,overscrollBehaviorBlock,overscrollBehaviorInline,overscrollBehaviorX,overscrollBehaviorY,padding,paddingBlockEnd,paddingBlockStart,paddingBottom,paddingInlineEnd,paddingInlineStart,paddingLeft,paddingRight,paddingTop,pageBreakAfter,pageBreakBefore,pageBreakInside,paintOrder,perspective,perspectiveOrigin,placeContent,placeItems,placeSelf,pointerEvents,position,quotes,r,resize,right,rowGap,rx,ry,scrollBehavior,scrollMargin,scrollMarginBlock,scrollMarginBlockEnd,scrollMarginBlockStart,scrollMarginBottom,scrollMarginInline,scrollMarginInlineEnd,scrollMarginInlineStart,scrollMarginLeft,scrollMarginRight,scrollMarginTop,scrollPadding,scrollPaddingBlock,scrollPaddingBlockEnd,scrollPaddingBlockStart,scrollPaddingBottom,scrollPaddingInline,scrollPaddingInlineEnd,scrollPaddingInlineStart,scrollPaddingLeft,scrollPaddingRight,scrollPaddingTop,scrollSnapAlign,scrollSnapStop,scrollSnapType,shapeImageThreshold,shapeMargin,shapeOutside,shapeRendering,size,speak,src,stopColor,stopOpacity,stroke,strokeDasharray,strokeDashoffset,strokeLinecap,strokeLinejoin,strokeMiterlimit,strokeOpacity,strokeWidth,tabSize,tableLayout,textAlign,textAlignLast,textAnchor,textCombineUpright,textDecoration,textDecorationColor,textDecorationLine,textDecorationSkipInk,textDecorationStyle,textIndent,textOrientation,textOverflow,textRendering,textShadow,textSizeAdjust,textTransform,textUnderlinePosition,top,touchAction,transform,transformBox,transformOrigin,transformStyle,transition,transitionDelay,transitionDuration,transitionProperty,transitionTimingFunction,unicodeBidi,unicodeRange,userSelect,userZoom,vectorEffect,verticalAlign,visibility,webkitAlignContent,webkitAlignItems,webkitAlignSelf,webkitAnimation,webkitAnimationDelay,webkitAnimationDirection,webkitAnimationDuration,webkitAnimationFillMode,webkitAnimationIterationCount,webkitAnimationName,webkitAnimationPlayState,webkitAnimationTimingFunction,webkitAppRegion,webkitAppearance,webkitBackfaceVisibility,webkitBackgroundClip,webkitBackgroundOrigin,webkitBackgroundSize,webkitBorderAfter,webkitBorderAfterColor,webkitBorderAfterStyle,webkitBorderAfterWidth,webkitBorderBefore,webkitBorderBeforeColor,webkitBorderBeforeStyle,webkitBorderBeforeWidth,webkitBorderBottomLeftRadius,webkitBorderBottomRightRadius,webkitBorderEnd,webkitBorderEndColor,webkitBorderEndStyle,webkitBorderEndWidth,webkitBorderHorizontalSpacing,webkitBorderImage,webkitBorderRadius,webkitBorderStart,webkitBorderStartColor,webkitBorderStartStyle,webkitBorderStartWidth,webkitBorderTopLeftRadius,webkitBorderTopRightRadius,webkitBorderVerticalSpacing,webkitBoxAlign,webkitBoxDecorationBreak,webkitBoxDirection,webkitBoxFlex,webkitBoxOrdinalGroup,webkitBoxOrient,webkitBoxPack,webkitBoxReflect,webkitBoxShadow,webkitBoxSizing,webkitClipPath,webkitColumnBreakAfter,webkitColumnBreakBefore,webkitColumnBreakInside,webkitColumnCount,webkitColumnGap,webkitColumnRule,webkitColumnRuleColor,webkitColumnRuleStyle,webkitColumnRuleWidth,webkitColumnSpan,webkitColumnWidth,webkitColumns,webkitFilter,webkitFlex,webkitFlexBasis,webkitFlexDirection,webkitFlexFlow,webkitFlexGrow,webkitFlexShrink,webkitFlexWrap,webkitFontFeatureSettings,webkitFontSizeDelta,webkitFontSmoothing,webkitHighlight,webkitHyphenateCharacter,webkitJustifyContent,webkitLineBreak,webkitLineClamp,webkitLocale,webkitLogicalHeight,webkitLogicalWidth,webkitMarginAfter,webkitMarginBefore,webkitMarginEnd,webkitMarginStart,webkitMask,webkitMaskBoxImage,webkitMaskBoxImageOutset,webkitMaskBoxImageRepeat,webkitMaskBoxImageSlice,webkitMaskBoxImageSource,webkitMaskBoxImageWidth,webkitMaskClip,webkitMaskComposite,webkitMaskImage,webkitMaskOrigin,webkitMaskPosition,webkitMaskPositionX,webkitMaskPositionY,webkitMaskRepeat,webkitMaskRepeatX,webkitMaskRepeatY,webkitMaskSize,webkitMaxLogicalHeight,webkitMaxLogicalWidth,webkitMinLogicalHeight,webkitMinLogicalWidth,webkitOpacity,webkitOrder,webkitPaddingAfter,webkitPaddingBefore,webkitPaddingEnd,webkitPaddingStart,webkitPerspective,webkitPerspectiveOrigin,webkitPerspectiveOriginX,webkitPerspectiveOriginY,webkitPrintColorAdjust,webkitRtlOrdering,webkitRubyPosition,webkitShapeImageThreshold,webkitShapeMargin,webkitShapeOutside,webkitTapHighlightColor,webkitTextCombine,webkitTextDecorationsInEffect,webkitTextEmphasis,webkitTextEmphasisColor,webkitTextEmphasisPosition,webkitTextEmphasisStyle,webkitTextFillColor,webkitTextOrientation,webkitTextSecurity,webkitTextSizeAdjust,webkitTextStroke,webkitTextStrokeColor,webkitTextStrokeWidth,webkitTransform,webkitTransformOrigin,webkitTransformOriginX,webkitTransformOriginY,webkitTransformOriginZ,webkitTransformStyle,webkitTransition,webkitTransitionDelay,webkitTransitionDuration,webkitTransitionProperty,webkitTransitionTimingFunction,webkitUserDrag,webkitUserModify,webkitUserSelect,webkitWritingMode,whiteSpace,widows,width,willChange,wordBreak,wordSpacing,wordWrap,writingMode,x,y,zIndex,zoom";
+    let styleOptions = styleOptionsStr.split(',');
 
     class InEventBind {
         constructor(opt) {
@@ -286,453 +311,495 @@ var vueHtmlCompiler = (function (Vue, Component) {
                 catch (error) { }
             }
         }
-    }
-
-    class SingleUI {
-        constructor(params) {
-            this.key = params.key || ""; //键
-            this.props = {
-                label: "",
-                required: "",
-                data: [],
-                disabled: false,
-                show: true,
-                placeholder: "",
-                ...params.props,
-            }; //属性列表包含其他属性
-            this.valid = params.valid || []; //验证信息
-            this.type = params.type || ""; // 类型
-            this.value = typeof params.value == "undefined" ? "" : params.value; // 值
-            this.children = params.children || []; //子节点
-            this.rawData = params; //原始数据
-            this.rawComponents = params.rawComponents || [];
-            this.canRender = false;
-        }
-        /**
-         *dataFind
-         * @param {string | number} data
-         * @memberof SingleUI
-         */
-        dataFind(data) {
-            var result = null;
-            (this.props.data || []).forEach((item) => {
-                if (typeof item[data] != "undefined") {
-                    result = item[data];
+        clear() {
+            for (let key of Object.keys(this)) {
+                if (styleOptions.find((item) => item == key)) {
+                    delete this[key];
                 }
-            });
-            return result;
-        }
-        /**
-         *setValue
-         * @param {any} value
-         * @memberof SingleUI
-         */
-        setValue(value) {
-            var oldValue = this.value;
-            this.value = value;
-            if (oldValue != this.value) {
-                this.onChange({
-                    val: this.value,
-                    oldVal: oldValue,
-                });
             }
         }
-        /**
-         *getKey
-         * @returns string
-         * @memberof SingleUI
-         */
-        getKey() {
-            return this.key;
+    }
+
+    class UI {
+        constructor() {
+            this.id = gennerateUUID();
+            this.eventBind = new EventBind();
+            this.style = new Style();
+            this.selfProp = new SelfProp();
+            this.moduleIdList = [];
         }
-        /**
-         *getValue
-         * @returns any
-         * @memberof SingleUI
-         */
-        getValue() {
-            return this.value;
+        setDom(dom) {
+            this.dom = dom;
         }
-        /**
-         *hasChange
-         * @returns boolean
-         * @memberof SingleUI
-         */
-        hasChange() {
-            return !(this.getValue() == "");
+        setId(id) {
+            this.id = id || gennerateUUID();
         }
-        /**
-         *onChange
-         * @param  ({val, oldVal})
-         * @returns ({val, oldVal})
-         * @memberof SingleUI
-         */
-        onChange({ val, oldVal }) {
-            return { val, oldVal };
+        setSelfProp(selfProp) {
+            this.selfProp = selfProp;
         }
-        /**
-         *getValid
-         *
-         * @returns Promise<validPayload>
-         * @memberof SingleUI
-         */
-        getValid() {
-            var result = {
-                success: true,
-                message: "",
-                type: "success",
-            };
-            return new Promise((resolve) => {
-                if (!this.key) {
-                    resolve(result);
-                    return;
-                }
-                if (this.props.required && !this.hasChange()) {
-                    result = {
-                        success: false,
-                        message: this.props.label || "",
-                        type: "requiredEmpty",
-                    };
-                }
-                resolve(result);
-            });
+        filterChildren(instance) {
+            return true;
         }
-        /**
-         *setDisabled
-         * @param  {boolean} flag
-         * @returns boolean
-         * @memberof SingleUI
-         */
-        setDisabled(flag = false) {
-            this.props.disabled = flag;
-            return this.props.disabled;
+        addModuleId(moduleId) {
+            this.moduleIdList.push(moduleId);
         }
-        /**
-         *getKeyValue
-         * @returns SingleUIValuePayload
-         * @memberof SingleUI
-         */
-        getKeyValue() {
+        removeModuleId(moduleId) {
+            this.moduleIdList = this.moduleIdList.filter(item => item != moduleId);
+        }
+    }
+    class SelfProp {
+        constructor() {
+            this.opt = {};
+            this.params = [];
+        }
+        setParam(data = []) {
+            this.params = data;
+        }
+        getStyle() {
             return {
-                key: this.getKey(),
-                value: this.getValue(),
-                children: this.children.map((item) => {
-                    return item.getKeyValue();
-                }),
+                width: 100,
+                height: 100
             };
         }
-        /**
-         *setKeyValue
-         * @param {SingleUIValuePayload} ({ key, value, children })
-         * @memberof SingleUI
-         */
-        setKeyValue({ key, value, children }) {
-            if (this.getKey() != "" && this.getKey() == key) {
-                this.setValue(value);
-                children.forEach((item) => {
-                    var target = this.children.find((target) => item.key == target.getKey());
-                    if (target) {
-                        target.setKeyValue(item);
-                    }
-                });
-            }
+        getRelativeStyle() {
+            return {
+                position: 'relative',
+                top: 'auto',
+                bottom: 'auto',
+                right: 'auto',
+                left: 'auto',
+            };
         }
-        /**
-         *setKeyValue
-         * @returns SingleUI[]
-         * @memberof SingleUI
-         */
-        getAllItems() {
-            return this.children
-                .map((item) => {
-                return item.getAllItems();
-            })
-                .concat(this);
+        getValue() {
+            return this.opt;
         }
-        /**
-         *getCanRender
-         * @returns boolean
-         * @memberof SingleUI
-         */
-        getCanRender() {
-            return this.canRender || this.rawComponents.length == 0;
-        }
-        /**
-         *render
-         *
-         * @memberof SingleUI
-         */
-        render(...res) {
-            return;
+        setValue(value) {
+            this.opt = value || {};
         }
     }
 
-    class UIList {
-        constructor(list = [], options) {
-            this.options = options || { needValidHidden: false };
-            this.needValidHidden = this.options.needValidHidden;
-            this.rawList = list;
-            this.list = [];
-            this.templateList = [];
-            this.componentHasRendered = new DataList();
-            this.classTarget = new.target;
-            this.reset();
+    class ContainerUI extends UI {
+        constructor() {
+            super();
+            this.editable = false;
+            this.insertable = true;
         }
-        /**
-         *reset
-         * @param {SingleUIPayload} list
-         * @memberof UIList
-         */
-        setList(list) {
-            this.rawList = list;
-            this.list = [];
-            this.reset();
+    }
+
+    class ComponentSingleUI extends UI {
+        constructor() {
+            super();
+            this.editable = true;
+            this.insertable = false;
         }
-        /**
-         *reset
-         *
-         * @memberof UIList
-         */
-        reset() {
-            this.list = this.rawList.map((item) => {
-                var target = this.convert(item); // 需要根据类型判断使用的
-                if (target.children) {
-                    target.children = new this.classTarget(target.children, this.options).list;
-                }
+    }
+    class ComponentMultipleUI extends ComponentSingleUI {
+        constructor() {
+            super();
+        }
+    }
+
+    class ModuleInstance {
+        constructor() {
+            this.moduleId = gennerateUUID();
+            this.children = [];
+            this.target = new ContainerUI();
+            this.canDrag = true;
+        }
+        canDragFilter() {
+            return this.canDrag && (this.target.style.position == 'absolute' || this.target.style.position == 'fixed');
+        }
+        setTarget(target) {
+            this.target = target;
+        }
+        combi(target) {
+            var module = new ModuleInstance();
+            module.setTarget(target);
+            this.children.push(module);
+            this.target.addModuleId(module.moduleId);
+            return module;
+        }
+        unCombi(moduleId) {
+            var module = this.findContainUI(this, moduleId);
+            if (module) {
+                module.children = module.children.filter(t => t.moduleId != moduleId);
+                module.target.removeModuleId(moduleId);
+            }
+        }
+        findContainUI(tree, moduleId) {
+            if (tree.children.find(item => item.moduleId == moduleId)) {
+                return tree;
+            }
+            else if (tree.children.length > 0) {
+                var target = null;
+                tree.children.forEach(item => {
+                    target = this.findContainUI(item, moduleId) || target;
+                });
                 return target;
-            }, []);
-        }
-        /**
-         *addTemplate
-         *
-         * @param {templatePayload} template
-         * @memberof UIList
-         */
-        addTemplate({ key, value }) {
-            var rawValue = this.getValue();
-            var target = this.templateList.find((item) => item.key == key);
-            if (target) {
-                target.value = value;
             }
             else {
-                this.templateList.push({
-                    key,
-                    value,
-                });
+                return null;
             }
-            this.reset();
-            this.setValue(rawValue);
+        }
+        move(x, y) {
+            var left = convertPx(this.target.style.left) + x;
+            var top = convertPx(this.target.style.top) + y;
+            this.target.style.setKeyValue('left', setPx(left));
+            this.target.style.setKeyValue('top', setPx(top));
+        }
+        resetRelativeStyle() {
+            var style = this.target.selfProp.getRelativeStyle();
+            for (let [key, value] of Object.entries(style)) {
+                this.target.style[key] = value;
+            }
+        }
+        getValue() {
+            return {
+                moduleId: this.moduleId,
+                canDrag: this.canDrag,
+                target: {
+                    typeId: this.target.typeId,
+                    id: this.target.id,
+                    insertable: this.target.insertable,
+                    editable: this.target.editable,
+                    moduleIdList: this.target.moduleIdList,
+                    eventBind: {
+                        inValue: this.target.eventBind.getInList().map(item => item.opt),
+                        outValue: this.target.eventBind.getOutList().map(item => item.opt)
+                    },
+                    selfProp: {
+                        value: this.target.selfProp.opt
+                    },
+                    style: {
+                        value: this.target.style.getValue()
+                    }
+                },
+                children: this.children.map(item => item.getValue())
+            };
+        }
+        getChildren() {
+            return this.children.filter(item => this.target.filterChildren(item));
+        }
+    }
+
+    class ContainerSelfProp extends SelfProp {
+        constructor() {
+            super();
+        }
+        getStyle() {
+            return {
+                width: "100%",
+                height: "200px",
+                background: '',
+                display: 'block',
+                position: 'relative',
+            };
+        }
+    }
+    class BasicSelfProp extends SelfProp {
+        constructor() {
+            super();
+        }
+        getStyle() {
+            return {
+                width: "100%",
+                height: "70px",
+                background: '',
+                display: 'inline-block'
+            };
+        }
+    }
+    class MergeSelfProp extends SelfProp {
+        constructor() {
+            super();
+        }
+        getStyle() {
+            return {
+                width: "100px",
+                height: "100px",
+                background: '',
+                display: 'inline-block'
+            };
+        }
+    }
+    class CardContainerSelfProp extends ContainerSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                tab: ['选项1']
+            };
+        }
+    }
+    class CardContainerUI extends ContainerUI {
+        constructor() {
+            super();
+            this.activeCard = '';
+        }
+        filterChildren(instance) {
+            return this.moduleIdList.find(item => item.moduleId == instance.moduleId && this.activeCard == item.tab);
+        }
+        addModuleId(moduleId) {
+            this.moduleIdList.push({
+                moduleId,
+                tab: this.activeCard
+            });
+        }
+        removeModuleId(moduleId) {
+            this.moduleIdList = this.moduleIdList.filter(item => item.moduleId != moduleId);
+        }
+    }
+    class ButtonSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                label: '提取数据'
+            };
+        }
+    }
+
+    let container = [{
+            id: '1',
+            name: "基本容器",
+            selfProp: ContainerSelfProp,
+            UI: ContainerUI,
+            params: [{
+                    type: 'input',
+                    key: 'input',
+                    props: { label: 'input' },
+                    value: ''
+                }, {
+                    type: 'array',
+                    key: 'array',
+                    props: { label: 'array' },
+                    value: []
+                }, {
+                    type: 'object',
+                    key: 'object',
+                    props: { label: 'object' },
+                    value: {}
+                }, {
+                    type: 'number',
+                    key: 'number',
+                    props: { label: 'number' },
+                    value: 0
+                }, {
+                    type: 'select',
+                    key: 'select',
+                    props: { label: 'select' },
+                    value: ''
+                }, {
+                    type: 'mulSelect',
+                    key: 'mulSelect',
+                    props: { label: 'mulSelect' },
+                    value: []
+                },]
+        }, {
+            name: "选项卡",
+            id: '2',
+            selfProp: CardContainerSelfProp,
+            UI: CardContainerUI,
+            params: [{
+                    type: 'array',
+                    key: 'tab',
+                    props: { label: '选项卡' },
+                }]
+        }, {
+            name: "弹窗",
+            id: '4',
+            selfProp: ContainerSelfProp,
+            UI: ContainerUI
+        }];
+    let basic = [{
+            name: "按钮",
+            id: '5',
+            selfProp: ButtonSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'input',
+                    key: 'label',
+                    props: { label: '描述' },
+                }]
+        }, {
+            name: "输入框",
+            id: '6',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "日期选择",
+            id: '7',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "时间选择",
+            id: '8',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "下拉选择",
+            id: '9',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "多选框",
+            id: '10',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "多选框组",
+            id: '11',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "单选框组",
+            id: '12',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "下拉框",
+            id: '13',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }, {
+            name: "时间选择框",
+            id: '14',
+            selfProp: BasicSelfProp,
+            UI: ComponentSingleUI
+        }];
+    let merge = [{
+            name: "柱状折现图",
+            id: '15',
+            selfProp: MergeSelfProp,
+            UI: ComponentMultipleUI
+        }, {
+            name: "饼图",
+            id: '16',
+            selfProp: MergeSelfProp,
+            UI: ComponentMultipleUI
+        }, {
+            name: "表格",
+            id: '17',
+            selfProp: MergeSelfProp,
+            UI: ComponentMultipleUI
+        }, {
+            name: "嵌入式页面",
+            id: '18',
+            selfProp: MergeSelfProp,
+            UI: ComponentMultipleUI
+        }, {
+            name: "缩放工具页面",
+            id: '19',
+            selfProp: MergeSelfProp,
+            UI: ComponentMultipleUI
+        }];
+
+    let containerModules = new ModuleInstance();
+    containerModules.canDrag = false;
+    containerModules.target.style.width = "100%";
+    containerModules.target.style.height = "100%";
+    containerModules.target.style.overflow = 'auto';
+
+    class LocalStorage extends Storage {
+        constructor() {
+            super();
+            this.storage = localStorage;
         }
         /**
-         *removeTemplate
+         *get
          *
          * @param {string} key
-         * @memberof UIList
+         * @memberof Storage
          */
-        removeTemplate(key) {
-            var rawValue = this.getValue();
-            this.templateList = this.templateList.filter((item) => item.key !== key);
-            this.reset();
-            this.setValue(rawValue);
-        }
-        /**
-         *clearTemplate
-         *
-         * @memberof UIList
-         */
-        clearTemplate() {
-            var rawValue = this.getValue();
-            this.templateList = [];
-            this.reset();
-            this.setValue(rawValue);
-        }
-        /**
-         *getTemplate
-         * @returns templatePayload[]
-         * @memberof UIList
-         */
-        getTemplate() {
-            return this.templateList;
-        }
-        /**
-         *convert
-         * @private
-         * @param {SingleUIPayload} item
-         * @memberof UIList
-         */
-        convert(item) {
-            var target = this.templateList.find((i) => i.key == item.type);
-            if (target && target.value) {
-                return new target.value(item);
+        get(key) {
+            let value = this.storage.getItem(key);
+            if (value) {
+                value = decodeURIComponent(value);
             }
-            else {
-                return this.convertSinlgeUI(item);
+            try {
+                value = JSON.parse(value);
             }
-        }
-        convertSinlgeUI(item) {
-            return new SingleUI(item);
+            catch (e) { }
+            if (value == 'undefined') {
+                value = undefined;
+            }
+            return value;
         }
         /**
-         *getValid
+         *set
          *
-         * @returns Promise<validPayload>
-         * @memberof UIList
+         * @param {string} key
+         * @param {any} value
+         * @memberof Storage
          */
-        getValid() {
-            // 子节点查询
-            var valid = this.getAllItems()
-                .filter((item) => this.needValidHidden || item.props.show != false)
-                .map((item) => item.getValid(), []);
-            return new Promise((resolve) => {
-                Promise.all(valid).then((res) => {
-                    var fails = res.filter((target) => !target.success);
-                    resolve({
-                        success: fails.length == 0,
-                        message: fails.length > 0 ? fails[0].message : "",
-                        type: fails.length > 0 ? fails[0].type : "success",
-                    });
-                });
-            });
+        set(key, value) {
+            if (typeof value == "object") {
+                value = JSON.stringify(value);
+            }
+            try {
+                value = encodeURIComponent(value);
+            }
+            catch (e) { }
+            this.storage.setItem(key, value);
         }
         /**
-         *setValue
-         * @param {SingleUIValuePayload} data
-         * @memberof UIList
+         *remove
+         *
+         * @param {string} key
+         * @memberof Storage
          */
-        setValue(data) {
-            // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
-            data.forEach((item) => {
-                var target = this.list.find((target) => item.key == target.getKey());
-                if (target) {
-                    target.setKeyValue(item);
-                }
-            });
+        remove(key) {
+            this.storage.setItem(key, undefined);
         }
         /**
-         *getValue
-         * @returns SingleUIValuePayload[]
-         * @memberof UIList
+         *clear
+         *
+         * @memberof Storage
          */
-        getValue() {
-            // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
-            return this.list.map((item) => {
-                return item.getKeyValue();
-            });
-        }
-        /**
-         *getAllItems
-         * @returns SingleUI[]
-         * @memberof UIList
-         */
-        getAllItems() {
-            return this.list.reduce((total, item) => {
-                total = total.concat(item);
-                return total;
-            }, []);
-        }
-        /**
-         *loadComponents
-         * @returns Promise
-         * @memberof UIList
-         */
-        loadComponents() {
-            return new Promise(resolve => {
-                var needRender = this.getNeedRender();
-                Promise.all(needRender.map(key => {
-                    return this.handleComponentKey(key);
-                })).then(() => {
-                    resolve();
-                });
-            });
-        }
-        /**
-         *getNeedRender
-         * @returns string[]
-         * @memberof UIList
-         */
-        getNeedRender() {
-            return Array.from(new Set(this.getAllItems().reduce((total, item) => {
-                total = total.concat(item.getCanRender() ? [] : item.rawComponents);
-                return total;
-            }, [])));
-        }
-        /**
-         *render
-         * @returns Promise
-         * @memberof UIList
-         */
-        load() {
-            return this.loadComponents().then(() => {
-                var keys = this.componentHasRendered.get('key').map(item => item.data);
-                this.getAllItems().forEach((item) => {
-                    if (item.canRender === false) {
-                        item.canRender = item.rawComponents.map((target) => {
-                            return keys.includes(target);
-                        }).reduce((total, current) => total && current, true);
-                    }
-                });
-            });
-        }
-        render() {
-            return this.getAllItems().map((item) => item.render());
-        }
-        /**
-         *handleComponentKey
-         * @param {any} key
-         * @returns Promise
-         * @memberof UIList
-         */
-        handleComponentKey(key) {
-            return new Promise(resolve => {
-                this.componentHasRendered.add({
-                    name: 'key',
-                    data: key
-                });
-                resolve();
-            });
+        clear() {
+            this.storage.clear();
         }
     }
+    let storage = new LocalStorage();
 
-    class VueUI extends SingleUI {
-        constructor(params) {
-            super(params);
-        }
-        render(render) {
-            if (!this.getCanRender()) {
-                return render.createElement();
-            }
-            else {
-                return this.renderInstance(render);
-            }
-        }
-        renderInstance(render) {
-            return render.createElement('div', // 标签名称
-            {
-                ...render.context,
-                attrs: this
-            }, []);
-        }
-    }
-    class VueUIList extends UIList {
-        constructor(list = [], options) {
-            super(list, options);
-        }
-        convertSinlgeUI(item) {
-            return new VueUI(item);
-        }
-        handleComponentKey(key) {
-            return new Promise(resolve => {
-                this.componentHasRendered.add({
-                    name: 'key',
-                    data: key
-                });
-                resolve();
-            });
-        }
-        getRenderList(render) {
-            return this.getAllItems().map(item => item.render(render));
-        }
-    }
+    let restoreInstance = (instance, res) => {
+        instance.moduleId = res.moduleId;
+        instance.canDrag = res.canDrag;
+        let tc = basic.concat(container, merge).find(item => item.id == res.target.typeId);
+        let TargetConstructor = tc ? tc : {
+            name: "外层",
+            selfProp: SelfProp,
+            UI: ContainerUI,
+            params: []
+        };
+        instance.target = new TargetConstructor.UI();
+        instance.target.editable = res.target.editable;
+        instance.target.id = res.target.id;
+        instance.target.typeId = res.target.typeId;
+        instance.target.insertable = res.target.insertable;
+        instance.target.moduleIdList = res.target.moduleIdList;
+        (res.target.eventBind.inValue || []).forEach((item) => {
+            var event = instance.target.eventBind.addIn();
+            event.setValue(item);
+        });
+        (res.target.eventBind.outValue || []).forEach((item) => {
+            var event = instance.target.eventBind.addOut();
+            event.setValue(item);
+        });
+        instance.target.eventBind.save();
+        instance.target.selfProp = new TargetConstructor.selfProp();
+        instance.target.selfProp.setParam(TargetConstructor.params || []);
+        instance.target.selfProp.setValue(res.target.selfProp.value);
+        instance.target.style.setValue(res.target.style.value);
+        // container.target = new ContainerUI()
+        instance.children = res.children.map((item) => {
+            var module = restoreInstance(new ModuleInstance(), item);
+            return module;
+        });
+        return instance;
+    };
+
+    let compilerInstance = new ModuleInstance();
+    var res = storage.get('saveedit');
+    restoreInstance(compilerInstance, res);
 
     function unwrapExports (x) {
     	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -2368,7 +2435,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     };
     });
 
-    var merge = createCommonjsModule(function (module, exports) {
+    var merge$1 = createCommonjsModule(function (module, exports) {
 
     exports.__esModule = true;
 
@@ -2646,7 +2713,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
 
 
 
-    var _merge2 = _interopRequireDefault(merge);
+    var _merge2 = _interopRequireDefault(merge$1);
 
 
 
@@ -5376,7 +5443,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     /***/ 9:
     /***/ (function(module, exports) {
 
-    module.exports = merge;
+    module.exports = merge$1;
 
     /***/ })
 
@@ -18398,7 +18465,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     /***/ 9:
     /***/ (function(module, exports) {
 
-    module.exports = merge;
+    module.exports = merge$1;
 
     /***/ })
 
@@ -19144,7 +19211,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     /* 7 */
     /***/ (function(module, exports) {
 
-    module.exports = merge;
+    module.exports = merge$1;
 
     /***/ }),
     /* 8 */
@@ -60295,6 +60362,452 @@ var vueHtmlCompiler = (function (Vue, Component) {
 
     var ElementUI = /*@__PURE__*/unwrapExports(elementUi_common);
 
+    class SingleUI {
+        constructor(params) {
+            this.key = params.key || ""; //键
+            this.props = {
+                label: "",
+                required: "",
+                data: [],
+                disabled: false,
+                show: true,
+                placeholder: "",
+                ...params.props,
+            }; //属性列表包含其他属性
+            this.valid = params.valid || []; //验证信息
+            this.type = params.type || ""; // 类型
+            this.value = typeof params.value == "undefined" ? "" : params.value; // 值
+            this.children = params.children || []; //子节点
+            this.rawData = params; //原始数据
+            this.rawComponents = params.rawComponents || [];
+            this.canRender = false;
+        }
+        /**
+         *dataFind
+         * @param {string | number} data
+         * @memberof SingleUI
+         */
+        dataFind(data) {
+            var result = null;
+            (this.props.data || []).forEach((item) => {
+                if (typeof item[data] != "undefined") {
+                    result = item[data];
+                }
+            });
+            return result;
+        }
+        /**
+         *setValue
+         * @param {any} value
+         * @memberof SingleUI
+         */
+        setValue(value) {
+            var oldValue = this.value;
+            this.value = value;
+            if (oldValue != this.value) {
+                this.onChange({
+                    val: this.value,
+                    oldVal: oldValue,
+                });
+            }
+        }
+        /**
+         *getKey
+         * @returns string
+         * @memberof SingleUI
+         */
+        getKey() {
+            return this.key;
+        }
+        /**
+         *getValue
+         * @returns any
+         * @memberof SingleUI
+         */
+        getValue() {
+            return this.value;
+        }
+        /**
+         *hasChange
+         * @returns boolean
+         * @memberof SingleUI
+         */
+        hasChange() {
+            return !(this.getValue() == "");
+        }
+        /**
+         *onChange
+         * @param  ({val, oldVal})
+         * @returns ({val, oldVal})
+         * @memberof SingleUI
+         */
+        onChange({ val, oldVal }) {
+            return { val, oldVal };
+        }
+        /**
+         *getValid
+         *
+         * @returns Promise<validPayload>
+         * @memberof SingleUI
+         */
+        getValid() {
+            var result = {
+                success: true,
+                message: "",
+                type: "success",
+            };
+            return new Promise((resolve) => {
+                if (!this.key) {
+                    resolve(result);
+                    return;
+                }
+                if (this.props.required && !this.hasChange()) {
+                    result = {
+                        success: false,
+                        message: this.props.label || "",
+                        type: "requiredEmpty",
+                    };
+                }
+                resolve(result);
+            });
+        }
+        /**
+         *setDisabled
+         * @param  {boolean} flag
+         * @returns boolean
+         * @memberof SingleUI
+         */
+        setDisabled(flag = false) {
+            this.props.disabled = flag;
+            return this.props.disabled;
+        }
+        /**
+         *getKeyValue
+         * @returns SingleUIValuePayload
+         * @memberof SingleUI
+         */
+        getKeyValue() {
+            return {
+                key: this.getKey(),
+                value: this.getValue(),
+                children: this.children.map((item) => {
+                    return item.getKeyValue();
+                }),
+            };
+        }
+        /**
+         *setKeyValue
+         * @param {SingleUIValuePayload} ({ key, value, children })
+         * @memberof SingleUI
+         */
+        setKeyValue({ key, value, children }) {
+            if (this.getKey() != "" && this.getKey() == key) {
+                this.setValue(value);
+                children.forEach((item) => {
+                    var target = this.children.find((target) => item.key == target.getKey());
+                    if (target) {
+                        target.setKeyValue(item);
+                    }
+                });
+            }
+        }
+        /**
+         *setKeyValue
+         * @returns SingleUI[]
+         * @memberof SingleUI
+         */
+        getAllItems() {
+            return this.children
+                .map((item) => {
+                return item.getAllItems();
+            })
+                .concat(this);
+        }
+        /**
+         *getCanRender
+         * @returns boolean
+         * @memberof SingleUI
+         */
+        getCanRender() {
+            return this.canRender || this.rawComponents.length == 0;
+        }
+        /**
+         *render
+         *
+         * @memberof SingleUI
+         */
+        render(...res) {
+            return;
+        }
+    }
+
+    class UIList {
+        constructor(list = [], options) {
+            this.options = options || { needValidHidden: false };
+            this.needValidHidden = this.options.needValidHidden;
+            this.rawList = list;
+            this.list = [];
+            this.templateList = [];
+            this.componentHasRendered = new DataList();
+            this.classTarget = new.target;
+            this.reset();
+        }
+        /**
+         *reset
+         * @param {SingleUIPayload} list
+         * @memberof UIList
+         */
+        setList(list) {
+            this.rawList = list;
+            this.list = [];
+            this.reset();
+        }
+        /**
+         *reset
+         *
+         * @memberof UIList
+         */
+        reset() {
+            this.list = this.rawList.map((item) => {
+                var target = this.convert(item); // 需要根据类型判断使用的
+                if (target.children) {
+                    target.children = new this.classTarget(target.children, this.options).list;
+                }
+                return target;
+            }, []);
+        }
+        /**
+         *addTemplate
+         *
+         * @param {templatePayload} template
+         * @memberof UIList
+         */
+        addTemplate({ key, value }) {
+            var rawValue = this.getValue();
+            var target = this.templateList.find((item) => item.key == key);
+            if (target) {
+                target.value = value;
+            }
+            else {
+                this.templateList.push({
+                    key,
+                    value,
+                });
+            }
+            this.reset();
+            this.setValue(rawValue);
+        }
+        /**
+         *removeTemplate
+         *
+         * @param {string} key
+         * @memberof UIList
+         */
+        removeTemplate(key) {
+            var rawValue = this.getValue();
+            this.templateList = this.templateList.filter((item) => item.key !== key);
+            this.reset();
+            this.setValue(rawValue);
+        }
+        /**
+         *clearTemplate
+         *
+         * @memberof UIList
+         */
+        clearTemplate() {
+            var rawValue = this.getValue();
+            this.templateList = [];
+            this.reset();
+            this.setValue(rawValue);
+        }
+        /**
+         *getTemplate
+         * @returns templatePayload[]
+         * @memberof UIList
+         */
+        getTemplate() {
+            return this.templateList;
+        }
+        /**
+         *convert
+         * @private
+         * @param {SingleUIPayload} item
+         * @memberof UIList
+         */
+        convert(item) {
+            var target = this.templateList.find((i) => i.key == item.type);
+            if (target && target.value) {
+                return new target.value(item);
+            }
+            else {
+                return this.convertSinlgeUI(item);
+            }
+        }
+        convertSinlgeUI(item) {
+            return new SingleUI(item);
+        }
+        /**
+         *getValid
+         *
+         * @returns Promise<validPayload>
+         * @memberof UIList
+         */
+        getValid() {
+            // 子节点查询
+            var valid = this.getAllItems()
+                .filter((item) => this.needValidHidden || item.props.show != false)
+                .map((item) => item.getValid(), []);
+            return new Promise((resolve) => {
+                Promise.all(valid).then((res) => {
+                    var fails = res.filter((target) => !target.success);
+                    resolve({
+                        success: fails.length == 0,
+                        message: fails.length > 0 ? fails[0].message : "",
+                        type: fails.length > 0 ? fails[0].type : "success",
+                    });
+                });
+            });
+        }
+        /**
+         *setValue
+         * @param {SingleUIValuePayload} data
+         * @memberof UIList
+         */
+        setValue(data) {
+            // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
+            data.forEach((item) => {
+                var target = this.list.find((target) => item.key == target.getKey());
+                if (target) {
+                    target.setKeyValue(item);
+                }
+            });
+        }
+        /**
+         *getValue
+         * @returns SingleUIValuePayload[]
+         * @memberof UIList
+         */
+        getValue() {
+            // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
+            return this.list.map((item) => {
+                return item.getKeyValue();
+            });
+        }
+        /**
+         *getAllItems
+         * @returns SingleUI[]
+         * @memberof UIList
+         */
+        getAllItems() {
+            return this.list.reduce((total, item) => {
+                total = total.concat(item);
+                return total;
+            }, []);
+        }
+        /**
+         *loadComponents
+         * @returns Promise
+         * @memberof UIList
+         */
+        loadComponents() {
+            return new Promise(resolve => {
+                var needRender = this.getNeedRender();
+                Promise.all(needRender.map(key => {
+                    return this.handleComponentKey(key);
+                })).then(() => {
+                    resolve();
+                });
+            });
+        }
+        /**
+         *getNeedRender
+         * @returns string[]
+         * @memberof UIList
+         */
+        getNeedRender() {
+            return Array.from(new Set(this.getAllItems().reduce((total, item) => {
+                total = total.concat(item.getCanRender() ? [] : item.rawComponents);
+                return total;
+            }, [])));
+        }
+        /**
+         *render
+         * @returns Promise
+         * @memberof UIList
+         */
+        load() {
+            return this.loadComponents().then(() => {
+                var keys = this.componentHasRendered.get('key').map(item => item.data);
+                this.getAllItems().forEach((item) => {
+                    if (item.canRender === false) {
+                        item.canRender = item.rawComponents.map((target) => {
+                            return keys.includes(target);
+                        }).reduce((total, current) => total && current, true);
+                    }
+                });
+            });
+        }
+        render() {
+            return this.getAllItems().map((item) => item.render());
+        }
+        /**
+         *handleComponentKey
+         * @param {any} key
+         * @returns Promise
+         * @memberof UIList
+         */
+        handleComponentKey(key) {
+            return new Promise(resolve => {
+                this.componentHasRendered.add({
+                    name: 'key',
+                    data: key
+                });
+                resolve();
+            });
+        }
+    }
+
+    class VueUI extends SingleUI {
+        constructor(params) {
+            super(params);
+        }
+        render(render) {
+            if (!this.getCanRender()) {
+                return render.createElement();
+            }
+            else {
+                return this.renderInstance(render);
+            }
+        }
+        renderInstance(render) {
+            return render.createElement('div', // 标签名称
+            {
+                ...render.context,
+                attrs: this
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class VueUIList extends UIList {
+        constructor(list = [], options) {
+            super(list, options);
+        }
+        convertSinlgeUI(item) {
+            return new VueUI(item);
+        }
+        handleComponentKey(key) {
+            return new Promise(resolve => {
+                this.componentHasRendered.add({
+                    name: 'key',
+                    data: key
+                });
+                resolve();
+            });
+        }
+        getRenderList(render) {
+            return this.getAllItems().map(item => item.render(render));
+        }
+    }
+
     let InputVueUI = class InputVueUI extends Vue {
     };
     __decorate([
@@ -61226,9 +61739,15 @@ var vueHtmlCompiler = (function (Vue, Component) {
             return this.value.map((item) => item.value);
         }
         setValue(val) {
-            this.value = val.map((item) => {
+            this.value = (val || []).map((item) => {
                 return { value: item };
             });
+            if (!Array.isArray(this.value)) {
+                this.value = [];
+            }
+            if (this.value.length == 0) {
+                this.addCol();
+            }
         }
         renderInstance(render) {
             return render.createElement(__vue_component__$1, {
@@ -61261,7 +61780,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             }, {});
         }
         setValue(val) {
-            this.value = val;
+            this.value = val || {};
             this.props.objectArray = [];
             for (let [key, value] of Object.entries(this.value)) {
                 this.props.objectArray.push({
@@ -61339,511 +61858,18 @@ var vueHtmlCompiler = (function (Vue, Component) {
         }
     }
 
-    class GeneratePiece {
-        constructor() {
-            this.uiList = new VueUIList();
-            this.uiList.addTemplate({
-                key: '',
-                value: VueUI,
-            });
-            this.uiList.addTemplate({
-                key: 'input',
-                value: InputVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'array',
-                value: ArrayVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'object',
-                value: ObjectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'mulSelect',
-                value: MulSelectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'select',
-                value: SelectVueUI$1,
-            });
-            this.uiList.addTemplate({
-                key: 'number',
-                value: NumberVueUI$1,
-            });
-        }
-        add({ key, value }) {
-            if (!this.uiList.getTemplate().find(item => item.key == key)) {
-                this.uiList.addTemplate({
-                    key: key,
-                    value: value,
-                });
-            }
-        }
-        remove(name) {
-            this.uiList.removeTemplate(name);
-        }
-        generate(list) {
-            this.uiList.setList(list);
-            return this.uiList.list;
-        }
-        render(render) {
-            return this.uiList.getRenderList(render);
-        }
-        getValue() {
-            return this.uiList.getValue();
-        }
-    }
-
-    class UI {
-        constructor() {
-            this.id = gennerateUUID();
-            this.eventBind = new EventBind();
-            this.style = new Style();
-            this.selfProp = new SelfProp();
-        }
-        setDom(dom) {
-            this.dom = dom;
-        }
-        setId(id) {
-            this.id = id || gennerateUUID();
-        }
-        setSelfProp(selfProp) {
-            this.selfProp = selfProp;
-        }
-        filterChildren(target) {
-            return true;
-        }
-    }
-    class SelfProp {
-        constructor() {
-            this.value = [];
-            this.params = [];
-            this.generatePiece = new GeneratePiece();
-        }
-        setParam(data = []) {
-            this.params = this.generatePiece.generate(data);
-        }
-        renderParam(render) {
-            return this.generatePiece.render(render);
-        }
-        getStyle() {
-            return {
-                width: 100,
-                height: 100
-            };
-        }
-        getRelativeStyle() {
-            return {
-                position: 'relative',
-                top: 'auto',
-                bottom: 'auto',
-                right: 'auto',
-                left: 'auto',
-            };
-        }
-        getValue() {
-            return this.generatePiece.uiList.getValue();
-        }
-        setValue(val) {
-            this.generatePiece.uiList.setValue(val);
-        }
-        save() {
-            this.value = this.getValue();
-        }
-    }
-
-    class ContainerUI extends UI {
-        constructor() {
-            super();
-            this.editable = false;
-            this.insertable = true;
-        }
-    }
-
-    class ComponentSingleUI extends UI {
-        constructor() {
-            super();
-            this.editable = true;
-            this.insertable = false;
-        }
-    }
-    class ComponentMultipleUI extends ComponentSingleUI {
-        constructor() {
-            super();
-        }
-    }
-
-    class ModuleInstance {
-        constructor() {
-            this.moduleId = gennerateUUID();
-            this.children = [];
-            this.target = new ContainerUI();
-            this.canDrag = true;
-        }
-        canDragFilter() {
-            return this.canDrag && (this.target.style.position == 'absolute' || this.target.style.position == 'fixed');
-        }
-        setTarget(target) {
-            this.target = target;
-        }
-        combi(target) {
-            var module = new ModuleInstance();
-            module.setTarget(target);
-            this.children.push(module);
-            return module;
-        }
-        unCombi(moduleId) {
-            var target = this.findContainUI(this, moduleId);
-            if (target) {
-                target.children = target.children.filter(t => t.moduleId != moduleId);
-            }
-        }
-        findContainUI(tree, moduleId) {
-            if (tree.children.find(item => item.moduleId == moduleId)) {
-                return tree;
-            }
-            else if (tree.children.length > 0) {
-                var target = null;
-                tree.children.forEach(item => {
-                    target = this.findContainUI(item, moduleId) || target;
-                });
-                return target;
-            }
-            else {
-                return null;
-            }
-        }
-        move(x, y) {
-            var left = convertPx(this.target.style.left) + x;
-            var top = convertPx(this.target.style.top) + y;
-            this.target.style.setKeyValue('left', setPx(left));
-            this.target.style.setKeyValue('top', setPx(top));
-        }
-        resetRelativeStyle() {
-            var style = this.target.selfProp.getRelativeStyle();
-            for (let [key, value] of Object.entries(style)) {
-                this.target.style[key] = value;
-            }
-        }
-        getValue() {
-            return {
-                moduleId: this.moduleId,
-                canDrag: this.canDrag,
-                target: {
-                    typeId: this.target.typeId,
-                    id: this.target.id,
-                    insertable: this.target.insertable,
-                    editable: this.target.editable,
-                    eventBind: {
-                        inValue: this.target.eventBind.getInList().map(item => item.opt),
-                        outValue: this.target.eventBind.getOutList().map(item => item.opt)
-                    },
-                    selfProp: {
-                        value: this.target.selfProp.value
-                    },
-                    style: {
-                        value: this.target.style.getValue()
-                    }
-                },
-                children: this.children.map(item => item.getValue())
-            };
-        }
-        getChildren() {
-            return this.children.filter(item => this.target.filterChildren(item.target));
-        }
-    }
-
-    class CardContainerUI extends ContainerUI {
-        constructor() {
-            super();
-        }
-    }
-
-    class ContainerSelfProp extends SelfProp {
-        constructor() {
-            super();
-        }
-        getStyle() {
-            return {
-                width: "100%",
-                height: "200px",
-                background: '',
-                display: 'block',
-                position: 'relative',
-            };
-        }
-    }
-    class BasicSelfProp extends SelfProp {
-        constructor() {
-            super();
-        }
-        getStyle() {
-            return {
-                width: "20%",
-                height: "100px",
-                background: '',
-                display: 'inline-block'
-            };
-        }
-    }
-    class MergeSelfProp extends SelfProp {
-        constructor() {
-            super();
-        }
-        getStyle() {
-            return {
-                width: "100px",
-                height: "100px",
-                background: '',
-                display: 'inline-block'
-            };
-        }
-    }
-    let container = [{
-            id: '1',
-            name: "基本容器",
-            selfProp: ContainerSelfProp,
-            UI: ContainerUI,
-            params: [{
-                    type: 'input',
-                    key: 'input',
-                    props: { label: 'input' }
-                }, {
-                    type: 'array',
-                    key: 'array',
-                    props: { label: 'array' }
-                }, {
-                    type: 'object',
-                    key: 'object',
-                    props: { label: 'object' }
-                }, {
-                    type: 'number',
-                    key: 'number',
-                    props: { label: 'number' }
-                }, {
-                    type: 'select',
-                    key: 'select',
-                    props: { label: 'select' }
-                }, {
-                    type: 'mulSelect',
-                    key: 'mulSelect',
-                    props: { label: 'mulSelect' }
-                },]
-        }, {
-            name: "选项卡",
-            id: '2',
-            selfProp: ContainerSelfProp,
-            UI: CardContainerUI,
-            params: [{
-                    type: 'object',
-                    key: 'tab',
-                    props: { label: '选项卡' }
-                }]
-        }, {
-            name: "弹窗",
-            id: '4',
-            selfProp: ContainerSelfProp,
-            UI: ContainerUI
-        }];
-    let basic = [{
-            name: "按钮",
-            id: '5',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "输入框",
-            id: '6',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "日期选择",
-            id: '7',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "时间选择",
-            id: '8',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "下拉选择",
-            id: '9',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "多选框",
-            id: '10',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "多选框组",
-            id: '11',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "单选框组",
-            id: '12',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "下拉框",
-            id: '13',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "时间选择框",
-            id: '14',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }];
-    let merge$1 = [{
-            name: "柱状折现图",
-            id: '15',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }, {
-            name: "饼图",
-            id: '16',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }, {
-            name: "表格",
-            id: '17',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }, {
-            name: "嵌入式页面",
-            id: '18',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }, {
-            name: "缩放工具页面",
-            id: '19',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }];
-
-    let containerModules = new ModuleInstance();
-    containerModules.canDrag = false;
-    containerModules.target.style.width = "100%";
-    containerModules.target.style.height = "100%";
-    containerModules.target.style.overflow = 'auto';
-
-    class LocalStorage extends Storage {
-        constructor() {
-            super();
-            this.storage = localStorage;
-        }
-        /**
-         *get
-         *
-         * @param {string} key
-         * @memberof Storage
-         */
-        get(key) {
-            let value = this.storage.getItem(key);
-            if (value) {
-                value = decodeURIComponent(value);
-            }
-            try {
-                value = JSON.parse(value);
-            }
-            catch (e) { }
-            if (value == 'undefined') {
-                value = undefined;
-            }
-            return value;
-        }
-        /**
-         *set
-         *
-         * @param {string} key
-         * @param {any} value
-         * @memberof Storage
-         */
-        set(key, value) {
-            if (typeof value == "object") {
-                value = JSON.stringify(value);
-            }
-            try {
-                value = encodeURIComponent(value);
-            }
-            catch (e) { }
-            this.storage.setItem(key, value);
-        }
-        /**
-         *remove
-         *
-         * @param {string} key
-         * @memberof Storage
-         */
-        remove(key) {
-            this.storage.setItem(key, undefined);
-        }
-        /**
-         *clear
-         *
-         * @memberof Storage
-         */
-        clear() {
-            this.storage.clear();
-        }
-    }
-    let storage = new LocalStorage();
-
-    let restoreInstance = (instance, res) => {
-        instance.moduleId = res.moduleId;
-        instance.canDrag = res.canDrag;
-        let tc = basic.concat(container, merge$1).find(item => item.id == res.target.typeId);
-        let TargetConstructor = tc ? tc : {
-            name: "外层",
-            selfProp: SelfProp,
-            UI: ContainerUI,
-            params: []
-        };
-        instance.target = new TargetConstructor.UI();
-        instance.target.editable = res.target.editable;
-        instance.target.id = res.target.id;
-        instance.target.typeId = res.target.typeId;
-        instance.target.insertable = res.target.insertable;
-        (res.target.eventBind.inValue || []).forEach((item) => {
-            var event = instance.target.eventBind.addIn();
-            event.setValue(item);
-        });
-        (res.target.eventBind.outValue || []).forEach((item) => {
-            var event = instance.target.eventBind.addOut();
-            event.setValue(item);
-        });
-        instance.target.eventBind.save();
-        instance.target.selfProp = new TargetConstructor.selfProp();
-        instance.target.selfProp.setParam(TargetConstructor.params || []);
-        instance.target.selfProp.setValue(res.target.selfProp.value);
-        instance.target.style.setValue(res.target.style.value);
-        // container.target = new ContainerUI()
-        instance.children = res.children.map((item) => {
-            return restoreInstance(new ModuleInstance(), item);
-        });
-        return instance;
-    };
-
-    let compilerInstance = new ModuleInstance();
-    var res = storage.get('saveedit');
-    restoreInstance(compilerInstance, res);
-
-    Vue.use(ElementUI);
-
-    let Module = class Module extends Vue {
+    let ContainerVueUIComponent = class ContainerVueUIComponent extends Vue {
         mounted() {
-            this.instance.target.setDom(this.$refs.target);
+            console.log(this.target.ui);
         }
     };
     __decorate([
         Prop()
-    ], Module.prototype, "instance", void 0);
-    Module = __decorate([
+    ], ContainerVueUIComponent.prototype, "target", void 0);
+    ContainerVueUIComponent = __decorate([
         Component__default
-    ], Module);
-    var script$6 = Module;
+    ], ContainerVueUIComponent);
+    var script$6 = ContainerVueUIComponent;
 
     /* script */
     const __vue_script__$6 = script$6;
@@ -61853,12 +61879,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
-      return _c(
-        "div",
-        { ref: "target", staticClass: "module" },
-        [_vm._t("default")],
-        2
-      )
+      return _c("div", { staticClass: "ContainerVue" }, [_vm._t("default")], 2)
     };
     var __vue_staticRenderFns__$6 = [];
     __vue_render__$6._withStripped = true;
@@ -61892,22 +61913,127 @@ var vueHtmlCompiler = (function (Vue, Component) {
         undefined
       );
 
-    let CoverEl = class CoverEl extends Vue {
-        get style() {
-            let val = {};
-            for (let [key, value] of Object.entries(this.instance.target.style)) {
-                val[key] = value;
-            }
-            return val;
+    let CardContainerVueUIComponent = class CardContainerVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.tabs = [];
+            this.activeTab = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetTabs();
+        }
+        resetTabs(val = this.target.ui.selfProp.opt) {
+            this.tabs = (val.tab).map((item, index) => {
+                return {
+                    key: index.toString(),
+                    value: item.toString()
+                };
+            });
+            this.target.ui.activeCard = this.target.ui.activeCard || this.tabs[0].key || '';
+        }
+        watchTab(val) {
+            this.resetTabs(val);
         }
     };
     __decorate([
         Prop()
-    ], CoverEl.prototype, "instance", void 0);
-    CoverEl = __decorate([
-        Component__default({ components: { Module: __vue_component__$6 } })
-    ], CoverEl);
-    var script$7 = CoverEl;
+    ], CardContainerVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], CardContainerVueUIComponent.prototype, "watchTab", null);
+    CardContainerVueUIComponent = __decorate([
+        Component__default
+    ], CardContainerVueUIComponent);
+    var script$7 = CardContainerVueUIComponent;
+
+    /* script */
+    const __vue_script__$7 = script$7;
+
+    /* template */
+    var __vue_render__$7 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "CardContainerVue" },
+        [
+          _c(
+            "el-tabs",
+            {
+              model: {
+                value: _vm.target.ui.activeCard,
+                callback: function($$v) {
+                  _vm.$set(_vm.target.ui, "activeCard", $$v);
+                },
+                expression: "target.ui.activeCard"
+              }
+            },
+            _vm._l(_vm.tabs, function(tab, index) {
+              return _c(
+                "el-tab-pane",
+                { key: index, attrs: { label: tab.value, name: tab.key } },
+                [_vm._t("default")],
+                2
+              )
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$7 = [];
+    __vue_render__$7._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$7 = undefined;
+      /* scoped */
+      const __vue_scope_id__$7 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$7 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$7 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
+        __vue_inject_styles__$7,
+        __vue_script__$7,
+        __vue_scope_id__$7,
+        __vue_is_functional_template__$7,
+        __vue_module_identifier__$7,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let DialogContainerVueUIComponent = class DialogContainerVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.visible = false;
+            this.title = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+        }
+    };
+    __decorate([
+        Prop()
+    ], DialogContainerVueUIComponent.prototype, "target", void 0);
+    DialogContainerVueUIComponent = __decorate([
+        Component__default
+    ], DialogContainerVueUIComponent);
+    var script$8 = DialogContainerVueUIComponent;
 
     const isOldIE = typeof navigator !== 'undefined' &&
         /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
@@ -61963,81 +62089,6 @@ var vueHtmlCompiler = (function (Vue, Component) {
     }
 
     /* script */
-    const __vue_script__$7 = script$7;
-
-    /* template */
-    var __vue_render__$7 = function() {
-      var _vm = this;
-      var _h = _vm.$createElement;
-      var _c = _vm._self._c || _h;
-      return _c(
-        "div",
-        { staticClass: "coverEl", style: _vm.style },
-        [
-          _c(
-            "Module",
-            {
-              ref: "bgTarget",
-              staticClass: "coverEl-target  total-cover",
-              attrs: { instance: _vm.instance }
-            },
-            _vm._l(_vm.instance.getChildren(), function(item, index) {
-              return _c("CoverEl", { key: index, attrs: { instance: item } })
-            }),
-            1
-          )
-        ],
-        1
-      )
-    };
-    var __vue_staticRenderFns__$7 = [];
-    __vue_render__$7._withStripped = true;
-
-      /* style */
-      const __vue_inject_styles__$7 = function (inject) {
-        if (!inject) return
-        inject("data-v-0c7a6d65_0", { source: "\n.coverEl[data-v-0c7a6d65] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\n}\n.coverEl > .total-cover[data-v-0c7a6d65] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\n}\n.coverEl>.coverEl-target[data-v-0c7a6d65] {\r\n  z-index: -1;\r\n  position: static;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html-compiler\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAsCA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,YAAA;AACA;AAEA;EACA,WAAA;EACA,gBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :style=\"style\" >\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.getChildren()\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\n\r\n\r\n\r\n@Component({components: {Module}})\r\nexport default class CoverEl extends Vue {\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\r\n}\r\n\r\n.coverEl>.coverEl-target {\r\n  z-index: -1;\r\n  position: static;\r\n}\r\n</style>\r\n"]}, media: undefined });
-
-      };
-      /* scoped */
-      const __vue_scope_id__$7 = "data-v-0c7a6d65";
-      /* module identifier */
-      const __vue_module_identifier__$7 = undefined;
-      /* functional template */
-      const __vue_is_functional_template__$7 = false;
-      /* style inject SSR */
-      
-      /* style inject shadow dom */
-      
-
-      
-      const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
-        __vue_inject_styles__$7,
-        __vue_script__$7,
-        __vue_scope_id__$7,
-        __vue_is_functional_template__$7,
-        __vue_module_identifier__$7,
-        false,
-        createInjector,
-        undefined,
-        undefined
-      );
-
-    let Editor = class Editor extends Vue {
-        constructor() {
-            super(...arguments);
-            this.compilerInstance = compilerInstance;
-        }
-        mounted() {
-        }
-    };
-    Editor = __decorate([
-        Component__default({ components: { CoverEl: __vue_component__$7 } })
-    ], Editor);
-    var script$8 = Editor;
-
-    /* script */
     const __vue_script__$8 = script$8;
 
     /* template */
@@ -62047,7 +62098,37 @@ var vueHtmlCompiler = (function (Vue, Component) {
       var _c = _vm._self._c || _h;
       return _c(
         "div",
-        [_c("CoverEl", { attrs: { instance: _vm.compilerInstance } })],
+        { staticClass: "DialogContainerVue" },
+        [
+          !_vm.target.isCompiler
+            ? _c(
+                "div",
+                { staticClass: "DialogContainerVue-block" },
+                [_vm._t("default")],
+                2
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.target.isCompiler
+            ? _c(
+                "el-dialog",
+                {
+                  attrs: {
+                    visible: _vm.visible,
+                    "append-to-body": true,
+                    title: _vm.title
+                  },
+                  on: {
+                    "update:visible": function($event) {
+                      _vm.visible = $event;
+                    }
+                  }
+                },
+                [_vm._t("default")],
+                2
+              )
+            : _vm._e()
+        ],
         1
       )
     };
@@ -62055,15 +62136,17 @@ var vueHtmlCompiler = (function (Vue, Component) {
     __vue_render__$8._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$8 = undefined;
+      const __vue_inject_styles__$8 = function (inject) {
+        if (!inject) return
+        inject("data-v-499cacd4_0", { source: ".DialogContainerVue .DialogContainerVue-block[data-v-499cacd4] {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n", map: {"version":3,"sources":["DialogContainerVueUI.vue"],"names":[],"mappings":"AAAA;EACE,0BAA0B;EAC1B,sBAAsB;EACtB,YAAY;AACd","file":"DialogContainerVueUI.vue","sourcesContent":[".DialogContainerVue .DialogContainerVue-block {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n"]}, media: undefined });
+
+      };
       /* scoped */
-      const __vue_scope_id__$8 = undefined;
+      const __vue_scope_id__$8 = "data-v-499cacd4";
       /* module identifier */
       const __vue_module_identifier__$8 = undefined;
       /* functional template */
       const __vue_is_functional_template__$8 = false;
-      /* style inject */
-      
       /* style inject SSR */
       
       /* style inject shadow dom */
@@ -62078,17 +62161,38 @@ var vueHtmlCompiler = (function (Vue, Component) {
         __vue_is_functional_template__$8,
         __vue_module_identifier__$8,
         false,
-        undefined,
+        createInjector,
         undefined,
         undefined
       );
 
-    let EditorTemplate = class EditorTemplate extends Vue {
+    let ButtonVueUIComponent = class ButtonVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.label = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.label = val.label || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
     };
-    EditorTemplate = __decorate([
-        Component__default({ components: { Editor: __vue_component__$8 } })
-    ], EditorTemplate);
-    var script$9 = EditorTemplate;
+    __decorate([
+        Prop()
+    ], ButtonVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], ButtonVueUIComponent.prototype, "watchTab", null);
+    ButtonVueUIComponent = __decorate([
+        Component__default
+    ], ButtonVueUIComponent);
+    var script$9 = ButtonVueUIComponent;
 
     /* script */
     const __vue_script__$9 = script$9;
@@ -62100,8 +62204,8 @@ var vueHtmlCompiler = (function (Vue, Component) {
       var _c = _vm._self._c || _h;
       return _c(
         "div",
-        { staticClass: "editorTemplate" },
-        [_c("Editor", { staticClass: "Editor" })],
+        { staticClass: "ButtonVue" },
+        [_c("el-button", [_vm._v(_vm._s(_vm.label))])],
         1
       )
     };
@@ -62109,17 +62213,15 @@ var vueHtmlCompiler = (function (Vue, Component) {
     __vue_render__$9._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$9 = function (inject) {
-        if (!inject) return
-        inject("data-v-0a25906b_0", { source: ".editorTemplate .Editor[data-v-0a25906b] {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,cAAc;EACd,YAAY;AACd","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate .Editor {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n"]}, media: undefined });
-
-      };
+      const __vue_inject_styles__$9 = undefined;
       /* scoped */
-      const __vue_scope_id__$9 = "data-v-0a25906b";
+      const __vue_scope_id__$9 = undefined;
       /* module identifier */
       const __vue_module_identifier__$9 = undefined;
       /* functional template */
       const __vue_is_functional_template__$9 = false;
+      /* style inject */
+      
       /* style inject SSR */
       
       /* style inject shadow dom */
@@ -62134,19 +62236,198 @@ var vueHtmlCompiler = (function (Vue, Component) {
         __vue_is_functional_template__$9,
         __vue_module_identifier__$9,
         false,
-        createInjector,
+        undefined,
         undefined,
         undefined
       );
 
-    //
+    Vue.use(ElementUI);
+    class BasicVueUI extends VueUI {
+        constructor(params) {
+            super(params);
+            this.ui = this.props.ui;
+            this.isCompiler = this.props.isCompiler;
+        }
+        renderInstance(render) {
+            return render.createElement('div', {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class ContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$6, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class CardContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$7, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class DialogContainerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$8, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class ButtonVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$9, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
 
-    var script$a = {
-      name: "App",
-      components:{
-        EditorTemplate: __vue_component__$9
-      }
+    class GeneratePiece {
+        constructor() {
+            this.uiList = new VueUIList();
+            this.uiList.addTemplate({
+                key: '',
+                value: VueUI,
+            });
+            this.uiList.addTemplate({
+                key: 'input',
+                value: InputVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'array',
+                value: ArrayVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'object',
+                value: ObjectVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'mulSelect',
+                value: MulSelectVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'select',
+                value: SelectVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'number',
+                value: NumberVueUI$1,
+            });
+        }
+        add({ key, value }) {
+            if (!this.uiList.getTemplate().find(item => item.key == key)) {
+                this.uiList.addTemplate({
+                    key: key,
+                    value: value,
+                });
+            }
+        }
+        remove(name) {
+            this.uiList.removeTemplate(name);
+        }
+        generate(list) {
+            this.uiList.setList(list);
+            return this.uiList.list;
+        }
+        render(render) {
+            return this.uiList.getRenderList(render);
+        }
+        getValue() {
+            return this.uiList.getValue();
+        }
+    }
+    class ModuleGenrate extends GeneratePiece {
+        constructor() {
+            super();
+            this.isCompiler = false;
+            this.uiList.clearTemplate();
+            this.add({
+                key: '1',
+                value: ContainerVueUI
+            });
+            this.add({
+                key: '2',
+                value: CardContainerVueUI
+            });
+            this.add({
+                key: '4',
+                value: DialogContainerVueUI
+            });
+            this.add({
+                key: '5',
+                value: ButtonVueUI
+            });
+        }
+        setTarget(ui) {
+            this.uiList.setList([{
+                    key: ui.id,
+                    props: {
+                        ui,
+                        isCompiler: this.isCompiler
+                    },
+                    type: ui.typeId
+                }]);
+        }
+    }
+
+    var InstanceSlot = {
+        props: {
+            instance: {
+                type: Object,
+            },
+            moduleGenrate: {
+                type: Object,
+            },
+        },
+        render(createElement, context) {
+            let list = [];
+            if (this.instance) {
+                list = this.moduleGenrate.render({
+                    createElement,
+                    vueRoot: this,
+                    context,
+                });
+            }
+            return list[0];
+        },
     };
+    let Module = class Module extends Vue {
+        constructor() {
+            super(...arguments);
+            this.moduleGenrate = new ModuleGenrate();
+        }
+        mounted() {
+            this.moduleGenrate.isCompiler = true;
+            this.instance.target.setDom(this.$refs.target);
+            this.moduleGenrate.setTarget(this.instance.target);
+        }
+        updated() {
+            if (!this.instance.target.dom) {
+                this.instance.target.setDom(this.$refs.target);
+                this.moduleGenrate.setTarget(this.instance.target);
+            }
+        }
+    };
+    __decorate([
+        Prop()
+    ], Module.prototype, "instance", void 0);
+    Module = __decorate([
+        Component__default({ components: { InstanceSlot } })
+    ], Module);
+    var script$a = Module;
 
     /* script */
     const __vue_script__$a = script$a;
@@ -62156,7 +62437,22 @@ var vueHtmlCompiler = (function (Vue, Component) {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
-      return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
+      return _c(
+        "div",
+        { ref: "target", staticClass: "module" },
+        [
+          _c(
+            "InstanceSlot",
+            {
+              staticClass: "instanceSlot",
+              attrs: { instance: _vm.instance, moduleGenrate: _vm.moduleGenrate }
+            },
+            [_vm._t("default")],
+            2
+          )
+        ],
+        1
+      )
     };
     var __vue_staticRenderFns__$a = [];
     __vue_render__$a._withStripped = true;
@@ -62190,10 +62486,255 @@ var vueHtmlCompiler = (function (Vue, Component) {
         undefined
       );
 
+    let CoverEl = class CoverEl extends Vue {
+        get style() {
+            let val = {};
+            for (let [key, value] of Object.entries(this.instance.target.style)) {
+                val[key] = value;
+            }
+            return val;
+        }
+    };
+    __decorate([
+        Prop()
+    ], CoverEl.prototype, "instance", void 0);
+    CoverEl = __decorate([
+        Component__default({ components: { Module: __vue_component__$a } })
+    ], CoverEl);
+    var script$b = CoverEl;
+
+    /* script */
+    const __vue_script__$b = script$b;
+
+    /* template */
+    var __vue_render__$b = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "coverEl", style: _vm.style },
+        [
+          _c(
+            "Module",
+            {
+              ref: "bgTarget",
+              staticClass: "coverEl-target  total-cover",
+              attrs: { instance: _vm.instance }
+            },
+            _vm._l(_vm.instance.getChildren(), function(item, index) {
+              return _c("CoverEl", { key: index, attrs: { instance: item } })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$b = [];
+    __vue_render__$b._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$b = function (inject) {
+        if (!inject) return
+        inject("data-v-0c7a6d65_0", { source: "\n.coverEl[data-v-0c7a6d65] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\n}\n.coverEl > .total-cover[data-v-0c7a6d65] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\n}\n.coverEl>.coverEl-target[data-v-0c7a6d65] {\r\n  z-index: -1;\r\n  position: static;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html-compiler\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAsCA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,YAAA;AACA;AAEA;EACA,WAAA;EACA,gBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :style=\"style\" >\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.getChildren()\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\n\r\n\r\n\r\n@Component({components: {Module}})\r\nexport default class CoverEl extends Vue {\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\r\n}\r\n\r\n.coverEl>.coverEl-target {\r\n  z-index: -1;\r\n  position: static;\r\n}\r\n</style>\r\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$b = "data-v-0c7a6d65";
+      /* module identifier */
+      const __vue_module_identifier__$b = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$b = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$b = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
+        __vue_inject_styles__$b,
+        __vue_script__$b,
+        __vue_scope_id__$b,
+        __vue_is_functional_template__$b,
+        __vue_module_identifier__$b,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let Editor = class Editor extends Vue {
+        constructor() {
+            super(...arguments);
+            this.compilerInstance = compilerInstance;
+        }
+        mounted() {
+        }
+    };
+    Editor = __decorate([
+        Component__default({ components: { CoverEl: __vue_component__$b } })
+    ], Editor);
+    var script$c = Editor;
+
+    /* script */
+    const __vue_script__$c = script$c;
+
+    /* template */
+    var __vue_render__$c = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        [_c("CoverEl", { attrs: { instance: _vm.compilerInstance } })],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$c = [];
+    __vue_render__$c._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$c = undefined;
+      /* scoped */
+      const __vue_scope_id__$c = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$c = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$c = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$c = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
+        __vue_inject_styles__$c,
+        __vue_script__$c,
+        __vue_scope_id__$c,
+        __vue_is_functional_template__$c,
+        __vue_module_identifier__$c,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let EditorTemplate = class EditorTemplate extends Vue {
+    };
+    EditorTemplate = __decorate([
+        Component__default({ components: { Editor: __vue_component__$c } })
+    ], EditorTemplate);
+    var script$d = EditorTemplate;
+
+    /* script */
+    const __vue_script__$d = script$d;
+
+    /* template */
+    var __vue_render__$d = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "editorTemplate" },
+        [_c("Editor", { staticClass: "Editor" })],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$d = [];
+    __vue_render__$d._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$d = function (inject) {
+        if (!inject) return
+        inject("data-v-0a25906b_0", { source: ".editorTemplate .Editor[data-v-0a25906b] {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,cAAc;EACd,YAAY;AACd","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate .Editor {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$d = "data-v-0a25906b";
+      /* module identifier */
+      const __vue_module_identifier__$d = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$d = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$d = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
+        __vue_inject_styles__$d,
+        __vue_script__$d,
+        __vue_scope_id__$d,
+        __vue_is_functional_template__$d,
+        __vue_module_identifier__$d,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    //
+
+    var script$e = {
+      name: "App",
+      components:{
+        EditorTemplate: __vue_component__$d
+      }
+    };
+
+    /* script */
+    const __vue_script__$e = script$e;
+
+    /* template */
+    var __vue_render__$e = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
+    };
+    var __vue_staticRenderFns__$e = [];
+    __vue_render__$e._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$e = undefined;
+      /* scoped */
+      const __vue_scope_id__$e = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$e = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$e = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$e = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
+        __vue_inject_styles__$e,
+        __vue_script__$e,
+        __vue_scope_id__$e,
+        __vue_is_functional_template__$e,
+        __vue_module_identifier__$e,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
     Vue.use(ElementUI);
     var index$1 = new Vue({
         render(h) {
-            return h(__vue_component__$a);
+            return h(__vue_component__$e);
         },
     }).$mount("#app");
 

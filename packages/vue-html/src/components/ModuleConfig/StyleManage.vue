@@ -64,6 +64,7 @@ export default class StyleManage extends Vue {
     this.styleSetting.splice(index, 1);
   }
   save() {
+    this.instance.target.style.clear()
     this.styleSetting.forEach((item) => {
       this.instance.target.style.setKeyValue(item.key, item.value);
     });

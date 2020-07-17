@@ -2,57 +2,27 @@
   <div class="propManage">
     <el-row>
     <el-col>
-      <InstanceSlot :instance="instance"></InstanceSlot>
+      <InstanceSlot :instance="instance.target.selfProp" :generator="generator"></InstanceSlot>
     </el-col>
     </el-row>
-    <el-button @click="save()">保存属性</el-button>
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { ModuleInstance } from "../../sdk";
-
-
-var InstanceSlot = {
-  props: {
-    instance: {
-      type: Object,
-    },
-  },
-  computed: {
-    value() {
-      return this.instance.target.selfProp.params.map((item) =>
-        item.getKeyValue()
-      );
-    },
-  },
-  render(createElement, context) {
-    let list = [];
-    if (this.instance) {
-      list = this.instance.target.selfProp.renderParam({
-        createElement,
-        vueRoot: this,
-        context,
-      });
-    }
-    return createElement("div", {}, list);
-  },
-  watch: {
-    value(val) {
-      console.log(val);
-    },
-  },
-};
-
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { ModuleInstance, GeneratePiece } from "../../sdk";
+import {InstanceSlot} from "../InstanceSlot"
 
 
 @Component({ components: { InstanceSlot } })
 export default class StyleManage extends Vue {
   @Prop() private instance!: ModuleInstance;
-  mounted() {
+  generator = new GeneratePiece()
+  created() {
+    this.generator.generate(this.instance.target.selfProp.params)
   }
-  save() {
-    this.instance.target.selfProp.save()
+  @Watch('instance.id')
+  updateParam () {
+     this.generator.generate(this.instance.target.selfProp.params)
   }
 }
 </script>

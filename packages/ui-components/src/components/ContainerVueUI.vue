@@ -1,5 +1,6 @@
 <template>
   <div class='ContainerVue'>
+    <slot></slot>
   </div>
 </template>
 <script lang="ts">

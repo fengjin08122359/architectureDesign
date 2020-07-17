@@ -1,6 +1,19 @@
-import { ContainerVueUI, EventListVueUI } from "@mikefeng110808/ui-components";
-import { UI } from "@mikefeng110808/ui-logic";
-import { apiParams, eventParams, inParams, outParams } from "./constants/generate";
+import {
+  ContainerVueUI,
+  EventListVueUI,
+  CardContainerVueUI,
+  DialogContainerVueUI,
+  ButtonVueUI
+} from "@mikefeng110808/ui-components";
+import {
+  UI
+} from "@mikefeng110808/ui-logic";
+import {
+  apiParams,
+  eventParams,
+  inParams,
+  outParams
+} from "./constants/generate";
 import {
   SingleUIPayload,
   templatePayload
@@ -72,26 +85,42 @@ export class GeneratePiece {
   render(render: VueRenderPayload) {
     return this.uiList.getRenderList(render)
   }
-  getValue () {
+  getValue() {
     return this.uiList.getValue()
   }
 }
 
 
 export class ModuleGenrate extends GeneratePiece {
-  constructor(){
+  isCompiler: boolean
+  constructor() {
     super()
+    this.isCompiler = false
     this.uiList.clearTemplate()
     this.add({
-      key:'1',
+      key: '1',
       value: ContainerVueUI
     })
+    this.add({
+      key: '2',
+      value: CardContainerVueUI
+    })
+    this.add({
+      key: '4',
+      value: DialogContainerVueUI
+    })
+    this.add({
+      key: '5',
+      value: ButtonVueUI
+    })
+    
   }
-  setTarget (ui:UI, ) {
+  setTarget(ui: UI, ) {
     this.uiList.setList([{
       key: ui.id,
       props: {
-        ui
+        ui,
+        isCompiler: this.isCompiler
       },
       type: ui.typeId
     }])
@@ -99,14 +128,14 @@ export class ModuleGenrate extends GeneratePiece {
 }
 
 export class ApiGenerate extends GeneratePiece {
-  constructor(){
+  constructor() {
     super()
     this.generate(apiParams)
   }
 }
 
 export class EventGenerate extends GeneratePiece {
-  constructor(){
+  constructor() {
     super()
     this.generate(eventParams)
   }
@@ -115,11 +144,11 @@ export class EventGenerate extends GeneratePiece {
 
 
 export class InEventGenerate extends GeneratePiece {
-  constructor(){
+  constructor() {
     super()
     this.add({
-        key:'eventList',
-        value:EventListVueUI
+      key: 'eventList',
+      value: EventListVueUI
     })
     this.generate(inParams)
   }
@@ -127,11 +156,11 @@ export class InEventGenerate extends GeneratePiece {
 
 
 export class OutEventGenerate extends GeneratePiece {
-  constructor(){
+  constructor() {
     super()
     this.add({
-        key:'eventList',
-        value:EventListVueUI
+      key: 'eventList',
+      value: EventListVueUI
     })
     this.generate(outParams)
   }

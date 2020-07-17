@@ -13,9 +13,11 @@ export let clearCurrentEl = () =>{
 class EditorInstance {
     active?:ModuleInstance
     isRelative: boolean
+    borderColor: string
     constructor () {
         this.active = undefined
         this.isRelative = true
+        this.borderColor = '#bdbdbd'
     }
     setActive(instance: ModuleInstance){
         this.active = instance

@@ -1,8 +1,8 @@
 <template>
   <div class="module" ref="target">
-    <InstanceSlot :instance="instance" :moduleGenrate='moduleGenrate'>
+    <InstanceSlot class='instanceSlot' :instance="instance" :moduleGenrate='moduleGenrate'>
+      <slot></slot>
     </InstanceSlot>
-    <slot></slot>
   </div>
 </template>
 <script lang="ts">
@@ -28,7 +28,7 @@ var InstanceSlot = {
         context,
       })
     }
-    return createElement("div", {}, list);
+    return list[0];
   },
 };
 
@@ -48,3 +48,10 @@ export default class Module extends Vue {
   }
 }
 </script>
+<style lang="less" scoped>
+.module .instanceSlot{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+</style>

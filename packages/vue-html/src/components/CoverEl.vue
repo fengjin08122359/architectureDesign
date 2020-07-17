@@ -2,7 +2,7 @@
   <div class="coverEl" :class="{active: activeClass}" :style="style" 
     @mousedown.stop.prevent="mouseDownHandler" @drop="dropHandler" @dragover="dragoverHandler">
     <ModuleConfig class='ModuleConfig' :instance="instance"></ModuleConfig>
-    <div class='coverEl-bg total-cover'>
+    <div class='coverEl-bg total-cover' :style="{borderColor: editorInstance.borderColor}">
       
     </div>
     <Module class='coverEl-target  total-cover' :instance="instance" ref="bgTarget">
@@ -201,7 +201,7 @@ export default class CoverEl extends Vue {
 
 .coverEl > .coverEl-bg {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   background: transparent;
   border-color: #bdbdbd;
   border-style: dashed;
@@ -216,8 +216,8 @@ export default class CoverEl extends Vue {
   z-index: 9999997;
 }
 .coverEl>.coverEl-target {
-  z-index: -1;
-  position: static;
+  z-index: 2;
+  position: absolute;
 }
 .coverEl.active>.coverEl-target {
   z-index: 9999998;

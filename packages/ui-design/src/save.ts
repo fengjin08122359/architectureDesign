@@ -32,6 +32,7 @@ export let restoreInstance = (instance: ModuleInstance, res:any) => {
   instance.target.id = res.target.id;
   instance.target.typeId = res.target.typeId;
   instance.target.insertable = res.target.insertable;
+  instance.target.moduleIdList = res.target.moduleIdList;
   (res.target.eventBind.inValue || []).forEach((item:any) => {
     var event =instance.target.eventBind.addIn()
     event.setValue(item)
@@ -49,7 +50,8 @@ export let restoreInstance = (instance: ModuleInstance, res:any) => {
   
   // container.target = new ContainerUI()
   instance.children = res.children.map((item:any) => {
-    return restoreInstance(new ModuleInstance(), item)
+    var module = restoreInstance(new ModuleInstance(), item)
+    return module
   })
   return instance
 }

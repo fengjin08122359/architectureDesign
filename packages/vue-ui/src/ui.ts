@@ -4,8 +4,8 @@ import Vue, { CreateElement, RenderContext } from 'vue'
 
 export interface VueRenderPayload {
   createElement:CreateElement
-  vueRoot?:Vue
-  context?:RenderContext<Record<never, any>>
+  vueRoot:Vue
+  context:RenderContext<Record<never, any>>
   [x:string]: any
 }
 
@@ -27,7 +27,7 @@ export class VueUI extends SingleUI{
         ...render.context,
         attrs: this
       },
-      []
+      [render.vueRoot.$slots.default]
     )
   }
 }

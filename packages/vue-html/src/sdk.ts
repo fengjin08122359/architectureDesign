@@ -30,7 +30,8 @@ export {
   ApiGenerate,
   EventGenerate,
   InEventGenerate,
-  OutEventGenerate
+  OutEventGenerate,
+  GeneratePiece
 } from '@mikefeng110808/ui-design'
 
 export {
@@ -38,8 +39,7 @@ export {
   convertPx,
   elementsFromPoint,
   styleOptions,
-  eventOptions,
-  GeneratePiece
+  eventOptions
 } from '@mikefeng110808/ui-logic'
 
 

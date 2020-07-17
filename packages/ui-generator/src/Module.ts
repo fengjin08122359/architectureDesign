@@ -36,12 +36,14 @@ export class ModuleInstance implements ModulePayload {
     var module = new ModuleInstance()
     module.setTarget(target);
     this.children.push(module);
+    this.target.addModuleId(module.moduleId)
     return module
   }
   unCombi(moduleId: string) {
-    var target = this.findContainUI(this, moduleId)
-    if (target) {
-      target.children = target.children.filter(t => t.moduleId != moduleId)
+    var module = this.findContainUI(this, moduleId)
+    if (module) {
+      module.children = module.children.filter(t => t.moduleId != moduleId)
+      module.target.removeModuleId(moduleId)
     }
   }
   findContainUI(tree:ModuleInstance, moduleId:string): ModuleInstance | null {
@@ -79,12 +81,13 @@ export class ModuleInstance implements ModulePayload {
         id:this.target.id,
         insertable:this.target.insertable,
         editable:this.target.editable,
+        moduleIdList: this.target.moduleIdList,
         eventBind: {
           inValue: this.target.eventBind.getInList().map(item => item.opt),
           outValue: this.target.eventBind.getOutList().map(item => item.opt)
         },
         selfProp: {
-          value: this.target.selfProp.value
+          value: this.target.selfProp.opt
         },
         style:{
           value: this.target.style.getValue()
@@ -94,6 +97,6 @@ export class ModuleInstance implements ModulePayload {
     }
   }
   getChildren (): ModuleInstance[] {
-    return this.children.filter(item => this.target.filterChildren(item.target))
+    return this.children.filter(item => this.target.filterChildren(item))
   }
 }

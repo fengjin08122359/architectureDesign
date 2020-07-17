@@ -8,7 +8,6 @@ import {
   gennerateUUID
 } from "..";
 import { SingleUI, SingleUIPayload } from "@mikefeng110808/logic";
-import { GeneratePiece } from "../ParamPiece/index";
 import { VueRenderPayload } from "@mikefeng110808/vue-ui";
 
 export interface UIPayload {
@@ -28,11 +27,13 @@ export class UI {
   name ? : string;
   dom ? : HTMLElement;
   typeId?: string
+  moduleIdList: any[]
   constructor() {
     this.id = gennerateUUID()
     this.eventBind = new EventBind()
     this.style = new Style()
     this.selfProp = new SelfProp()
+    this.moduleIdList = []
   }
   setDom(dom: HTMLElement) {
     this.dom = dom
@@ -43,26 +44,27 @@ export class UI {
   setSelfProp(selfProp: SelfProp) {
     this.selfProp = selfProp
   }
-  filterChildren (target:UI):boolean {
+  filterChildren (instance:any):boolean {
     return true
+  }
+  addModuleId(moduleId:string) {
+    this.moduleIdList.push(moduleId)
+  }
+  removeModuleId(moduleId:string) {
+    this.moduleIdList = this.moduleIdList.filter(item => item!=moduleId)
   }
 }
 
 
 export class SelfProp {
-  value: []
-  params: SingleUI[];
-  generatePiece: GeneratePiece
+  opt: any
+  params: SingleUIPayload[];
   constructor() {
-    this.value = []
+    this.opt = {}
     this.params = []
-    this.generatePiece = new GeneratePiece()
   }
   setParam(data:SingleUIPayload[] = []) {
-    this.params = this.generatePiece.generate(data)
-  }
-  renderParam (render: VueRenderPayload) {
-    return this.generatePiece.render(render)
+    this.params = data
   }
   getStyle(): any {
     return {
@@ -80,12 +82,9 @@ export class SelfProp {
     }
   }
   getValue ():any {
-    return this.generatePiece.uiList.getValue()
+    return this.opt
   }
-  setValue (val: any) {
-    this.generatePiece.uiList.setValue(val)
-  }
-  save () {
-    this.value = this.getValue()
+  setValue (value: any) {
+    this.opt = value || {}
   }
 }

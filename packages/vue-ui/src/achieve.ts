@@ -42,9 +42,15 @@ export class ArrayVueUI extends VueUI{
     return this.value.map((item:any) => item.value)
   }
   setValue (val: any[]) {
-    this.value = val.map((item:any) => {
+    this.value = (val || []).map((item:any) => {
       return {value: item}
     })
+    if (!Array.isArray(this.value)) {
+      this.value = []
+    }
+    if (this.value.length == 0) {
+      this.addCol()
+    }
   }
   renderInstance(render: VueRenderPayload) {
     return render.createElement(ArrayVueUIComp, {
@@ -83,7 +89,7 @@ export class ObjectVueUI extends VueUI{
     }, {})
   }
   setValue (val: Object) {
-    this.value = val
+    this.value = val || {}
     this.props.objectArray = []
     for(let[key,value] of Object.entries(this.value)) {
       this.props.objectArray.push({

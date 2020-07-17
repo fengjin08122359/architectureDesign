@@ -1,50 +1,6 @@
-import { SelfProp, ContainerUI, ComponentSingleUI, ComponentMultipleUI } from "@mikefeng110808/ui-logic";
+import { ContainerUI, ComponentSingleUI, ComponentMultipleUI } from "@mikefeng110808/ui-logic";
 import { Props } from ".";
-import { CardContainerUI } from "./ui";
-
-class ContainerSelfProp extends SelfProp{
-    constructor () {
-        super()
-    }
-    getStyle (): any {
-        return {
-            width:"100%",
-            height: "200px",
-            background: '',
-            display: 'block',
-            position: 'relative',
-        }
-    }
-}
-
-
-class BasicSelfProp extends SelfProp{
-    constructor () {
-        super()
-    }
-    getStyle (): any {
-        return {
-            width:"20%",
-            height: "100px",
-            background: '',
-            display: 'inline-block'
-        }
-    }
-}
-
-class MergeSelfProp extends SelfProp{
-    constructor () {
-        super()
-    }
-    getStyle (): any {
-        return {
-            width:"100px",
-            height: "100px",
-            background: '',
-            display: 'inline-block'
-        }
-    }
-}
+import { BasicSelfProp, CardContainerSelfProp, ContainerSelfProp, MergeSelfProp, CardContainerUI, ButtonSelfProp } from "./ui";
 
 
 export let container: Props[] = [{
@@ -55,37 +11,43 @@ export let container: Props[] = [{
     params: [{
         type:'input',
         key: 'input',
-        props: {label: 'input'}
+        props: {label: 'input'},
+        value: ''
     },{
         type:'array',
         key: 'array',
-        props: {label: 'array'}
+        props: {label: 'array'},
+        value: []
     },{
         type:'object',
         key: 'object',
-        props: {label: 'object'}
+        props: {label: 'object'},
+        value: {}
     },{
         type:'number',
         key: 'number',
-        props: {label: 'number'}
+        props: {label: 'number'},
+        value: 0
     },{
         type:'select',
         key: 'select',
-        props: {label: 'select'}
+        props: {label: 'select'},
+        value: ''
     },{
         type:'mulSelect',
         key: 'mulSelect',
-        props: {label: 'mulSelect'}
+        props: {label: 'mulSelect'},
+        value: []
     },]
 },{
     name: "选项卡",
     id: '2',
-    selfProp: ContainerSelfProp,
+    selfProp: CardContainerSelfProp,
     UI: CardContainerUI,
     params:[{
-        type:'object',
+        type:'array',
         key: 'tab',
-        props: {label: '选项卡'}
+        props: {label: '选项卡'},
     }]
 },{
     name: "弹窗",
@@ -96,8 +58,13 @@ export let container: Props[] = [{
 export let basic: Props[] = [{
     name: "按钮",
     id: '5',
-    selfProp: BasicSelfProp,
-    UI: ComponentSingleUI
+    selfProp: ButtonSelfProp,
+    UI: ComponentSingleUI,
+    params:[{
+        type:'input',
+        key: 'label',
+        props: {label: '描述'},
+    }]
 },{
     name: "输入框",
     id: '6',

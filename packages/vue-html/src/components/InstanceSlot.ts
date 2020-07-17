@@ -52,8 +52,10 @@ export class InstanceSlot extends Vue {
     },{}))
   }
   @Watch('instance.opt')
-  watchOpt () {
-    this.reset()
+  watchOpt (val:any ,oldVal:any) {
+    if (JSON.stringify(val) != JSON.stringify(oldVal)) {
+      this.reset()
+    }
   }
 }
 

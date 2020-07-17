@@ -1,3 +1,5 @@
+import { styleOptions } from "../utils";
+
 export class Style { 
     changed: number;
     [x:string]: any
@@ -12,10 +14,18 @@ export class Style {
         return Object.assign({}, this)
     }
     setValue (val:any) {
+        
         for (let [key, value] of Object.entries(val)) {
             try {
                 this.setKeyValue(key as any, value)
             } catch (error) {}
+        }
+    }
+    clear () {
+        for (let key of Object.keys(this)) {
+            if (styleOptions.find((item) => item == key)) {
+                delete this[key]
+            }
         }
     }
 }
