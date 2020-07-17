@@ -1,11 +1,12 @@
 <template>
   <div class="coverEl" :class="{active: activeClass}" :style="style" 
     @mousedown.stop.prevent="mouseDownHandler" @drop="dropHandler" @dragover="dragoverHandler">
-    <div class='coverEl-bg'>
-      <ModuleConfig v-if='instance.canDrag' class='ModuleConfig' :instance="instance"></ModuleConfig>
+    <ModuleConfig class='ModuleConfig' :instance="instance"></ModuleConfig>
+    <div class='coverEl-bg total-cover'>
+      
     </div>
-    <Module :instance="instance" ref="bgTarget">
-      <CoverEl v-for="(item,index) in instance.children" :key="index" :instance="item"></CoverEl>
+    <Module class='coverEl-target  total-cover' :instance="instance" ref="bgTarget">
+      <CoverEl v-for="(item,index) in instance.getChildren()" :key="index" :instance="item"></CoverEl>
     </Module>
   </div>
 </template>
@@ -59,7 +60,6 @@ export default class CoverEl extends Vue {
     for (let [key,value] of Object.entries(this.instance.target.style)) {
       val[key] = value
     }
-    // console.log('style',val)
     return val 
   }
   get activeClass () {
@@ -71,7 +71,6 @@ export default class CoverEl extends Vue {
       let zoom = this.zoom
       let current = this.instance.combi(generateModule(currentEl))
       clearCurrentEl()
-      console.log(this.$refs.bgTarget)
       var mainContainer = this.$refs.bgTarget.$el
       let {width='auto', height='auto'} = current.target.selfProp.getStyle()
       width = convertPx(width)
@@ -131,7 +130,7 @@ export default class CoverEl extends Vue {
     this.initialRelPos = this.currentRelPos = this.getMouseRelPoint(e)
     var el = elementsFromPoint(e.clientX,e.clientY)
     
-    if (this.editorInstance.active && this.editorInstance.active.canDrag) {
+    if (this.editorInstance.active && this.editorInstance.active.canDragFilter()) {
       isMrs = true
       // this.$emit('movestart')
       // if (e.ctrlKey) {
@@ -158,7 +157,7 @@ export default class CoverEl extends Vue {
     let zoom = this.zoom
     const lastAbsX = this.currentAbsPos.x
     const lastAbsY = this.currentAbsPos.y
-
+    
     this.currentAbsPos = this.getMouseAbsPoint(e)
     this.currentRelPos = this.getMouseRelPoint(e)
 
@@ -184,24 +183,25 @@ export default class CoverEl extends Vue {
   position: relative;
   box-sizing: border-box;
   /* pointer-events: none; */
+  background: #fff;
 }
 .coverEl:hover {
   cursor: move;
   /* pointer-events: auto; */
 }
 
-.coverEl > * {
+.coverEl > .total-cover {
   margin: 0;
   width: 100%;
   height: 100%;
   /* position: absolute; */
   box-sizing: border-box;
-  padding: 0px;
+  padding: 12px;
 }
 
-.coverEl-bg {
+.coverEl > .coverEl-bg {
   position: absolute;
-  z-index: 99999999;
+  z-index: 0;
   background: transparent;
   border-color: #bdbdbd;
   border-style: dashed;
@@ -213,14 +213,27 @@ export default class CoverEl extends Vue {
   border-color: #03a9f4!important;
   border-style: solid;
   border-width: 1px;
+  z-index: 9999997;
+}
+.coverEl>.coverEl-target {
+  z-index: -1;
+  position: static;
+}
+.coverEl.active>.coverEl-target {
+  z-index: 9999998;
+  position: absolute;
 }
 .selection-box {
   border: 2px solid #03a9f4;
 }
-.ModuleConfig{
+.coverEl > .ModuleConfig{
   position: absolute;
   top:0;
   right:0;
+  z-index: 0;
+}
+.coverEl.active>.ModuleConfig{
+  z-index: 9999999;
 }
 .handle {
   box-sizing: border-box;

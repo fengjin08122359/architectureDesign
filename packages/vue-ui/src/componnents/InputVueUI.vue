@@ -1,6 +1,6 @@
 <template>
 
-  <div class='inputVue'>
+  <div class='inputVue' v-show='target.props.show'>
     <el-input v-model="target.value" :disabled='target.props.disabled' :type='target.props.inputType'>
       <template slot='append' v-if='target.props.append'>{{target.props.append}}</template>
       <template slot="prepend" v-if='target.props.label'>{{target.props.label}}</template>

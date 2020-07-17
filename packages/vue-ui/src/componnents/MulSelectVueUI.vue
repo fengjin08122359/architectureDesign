@@ -1,7 +1,8 @@
 <template>
-<div class='mulSelectVue'>
+<div class='mulSelectVue' v-show='target.props.show'>
   <div>{{target.props.label}}</div>
-  选项:
+  <div v-if='target.configVisible'>
+  <span>选项:</span> 
   <el-row>
     <el-col v-for="(item,index) in target.props.optionsArray" :key="index">
       <el-col :span='10'>
@@ -20,9 +21,10 @@
       </el-col>
     </el-col>
   </el-row>
-
-  结果:
-  <el-select v-model="target.value" multiple>
+  </div>
+  
+  <span v-if='target.configVisible'>结果:</span>
+  <el-select v-model="target.value" multiple filterable>
     <el-option v-for="(item, index) in target.props.optionsArray" :value="item.key" :label='item.value' :key="index">
     </el-option>
   </el-select>

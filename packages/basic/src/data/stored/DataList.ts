@@ -33,6 +33,14 @@ export class DataList {
     this.datas = this.datas.filter((data) => data.name !== name);
   }
   /**
+   *clear
+   *
+   * @memberof DataList
+   */
+  clear () {
+    this.datas = []
+  }
+  /**
    *get
    *
    * @param {string} name

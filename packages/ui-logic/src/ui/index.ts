@@ -27,6 +27,7 @@ export class UI {
   selfProp: SelfProp;
   name ? : string;
   dom ? : HTMLElement;
+  typeId?: string
   constructor() {
     this.id = gennerateUUID()
     this.eventBind = new EventBind()
@@ -42,13 +43,18 @@ export class UI {
   setSelfProp(selfProp: SelfProp) {
     this.selfProp = selfProp
   }
+  filterChildren (target:UI):boolean {
+    return true
+  }
 }
 
 
 export class SelfProp {
+  value: []
   params: SingleUI[];
   generatePiece: GeneratePiece
   constructor() {
+    this.value = []
     this.params = []
     this.generatePiece = new GeneratePiece()
   }
@@ -72,5 +78,14 @@ export class SelfProp {
       right: 'auto',
       left: 'auto',
     }
+  }
+  getValue ():any {
+    return this.generatePiece.uiList.getValue()
+  }
+  setValue (val: any) {
+    this.generatePiece.uiList.setValue(val)
+  }
+  save () {
+    this.value = this.getValue()
   }
 }

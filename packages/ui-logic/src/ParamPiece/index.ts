@@ -47,16 +47,17 @@ export class GeneratePiece {
       key: 'number',
       value: NumberVueUI,
     })
-    
   }
   add({
     key,
     value
   }: templatePayload) {
-    this.uiList.addTemplate({
-      key: key,
-      value: value,
-    })
+    if (!this.uiList.getTemplate().find(item => item.key == key)) {
+      this.uiList.addTemplate({
+        key: key,
+        value: value,
+      })
+    }
   }
   remove(name: string) {
     this.uiList.removeTemplate(name)
@@ -67,5 +68,8 @@ export class GeneratePiece {
   }
   render(render: VueRenderPayload) {
     return this.uiList.getRenderList(render)
+  }
+  getValue () {
+    return this.uiList.getValue()
   }
 }

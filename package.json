@@ -13,7 +13,7 @@
     "lint": "prettier --write --parser typescript \"packages/**/*.ts?(x)\"",
     "release": "node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "dev-compiler": "npm-run-all --parallel \"dev vue-html\" serve",
+    "dev-compiler": "npm-run-all --parallel \"dev vue-html\" \"dev vue-html-compiler\" serve",
     "serve": "serve"
   },
   "types": "test-dts/index.d.ts",

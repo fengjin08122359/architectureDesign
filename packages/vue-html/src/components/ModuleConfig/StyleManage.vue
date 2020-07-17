@@ -10,8 +10,8 @@
           <el-select v-model="item.key" filterable>
             <el-option
               v-for="(t, index) in styleOptions"
-              :value="t.key"
-              :label="t.value"
+              :value="t"
+              :label="t"
               :key="index"
             ></el-option>
           </el-select>
@@ -24,31 +24,29 @@
         </el-col>
       </el-col>
     </el-row>
+    <div>
+      <el-button @click="dragConfig">拖拽需要配置position: absolute;top:0;left;0</el-button>
+      <el-button @click="noDragConfig">无法拖拽需要配置position: absolute;top:0;left;0</el-button>
+    </div>
     <el-button @click="save()">保存样式</el-button>
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { ModuleInstance } from "../../sdk";
+import { ModuleInstance, styleOptions } from "../../sdk";
 
 @Component
 export default class StyleManage extends Vue {
   @Prop() private instance!: ModuleInstance;
-  styleOptions = [];
+  styleOptions = styleOptions;
   styleSetting = [];
-  created() {
-    for (let [key, value] of Object.entries(this.instance.target.dom.style)) {
-      this.styleOptions.push({
-        key,
-        value,
-      });
-    }
+  mounted() {
     this.getFromStyle();
   }
   getFromStyle() {
     this.styleSetting = [];
     for (let [key, value] of Object.entries(this.instance.target.style)) {
-      if (this.styleOptions.find((item) => item.key == key)) {
+      if (this.styleOptions.find((item) => item == key)) {
         this.styleSetting.push({
           key,
           value,
@@ -69,6 +67,18 @@ export default class StyleManage extends Vue {
     this.styleSetting.forEach((item) => {
       this.instance.target.style.setKeyValue(item.key, item.value);
     });
+  }
+  dragConfig () {
+    this.instance.target.style.setKeyValue('position', 'absolute');
+    this.instance.target.style.setKeyValue('top', 0);
+    this.instance.target.style.setKeyValue('left', 0);
+    this.getFromStyle();
+  }
+  noDragConfig  () {
+    this.instance.target.style.setKeyValue('position', 'relative');
+    this.instance.target.style.setKeyValue('top', 0);
+    this.instance.target.style.setKeyValue('left', 0);
+    this.getFromStyle();
   }
 }
 </script>

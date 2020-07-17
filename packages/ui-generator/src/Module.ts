@@ -26,6 +26,9 @@ export class ModuleInstance implements ModulePayload {
     this.target = new ContainerUI()
     this.canDrag = true
   }
+  canDragFilter () {
+    return this.canDrag && (this.target.style.position == 'absolute' || this.target.style.position == 'fixed')
+  }
   setTarget(target: ModuleTargetPayload) {
     this.target = target
   }
@@ -66,5 +69,31 @@ export class ModuleInstance implements ModulePayload {
     for (let [key,value] of Object.entries(style)) {
         this.target.style[key] = value
     }
+  }
+  getValue ():any {
+    return {
+      moduleId: this.moduleId,
+      canDrag: this.canDrag,
+      target: {
+        typeId: this.target.typeId,
+        id:this.target.id,
+        insertable:this.target.insertable,
+        editable:this.target.editable,
+        eventBind: {
+          inValue: this.target.eventBind.getInList().map(item => item.opt),
+          outValue: this.target.eventBind.getOutList().map(item => item.opt)
+        },
+        selfProp: {
+          value: this.target.selfProp.value
+        },
+        style:{
+          value: this.target.style.getValue()
+        }
+      },
+      children: this.children.map(item => item.getValue())
+    }
+  }
+  getChildren (): ModuleInstance[] {
+    return this.children.filter(item => this.target.filterChildren(item.target))
   }
 }

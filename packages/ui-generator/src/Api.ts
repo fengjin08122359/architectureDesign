@@ -1,71 +1,84 @@
-import { DataList } from "@mikefeng110808/basic";
 import {
-  HttpInstance,
-  HttpInstanceParam,
-  AxiosOpt,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "@mikefeng110808/utils-api";
+  DataList
+} from "@mikefeng110808/basic";
+import { gennerateUUID } from "@mikefeng110808/ui-logic";
 
-class Http extends HttpInstance {
-  requestFilter: any;
-  responseFilter: any;
-  constructor(opt: HttpInstanceParam,requestFilter:any, responseFilter:any) {
-    super(opt);
-    this.requestFilter  = requestFilter
-    this.responseFilter = responseFilter
+export let GetConfig = {
+
+} 
+
+export let PostConfig = {
+  
+} 
+
+export let PostformConfig = {
+  
+} 
+
+export let PostjsonConfig = {
+  
+} 
+
+export let PostfileConfig = {
+  
+} 
+
+export let AutoConfig = {
+  
+} 
+
+export interface ConfigPayload {
+  name: string;
+  config:any;
+}
+
+export const ConfigList = [{
+  name: 'get',
+  config: GetConfig
+},{
+  name: 'post',
+  config: PostConfig
+},{
+  name: 'postform',
+  config: PostformConfig
+},{
+  name: 'postjson',
+  config: PostjsonConfig
+},{
+  name: 'postfile',
+  config: PostfileConfig
+},{
+  name: 'auto',
+  config: AutoConfig
+},]
+
+export class Api {
+  id: string
+  opt: ApiPayload
+  constructor(opt: ApiPayload) {
+    this.id = gennerateUUID()
+    this.opt = opt
+    this.opt.id = opt.id || this.id
   }
-  convertRequest(config: AxiosRequestConfig) {
-    return this.requestFilter(config);
+  fetch() {
   }
-  convertResponse(config: AxiosResponse<any>) {
-    return this.responseFilter(config);
+  setValue (val: any) {
+    this.opt.id = val.id || this.opt.id
+    this.opt.config = val.config || 'get'
+    this.opt.name = val.name || ''
+    this.opt.getParam = val.getParam || {}
+    this.opt.postParam = val.postParam || {}
+    
+    // this.uiList.setValue(val)
   }
 }
-class Api {
-  opt: AxiosOpt;
-  description: string;
-  headers: {};
-  postParams: [];
-  getParams: [];
-  method: string;
-  baseURL: string;
-  url: string;
-  responseType?: any;
-  data?: {};
-  formData?: any;
-  timeout?: number;
-  http: Http;
-  constructor() {
-    this.headers = {};
-    this.postParams = [];
-    this.getParams = [];
-    this.method = "GET";
-    this.description = "";
-    this.url = "";
-    this.baseURL = "";
-    this.opt = {
-      method: "GET",
-      url: '/api'
-    };
-    this.http  = new Http({ baseURL: this.baseURL }, (config: any) => {
-      return config
-    }, (config: any) => {
-      return config
-    });
-  }
-  setParam () {
-    
-  }
-  fetch(opt: AxiosOpt) {
-    return this.http 
-      .create({
-        ...this.opt,
-        opt
-      })
-      .then((res) => {return res})
-      .catch((res) => {return res});
-  }
+
+export interface ApiPayload {
+  config: string;
+  name: string;
+  getParam: [];
+  postParam: [];
+  id?: string
 }
 
 export class ApiList {
@@ -73,10 +86,23 @@ export class ApiList {
   constructor() {
     this.list = new DataList();
   }
-  add() {
+  add(apiData: ApiPayload) {
+    var api = new Api(apiData)
     this.list.add({
-      name: "",
-      data: "",
+      name: api.id ||'',
+      data: api
     });
+    return api
+  }
+  remove (id: string){
+    this.list.remove(id)
+  }
+  getList () {
+    return this.list.get('').map(item => item.data)
+  }
+  clear () {
+    this.list.clear()
+  }
+  save (val:any) {
   }
 }

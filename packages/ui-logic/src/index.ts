@@ -19,5 +19,5 @@ export {
   ComponentMultipleUI,
   ComponentMultipleUIPayload
 } from './ComponentUI'
-
+export * from './ParamPiece'
 export * from './utils'

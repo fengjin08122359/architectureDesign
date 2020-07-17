@@ -31,7 +31,7 @@ merge.forEach((item:Props) => {
 
 export let generateModule = (props:Props) => {
     let target = new props.UI()
-    target.name = props.name
+    target.typeId = props.id
     target.setSelfProp(new props.selfProp())
     var style = target.selfProp.getStyle()
     for (let [key,value] of Object.entries(style)) {

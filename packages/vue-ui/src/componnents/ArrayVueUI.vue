@@ -1,5 +1,5 @@
 <template>
-  <div class='arrayVue'>
+  <div class='arrayVue' v-show='target.props.show'>
     <div>{{target.props.label}}</div>
     <el-row>
       <el-col v-for="(item,index) in target.value" :key="index">

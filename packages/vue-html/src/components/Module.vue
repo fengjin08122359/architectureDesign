@@ -1,17 +1,50 @@
 <template>
   <div class="module" ref="target">
+    <InstanceSlot :instance="instance" :moduleGenrate='moduleGenrate'>
+    </InstanceSlot>
     <slot></slot>
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { ModuleInstance } from "../sdk";
+import { ModuleInstance, ModuleGenrate } from "../sdk";
 
-@Component
+var InstanceSlot = {
+  
+  props: {
+    instance: {
+      type: Object,
+    },
+    moduleGenrate: {
+      type: Object,
+    }, 
+  },
+  render(createElement, context) {
+    let list = [];
+    if (this.instance) {
+      list = this.moduleGenrate.render({
+        createElement,
+        vueRoot: this,
+        context,
+      })
+    }
+    return createElement("div", {}, list);
+  },
+};
+
+@Component({ components: { InstanceSlot } })
 export default class Module extends Vue {
+  moduleGenrate = new ModuleGenrate()
   @Prop() private instance!: ModuleInstance;
   mounted() {
     this.instance.target.setDom(this.$refs.target);
+    this.moduleGenrate.setTarget(this.instance.target)
+  }
+  updated() {
+    if (!this.instance.target.dom) {
+      this.instance.target.setDom(this.$refs.target);
+      this.moduleGenrate.setTarget(this.instance.target)
+    } 
   }
 }
 </script>

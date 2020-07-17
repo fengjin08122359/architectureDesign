@@ -1,3 +1,4 @@
+
 class Storage {
   storage: any;
   constructor() {

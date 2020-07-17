@@ -27,7 +27,7 @@ export class VueUI extends SingleUI{
         ...render.context,
         attrs: this
       },
-      [this.props.label]
+      []
     )
   }
 }

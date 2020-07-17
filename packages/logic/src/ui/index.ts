@@ -77,6 +77,7 @@ export class UIList {
    * @memberof UIList
    */
   addTemplate({ key, value }: templatePayload) {
+    var rawValue = this.getValue()
     var target = this.templateList.find((item) => item.key == key);
     if (target) {
       target.value = value;
@@ -86,6 +87,8 @@ export class UIList {
         value,
       });
     }
+    this.reset()
+    this.setValue(rawValue)
   }
   /**
    *removeTemplate
@@ -94,7 +97,21 @@ export class UIList {
    * @memberof UIList
    */
   removeTemplate(key: string) {
+    var rawValue = this.getValue()
     this.templateList = this.templateList.filter((item) => item.key !== key);
+    this.reset()
+    this.setValue(rawValue)
+  }
+  /**
+   *clearTemplate
+   *
+   * @memberof UIList
+   */
+  clearTemplate () {
+    var rawValue = this.getValue()
+    this.templateList = []
+    this.reset()
+    this.setValue(rawValue)
   }
   /**
    *getTemplate

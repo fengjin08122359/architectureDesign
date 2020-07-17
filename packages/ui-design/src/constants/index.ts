@@ -5,5 +5,6 @@ export interface Props {
     name: string,
     selfProp: typeof SelfProp,
     UI: typeof ContainerUI | typeof ComponentSingleUI | typeof ComponentMultipleUI
-    params?: SingleUIPayload[]
+    params?: SingleUIPayload[],
+    id: string,
 }

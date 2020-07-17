@@ -61,7 +61,7 @@ interface ObjectArrayPayload {
 export class ObjectVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
-    this.props.objectArray = []
+    this.props.objectArray = this.props.objectArray || []
     this.setValue(this.value || {});
     if (this.props.objectArray.length == 0) {
       this.addCol()
@@ -84,10 +84,14 @@ export class ObjectVueUI extends VueUI{
   }
   setValue (val: Object) {
     this.value = val
+    this.props.objectArray = []
     for(let[key,value] of Object.entries(this.value)) {
       this.props.objectArray.push({
         key,value
       })
+    }
+    if (this.props.objectArray.length == 0) {
+      this.addCol()
     }
   }
   renderInstance(render: VueRenderPayload) {
@@ -102,8 +106,8 @@ export class ObjectVueUI extends VueUI{
 export class MulSelectVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
-  
-    this.props.optionsArray = []
+    this.props.configVisible = this.props.configVisible || []
+    this.props.optionsArray = this.props.optionsArray || []
     this.setValue(this.value || '');
     if (this.props.optionsArray.length == 0) {
       this.addCol()
@@ -127,8 +131,8 @@ export class MulSelectVueUI extends VueUI{
 export class SelectVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
-    
-    this.props.optionsArray = []
+    this.props.configVisible = this.props.configVisible || []
+    this.props.optionsArray = this.props.optionsArray || []
     this.setValue(this.value || []);
     if (this.props.optionsArray.length == 0) {
       this.addCol()
