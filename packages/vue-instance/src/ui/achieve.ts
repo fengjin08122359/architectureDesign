@@ -1,7 +1,7 @@
 
 import { VueUI, VueRenderPayload } from '.'
 import { SingleUIPayload } from '@mikefeng110808/instance'
-import InputVueUIComp from './componnents/InputVueUI.vue'
+import InputVueUIComp from './components/InputVueUI.vue'
 
 export class InputVueUI extends VueUI{
   constructor(params:SingleUIPayload) {

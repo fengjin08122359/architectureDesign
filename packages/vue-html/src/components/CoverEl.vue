@@ -6,7 +6,7 @@
       
     </div>
     <Module class='coverEl-target  total-cover' :instance="instance" ref="bgTarget">
-      <CoverEl v-for="(item,index) in instance.getChildren()" :key="index" :instance="item"></CoverEl>
+      <CoverEl v-for="(item,index) in children" :key="index" :instance="item"></CoverEl>
     </Module>
   </div>
 </template>
@@ -54,7 +54,9 @@ export default class CoverEl extends Vue {
   currentRelPos=  {x: 0, y: 0}
   zoom = 1
   @Prop() private instance!: ModuleInstance;
-  
+  get children () {
+    return this.instance.getChildren()
+  }
   get style () {
     let val = {}
     for (let [key,value] of Object.entries(this.instance.target.style)) {
@@ -103,8 +105,15 @@ export default class CoverEl extends Vue {
     e.preventDefault();
   }
   dragoverHandler (e) {
-    // e.dataTransfer.dropEffect = 'none'
     e.preventDefault();
+    e.stopPropagation();
+
+    console.log(this.instance, this.instance.target.insertable)
+    if (!this.instance.target.insertable) {
+      e.dataTransfer.dropEffect = 'none'
+    } else{
+      e.dataTransfer.dropEffect = 'copy'
+    }
   }
   clickHandler (e) {
     e.preventDefault();
@@ -231,9 +240,11 @@ export default class CoverEl extends Vue {
   top:0;
   right:0;
   z-index: 0;
+  display: none;
 }
 .coverEl.active>.ModuleConfig{
   z-index: 9999999;
+  display: block;
 }
 .handle {
   box-sizing: border-box;

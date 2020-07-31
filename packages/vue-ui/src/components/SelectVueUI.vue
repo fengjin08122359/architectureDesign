@@ -1,7 +1,7 @@
 <template>
 <div class='selectVue' v-show='target.props.show'>
   <div>{{target.props.label}}</div>
-  <div v-if='target.configVisible'>
+  <div v-if='target.props.configVisible'>
     <span>选项:</span>
     <el-row >
       <el-col v-for="(item,index) in target.props.optionsArray" :key="index">
@@ -22,8 +22,8 @@
       </el-col>
     </el-row>
   </div>
-  <span v-if='target.configVisible'>结果:</span>
-  <el-select v-model="target.value" filterable>
+  <span v-if='target.props.configVisible'>结果:</span>
+  <el-select v-model="target.value" filterable clearable>
     <el-option v-for="(item, index) in target.props.optionsArray" :value="item.key" :label='item.value' :key="index">
     </el-option>
   </el-select>

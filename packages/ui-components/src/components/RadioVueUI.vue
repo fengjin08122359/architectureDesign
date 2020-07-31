@@ -1,9 +1,10 @@
 <template>
-  <div class='SelectVue'>
-    <el-select v-model="value" filterable>
-      <el-option v-for="(item, index) in optionsArray" :value="item.key" :label='item.value' :key="index">
-      </el-option>
-    </el-select>
+  <div class='RadioVueUI'>
+    <el-radio-group  v-model="value" >
+      <el-radio v-for="(item, index) in optionsArray"  :label='item.key' :key="index">
+      {{item.value}}
+      </el-radio>
+    </el-radio-group>
   </div>
 </template>
 <script lang="ts">
@@ -13,10 +14,10 @@ import {
   Prop,
   Watch
 } from "vue-property-decorator";
-import {SelectVueUI} from '../achieve'
+import {RadioVueUI} from '../achieve'
 @Component
-export default class SelectVueUIComponent extends Vue {
-  @Prop() private target!: SelectVueUI;
+export default class RadioVueUIComponent extends Vue {
+  @Prop() private target!: RadioVueUI;
   value = ''
   optionsArray = []
   mounted() {

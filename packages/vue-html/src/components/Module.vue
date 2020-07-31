@@ -10,7 +10,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { ModuleInstance, ModuleGenrate } from "../sdk";
 
 var InstanceSlot = {
-  
   props: {
     instance: {
       type: Object,
@@ -41,10 +40,8 @@ export default class Module extends Vue {
     this.moduleGenrate.setTarget(this.instance.target)
   }
   updated() {
-    if (!this.instance.target.dom) {
-      this.instance.target.setDom(this.$refs.target);
-      this.moduleGenrate.setTarget(this.instance.target)
-    } 
+    this.instance.target.setDom(this.$refs.target);
+    this.moduleGenrate.setTarget(this.instance.target)
   }
 }
 </script>

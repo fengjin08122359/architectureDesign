@@ -338,7 +338,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             this.selfProp = selfProp;
         }
         filterChildren(instance) {
-            return true;
+            return this.moduleIdList.find(item => item == instance.moduleId);
         }
         addModuleId(moduleId) {
             this.moduleIdList.push(moduleId);
@@ -421,9 +421,10 @@ var vueHtmlCompiler = (function (Vue, Component) {
         }
         unCombi(moduleId) {
             var module = this.findContainUI(this, moduleId);
+            console.log(module);
             if (module) {
-                module.children = module.children.filter(t => t.moduleId != moduleId);
                 module.target.removeModuleId(moduleId);
+                module.children = module.children.filter(t => t.moduleId != moduleId);
             }
         }
         findContainUI(tree, moduleId) {
@@ -515,8 +516,8 @@ var vueHtmlCompiler = (function (Vue, Component) {
         }
         getStyle() {
             return {
-                width: "100px",
-                height: "100px",
+                width: "100%",
+                height: "500px",
                 background: '',
                 display: 'inline-block'
             };
@@ -553,6 +554,92 @@ var vueHtmlCompiler = (function (Vue, Component) {
             super();
             this.opt = {
                 label: '提取数据'
+            };
+        }
+    }
+    class InputSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: '测试',
+                prepend: ''
+            };
+        }
+    }
+    class NumberSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: 0,
+                label: ''
+            };
+        }
+    }
+    class TimePickerSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: 0,
+                placeholder: '',
+                type: 'datetime'
+            };
+        }
+    }
+    class TimeGroupSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                year: 2020,
+                report: 1
+            };
+        }
+    }
+    class SelectSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: ''
+            };
+        }
+    }
+    class CheckboxSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: '',
+                label: 'test'
+            };
+        }
+    }
+    class CheckBoxGroupSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: []
+            };
+        }
+    }
+    class RadioSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: ''
+            };
+        }
+    }
+    class MulSelectSelfProp extends BasicSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                value: ''
+            };
+        }
+    }
+    class IframeSelfProp extends MergeSelfProp {
+        constructor() {
+            super();
+            this.opt = {
+                src: ''
             };
         }
     }
@@ -605,13 +692,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
                 }]
         }, {
             name: "弹窗",
-            id: '4',
+            id: '3',
             selfProp: ContainerSelfProp,
             UI: ContainerUI
         }];
     let basic = [{
             name: "按钮",
-            id: '5',
+            id: '4',
             selfProp: ButtonSelfProp,
             UI: ComponentSingleUI,
             params: [{
@@ -621,49 +708,204 @@ var vueHtmlCompiler = (function (Vue, Component) {
                 }]
         }, {
             name: "输入框",
+            id: '5',
+            selfProp: InputSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'input',
+                    key: 'value',
+                    props: { label: '值' },
+                }, {
+                    type: 'input',
+                    key: 'prepend',
+                    props: { label: '前缀' },
+                }]
+        }, {
+            name: "数字输入框",
             id: '6',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: NumberSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'input',
+                    key: 'value',
+                    props: { label: '值' },
+                }, {
+                    type: 'input',
+                    key: 'label',
+                    props: { label: '标签' },
+                }]
         }, {
             name: "日期选择",
             id: '7',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: TimePickerSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'input',
+                    key: 'value',
+                    props: { label: '值' },
+                }, {
+                    type: 'input',
+                    key: 'placeholder',
+                    props: { label: 'placeholder' },
+                }, {
+                    type: 'select',
+                    key: 'type',
+                    props: { label: '日期类型', optionsArray: [{
+                                key: 'year',
+                                value: 'year'
+                            }, {
+                                key: 'month',
+                                value: 'month'
+                            }, {
+                                key: 'date',
+                                value: 'date'
+                            }, {
+                                key: 'week',
+                                value: 'week'
+                            }, {
+                                key: 'datetime',
+                                value: 'datetime'
+                            }, {
+                                key: 'datetimerange',
+                                value: 'datetimerange'
+                            }, {
+                                key: 'daterange',
+                                value: 'daterange'
+                            },],
+                        configVisible: false
+                    }
+                }]
         }, {
             name: "时间选择",
             id: '8',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: TimeGroupSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'select',
+                    key: 'year',
+                    props: { label: '日期类型', optionsArray: new Array(21).fill(2020).map((item, index) => item - index).map(item => {
+                            return {
+                                key: item,
+                                value: item
+                            };
+                        }),
+                        configVisible: false
+                    }
+                }, {
+                    type: 'select',
+                    key: 'report',
+                    props: { label: '日期类型', optionsArray: [{
+                                key: 1,
+                                value: '年报'
+                            }, {
+                                key: 2,
+                                value: '三季'
+                            }, {
+                                key: 3,
+                                value: '中期'
+                            }, {
+                                key: 4,
+                                value: '一季'
+                            }],
+                        configVisible: false
+                    }
+                }]
         }, {
             name: "下拉选择",
             id: '9',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: SelectSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'select',
+                    key: 'value',
+                    props: { label: '日期类型', optionsArray: [{
+                                key: 1,
+                                value: '选项一'
+                            }, {
+                                key: 2,
+                                value: '选项二'
+                            }, {
+                                key: 3,
+                                value: '选项三'
+                            }],
+                        configVisible: true
+                    }
+                }]
         }, {
             name: "多选框",
             id: '10',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: CheckboxSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'boolean',
+                    key: 'value',
+                }, {
+                    type: 'input',
+                    key: 'label',
+                }]
         }, {
             name: "多选框组",
             id: '11',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: CheckBoxGroupSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'mulSelect',
+                    key: 'value',
+                    props: { optionsArray: [{
+                                key: 1,
+                                value: '选项一'
+                            }, {
+                                key: 2,
+                                value: '选项二'
+                            }, {
+                                key: 3,
+                                value: '选项三'
+                            }],
+                        configVisible: true
+                    },
+                }]
         }, {
             name: "单选框组",
             id: '12',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: RadioSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'select',
+                    key: 'value',
+                    props: { label: '日期类型', optionsArray: [{
+                                key: 1,
+                                value: '选项一'
+                            }, {
+                                key: 2,
+                                value: '选项二'
+                            }, {
+                                key: 3,
+                                value: '选项三'
+                            }],
+                        configVisible: true
+                    }
+                }]
         }, {
             name: "下拉框",
             id: '13',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
-        }, {
-            name: "时间选择框",
-            id: '14',
-            selfProp: BasicSelfProp,
-            UI: ComponentSingleUI
+            selfProp: MulSelectSelfProp,
+            UI: ComponentSingleUI,
+            params: [{
+                    type: 'mulSelect',
+                    key: 'value',
+                    props: { optionsArray: [{
+                                key: 1,
+                                value: '选项一'
+                            }, {
+                                key: 2,
+                                value: '选项二'
+                            }, {
+                                key: 3,
+                                value: '选项三'
+                            }],
+                        configVisible: true
+                    },
+                }]
         }];
     let merge = [{
             name: "柱状折现图",
@@ -679,17 +921,20 @@ var vueHtmlCompiler = (function (Vue, Component) {
             name: "表格",
             id: '17',
             selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
+            UI: ComponentMultipleUI,
+            params: [{
+                    type: 'tableDataConfig',
+                    key: 'config',
+                }]
         }, {
             name: "嵌入式页面",
             id: '18',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
-        }, {
-            name: "缩放工具页面",
-            id: '19',
-            selfProp: MergeSelfProp,
-            UI: ComponentMultipleUI
+            selfProp: IframeSelfProp,
+            UI: ComponentMultipleUI,
+            params: [{
+                    type: 'input',
+                    key: 'src',
+                }]
         }];
 
     let containerModules = new ModuleInstance();
@@ -60920,6 +61165,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             {
               attrs: {
                 disabled: _vm.target.props.disabled,
+                clearable: "",
                 type: _vm.target.props.inputType
               },
               model: {
@@ -61282,7 +61528,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
         [
           _c("div", [_vm._v(_vm._s(_vm.target.props.label))]),
           _vm._v(" "),
-          _vm.target.configVisible
+          _vm.target.props.configVisible
             ? _c(
                 "div",
                 [
@@ -61379,12 +61625,12 @@ var vueHtmlCompiler = (function (Vue, Component) {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.target.configVisible ? _c("span", [_vm._v("结果:")]) : _vm._e(),
+          _vm.target.props.configVisible ? _c("span", [_vm._v("结果:")]) : _vm._e(),
           _vm._v(" "),
           _c(
             "el-select",
             {
-              attrs: { multiple: "", filterable: "" },
+              attrs: { multiple: "", filterable: "", clearable: "" },
               model: {
                 value: _vm.target.value,
                 callback: function($$v) {
@@ -61471,7 +61717,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
         [
           _c("div", [_vm._v(_vm._s(_vm.target.props.label))]),
           _vm._v(" "),
-          _vm.target.configVisible
+          _vm.target.props.configVisible
             ? _c(
                 "div",
                 [
@@ -61568,12 +61814,12 @@ var vueHtmlCompiler = (function (Vue, Component) {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.target.configVisible ? _c("span", [_vm._v("结果:")]) : _vm._e(),
+          _vm.target.props.configVisible ? _c("span", [_vm._v("结果:")]) : _vm._e(),
           _vm._v(" "),
           _c(
             "el-select",
             {
-              attrs: { filterable: "" },
+              attrs: { filterable: "", clearable: "" },
               model: {
                 value: _vm.target.value,
                 callback: function($$v) {
@@ -61706,8 +61952,89 @@ var vueHtmlCompiler = (function (Vue, Component) {
         undefined
       );
 
+    let InputVueUI$1 = class InputVueUI extends Vue {
+    };
+    __decorate([
+        Prop()
+    ], InputVueUI$1.prototype, "target", void 0);
+    InputVueUI$1 = __decorate([
+        Component__default
+    ], InputVueUI$1);
+    var script$6 = InputVueUI$1;
+
+    /* script */
+    const __vue_script__$6 = script$6;
+
+    /* template */
+    var __vue_render__$6 = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.target.props.show,
+              expression: "target.props.show"
+            }
+          ],
+          staticClass: "BooleanVueUI"
+        },
+        [
+          _c(
+            "el-checkbox",
+            {
+              model: {
+                value: _vm.target.value,
+                callback: function($$v) {
+                  _vm.$set(_vm.target, "value", $$v);
+                },
+                expression: "target.value"
+              }
+            },
+            [_vm._v("是否选中")]
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$6 = [];
+    __vue_render__$6._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$6 = undefined;
+      /* scoped */
+      const __vue_scope_id__$6 = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$6 = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$6 = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
+        __vue_inject_styles__$6,
+        __vue_script__$6,
+        __vue_scope_id__$6,
+        __vue_is_functional_template__$6,
+        __vue_module_identifier__$6,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
     Vue.use(ElementUI);
-    class InputVueUI$1 extends VueUI {
+    class InputVueUI$2 extends VueUI {
         constructor(params) {
             super(params);
         }
@@ -61857,6 +62184,17 @@ var vueHtmlCompiler = (function (Vue, Component) {
             });
         }
     }
+    class BooleanVueUI extends VueUI {
+        constructor(params) {
+            super(params);
+            this.value = !!this.value;
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$6, {
+                props: { target: this }
+            });
+        }
+    }
 
     let ContainerVueUIComponent = class ContainerVueUIComponent extends Vue {
         mounted() {
@@ -61869,29 +62207,29 @@ var vueHtmlCompiler = (function (Vue, Component) {
     ContainerVueUIComponent = __decorate([
         Component__default
     ], ContainerVueUIComponent);
-    var script$6 = ContainerVueUIComponent;
+    var script$7 = ContainerVueUIComponent;
 
     /* script */
-    const __vue_script__$6 = script$6;
+    const __vue_script__$7 = script$7;
 
     /* template */
-    var __vue_render__$6 = function() {
+    var __vue_render__$7 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
       return _c("div", { staticClass: "ContainerVue" }, [_vm._t("default")], 2)
     };
-    var __vue_staticRenderFns__$6 = [];
-    __vue_render__$6._withStripped = true;
+    var __vue_staticRenderFns__$7 = [];
+    __vue_render__$7._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$6 = undefined;
+      const __vue_inject_styles__$7 = undefined;
       /* scoped */
-      const __vue_scope_id__$6 = undefined;
+      const __vue_scope_id__$7 = undefined;
       /* module identifier */
-      const __vue_module_identifier__$6 = undefined;
+      const __vue_module_identifier__$7 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$6 = false;
+      const __vue_is_functional_template__$7 = false;
       /* style inject */
       
       /* style inject SSR */
@@ -61900,13 +62238,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
-        __vue_inject_styles__$6,
-        __vue_script__$6,
-        __vue_scope_id__$6,
-        __vue_is_functional_template__$6,
-        __vue_module_identifier__$6,
+      const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
+        __vue_inject_styles__$7,
+        __vue_script__$7,
+        __vue_scope_id__$7,
+        __vue_is_functional_template__$7,
+        __vue_module_identifier__$7,
         false,
         undefined,
         undefined,
@@ -61946,13 +62284,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
     CardContainerVueUIComponent = __decorate([
         Component__default
     ], CardContainerVueUIComponent);
-    var script$7 = CardContainerVueUIComponent;
+    var script$8 = CardContainerVueUIComponent;
 
     /* script */
-    const __vue_script__$7 = script$7;
+    const __vue_script__$8 = script$8;
 
     /* template */
-    var __vue_render__$7 = function() {
+    var __vue_render__$8 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -61985,17 +62323,17 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$7 = [];
-    __vue_render__$7._withStripped = true;
+    var __vue_staticRenderFns__$8 = [];
+    __vue_render__$8._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$7 = undefined;
+      const __vue_inject_styles__$8 = undefined;
       /* scoped */
-      const __vue_scope_id__$7 = undefined;
+      const __vue_scope_id__$8 = undefined;
       /* module identifier */
-      const __vue_module_identifier__$7 = undefined;
+      const __vue_module_identifier__$8 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$7 = false;
+      const __vue_is_functional_template__$8 = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62004,13 +62342,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
-        __vue_inject_styles__$7,
-        __vue_script__$7,
-        __vue_scope_id__$7,
-        __vue_is_functional_template__$7,
-        __vue_module_identifier__$7,
+      const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
+        __vue_inject_styles__$8,
+        __vue_script__$8,
+        __vue_scope_id__$8,
+        __vue_is_functional_template__$8,
+        __vue_module_identifier__$8,
         false,
         undefined,
         undefined,
@@ -62033,7 +62371,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     DialogContainerVueUIComponent = __decorate([
         Component__default
     ], DialogContainerVueUIComponent);
-    var script$8 = DialogContainerVueUIComponent;
+    var script$9 = DialogContainerVueUIComponent;
 
     const isOldIE = typeof navigator !== 'undefined' &&
         /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
@@ -62089,10 +62427,10 @@ var vueHtmlCompiler = (function (Vue, Component) {
     }
 
     /* script */
-    const __vue_script__$8 = script$8;
+    const __vue_script__$9 = script$9;
 
     /* template */
-    var __vue_render__$8 = function() {
+    var __vue_render__$9 = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62132,34 +62470,34 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$8 = [];
-    __vue_render__$8._withStripped = true;
+    var __vue_staticRenderFns__$9 = [];
+    __vue_render__$9._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$8 = function (inject) {
+      const __vue_inject_styles__$9 = function (inject) {
         if (!inject) return
         inject("data-v-499cacd4_0", { source: ".DialogContainerVue .DialogContainerVue-block[data-v-499cacd4] {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n", map: {"version":3,"sources":["DialogContainerVueUI.vue"],"names":[],"mappings":"AAAA;EACE,0BAA0B;EAC1B,sBAAsB;EACtB,YAAY;AACd","file":"DialogContainerVueUI.vue","sourcesContent":[".DialogContainerVue .DialogContainerVue-block {\n  border: 20px solid #909399;\n  box-sizing: border-box;\n  height: 100%;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$8 = "data-v-499cacd4";
+      const __vue_scope_id__$9 = "data-v-499cacd4";
       /* module identifier */
-      const __vue_module_identifier__$8 = undefined;
+      const __vue_module_identifier__$9 = undefined;
       /* functional template */
-      const __vue_is_functional_template__$8 = false;
+      const __vue_is_functional_template__$9 = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
-        __vue_inject_styles__$8,
-        __vue_script__$8,
-        __vue_scope_id__$8,
-        __vue_is_functional_template__$8,
-        __vue_module_identifier__$8,
+      const __vue_component__$9 = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
+        __vue_inject_styles__$9,
+        __vue_script__$9,
+        __vue_scope_id__$9,
+        __vue_is_functional_template__$9,
+        __vue_module_identifier__$9,
         false,
         createInjector,
         undefined,
@@ -62192,13 +62530,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
     ButtonVueUIComponent = __decorate([
         Component__default
     ], ButtonVueUIComponent);
-    var script$9 = ButtonVueUIComponent;
+    var script$a = ButtonVueUIComponent;
 
     /* script */
-    const __vue_script__$9 = script$9;
+    const __vue_script__$a = script$a;
 
     /* template */
-    var __vue_render__$9 = function() {
+    var __vue_render__$a = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62209,17 +62547,117 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$9 = [];
-    __vue_render__$9._withStripped = true;
+    var __vue_staticRenderFns__$a = [];
+    __vue_render__$a._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$9 = undefined;
+      const __vue_inject_styles__$a = function (inject) {
+        if (!inject) return
+        inject("data-v-47e9bdb1_0", { source: ".ButtonVue .el-button[data-v-47e9bdb1] {\n  width: 100%;\n}\n", map: {"version":3,"sources":["ButtonVueUI.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;AACb","file":"ButtonVueUI.vue","sourcesContent":[".ButtonVue .el-button {\n  width: 100%;\n}\n"]}, media: undefined });
+
+      };
       /* scoped */
-      const __vue_scope_id__$9 = undefined;
+      const __vue_scope_id__$a = "data-v-47e9bdb1";
       /* module identifier */
-      const __vue_module_identifier__$9 = undefined;
+      const __vue_module_identifier__$a = undefined;
       /* functional template */
-      const __vue_is_functional_template__$9 = false;
+      const __vue_is_functional_template__$a = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$a = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
+        __vue_inject_styles__$a,
+        __vue_script__$a,
+        __vue_scope_id__$a,
+        __vue_is_functional_template__$a,
+        __vue_module_identifier__$a,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let InputVueUIComponent = class InputVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.prepend = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.value = val.value || '';
+            this.prepend = val.prepend || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], InputVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], InputVueUIComponent.prototype, "watchTab", null);
+    InputVueUIComponent = __decorate([
+        Component__default
+    ], InputVueUIComponent);
+    var script$b = InputVueUIComponent;
+
+    /* script */
+    const __vue_script__$b = script$b;
+
+    /* template */
+    var __vue_render__$b = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "InputVue" },
+        [
+          _c(
+            "el-input",
+            {
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            [
+              _vm.prepend
+                ? _c("template", { slot: "prepend" }, [
+                    _vm._v("\n      " + _vm._s(_vm.prepend) + "\n    ")
+                  ])
+                : _vm._e()
+            ],
+            2
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$b = [];
+    __vue_render__$b._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$b = undefined;
+      /* scoped */
+      const __vue_scope_id__$b = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$b = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$b = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62228,13 +62666,1041 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$9 = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
-        __vue_inject_styles__$9,
-        __vue_script__$9,
-        __vue_scope_id__$9,
-        __vue_is_functional_template__$9,
-        __vue_module_identifier__$9,
+      const __vue_component__$b = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
+        __vue_inject_styles__$b,
+        __vue_script__$b,
+        __vue_scope_id__$b,
+        __vue_is_functional_template__$b,
+        __vue_module_identifier__$b,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let NumberVueUIComponent = class NumberVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.label = '';
+        }
+        mounted() {
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.value = val.value || '';
+            this.label = val.label || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], NumberVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], NumberVueUIComponent.prototype, "watchTab", null);
+    NumberVueUIComponent = __decorate([
+        Component__default
+    ], NumberVueUIComponent);
+    var script$c = NumberVueUIComponent;
+
+    /* script */
+    const __vue_script__$c = script$c;
+
+    /* template */
+    var __vue_render__$c = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "NumberVue" },
+        [
+          _c(
+            "el-row",
+            [
+              _c("el-col", { attrs: { span: _vm.label ? 4 : 0 } }, [
+                _vm._v(_vm._s(_vm.label))
+              ]),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { attrs: { span: _vm.label ? 20 : 24 } },
+                [
+                  _c("el-input-number", {
+                    attrs: { label: _vm.label },
+                    model: {
+                      value: _vm.value,
+                      callback: function($$v) {
+                        _vm.value = $$v;
+                      },
+                      expression: "value"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$c = [];
+    __vue_render__$c._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$c = function (inject) {
+        if (!inject) return
+        inject("data-v-b13fb1d0_0", { source: ".NumberVue[data-v-b13fb1d0] {\n  font-size: 14px;\n  line-height: 40px;\n}\n", map: {"version":3,"sources":["NumberVueUI.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB","file":"NumberVueUI.vue","sourcesContent":[".NumberVue {\n  font-size: 14px;\n  line-height: 40px;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$c = "data-v-b13fb1d0";
+      /* module identifier */
+      const __vue_module_identifier__$c = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$c = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$c = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
+        __vue_inject_styles__$c,
+        __vue_script__$c,
+        __vue_scope_id__$c,
+        __vue_is_functional_template__$c,
+        __vue_module_identifier__$c,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let TimePickerVueUIComponent = class TimePickerVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.type = 'datetime';
+            this.placeholder = '';
+        }
+        mounted() {
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.value = val.value || '';
+            this.type = val.type || 'datetime';
+            this.placeholder = val.placeholder || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], TimePickerVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], TimePickerVueUIComponent.prototype, "watchTab", null);
+    TimePickerVueUIComponent = __decorate([
+        Component__default
+    ], TimePickerVueUIComponent);
+    var script$d = TimePickerVueUIComponent;
+
+    /* script */
+    const __vue_script__$d = script$d;
+
+    /* template */
+    var __vue_render__$d = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "TimePickerVue" },
+        [
+          _c("el-date-picker", {
+            attrs: { type: _vm.type, placeholder: _vm.placeholder },
+            model: {
+              value: _vm.value,
+              callback: function($$v) {
+                _vm.value = $$v;
+              },
+              expression: "value"
+            }
+          })
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$d = [];
+    __vue_render__$d._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$d = function (inject) {
+        if (!inject) return
+        inject("data-v-b04929ba_0", { source: ".NumberVue[data-v-b04929ba] {\n  font-size: 14px;\n  line-height: 40px;\n}\n", map: {"version":3,"sources":["TimePickerVueUI.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB","file":"TimePickerVueUI.vue","sourcesContent":[".NumberVue {\n  font-size: 14px;\n  line-height: 40px;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$d = "data-v-b04929ba";
+      /* module identifier */
+      const __vue_module_identifier__$d = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$d = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$d = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
+        __vue_inject_styles__$d,
+        __vue_script__$d,
+        __vue_scope_id__$d,
+        __vue_is_functional_template__$d,
+        __vue_module_identifier__$d,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let TimeGroupVueUIComponent = class TimeGroupVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.year = '2020';
+            this.report = 1;
+        }
+        mounted() {
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.year = val.year || '2020';
+            this.report = val.report || 1;
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], TimeGroupVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], TimeGroupVueUIComponent.prototype, "watchTab", null);
+    TimeGroupVueUIComponent = __decorate([
+        Component__default
+    ], TimeGroupVueUIComponent);
+    var script$e = TimeGroupVueUIComponent;
+
+    /* script */
+    const __vue_script__$e = script$e;
+
+    /* template */
+    var __vue_render__$e = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "TimeGroupVue" },
+        [
+          _c(
+            "el-select",
+            {
+              attrs: { filterable: "" },
+              model: {
+                value: _vm.year,
+                callback: function($$v) {
+                  _vm.year = $$v;
+                },
+                expression: "year"
+              }
+            },
+            _vm._l(_vm.target.year, function(item, index) {
+              return _c("el-option", {
+                key: index,
+                attrs: { value: item.key, label: item.value }
+              })
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-select",
+            {
+              attrs: { filterable: "" },
+              model: {
+                value: _vm.report,
+                callback: function($$v) {
+                  _vm.report = $$v;
+                },
+                expression: "report"
+              }
+            },
+            _vm._l(_vm.target.report, function(item, index) {
+              return _c("el-option", {
+                key: index,
+                attrs: { value: item.key, label: item.value }
+              })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$e = [];
+    __vue_render__$e._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$e = function (inject) {
+        if (!inject) return
+        inject("data-v-1d64be96_0", { source: ".NumberVue[data-v-1d64be96] {\n  font-size: 14px;\n  line-height: 40px;\n}\n", map: {"version":3,"sources":["TimeGroupVueUI.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB","file":"TimeGroupVueUI.vue","sourcesContent":[".NumberVue {\n  font-size: 14px;\n  line-height: 40px;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$e = "data-v-1d64be96";
+      /* module identifier */
+      const __vue_module_identifier__$e = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$e = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$e = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
+        __vue_inject_styles__$e,
+        __vue_script__$e,
+        __vue_scope_id__$e,
+        __vue_is_functional_template__$e,
+        __vue_module_identifier__$e,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let SelectVueUIComponent = class SelectVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.optionsArray = [];
+        }
+        mounted() {
+            console.log(this.target.ui.selfProp);
+            this.resetSelfProp();
+        }
+        resetSelfProp(val = this.target.ui.selfProp) {
+            this.value = val.opt.value || '';
+            this.optionsArray = val.params.find(item => item.key == 'value').props.optionsArray;
+        }
+        watchTab(val) {
+            this.resetSelfProp(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], SelectVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp', { deep: true })
+    ], SelectVueUIComponent.prototype, "watchTab", null);
+    SelectVueUIComponent = __decorate([
+        Component__default
+    ], SelectVueUIComponent);
+    var script$f = SelectVueUIComponent;
+
+    /* script */
+    const __vue_script__$f = script$f;
+
+    /* template */
+    var __vue_render__$f = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "SelectVue" },
+        [
+          _c(
+            "el-select",
+            {
+              attrs: { filterable: "" },
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            _vm._l(_vm.optionsArray, function(item, index) {
+              return _c("el-option", {
+                key: index,
+                attrs: { value: item.key, label: item.value }
+              })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$f = [];
+    __vue_render__$f._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$f = function (inject) {
+        if (!inject) return
+        inject("data-v-6311deca_0", { source: ".NumberVue[data-v-6311deca] {\n  font-size: 14px;\n  line-height: 40px;\n}\n", map: {"version":3,"sources":["SelectVueUI.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB","file":"SelectVueUI.vue","sourcesContent":[".NumberVue {\n  font-size: 14px;\n  line-height: 40px;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$f = "data-v-6311deca";
+      /* module identifier */
+      const __vue_module_identifier__$f = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$f = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$f = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
+        __vue_inject_styles__$f,
+        __vue_script__$f,
+        __vue_scope_id__$f,
+        __vue_is_functional_template__$f,
+        __vue_module_identifier__$f,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let CheckBoxVueUIComponent = class CheckBoxVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.label = '';
+            this.value = '';
+        }
+        mounted() {
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.value = val.value || '';
+            this.label = val.label || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], CheckBoxVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], CheckBoxVueUIComponent.prototype, "watchTab", null);
+    CheckBoxVueUIComponent = __decorate([
+        Component__default
+    ], CheckBoxVueUIComponent);
+    var script$g = CheckBoxVueUIComponent;
+
+    /* script */
+    const __vue_script__$g = script$g;
+
+    /* template */
+    var __vue_render__$g = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "CheckBoxVueUI" },
+        [
+          _c(
+            "el-checkbox",
+            {
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            [_vm._v(_vm._s(_vm.label))]
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$g = [];
+    __vue_render__$g._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$g = undefined;
+      /* scoped */
+      const __vue_scope_id__$g = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$g = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$g = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$g = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
+        __vue_inject_styles__$g,
+        __vue_script__$g,
+        __vue_scope_id__$g,
+        __vue_is_functional_template__$g,
+        __vue_module_identifier__$g,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let CheckBoxGroupVueUIComponent = class CheckBoxGroupVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = [];
+            this.optionsArray = [];
+        }
+        mounted() {
+            console.log(this.target.ui.selfProp);
+            this.resetSelfProp();
+        }
+        resetSelfProp(val = this.target.ui.selfProp) {
+            this.value = val.opt.value || [];
+            this.optionsArray = val.params.find(item => item.key == 'value').props.optionsArray;
+        }
+        watchTab(val) {
+            this.resetSelfProp(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], CheckBoxGroupVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp', { deep: true })
+    ], CheckBoxGroupVueUIComponent.prototype, "watchTab", null);
+    CheckBoxGroupVueUIComponent = __decorate([
+        Component__default
+    ], CheckBoxGroupVueUIComponent);
+    var script$h = CheckBoxGroupVueUIComponent;
+
+    /* script */
+    const __vue_script__$h = script$h;
+
+    /* template */
+    var __vue_render__$h = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "CheckBoxGroupVueUI" },
+        [
+          _c(
+            "el-checkbox-group",
+            {
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            _vm._l(_vm.optionsArray, function(item, index) {
+              return _c("el-checkbox", { key: index, attrs: { label: item.key } }, [
+                _vm._v("\n    " + _vm._s(item.value) + "\n    ")
+              ])
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$h = [];
+    __vue_render__$h._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$h = undefined;
+      /* scoped */
+      const __vue_scope_id__$h = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$h = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$h = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$h = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
+        __vue_inject_styles__$h,
+        __vue_script__$h,
+        __vue_scope_id__$h,
+        __vue_is_functional_template__$h,
+        __vue_module_identifier__$h,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let RadioVueUIComponent = class RadioVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.optionsArray = [];
+        }
+        mounted() {
+            console.log(this.target.ui.selfProp);
+            this.resetSelfProp();
+        }
+        resetSelfProp(val = this.target.ui.selfProp) {
+            this.value = val.opt.value || '';
+            this.optionsArray = val.params.find(item => item.key == 'value').props.optionsArray;
+        }
+        watchTab(val) {
+            this.resetSelfProp(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], RadioVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp', { deep: true })
+    ], RadioVueUIComponent.prototype, "watchTab", null);
+    RadioVueUIComponent = __decorate([
+        Component__default
+    ], RadioVueUIComponent);
+    var script$i = RadioVueUIComponent;
+
+    /* script */
+    const __vue_script__$i = script$i;
+
+    /* template */
+    var __vue_render__$i = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "RadioVueUI" },
+        [
+          _c(
+            "el-radio-group",
+            {
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            _vm._l(_vm.optionsArray, function(item, index) {
+              return _c("el-radio", { key: index, attrs: { label: item.key } }, [
+                _vm._v("\n    " + _vm._s(item.value) + "\n    ")
+              ])
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$i = [];
+    __vue_render__$i._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$i = function (inject) {
+        if (!inject) return
+        inject("data-v-296668d7_0", { source: ".NumberVue[data-v-296668d7] {\n  font-size: 14px;\n  line-height: 40px;\n}\n", map: {"version":3,"sources":["RadioVueUI.vue"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB","file":"RadioVueUI.vue","sourcesContent":[".NumberVue {\n  font-size: 14px;\n  line-height: 40px;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$i = "data-v-296668d7";
+      /* module identifier */
+      const __vue_module_identifier__$i = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$i = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$i = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
+        __vue_inject_styles__$i,
+        __vue_script__$i,
+        __vue_scope_id__$i,
+        __vue_is_functional_template__$i,
+        __vue_module_identifier__$i,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let MulSelectVueUIComponent = class MulSelectVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = [];
+            this.optionsArray = [];
+        }
+        mounted() {
+            console.log(this.target.ui.selfProp);
+            this.resetSelfProp();
+        }
+        resetSelfProp(val = this.target.ui.selfProp) {
+            this.value = val.opt.value || [];
+            this.optionsArray = val.params.find(item => item.key == 'value').props.optionsArray;
+        }
+        watchTab(val) {
+            this.resetSelfProp(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], MulSelectVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp', { deep: true })
+    ], MulSelectVueUIComponent.prototype, "watchTab", null);
+    MulSelectVueUIComponent = __decorate([
+        Component__default
+    ], MulSelectVueUIComponent);
+    var script$j = MulSelectVueUIComponent;
+
+    /* script */
+    const __vue_script__$j = script$j;
+
+    /* template */
+    var __vue_render__$j = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "MulSelectVueUI" },
+        [
+          _c(
+            "el-select",
+            {
+              attrs: { multiple: "", filterable: "", clearable: "" },
+              model: {
+                value: _vm.value,
+                callback: function($$v) {
+                  _vm.value = $$v;
+                },
+                expression: "value"
+              }
+            },
+            _vm._l(_vm.optionsArray, function(item, index) {
+              return _c("el-option", {
+                key: index,
+                attrs: { value: item.key, label: item.value }
+              })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$j = [];
+    __vue_render__$j._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$j = undefined;
+      /* scoped */
+      const __vue_scope_id__$j = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$j = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$j = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$j = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
+        __vue_inject_styles__$j,
+        __vue_script__$j,
+        __vue_scope_id__$j,
+        __vue_is_functional_template__$j,
+        __vue_module_identifier__$j,
+        false,
+        undefined,
+        undefined,
+        undefined
+      );
+
+    let IframeVueUIComponent = class IframeVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.src = '';
+        }
+        mounted() {
+            console.log(this.target.ui);
+            console.log(this.target.ui.selfProp.opt);
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.src = val.src || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], IframeVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], IframeVueUIComponent.prototype, "watchTab", null);
+    IframeVueUIComponent = __decorate([
+        Component__default
+    ], IframeVueUIComponent);
+    var script$k = IframeVueUIComponent;
+
+    /* script */
+    const __vue_script__$k = script$k;
+
+    /* template */
+    var __vue_render__$k = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c("div", { staticClass: "IframeVueUI" }, [
+        !_vm.target.isCompiler
+          ? _c("div", { staticClass: "IframeVueUI-block" })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.target.isCompiler
+          ? _c("iframe", { attrs: { src: _vm.src, frameborder: "0" } })
+          : _vm._e()
+      ])
+    };
+    var __vue_staticRenderFns__$k = [];
+    __vue_render__$k._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$k = function (inject) {
+        if (!inject) return
+        inject("data-v-35311279_0", { source: ".IframeVueUI[data-v-35311279] {\n  width: 100%;\n  height: 100%;\n}\n.IframeVueUI .IframeVueUI-block[data-v-35311279] {\n  background: #909399;\n  height: 100%;\n  width: 100%;\n}\n.IframeVueUI iframe[data-v-35311279] {\n  border: 0;\n  height: 100%;\n  width: 100%;\n}\n", map: {"version":3,"sources":["IframeVueUI.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;AACd;AACA;EACE,mBAAmB;EACnB,YAAY;EACZ,WAAW;AACb;AACA;EACE,SAAS;EACT,YAAY;EACZ,WAAW;AACb","file":"IframeVueUI.vue","sourcesContent":[".IframeVueUI {\n  width: 100%;\n  height: 100%;\n}\n.IframeVueUI .IframeVueUI-block {\n  background: #909399;\n  height: 100%;\n  width: 100%;\n}\n.IframeVueUI iframe {\n  border: 0;\n  height: 100%;\n  width: 100%;\n}\n"]}, media: undefined });
+
+      };
+      /* scoped */
+      const __vue_scope_id__$k = "data-v-35311279";
+      /* module identifier */
+      const __vue_module_identifier__$k = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$k = false;
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$k = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
+        __vue_inject_styles__$k,
+        __vue_script__$k,
+        __vue_scope_id__$k,
+        __vue_is_functional_template__$k,
+        __vue_module_identifier__$k,
+        false,
+        createInjector,
+        undefined,
+        undefined
+      );
+
+    let TabelColSlot = class TabelColSlot extends Vue {
+        render(h, data) {
+            return this.tableCol.render(h, data, this.row, this.propkey);
+        }
+    };
+    __decorate([
+        Prop()
+    ], TabelColSlot.prototype, "tableCol", void 0);
+    __decorate([
+        Prop()
+    ], TabelColSlot.prototype, "row", void 0);
+    __decorate([
+        Prop()
+    ], TabelColSlot.prototype, "propkey", void 0);
+    TabelColSlot = __decorate([
+        Component__default
+    ], TabelColSlot);
+    let TableVueUIComponent = class TableVueUIComponent extends Vue {
+        constructor() {
+            super(...arguments);
+            this.value = '';
+            this.prepend = '';
+        }
+        mounted() {
+            console.log(this.target);
+            this.resetOpt();
+        }
+        resetOpt(val = this.target.ui.selfProp.opt) {
+            this.value = val.value || '';
+            this.prepend = val.prepend || '';
+        }
+        watchTab(val) {
+            this.resetOpt(val);
+        }
+    };
+    __decorate([
+        Prop()
+    ], TableVueUIComponent.prototype, "target", void 0);
+    __decorate([
+        Watch('target.ui.selfProp.opt')
+    ], TableVueUIComponent.prototype, "watchTab", null);
+    TableVueUIComponent = __decorate([
+        Component__default({ components: { TabelColSlot } })
+    ], TableVueUIComponent);
+    var script$l = TableVueUIComponent;
+
+    /* script */
+    const __vue_script__$l = script$l;
+
+    /* template */
+    var __vue_render__$l = function() {
+      var _vm = this;
+      var _h = _vm.$createElement;
+      var _c = _vm._self._c || _h;
+      return _c(
+        "div",
+        { staticClass: "TableVueUI" },
+        [
+          _c(
+            "el-table",
+            {
+              directives: [
+                {
+                  name: "loading",
+                  rawName: "v-loading",
+                  value: _vm.target.loading,
+                  expression: "target.loading"
+                }
+              ],
+              staticClass: "list-table",
+              staticStyle: { width: "99.9%" },
+              attrs: {
+                size: "mini",
+                data: _vm.target.mergetList,
+                fit: "",
+                stripe: "",
+                "show-header": _vm.target.mergeShowHeader
+              }
+            },
+            [
+              _vm._l(_vm.target.mergeCols, function(item, index) {
+                return [
+                  _c("el-table-column", {
+                    key: index,
+                    attrs: {
+                      type: item.type,
+                      label: item.label,
+                      prop: item.prop,
+                      sortable: item.sortable,
+                      "class-name": item.className,
+                      width: item.width,
+                      "min-width": item.minWidth,
+                      fixed: item.fixed,
+                      "show-overflow-tooltip": item.showOverflowTooltip
+                    },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "default",
+                          fn: function(scope) {
+                            return [
+                              _c("TabelColSlot", {
+                                attrs: {
+                                  tableCol: item,
+                                  propkey: _vm.target.getTableKey(scope, item),
+                                  row: _vm.target.getTableRow(scope, item)
+                                }
+                              })
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  })
+                ]
+              })
+            ],
+            2
+          )
+        ],
+        1
+      )
+    };
+    var __vue_staticRenderFns__$l = [];
+    __vue_render__$l._withStripped = true;
+
+      /* style */
+      const __vue_inject_styles__$l = undefined;
+      /* scoped */
+      const __vue_scope_id__$l = undefined;
+      /* module identifier */
+      const __vue_module_identifier__$l = undefined;
+      /* functional template */
+      const __vue_is_functional_template__$l = false;
+      /* style inject */
+      
+      /* style inject SSR */
+      
+      /* style inject shadow dom */
+      
+
+      
+      const __vue_component__$l = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
+        __vue_inject_styles__$l,
+        __vue_script__$l,
+        __vue_scope_id__$l,
+        __vue_is_functional_template__$l,
+        __vue_module_identifier__$l,
         false,
         undefined,
         undefined,
@@ -62259,7 +63725,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             super(params);
         }
         renderInstance(render) {
-            return render.createElement(__vue_component__$6, {
+            return render.createElement(__vue_component__$7, {
                 props: { target: this }
             }, [render.vueRoot.$slots.default]);
         }
@@ -62269,7 +63735,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             super(params);
         }
         renderInstance(render) {
-            return render.createElement(__vue_component__$7, {
+            return render.createElement(__vue_component__$8, {
                 props: { target: this }
             }, [render.vueRoot.$slots.default]);
         }
@@ -62279,7 +63745,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             super(params);
         }
         renderInstance(render) {
-            return render.createElement(__vue_component__$8, {
+            return render.createElement(__vue_component__$9, {
                 props: { target: this }
             }, [render.vueRoot.$slots.default]);
         }
@@ -62289,7 +63755,227 @@ var vueHtmlCompiler = (function (Vue, Component) {
             super(params);
         }
         renderInstance(render) {
-            return render.createElement(__vue_component__$9, {
+            return render.createElement(__vue_component__$a, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class InputVueUI$3 extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$b, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class NumberVueUI$2 extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$c, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class TimePickerVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$d, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class TimeGroupVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+            this.year = new Array(21).fill(2020).map((item, index) => item - index).map(item => {
+                return {
+                    key: item,
+                    value: item
+                };
+            });
+            this.report = [{
+                    key: 1,
+                    value: '年报'
+                }, {
+                    key: 2,
+                    value: '三季'
+                }, {
+                    key: 3,
+                    value: '中期'
+                }, {
+                    key: 4,
+                    value: '一季'
+                }];
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$e, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class SelectVueUI$2 extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$f, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class CheckBoxVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$g, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class CheckBoxGroupVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$h, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class RadioVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$i, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class MulSelectVueUI$2 extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$j, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class IframeVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$k, {
+                props: { target: this }
+            }, [render.vueRoot.$slots.default]);
+        }
+    }
+    class TableCol {
+        constructor(params) {
+            this.prop = params.prop || '';
+            this.type = params.type || '';
+            this.label = params.label || '';
+            this.sortable = params.sortable || false;
+            this.className = params.className || '';
+            this.width = params.width || '';
+            this.minWidth = params.minWidth || '100px';
+            this.fixed = params.fixed || false;
+            this.convert = params.convert || false;
+            this.showOverflowTooltip = params.showOverflowTooltip || false;
+            this.children = (params.children || []).map((item) => new TableCol(item));
+        }
+        render(h, data, row, key = this.prop) {
+            if (this.convert) {
+                return h('span', {}, [this.convert(h, data, this, row)]);
+            }
+            else {
+                return h('span', {}, [row[key]]);
+            }
+        }
+    }
+    class TableVueUI extends BasicVueUI {
+        constructor(params) {
+            super(params);
+            this.list = [];
+            this.loading = false;
+            this.cols = [];
+            this.direction = 'vertical';
+            this.showHeader = true;
+            this.mergetList = [];
+            this.mergeCols = [];
+            this.mergeShowHeader = false;
+            this.setData();
+        }
+        setData() {
+            this.cols.push(new TableCol({ label: 'test', prop: 'test' }));
+            this.cols.push(new TableCol({ label: 'aaaaa', prop: 'test2' }));
+            this.list = [{
+                    test: "a",
+                    test2: 'v'
+                }, {
+                    test: "b",
+                    test2: 'q'
+                },];
+            this.merge();
+        }
+        merge() {
+            if (this.direction === 'vertical') {
+                this.mergeShowHeader = this.showHeader;
+                this.mergetList = this.list.concat();
+                this.mergeCols = this.cols.concat();
+            }
+            else {
+                this.mergeShowHeader = false;
+                this.mergetList = this.cols.map(item => {
+                    return {
+                        prop: item.prop
+                    };
+                });
+                this.mergeCols = [new TableCol({ prop: 'homeTitle' })].concat(this.list.map((item, index) => {
+                    return new TableCol({ prop: index.toString() });
+                }));
+            }
+        }
+        getTableRow(scope, item) {
+            if (this.direction === 'vertical') {
+                return scope.row;
+            }
+            else {
+                if (item.prop == "homeTitle") {
+                    var target = this.cols.find(t => t.prop == scope.row.prop);
+                    if (target) {
+                        return {
+                            [scope.row.prop]: target.label
+                        };
+                    }
+                    else {
+                        return {
+                            [scope.row.prop]: ''
+                        };
+                    }
+                }
+                return this.list[item.prop];
+            }
+        }
+        getTableKey(scope, item) {
+            if (this.direction === 'vertical') {
+                return item.prop;
+            }
+            else {
+                return scope.row.prop;
+            }
+        }
+        renderInstance(render) {
+            return render.createElement(__vue_component__$l, {
                 props: { target: this }
             }, [render.vueRoot.$slots.default]);
         }
@@ -62304,7 +63990,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
             });
             this.uiList.addTemplate({
                 key: 'input',
-                value: InputVueUI$1,
+                value: InputVueUI$2,
             });
             this.uiList.addTemplate({
                 key: 'array',
@@ -62325,6 +64011,10 @@ var vueHtmlCompiler = (function (Vue, Component) {
             this.uiList.addTemplate({
                 key: 'number',
                 value: NumberVueUI$1,
+            });
+            this.uiList.addTemplate({
+                key: 'boolean',
+                value: BooleanVueUI,
             });
         }
         add({ key, value }) {
@@ -62363,12 +64053,56 @@ var vueHtmlCompiler = (function (Vue, Component) {
                 value: CardContainerVueUI
             });
             this.add({
-                key: '4',
+                key: '3',
                 value: DialogContainerVueUI
             });
             this.add({
-                key: '5',
+                key: '4',
                 value: ButtonVueUI
+            });
+            this.add({
+                key: '5',
+                value: InputVueUI$3
+            });
+            this.add({
+                key: '6',
+                value: NumberVueUI$2
+            });
+            this.add({
+                key: '7',
+                value: TimePickerVueUI
+            });
+            this.add({
+                key: '8',
+                value: TimeGroupVueUI
+            });
+            this.add({
+                key: '9',
+                value: SelectVueUI$2
+            });
+            this.add({
+                key: '10',
+                value: CheckBoxVueUI
+            });
+            this.add({
+                key: '11',
+                value: CheckBoxGroupVueUI
+            });
+            this.add({
+                key: '12',
+                value: RadioVueUI
+            });
+            this.add({
+                key: '13',
+                value: MulSelectVueUI$2
+            });
+            this.add({
+                key: '17',
+                value: TableVueUI
+            });
+            this.add({
+                key: '18',
+                value: IframeVueUI
             });
         }
         setTarget(ui) {
@@ -62415,10 +64149,8 @@ var vueHtmlCompiler = (function (Vue, Component) {
             this.moduleGenrate.setTarget(this.instance.target);
         }
         updated() {
-            if (!this.instance.target.dom) {
-                this.instance.target.setDom(this.$refs.target);
-                this.moduleGenrate.setTarget(this.instance.target);
-            }
+            this.instance.target.setDom(this.$refs.target);
+            this.moduleGenrate.setTarget(this.instance.target);
         }
     };
     __decorate([
@@ -62427,13 +64159,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
     Module = __decorate([
         Component__default({ components: { InstanceSlot } })
     ], Module);
-    var script$a = Module;
+    var script$m = Module;
 
     /* script */
-    const __vue_script__$a = script$a;
+    const __vue_script__$m = script$m;
 
     /* template */
-    var __vue_render__$a = function() {
+    var __vue_render__$m = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62454,17 +64186,17 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$a = [];
-    __vue_render__$a._withStripped = true;
+    var __vue_staticRenderFns__$m = [];
+    __vue_render__$m._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$a = undefined;
+      const __vue_inject_styles__$m = undefined;
       /* scoped */
-      const __vue_scope_id__$a = undefined;
+      const __vue_scope_id__$m = undefined;
       /* module identifier */
-      const __vue_module_identifier__$a = undefined;
+      const __vue_module_identifier__$m = undefined;
       /* functional template */
-      const __vue_is_functional_template__$a = false;
+      const __vue_is_functional_template__$m = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62473,13 +64205,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$a = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
-        __vue_inject_styles__$a,
-        __vue_script__$a,
-        __vue_scope_id__$a,
-        __vue_is_functional_template__$a,
-        __vue_module_identifier__$a,
+      const __vue_component__$m = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
+        __vue_inject_styles__$m,
+        __vue_script__$m,
+        __vue_scope_id__$m,
+        __vue_is_functional_template__$m,
+        __vue_module_identifier__$m,
         false,
         undefined,
         undefined,
@@ -62487,6 +64219,9 @@ var vueHtmlCompiler = (function (Vue, Component) {
       );
 
     let CoverEl = class CoverEl extends Vue {
+        get children() {
+            return this.instance.getChildren();
+        }
         get style() {
             let val = {};
             for (let [key, value] of Object.entries(this.instance.target.style)) {
@@ -62499,15 +64234,15 @@ var vueHtmlCompiler = (function (Vue, Component) {
         Prop()
     ], CoverEl.prototype, "instance", void 0);
     CoverEl = __decorate([
-        Component__default({ components: { Module: __vue_component__$a } })
+        Component__default({ components: { Module: __vue_component__$m } })
     ], CoverEl);
-    var script$b = CoverEl;
+    var script$n = CoverEl;
 
     /* script */
-    const __vue_script__$b = script$b;
+    const __vue_script__$n = script$n;
 
     /* template */
-    var __vue_render__$b = function() {
+    var __vue_render__$n = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62522,7 +64257,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
               staticClass: "coverEl-target  total-cover",
               attrs: { instance: _vm.instance }
             },
-            _vm._l(_vm.instance.getChildren(), function(item, index) {
+            _vm._l(_vm.children, function(item, index) {
               return _c("CoverEl", { key: index, attrs: { instance: item } })
             }),
             1
@@ -62531,34 +64266,34 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$b = [];
-    __vue_render__$b._withStripped = true;
+    var __vue_staticRenderFns__$n = [];
+    __vue_render__$n._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$b = function (inject) {
+      const __vue_inject_styles__$n = function (inject) {
         if (!inject) return
-        inject("data-v-0c7a6d65_0", { source: "\n.coverEl[data-v-0c7a6d65] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\n}\n.coverEl > .total-cover[data-v-0c7a6d65] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\n}\n.coverEl>.coverEl-target[data-v-0c7a6d65] {\r\n  z-index: -1;\r\n  position: static;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html-compiler\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAsCA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,YAAA;AACA;AAEA;EACA,WAAA;EACA,gBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :style=\"style\" >\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in instance.getChildren()\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\n\r\n\r\n\r\n@Component({components: {Module}})\r\nexport default class CoverEl extends Vue {\r\n  @Prop() private instance!: ModuleInstance;\r\n  \r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\r\n}\r\n\r\n.coverEl>.coverEl-target {\r\n  z-index: -1;\r\n  position: static;\r\n}\r\n</style>\r\n"]}, media: undefined });
+        inject("data-v-53a77c76_0", { source: "\n.coverEl[data-v-53a77c76] {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\n}\n.coverEl > .total-cover[data-v-53a77c76] {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\n}\n.coverEl>.coverEl-target[data-v-53a77c76] {\r\n  z-index: -1;\r\n  position: static;\n}\r\n", map: {"version":3,"sources":["E:\\fengjin\\test\\architectureDesign\\packages\\vue-html-compiler\\src\\components\\CoverEl.vue"],"names":[],"mappings":";AAwCA;EACA,kBAAA;EACA,sBAAA;EACA,0BAAA;AACA;AAEA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,wBAAA;EACA,sBAAA;EACA,YAAA;AACA;AAEA;EACA,WAAA;EACA,gBAAA;AACA","file":"CoverEl.vue","sourcesContent":["<template>\r\n  <div class=\"coverEl\" :style=\"style\" >\r\n    <Module class='coverEl-target  total-cover' :instance=\"instance\" ref=\"bgTarget\">\r\n      <CoverEl v-for=\"(item,index) in children\" :key=\"index\" :instance=\"item\"></CoverEl>\r\n    </Module>\r\n  </div>\r\n</template>\r\n<script lang=\"ts\">\r\nimport {\r\n  Component,\r\n  Prop,\r\n  Vue,\r\n  Watch\r\n} from \"vue-property-decorator\";\r\nimport {\r\n  ModuleInstance,\r\n} from '../sdk'\r\nimport Module from './Module.vue'\r\n\r\n\r\n\r\n@Component({components: {Module}})\r\nexport default class CoverEl extends Vue {\r\n  @Prop() private instance!: ModuleInstance;\r\n  get children () {\r\n    return this.instance.getChildren()\r\n  }\r\n  get style () {\r\n    let val = {}\r\n    for (let [key,value] of Object.entries(this.instance.target.style)) {\r\n      val[key] = value\r\n    }\r\n    return val \r\n  }\r\n}\r\n</script>\r\n\r\n\r\n\r\n<style scoped>\r\n.coverEl {\r\n  position: relative;\r\n  box-sizing: border-box;\r\n  /* pointer-events: none; */\r\n}\r\n\r\n.coverEl > .total-cover {\r\n  margin: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  /* position: absolute; */\r\n  box-sizing: border-box;\r\n  padding: 0px;\r\n}\r\n\r\n.coverEl>.coverEl-target {\r\n  z-index: -1;\r\n  position: static;\r\n}\r\n</style>\r\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$b = "data-v-0c7a6d65";
+      const __vue_scope_id__$n = "data-v-53a77c76";
       /* module identifier */
-      const __vue_module_identifier__$b = undefined;
+      const __vue_module_identifier__$n = undefined;
       /* functional template */
-      const __vue_is_functional_template__$b = false;
+      const __vue_is_functional_template__$n = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$b = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
-        __vue_inject_styles__$b,
-        __vue_script__$b,
-        __vue_scope_id__$b,
-        __vue_is_functional_template__$b,
-        __vue_module_identifier__$b,
+      const __vue_component__$n = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
+        __vue_inject_styles__$n,
+        __vue_script__$n,
+        __vue_scope_id__$n,
+        __vue_is_functional_template__$n,
+        __vue_module_identifier__$n,
         false,
         createInjector,
         undefined,
@@ -62574,15 +64309,15 @@ var vueHtmlCompiler = (function (Vue, Component) {
         }
     };
     Editor = __decorate([
-        Component__default({ components: { CoverEl: __vue_component__$b } })
+        Component__default({ components: { CoverEl: __vue_component__$n } })
     ], Editor);
-    var script$c = Editor;
+    var script$o = Editor;
 
     /* script */
-    const __vue_script__$c = script$c;
+    const __vue_script__$o = script$o;
 
     /* template */
-    var __vue_render__$c = function() {
+    var __vue_render__$o = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62592,17 +64327,17 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$c = [];
-    __vue_render__$c._withStripped = true;
+    var __vue_staticRenderFns__$o = [];
+    __vue_render__$o._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$c = undefined;
+      const __vue_inject_styles__$o = undefined;
       /* scoped */
-      const __vue_scope_id__$c = undefined;
+      const __vue_scope_id__$o = undefined;
       /* module identifier */
-      const __vue_module_identifier__$c = undefined;
+      const __vue_module_identifier__$o = undefined;
       /* functional template */
-      const __vue_is_functional_template__$c = false;
+      const __vue_is_functional_template__$o = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62611,13 +64346,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$c = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
-        __vue_inject_styles__$c,
-        __vue_script__$c,
-        __vue_scope_id__$c,
-        __vue_is_functional_template__$c,
-        __vue_module_identifier__$c,
+      const __vue_component__$o = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
+        __vue_inject_styles__$o,
+        __vue_script__$o,
+        __vue_scope_id__$o,
+        __vue_is_functional_template__$o,
+        __vue_module_identifier__$o,
         false,
         undefined,
         undefined,
@@ -62627,15 +64362,15 @@ var vueHtmlCompiler = (function (Vue, Component) {
     let EditorTemplate = class EditorTemplate extends Vue {
     };
     EditorTemplate = __decorate([
-        Component__default({ components: { Editor: __vue_component__$c } })
+        Component__default({ components: { Editor: __vue_component__$o } })
     ], EditorTemplate);
-    var script$d = EditorTemplate;
+    var script$p = EditorTemplate;
 
     /* script */
-    const __vue_script__$d = script$d;
+    const __vue_script__$p = script$p;
 
     /* template */
-    var __vue_render__$d = function() {
+    var __vue_render__$p = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
@@ -62646,34 +64381,34 @@ var vueHtmlCompiler = (function (Vue, Component) {
         1
       )
     };
-    var __vue_staticRenderFns__$d = [];
-    __vue_render__$d._withStripped = true;
+    var __vue_staticRenderFns__$p = [];
+    __vue_render__$p._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$d = function (inject) {
+      const __vue_inject_styles__$p = function (inject) {
         if (!inject) return
         inject("data-v-0a25906b_0", { source: ".editorTemplate .Editor[data-v-0a25906b] {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n", map: {"version":3,"sources":["EditorTemplate.vue"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,OAAO;EACP,QAAQ;EACR,SAAS;EACT,MAAM;EACN,cAAc;EACd,YAAY;AACd","file":"EditorTemplate.vue","sourcesContent":[".editorTemplate .Editor {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  overflow: auto;\n  font-size: 0;\n}\n"]}, media: undefined });
 
       };
       /* scoped */
-      const __vue_scope_id__$d = "data-v-0a25906b";
+      const __vue_scope_id__$p = "data-v-0a25906b";
       /* module identifier */
-      const __vue_module_identifier__$d = undefined;
+      const __vue_module_identifier__$p = undefined;
       /* functional template */
-      const __vue_is_functional_template__$d = false;
+      const __vue_is_functional_template__$p = false;
       /* style inject SSR */
       
       /* style inject shadow dom */
       
 
       
-      const __vue_component__$d = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
-        __vue_inject_styles__$d,
-        __vue_script__$d,
-        __vue_scope_id__$d,
-        __vue_is_functional_template__$d,
-        __vue_module_identifier__$d,
+      const __vue_component__$p = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
+        __vue_inject_styles__$p,
+        __vue_script__$p,
+        __vue_scope_id__$p,
+        __vue_is_functional_template__$p,
+        __vue_module_identifier__$p,
         false,
         createInjector,
         undefined,
@@ -62682,34 +64417,34 @@ var vueHtmlCompiler = (function (Vue, Component) {
 
     //
 
-    var script$e = {
+    var script$q = {
       name: "App",
       components:{
-        EditorTemplate: __vue_component__$d
+        EditorTemplate: __vue_component__$p
       }
     };
 
     /* script */
-    const __vue_script__$e = script$e;
+    const __vue_script__$q = script$q;
 
     /* template */
-    var __vue_render__$e = function() {
+    var __vue_render__$q = function() {
       var _vm = this;
       var _h = _vm.$createElement;
       var _c = _vm._self._c || _h;
       return _c("div", { attrs: { id: "app" } }, [_c("EditorTemplate")], 1)
     };
-    var __vue_staticRenderFns__$e = [];
-    __vue_render__$e._withStripped = true;
+    var __vue_staticRenderFns__$q = [];
+    __vue_render__$q._withStripped = true;
 
       /* style */
-      const __vue_inject_styles__$e = undefined;
+      const __vue_inject_styles__$q = undefined;
       /* scoped */
-      const __vue_scope_id__$e = undefined;
+      const __vue_scope_id__$q = undefined;
       /* module identifier */
-      const __vue_module_identifier__$e = undefined;
+      const __vue_module_identifier__$q = undefined;
       /* functional template */
-      const __vue_is_functional_template__$e = false;
+      const __vue_is_functional_template__$q = false;
       /* style inject */
       
       /* style inject SSR */
@@ -62718,13 +64453,13 @@ var vueHtmlCompiler = (function (Vue, Component) {
       
 
       
-      const __vue_component__$e = /*#__PURE__*/normalizeComponent(
-        { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
-        __vue_inject_styles__$e,
-        __vue_script__$e,
-        __vue_scope_id__$e,
-        __vue_is_functional_template__$e,
-        __vue_module_identifier__$e,
+      const __vue_component__$q = /*#__PURE__*/normalizeComponent(
+        { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
+        __vue_inject_styles__$q,
+        __vue_script__$q,
+        __vue_scope_id__$q,
+        __vue_is_functional_template__$q,
+        __vue_module_identifier__$q,
         false,
         undefined,
         undefined,
@@ -62734,7 +64469,7 @@ var vueHtmlCompiler = (function (Vue, Component) {
     Vue.use(ElementUI);
     var index$1 = new Vue({
         render(h) {
-            return h(__vue_component__$e);
+            return h(__vue_component__$q);
         },
     }).$mount("#app");
 

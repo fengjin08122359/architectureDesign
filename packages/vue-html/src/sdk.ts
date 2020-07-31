@@ -31,6 +31,7 @@ export {
   EventGenerate,
   InEventGenerate,
   OutEventGenerate,
+  PropGeneratePiece,
   GeneratePiece
 } from '@mikefeng110808/ui-design'
 

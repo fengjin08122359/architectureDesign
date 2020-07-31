@@ -1,7 +1,7 @@
 <template>
   <div class="coverEl" :style="style" >
     <Module class='coverEl-target  total-cover' :instance="instance" ref="bgTarget">
-      <CoverEl v-for="(item,index) in instance.getChildren()" :key="index" :instance="item"></CoverEl>
+      <CoverEl v-for="(item,index) in children" :key="index" :instance="item"></CoverEl>
     </Module>
   </div>
 </template>
@@ -22,7 +22,9 @@ import Module from './Module.vue'
 @Component({components: {Module}})
 export default class CoverEl extends Vue {
   @Prop() private instance!: ModuleInstance;
-  
+  get children () {
+    return this.instance.getChildren()
+  }
   get style () {
     let val = {}
     for (let [key,value] of Object.entries(this.instance.target.style)) {

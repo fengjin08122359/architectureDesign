@@ -3,7 +3,15 @@ import {
   EventListVueUI,
   CardContainerVueUI,
   DialogContainerVueUI,
-  ButtonVueUI
+  ButtonVueUI,
+  InputVueUI as InputCompVueUI,
+  NumberVueUI as NumberCompVueUI,
+  TimePickerVueUI, 
+  TimeGroupVueUI,
+  SelectVueUI as SelectCompVueUI, CheckBoxVueUI, CheckBoxGroupVueUI, RadioVueUI,
+  MulSelectVueUI as MulSelectCompVueUI,
+  IframeVueUI, TableVueUI,
+  TableDataConfigVueUI
 } from "@mikefeng110808/ui-components";
 import {
   UI
@@ -28,7 +36,7 @@ import {
   MulSelectVueUI,
   SelectVueUI,
   NumberVueUI,
-  VueRenderPayload
+  VueRenderPayload, BooleanVueUI
 } from '@mikefeng110808/vue-ui'
 
 export class GeneratePiece {
@@ -63,6 +71,11 @@ export class GeneratePiece {
       key: 'number',
       value: NumberVueUI,
     })
+    this.uiList.addTemplate({
+      key: 'boolean',
+      value: BooleanVueUI,
+    })
+    
   }
   add({
     key,
@@ -106,14 +119,59 @@ export class ModuleGenrate extends GeneratePiece {
       value: CardContainerVueUI
     })
     this.add({
-      key: '4',
+      key: '3',
       value: DialogContainerVueUI
     })
     this.add({
-      key: '5',
+      key: '4',
       value: ButtonVueUI
     })
+    this.add({
+      key: '5',
+      value: InputCompVueUI
+    })
     
+    this.add({
+      key: '6',
+      value: NumberCompVueUI
+    })
+    this.add({
+      key: '7',
+      value: TimePickerVueUI
+    })
+    this.add({
+      key: '8',
+      value: TimeGroupVueUI
+    })
+    this.add({
+      key: '9',
+      value: SelectCompVueUI
+    })
+    this.add({
+      key: '10',
+      value: CheckBoxVueUI
+    })
+    this.add({
+      key: '11',
+      value: CheckBoxGroupVueUI
+    })
+    this.add({
+      key: '12',
+      value: RadioVueUI
+    })
+    this.add({
+      key: '13',
+      value: MulSelectCompVueUI
+    })
+    
+    this.add({
+      key: '17',
+      value: TableVueUI
+    })
+    this.add({
+      key: '18',
+      value: IframeVueUI
+    })
   }
   setTarget(ui: UI, ) {
     this.uiList.setList([{
@@ -161,6 +219,17 @@ export class OutEventGenerate extends GeneratePiece {
     this.add({
       key: 'eventList',
       value: EventListVueUI
+    })
+    this.generate(outParams)
+  }
+}
+
+export class PropGeneratePiece extends GeneratePiece {
+  constructor() {
+    super()
+    this.add({
+      key:'tableDataConfig',
+      value:TableDataConfigVueUI
     })
     this.generate(outParams)
   }

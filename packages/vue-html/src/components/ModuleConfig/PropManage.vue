@@ -9,14 +9,14 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { ModuleInstance, GeneratePiece } from "../../sdk";
+import { ModuleInstance, PropGeneratePiece } from "../../sdk";
 import {InstanceSlot} from "../InstanceSlot"
 
 
 @Component({ components: { InstanceSlot } })
 export default class StyleManage extends Vue {
   @Prop() private instance!: ModuleInstance;
-  generator = new GeneratePiece()
+  generator = new PropGeneratePiece()
   created() {
     this.generator.generate(this.instance.target.selfProp.params)
   }

@@ -45,7 +45,7 @@ export class UI {
     this.selfProp = selfProp
   }
   filterChildren (instance:any):boolean {
-    return true
+    return this.moduleIdList.find(item => item == instance.moduleId)
   }
   addModuleId(moduleId:string) {
     this.moduleIdList.push(moduleId)

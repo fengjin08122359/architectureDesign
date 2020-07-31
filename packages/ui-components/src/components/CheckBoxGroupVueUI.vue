@@ -1,9 +1,10 @@
 <template>
-  <div class='SelectVue'>
-    <el-select v-model="value" filterable>
-      <el-option v-for="(item, index) in optionsArray" :value="item.key" :label='item.value' :key="index">
-      </el-option>
-    </el-select>
+  <div class='CheckBoxGroupVueUI'>
+    <el-checkbox-group v-model="value">
+      <el-checkbox v-for="(item, index) in optionsArray" :key='index' :label="item.key">
+      {{item.value}}
+      </el-checkbox>
+    </el-checkbox-group>
   </div>
 </template>
 <script lang="ts">
@@ -13,18 +14,18 @@ import {
   Prop,
   Watch
 } from "vue-property-decorator";
-import {SelectVueUI} from '../achieve'
+import {CheckBoxGroupVueUI} from '../achieve'
 @Component
-export default class SelectVueUIComponent extends Vue {
-  @Prop() private target!: SelectVueUI;
-  value = ''
+export default class CheckBoxGroupVueUIComponent extends Vue {
+  @Prop() private target!: CheckBoxGroupVueUI;
+  value = []
   optionsArray = []
   mounted() {
     console.log(this.target.ui.selfProp)
     this.resetSelfProp()
   }
   resetSelfProp (val = this.target.ui.selfProp) {
-    this.value = val.opt.value || ''
+    this.value = val.opt.value || []
     this.optionsArray = val.params.find(item =>item.key == 'value').props.optionsArray
   }
   @Watch('target.ui.selfProp', { deep: true }) 
@@ -33,11 +34,3 @@ export default class SelectVueUIComponent extends Vue {
   }
 }
 </script>
-
-<style lang="less" scoped>
-.NumberVue{
-  font-size: 14px;
-  line-height: 40px;
-}
-</style>
-

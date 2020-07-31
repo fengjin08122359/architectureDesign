@@ -2,12 +2,15 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import { VueUI, VueRenderPayload } from './ui'
 import { SingleUIPayload } from '@mikefeng110808/instance'
-import InputVueUIComp from './componnents/InputVueUI.vue'
-import ArrayVueUIComp from './componnents/ArrayVueUI.vue'
-import ObjectVueUIComp from './componnents/ObjectVueUI.vue'
-import MulSelectVueUIComp from './componnents/MulSelectVueUI.vue'
-import SelectVueUIComp from './componnents/SelectVueUI.vue'
-import NumberVueUIComp from './componnents/NumberVueUI.vue'
+import InputVueUIComp from './components/InputVueUI.vue'
+import ArrayVueUIComp from './components/ArrayVueUI.vue'
+import ObjectVueUIComp from './components/ObjectVueUI.vue'
+import MulSelectVueUIComp from './components/MulSelectVueUI.vue'
+import SelectVueUIComp from './components/SelectVueUI.vue'
+import NumberVueUIComp from './components/NumberVueUI.vue'
+import BooleanVueUIComp from './components/BooleanVueUI.vue'
+import SimulateVueUIComp from './components/SimulateVueUI.vue'
+
 Vue.use(ElementUI)
 export class InputVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
@@ -165,6 +168,60 @@ export class NumberVueUI extends VueUI{
   }
   renderInstance(render: VueRenderPayload) {
     return render.createElement(NumberVueUIComp, {
+      props: {target: this}
+    })
+  }
+}
+
+export class BooleanVueUI extends VueUI{
+  constructor(params:SingleUIPayload) {
+    super(params);
+    this.value = !!this.value
+  }
+  renderInstance(render: VueRenderPayload) {
+    return render.createElement(BooleanVueUIComp, {
+      props: {target: this}
+    })
+  }
+}
+
+export class SimulateVueUI extends VueUI{
+  simulateValue: any
+  error: string
+  constructor(params:SingleUIPayload) {
+    super(params);
+    this.simulateValue = ''
+    this.error = ''
+    this.simulate()
+  }
+  getValue( ){
+    return this.value;
+  }
+  setValue (value:any) {
+    var oldValue = this.value;
+    this.value = value;
+    if (oldValue != this.value) {
+      this.onChange({
+        val: this.value,
+        oldVal: oldValue,
+      });
+    }
+    this.simulate()
+  }
+  simulate () {
+    this.simulateValue = this.value
+    this.error = ''
+    try {
+      this.simulateValue = JSON.parse(this.value)
+    } catch (error) {
+      this.error = error
+    }
+  }
+  simulateValueToString ():string {
+    return typeof this.simulateValue == 'object' ? JSON.stringify(this.simulateValue) : this.simulateValue
+  }
+  renderInstance(render: VueRenderPayload) {
+    return render.createElement(SimulateVueUIComp, {
       props: {target: this}
     })
   }

@@ -41,9 +41,10 @@ export class ModuleInstance implements ModulePayload {
   }
   unCombi(moduleId: string) {
     var module = this.findContainUI(this, moduleId)
+    console.log(module)
     if (module) {
-      module.children = module.children.filter(t => t.moduleId != moduleId)
       module.target.removeModuleId(moduleId)
+      module.children = module.children.filter(t => t.moduleId != moduleId)
     }
   }
   findContainUI(tree:ModuleInstance, moduleId:string): ModuleInstance | null {

@@ -1,6 +1,10 @@
 <template>
-  <div class='ButtonVue'>
-    <el-button >{{label}}</el-button>
+  <div class='InputVue'>
+    <el-input v-model='value'>
+      <template slot='prepend' v-if="prepend">
+        {{prepend}}
+      </template>
+    </el-input>
   </div>
 </template>
 <script lang="ts">
@@ -10,18 +14,20 @@ import {
   Prop,
   Watch
 } from "vue-property-decorator";
-import {ButtonVueUI} from '../achieve'
+import {InputVueUI} from '../achieve'
 @Component
-export default class ButtonVueUIComponent extends Vue {
-  @Prop() private target!: ButtonVueUI;
-  label = ''
+export default class InputVueUIComponent extends Vue {
+  @Prop() private target!: InputVueUI;
+  value = ''
+  prepend = ''
   mounted() {
     console.log(this.target.ui) 
     console.log(this.target.ui.selfProp.opt)
     this.resetOpt()
   }
   resetOpt (val = this.target.ui.selfProp.opt) {
-    this.label = val.label || ''
+    this.value = val.value || ''
+    this.prepend = val.prepend || ''
   }
   @Watch('target.ui.selfProp.opt') 
   watchTab (val) {
@@ -30,10 +36,4 @@ export default class ButtonVueUIComponent extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
-  .ButtonVue{
-    .el-button{
-      width:100%;
-    }
-  }
-</style>
+
