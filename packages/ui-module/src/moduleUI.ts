@@ -1,13 +1,5 @@
-import {
-  EventBind
-} from "../EventBind";
-import {
-  Style
-} from "../Style";
-import {
-  gennerateUUID
-} from "..";
-import { SingleUIPayload } from "@mikefeng110808/logic";
+import { UI } from "@mikefeng110808/ui-logic";
+
 
 export interface UIPayload {
   eventBind: EventBind;
@@ -87,3 +79,11 @@ export class SelfProp {
     this.opt = value || {}
   }
 }
+
+
+export class ModuleUI extends UI {
+  constructor() {
+    super()
+  }
+}
+

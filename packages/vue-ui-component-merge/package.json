@@ -1,0 +1,38 @@
+{
+  "name": "@mikefeng110808/vue-ui-component-merge",
+  "version": "1.0.2-alpha.22",
+  "description": "@mikefeng110808/vue-ui-component-merge",
+  "main": "index.js",
+  "module": "dist/vue-ui-component-merge.esm-bundler.js",
+  "types": "dist/vue-ui-component-merge.d.ts",
+  "unpkg": "dist/vue-ui-component-merge.global.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "vueUiComponentMerge",
+    "formats": [
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
+    ]
+  },
+  "author": "Mike Feng",
+  "license": "MIT",
+  "dependencies": {
+    "@mikefeng110808/ui-generate": "1.0.2-alpha.19",
+    "@mikefeng110808/ui-logic": "1.0.2-alpha.22",
+    "@mikefeng110808/vue-ui": "1.0.2-alpha.22"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
+  "keywords": [
+    "ui-builder",
+    "builder",
+    "typescript"
+  ]
+}

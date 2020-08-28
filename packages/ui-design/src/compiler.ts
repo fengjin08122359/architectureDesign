@@ -7,4 +7,6 @@ export let compilerInstance: ModuleInstance = new ModuleInstance()
 
 
 var res = storage.get('saveedit')
-restoreInstance(compilerInstance, res)
+if (res) {
+  restoreInstance(compilerInstance, res)
+}

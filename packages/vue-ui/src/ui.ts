@@ -1,5 +1,6 @@
 import {UIList, SingleUI, SingleUIPayload, optionsPayload} from '@mikefeng110808/instance'
-import Vue, { CreateElement, RenderContext } from 'vue'
+import Vue, { CreateElement, RenderContext, VueConstructor } from 'vue'
+import { LifeCycle } from './lifeCycle'
 
 
 export interface VueRenderPayload {
@@ -10,22 +11,26 @@ export interface VueRenderPayload {
 }
 
 export class VueUI extends SingleUI{
+  renderComponent?: VueConstructor<Vue>
+  lifeCycle?: LifeCycle
   constructor(params: SingleUIPayload) {
     super(params)
+    this.renderComponent = undefined
+    this.lifeCycle = new LifeCycle(params.props ? params.props.lifeCycle : {})
   }
-  render(render: VueRenderPayload) {
+  render(render: VueRenderPayload, props?:any) {
     if (!this.getCanRender()) {
       return render.createElement()
     } else {
-      return this.renderInstance(render)
+      return this.renderInstance(render, props)
     }
   }
-  renderInstance(render: VueRenderPayload) {
+  renderInstance(render: VueRenderPayload, props?:any) {
     return render.createElement(
-      'div',   // 标签名称
+      this.renderComponent || 'div',   // 标签名称
       {
         ...render.context,
-        attrs: this
+        props: {target: this,...props}
       },
       [render.vueRoot.$slots.default]
     )
@@ -46,7 +51,7 @@ export class VueUIList extends UIList {
         name: 'key',
         data: key
       })
-      resolve() 
+      resolve()
     })
   }
   getRenderList (render: VueRenderPayload) {

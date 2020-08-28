@@ -4,7 +4,7 @@ import {
   AxiosOpt,
   AxiosRequestConfig,
   AxiosResponse,
-} from "../src/";
+} from "../src";
 
 test("HttpInstance fetch", () => {
   class Http extends HttpInstance {

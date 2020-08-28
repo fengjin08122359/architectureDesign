@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import { VueUI, VueRenderPayload } from './ui'
+import { VueUI } from './ui'
 import { SingleUIPayload } from '@mikefeng110808/instance'
 import InputVueUIComp from './components/InputVueUI.vue'
 import ArrayVueUIComp from './components/ArrayVueUI.vue'
@@ -15,11 +15,7 @@ Vue.use(ElementUI)
 export class InputVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
-  }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(InputVueUIComp, {
-      props: {target: this}
-    })
+    this.renderComponent = InputVueUIComp
   }
 }
 
@@ -32,6 +28,7 @@ export class ArrayVueUI extends VueUI{
     if (this.value.length == 0) {
       this.addCol()
     }
+    this.renderComponent = ArrayVueUIComp
   }
   addCol () {
     this.value.push({
@@ -55,11 +52,6 @@ export class ArrayVueUI extends VueUI{
       this.addCol()
     }
   }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(ArrayVueUIComp, {
-      props: {target: this}
-    })
-  }
 }
 
 interface ObjectArrayPayload {
@@ -75,6 +67,7 @@ export class ObjectVueUI extends VueUI{
     if (this.props.objectArray.length == 0) {
       this.addCol()
     }
+    this.renderComponent = ObjectVueUIComp
   }
   addCol () {
     this.props.objectArray.push({
@@ -103,11 +96,6 @@ export class ObjectVueUI extends VueUI{
       this.addCol()
     }
   }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(ObjectVueUIComp, {
-      props: {target: this}
-    })
-  }
 }
 
 
@@ -121,6 +109,7 @@ export class MulSelectVueUI extends VueUI{
     if (this.props.optionsArray.length == 0) {
       this.addCol()
     }
+    this.renderComponent = MulSelectVueUIComp
   }
   addCol () {
     this.props.optionsArray.push({
@@ -130,11 +119,6 @@ export class MulSelectVueUI extends VueUI{
   }
   delCol (index:number) {
     this.props.optionsArray.splice(index, 1)
-  }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(MulSelectVueUIComp, {
-      props: {target: this}
-    })
   }
 }
 export class SelectVueUI extends VueUI{
@@ -146,6 +130,7 @@ export class SelectVueUI extends VueUI{
     if (this.props.optionsArray.length == 0) {
       this.addCol()
     }
+    this.renderComponent = SelectVueUIComp
   }
   addCol () {
     this.props.optionsArray.push({
@@ -156,20 +141,11 @@ export class SelectVueUI extends VueUI{
   delCol (index:number) {
     this.props.optionsArray.splice(index, 1)
   }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(SelectVueUIComp, {
-      props: {target: this}
-    })
-  }
 }
 export class NumberVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
-  }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(NumberVueUIComp, {
-      props: {target: this}
-    })
+    this.renderComponent = NumberVueUIComp
   }
 }
 
@@ -177,11 +153,7 @@ export class BooleanVueUI extends VueUI{
   constructor(params:SingleUIPayload) {
     super(params);
     this.value = !!this.value
-  }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(BooleanVueUIComp, {
-      props: {target: this}
-    })
+    this.renderComponent = BooleanVueUIComp
   }
 }
 
@@ -193,6 +165,7 @@ export class SimulateVueUI extends VueUI{
     this.simulateValue = ''
     this.error = ''
     this.simulate()
+    this.renderComponent = SimulateVueUIComp
   }
   getValue( ){
     return this.value;
@@ -219,10 +192,5 @@ export class SimulateVueUI extends VueUI{
   }
   simulateValueToString ():string {
     return typeof this.simulateValue == 'object' ? JSON.stringify(this.simulateValue) : this.simulateValue
-  }
-  renderInstance(render: VueRenderPayload) {
-    return render.createElement(SimulateVueUIComp, {
-      props: {target: this}
-    })
   }
 }

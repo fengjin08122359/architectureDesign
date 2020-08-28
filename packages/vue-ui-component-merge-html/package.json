@@ -1,0 +1,40 @@
+{
+  "name": "@mikefeng110808/vue-ui-component-merge-html",
+  "version": "1.0.2-alpha.22",
+  "description": "@mikefeng110808/vue-ui-component-merge-html",
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "vueUiComponentMergeHtml",
+    "formats": [
+      "esm-bundler",
+      "cjs",
+      "global",
+      "esm"
+    ],
+    "env": "development",
+    "enableNonBrowserBranches": true
+  },
+  "author": "Mike Feng",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.6.11",
+    "@mikefeng110808/instance": "1.0.2-alpha.22",
+    "@mikefeng110808/ui-logic": "1.0.2-alpha.22",
+    "@mikefeng110808/vue-ui-component-merge-html": "1.0.2-alpha.22"
+  },
+  "dependencies": {
+    "@mikefeng110808/instance": "1.0.2-alpha.22",
+    "@mikefeng110808/ui-logic": "1.0.2-alpha.22",
+    "@mikefeng110808/vue-ui-component-merge-html": "1.0.2-alpha.22",
+    "vue": "^2.6.11",
+    "element-ui": "^2.13.2"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
+  "keywords": [
+    "vue-builder",
+    "builder",
+    "typescript"
+  ]
+}
