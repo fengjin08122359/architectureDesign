@@ -1,8 +1,8 @@
-import { ModuleInstance, ModuleTargetPayload } from "@mikefeng110808/ui-generator/";
+import { ModuleInstance } from "@mikefeng110808/ui-module";
 
-export let currentEl:ModuleTargetPayload | null = null;
+export let currentEl:ModuleInstance | null = null;
 
-export let setCurrentModule = (target: ModuleTargetPayload) => {
+export let setCurrentModule = (target: ModuleInstance) => {
     currentEl = target
 }
 

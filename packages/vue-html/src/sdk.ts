@@ -41,6 +41,6 @@ export {
   elementsFromPoint,
   styleOptions,
   eventOptions
-} from '@mikefeng110808/ui-logic'
+} from '@mikefeng110808/utils'
 
 

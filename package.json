@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.2-alpha.22",
+  "version": "1.0.2-alpha.23",
   "description": "",
   "workspaces": [
     "packages/*"
@@ -13,6 +13,7 @@
     "lint": "prettier --write --parser typescript \"packages/**/*.ts?(x)\"",
     "release": "node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "dev-compile": "npm-run-all --parallel \"dev vue-html\" serve",
     "dev-compiler": "npm-run-all --parallel \"dev vue-html\" \"dev vue-html-compiler\" serve",
     "dev-merge": "npm-run-all --parallel \"dev vue-ui-component-merge-html\"  serve",
     "serve": "serve"
@@ -67,7 +68,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^5.3.0",
-    "rollup-plugin-ts-vue": "^0.4.0",
+    "rollup-plugin-ts-vue": "^0.5.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "rollup-plugin-vue-es5": "^5.1.5",
     "serve": "^11.3.2",

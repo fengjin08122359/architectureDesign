@@ -4,30 +4,140 @@
 
 ```ts
 
-import { ComponentMultipleUIPayload } from '@mikefeng110808/ui-logic';
-import { ComponentSingleUIPayload } from '@mikefeng110808/ui-logic';
-import { ContainerUIPayload } from '@mikefeng110808/ui-logic';
+import { DataList } from '@mikefeng110808/basic';
 
 // @public (undocumented)
-export let gennerateUUID: () => string;
+export class Api {
+    constructor(opt: ApiPayload);
+    // (undocumented)
+    fetch(): void;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    opt: ApiPayload;
+    // (undocumented)
+    setValue(val: any): void;
+}
 
 // @public (undocumented)
-export class Module {
+export class ApiList {
     constructor();
     // (undocumented)
-    changeSize({ width, height }: {
-        width?: number | undefined;
-        height?: number | undefined;
-    }): void;
-    // Warning: (ae-forgotten-export) The symbol "ModulePayload" needs to be exported by the entry point index.d.ts
+    add(apiData: ApiPayload): Api;
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    getList(): any[];
+    // (undocumented)
+    list: DataList;
+    // (undocumented)
+    remove(id: string): void;
+    // (undocumented)
+    save(val: any): void;
+}
+
+// @public (undocumented)
+export interface ApiPayload {
+    // (undocumented)
+    config: string;
+    // (undocumented)
+    getParam: [];
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    postParam: [];
+}
+
+// @public (undocumented)
+export let AutoConfig: {};
+
+// @public (undocumented)
+export const ConfigList: {
+    name: string;
+    config: {};
+}[];
+
+// @public (undocumented)
+export interface ConfigPayload {
+    // (undocumented)
+    config: any;
+    // (undocumented)
+    name: string;
+}
+
+// @public (undocumented)
+export class Drag {
+    constructor(param: DragPayload);
+    // (undocumented)
+    target: HTMLElement;
+}
+
+// @public (undocumented)
+export interface DragPayload {
+    // (undocumented)
+    target: HTMLElement;
+}
+
+// @public (undocumented)
+class Event_2 {
+    constructor(opt: EventPayload);
+    // (undocumented)
+    fetch(): void;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    opt: EventPayload;
+    // (undocumented)
+    setValue(val: any): void;
+}
+
+export { Event_2 as Event }
+
+// @public (undocumented)
+export class EventList {
+    constructor();
+    // (undocumented)
+    add(apiData: EventPayload): Event_2;
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    getList(): any[];
+    // (undocumented)
+    list: DataList;
+    // (undocumented)
+    remove(id: string): void;
+    // (undocumented)
+    save(): void;
+}
+
+// @public (undocumented)
+export interface EventPayload {
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    name: string;
+    // Warning: (ae-forgotten-export) The symbol "eventType" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    children: ModulePayload[];
-    // (undocumented)
-    height: number;
-    // (undocumented)
-    width: number;
+    type: eventType;
 }
+
+// @public (undocumented)
+export let GetConfig: {};
+
+// @public (undocumented)
+export let PostConfig: {};
+
+// @public (undocumented)
+export let PostfileConfig: {};
+
+// @public (undocumented)
+export let PostformConfig: {};
+
+// @public (undocumented)
+export let PostjsonConfig: {};
 
 
 // (No @packageDocumentation comment for this package)

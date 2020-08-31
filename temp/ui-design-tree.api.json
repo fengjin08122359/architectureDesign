@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@mikefeng110808/ui-design-tree!",
+  "docComment": "",
+  "name": "@mikefeng110808/ui-design-tree",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@mikefeng110808/ui-design-tree!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design-tree!tree:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "tree: "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "tree",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        }
+      ]
+    }
+  ]
+}

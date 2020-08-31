@@ -1,9 +1,9 @@
 import {containerModules} from './editor'
 import {addApi, addEvent, apiList, eventList} from './config'
-import { ModuleInstance } from '@mikefeng110808/ui-generator'
-import { ContainerUI, EventBind, SelfProp, Style } from '@mikefeng110808/ui-logic'
+import { ModuleInstance } from '@mikefeng110808/ui-module'
 import { storage } from './storage'
 import { basic, container, merge } from "./constants/module"
+import { ContainerUI, ModuleSelfProp } from '@mikefeng110808/ui-module'
 
 export let saveFromEdit = () => {
   storage.set('saveedit', containerModules.getValue())
@@ -18,12 +18,12 @@ export let restoreFromEdit = () => {
 export let restoreInstance = (instance: ModuleInstance, res:any) => {
   instance.moduleId = res.moduleId
   instance.canDrag = res.canDrag
-  
+
   let tc = basic.concat(container, merge).find(item => item.id == res.target.typeId)
-  
+
   let TargetConstructor = tc ? tc : {
     name: "外层",
-    selfProp: SelfProp,
+    selfProp: ModuleSelfProp,
     UI: ContainerUI,
     params: []
   }
@@ -47,7 +47,7 @@ export let restoreInstance = (instance: ModuleInstance, res:any) => {
   instance.target.selfProp.setValue(res.target.selfProp.value)
 
   instance.target.style.setValue(res.target.style.value)
-  
+
   // container.target = new ContainerUI()
   instance.children = res.children.map((item:any) => {
     var module = restoreInstance(new ModuleInstance(), item)

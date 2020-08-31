@@ -650,50 +650,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@mikefeng110808/logic!SingleUI#save:member(1)",
-              "docComment": "/**\n * save\n *\n * @param value -  @memberof SingleUI\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "save(value: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "void"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "value",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  }
-                }
-              ],
-              "name": "save"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "@mikefeng110808/logic!SingleUI#setDisabled:member(1)",
               "docComment": "/**\n * setDisabled\n *\n * @param flag - \n *\n * @returns boolean  @memberof SingleUI\n */\n",
               "excerptTokens": [
@@ -780,6 +736,50 @@
                 }
               ],
               "name": "setKeyValue"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!SingleUI#setValue:member(1)",
+              "docComment": "/**\n * setValue\n *\n * @param value -  @memberof SingleUI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setValue(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "setValue"
             },
             {
               "kind": "Property",
@@ -932,7 +932,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "props: "
+                  "text": "props?: "
                 },
                 {
                   "kind": "Reference",
@@ -1241,7 +1241,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "constructor(list: "
+                  "text": "constructor(list?: "
                 },
                 {
                   "kind": "Content",
@@ -1355,6 +1355,34 @@
                 "endIndex": 3
               },
               "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#clearTemplate:member(1)",
+              "docComment": "/**\n * clearTemplate\n *\n * @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "clearTemplate(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "clearTemplate"
             },
             {
               "kind": "Property",
@@ -1825,6 +1853,50 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#removeTemplate:member(1)",
+              "docComment": "/**\n * removeTemplate\n *\n * @param key -  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeTemplate(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "removeTemplate"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@mikefeng110808/logic!UIList#render:member(1)",
               "docComment": "",
               "excerptTokens": [
@@ -1881,12 +1953,61 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@mikefeng110808/logic!UIList#save:member(1)",
-              "docComment": "/**\n * save\n *\n * @param data -  @memberof UIList\n */\n",
+              "canonicalReference": "@mikefeng110808/logic!UIList#setList:member(1)",
+              "docComment": "/**\n * reset\n *\n * @param list -  @memberof UIList\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "save(data: "
+                  "text": "setList(list: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/logic!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "list",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  }
+                }
+              ],
+              "name": "setList"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/logic!UIList#setValue:member(1)",
+              "docComment": "/**\n * setValue\n *\n * @param data -  @memberof UIList\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setValue(data: "
                 },
                 {
                   "kind": "Reference",
@@ -1926,7 +2047,7 @@
                   }
                 }
               ],
-              "name": "save"
+              "name": "setValue"
             }
           ],
           "implementsTokenRanges": []

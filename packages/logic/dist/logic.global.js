@@ -4,13 +4,14 @@ var Logic = (function (exports) {
   class SingleUI {
       constructor(params) {
           this.key = params.key || ""; //键
-          this.props = params.props || {
+          this.props = {
               label: "",
               required: "",
               data: [],
               disabled: false,
               show: true,
               placeholder: "",
+              ...params.props,
           }; //属性列表包含其他属性
           this.valid = params.valid || []; //验证信息
           this.type = params.type || ""; // 类型
@@ -35,11 +36,11 @@ var Logic = (function (exports) {
           return result;
       }
       /**
-       *save
-       * @param {string} value
+       *setValue
+       * @param {any} value
        * @memberof SingleUI
        */
-      save(value) {
+      setValue(value) {
           var oldValue = this.value;
           this.value = value;
           if (oldValue != this.value) {
@@ -140,7 +141,7 @@ var Logic = (function (exports) {
        */
       setKeyValue({ key, value, children }) {
           if (this.getKey() != "" && this.getKey() == key) {
-              this.save(value);
+              this.setValue(value);
               children.forEach((item) => {
                   var target = this.children.find((target) => item.key == target.getKey());
                   if (target) {
@@ -202,6 +203,14 @@ var Logic = (function (exports) {
           this.datas = this.datas.filter((data) => data.name !== name);
       }
       /**
+       *clear
+       *
+       * @memberof DataList
+       */
+      clear() {
+          this.datas = [];
+      }
+      /**
        *get
        *
        * @param {string} name
@@ -225,7 +234,7 @@ var Logic = (function (exports) {
   }
 
   class UIList {
-      constructor(list, options) {
+      constructor(list = [], options) {
           this.options = options || { needValidHidden: false };
           this.needValidHidden = this.options.needValidHidden;
           this.rawList = list;
@@ -233,6 +242,16 @@ var Logic = (function (exports) {
           this.templateList = [];
           this.componentHasRendered = new DataList();
           this.classTarget = new.target;
+          this.reset();
+      }
+      /**
+       *reset
+       * @param {SingleUIPayload} list
+       * @memberof UIList
+       */
+      setList(list) {
+          this.rawList = list;
+          this.list = [];
           this.reset();
       }
       /**
@@ -256,6 +275,7 @@ var Logic = (function (exports) {
        * @memberof UIList
        */
       addTemplate({ key, value }) {
+          var rawValue = this.getValue();
           var target = this.templateList.find((item) => item.key == key);
           if (target) {
               target.value = value;
@@ -266,6 +286,31 @@ var Logic = (function (exports) {
                   value,
               });
           }
+          this.reset();
+          this.setValue(rawValue);
+      }
+      /**
+       *removeTemplate
+       *
+       * @param {string} key
+       * @memberof UIList
+       */
+      removeTemplate(key) {
+          var rawValue = this.getValue();
+          this.templateList = this.templateList.filter((item) => item.key !== key);
+          this.reset();
+          this.setValue(rawValue);
+      }
+      /**
+       *clearTemplate
+       *
+       * @memberof UIList
+       */
+      clearTemplate() {
+          var rawValue = this.getValue();
+          this.templateList = [];
+          this.reset();
+          this.setValue(rawValue);
       }
       /**
        *getTemplate
@@ -316,11 +361,11 @@ var Logic = (function (exports) {
           });
       }
       /**
-       *save
+       *setValue
        * @param {SingleUIValuePayload} data
        * @memberof UIList
        */
-      save(data) {
+      setValue(data) {
           // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]
           data.forEach((item) => {
               var target = this.list.find((target) => item.key == target.getKey());

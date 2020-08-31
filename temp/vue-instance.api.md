@@ -7,7 +7,6 @@
 import { AxiosRequestConfig } from 'axios';
 import { AxiosResponse } from 'axios';
 import { CreateElement } from 'vue';
-import { DataList } from '@mikefeng110808/instance';
 import { ErrorCode } from '@mikefeng110808/instance';
 import { EventDispatcher } from '@mikefeng110808/instance';
 import { Intercept } from '@mikefeng110808/instance';
@@ -106,9 +105,7 @@ export class VueUI extends SingleUI {
 
 // @public (undocumented)
 export class VueUIList extends UIList {
-    constructor(list: any[], options?: optionsPayload);
-    // (undocumented)
-    componentHasRendered: DataList;
+    constructor(list?: any[], options?: optionsPayload);
     // (undocumented)
     convertSinlgeUI(item: SingleUIPayload): VueUI;
     // (undocumented)
@@ -147,8 +144,6 @@ export class WebSocketInstance {
 // @public (undocumented)
 export const wsIntercept: Intercept;
 
-
-export * from "@mikefeng110808/instance";
 
 // (No @packageDocumentation comment for this package)
 

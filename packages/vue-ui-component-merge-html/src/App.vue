@@ -4,13 +4,12 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import MergeRender from "./pages/MergeRender.vue";
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "App",
-  components: {
-    MergeRender
-  }
-};
+@Component({components: {MergeRender }})
+export default class App extends Vue {
+
+}
 </script>

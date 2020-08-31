@@ -32,7 +32,7 @@ export default class NormalVue extends Vue {
       }
     }
   }
-  render (h: [createElement: any]) {
+  render (h: any) {
     return Vue.compile(this.template).render.apply(this, h)
   }
   @Watch('target.props')

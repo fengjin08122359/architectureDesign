@@ -1,8 +1,8 @@
 import { ApiList, EventList } from "@mikefeng110808/ui-generator/";
 
-export let apiList = new ApiList();
+export let apiList:ApiList  = new ApiList();
 
-export let eventList = new EventList();
+export let eventList:EventList = new EventList();
 
 
 export let  addApi = () => {
@@ -12,7 +12,7 @@ export let  addApi = () => {
     getParam: [],
     postParam: []
   })
-   
+
 }
 
 export let removeApi = (id:string) => {

@@ -1,7 +1,8 @@
-import { ContainerUI, SelfProp } from "@mikefeng110808/ui-logic";
+
+import { ContainerUI, ModuleSelfProp } from "@mikefeng110808/ui-module";
 
 
-export class ContainerSelfProp extends SelfProp{
+export class ContainerSelfProp extends ModuleSelfProp{
   constructor () {
       super()
   }
@@ -17,7 +18,7 @@ export class ContainerSelfProp extends SelfProp{
 }
 
 
-export class BasicSelfProp extends SelfProp{
+export class BasicSelfProp extends ModuleSelfProp{
   constructor () {
       super()
   }
@@ -31,7 +32,7 @@ export class BasicSelfProp extends SelfProp{
   }
 }
 
-export class MergeSelfProp extends SelfProp{
+export class MergeSelfProp extends ModuleSelfProp{
   constructor () {
       super()
   }
@@ -74,7 +75,7 @@ export class CardContainerUI extends ContainerUI {
   removeModuleId(moduleId:string) {
     this.moduleIdList = this.moduleIdList.filter(item => item.moduleId!=moduleId)
   }
-} 
+}
 
 
 export class ButtonSelfProp extends BasicSelfProp {

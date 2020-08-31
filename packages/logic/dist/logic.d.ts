@@ -29,11 +29,11 @@ export declare class SingleUI {
      */
     dataFind(data: string | number): null;
     /**
-     *save
-     * @param {string} value
+     *setValue
+     * @param {any} value
      * @memberof SingleUI
      */
-    save(value: string): void;
+    setValue(value: any): void;
     /**
      *getKey
      * @returns string
@@ -120,7 +120,7 @@ export declare class SingleUI {
  */
 export declare interface SingleUIPayload {
     key?: string;
-    props: SingleUIProps;
+    props?: SingleUIProps;
     valid?: any[];
     type?: string;
     value?: any;
@@ -181,7 +181,13 @@ export declare class UIList {
     componentHasRendered: DataList;
     private templateList;
     classTarget: typeof UIList;
-    constructor(list: any[], options?: optionsPayload);
+    constructor(list?: any[], options?: optionsPayload);
+    /**
+     *reset
+     * @param {SingleUIPayload} list
+     * @memberof UIList
+     */
+    setList(list: SingleUIPayload[]): void;
     /**
      *reset
      *
@@ -195,6 +201,19 @@ export declare class UIList {
      * @memberof UIList
      */
     addTemplate({ key, value }: templatePayload): void;
+    /**
+     *removeTemplate
+     *
+     * @param {string} key
+     * @memberof UIList
+     */
+    removeTemplate(key: string): void;
+    /**
+     *clearTemplate
+     *
+     * @memberof UIList
+     */
+    clearTemplate(): void;
     /**
      *getTemplate
      * @returns templatePayload[]
@@ -217,11 +236,11 @@ export declare class UIList {
      */
     getValid(): Promise<validPayload>;
     /**
-     *save
+     *setValue
      * @param {SingleUIValuePayload} data
      * @memberof UIList
      */
-    save(data: SingleUIValuePayload[]): void;
+    setValue(data: SingleUIValuePayload[]): void;
     /**
      *getValue
      * @returns SingleUIValuePayload[]

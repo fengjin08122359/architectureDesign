@@ -20,6 +20,7 @@ export class Auth {
 export class DataList {
     constructor();
     add(data: DataPayload): void;
+    clear(): void;
     find(name?: string): any;
     get(name?: string): DataPayload[];
     remove(name: string): void;

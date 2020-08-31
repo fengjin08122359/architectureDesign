@@ -9,14 +9,4 @@ export {
 export {
   EventBind
 } from './EventBind'
-export {
-  ContainerUI,
-  ContainerUIPayload,
-} from './ContainerUI'
-export {
-  ComponentSingleUI,
-  ComponentSingleUIPayload,
-  ComponentMultipleUI,
-  ComponentMultipleUIPayload
-} from './ComponentUI'
-export * from './utils'
+export * from './UIInstance'

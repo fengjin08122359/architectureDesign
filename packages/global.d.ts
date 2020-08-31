@@ -8,3 +8,8 @@ declare var __ESM_BROWSER__: boolean
 declare var __NODE_JS__: boolean
 declare var __COMMIT__: string
 declare var __VERSION__: string
+
+declare module "*.vue" {
+  import Vue from "vue";
+  export default Vue;
+}

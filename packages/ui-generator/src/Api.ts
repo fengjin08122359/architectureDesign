@@ -1,31 +1,31 @@
 import {
   DataList
 } from "@mikefeng110808/basic";
-import { gennerateUUID } from "@mikefeng110808/ui-logic";
+import { gennerateUUID } from "@mikefeng110808/utils";
 
 export let GetConfig = {
 
-} 
+}
 
 export let PostConfig = {
-  
-} 
+
+}
 
 export let PostformConfig = {
-  
-} 
+
+}
 
 export let PostjsonConfig = {
-  
-} 
+
+}
 
 export let PostfileConfig = {
-  
-} 
+
+}
 
 export let AutoConfig = {
-  
-} 
+
+}
 
 export interface ConfigPayload {
   name: string;
@@ -68,7 +68,7 @@ export class Api {
     this.opt.name = val.name || ''
     this.opt.getParam = val.getParam || {}
     this.opt.postParam = val.postParam || {}
-    
+
     // this.uiList.setValue(val)
   }
 }

@@ -4,18 +4,140 @@
 
 ```ts
 
-import { ComponentMultipleUI } from '@mikefeng110808/ui-logic';
-import { ComponentSingleUI } from '@mikefeng110808/ui-logic';
-import { ContainerUI } from '@mikefeng110808/ui-logic';
+import { ApiList } from '@mikefeng110808/ui-generator/';
+import { ComponentMultipleUI } from '@mikefeng110808/ui-module';
+import { ComponentSingleUI } from '@mikefeng110808/ui-module';
+import { ContainerUI } from '@mikefeng110808/ui-module';
+import { EventList } from '@mikefeng110808/ui-generator/';
+import { ModuleInstance } from '@mikefeng110808/ui-module';
+import { ModuleSelfProp } from '@mikefeng110808/ui-module';
+import { ModuleUI } from '@mikefeng110808/ui-module';
+import { SingleUIPayload } from '@mikefeng110808/logic';
+import { templatePayload } from '@mikefeng110808/logic';
+import { VueRenderPayload } from '@mikefeng110808/vue-ui';
+import { VueUI } from '@mikefeng110808/vue-ui';
+import { VueUIList } from '@mikefeng110808/vue-ui';
 
 // @public (undocumented)
-export let basicModules: ComponentSingleUI[];
+export let addApi: () => import("../../ui-generator/src").Api;
 
 // @public (undocumented)
-export let continerModules: ContainerUI[];
+export let addEvent: () => import("../../ui-generator/src").Event;
 
 // @public (undocumented)
-export let mergeModules: ComponentMultipleUI[];
+export class ApiGenerate extends GeneratePiece {
+    constructor();
+}
+
+// @public (undocumented)
+export let apiList: ApiList;
+
+// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export let basicModules: Props[];
+
+// @public (undocumented)
+export let clearCurrentEl: () => void;
+
+// @public (undocumented)
+export let compilerInstance: ModuleInstance;
+
+// @public (undocumented)
+export let containerModules: ModuleInstance;
+
+// @public (undocumented)
+export let continerModules: Props[];
+
+// @public (undocumented)
+export let currentEl: ModuleInstance | null;
+
+// Warning: (ae-forgotten-export) The symbol "EditorInstance" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export let editorInstance: EditorInstance;
+
+// @public (undocumented)
+export class EventGenerate extends GeneratePiece {
+    constructor();
+}
+
+// @public (undocumented)
+export let eventList: EventList;
+
+// @public (undocumented)
+export let generateModule: (props: Props) => import("../../ui-module/src").ContainerUI | import("../../ui-module/src").ComponentSingleUI;
+
+// @public (undocumented)
+export class GeneratePiece {
+    constructor();
+    // (undocumented)
+    add({ key, value }: templatePayload): void;
+    // (undocumented)
+    generate(list: SingleUIPayload[]): VueUI[];
+    // (undocumented)
+    getValue(): import("../../logic/src").SingleUIValuePayload[];
+    // (undocumented)
+    remove(name: string): void;
+    // (undocumented)
+    render(render: VueRenderPayload): any[];
+    // (undocumented)
+    uiList: VueUIList;
+}
+
+// @public (undocumented)
+export class InEventGenerate extends GeneratePiece {
+    constructor();
+}
+
+// @public (undocumented)
+export let mergeModules: Props[];
+
+// @public (undocumented)
+export class ModuleGenrate extends GeneratePiece {
+    constructor();
+    // (undocumented)
+    isCompiler: boolean;
+    // (undocumented)
+    setTarget(ui: ModuleUI): void;
+}
+
+// @public (undocumented)
+export class OutEventGenerate extends GeneratePiece {
+    constructor();
+}
+
+// @public (undocumented)
+export class PropGeneratePiece extends GeneratePiece {
+    constructor();
+}
+
+// @public (undocumented)
+export let removeApi: (id: string) => void;
+
+// @public (undocumented)
+export let removeEvent: (id: string) => void;
+
+// @public (undocumented)
+export let restoreFromConfig: () => void;
+
+// @public (undocumented)
+export let restoreFromEdit: () => void;
+
+// @public (undocumented)
+export let restoreInstance: (instance: ModuleInstance, res: any) => ModuleInstance;
+
+// @public (undocumented)
+export let saveFromConfig: () => void;
+
+// @public (undocumented)
+export let saveFromEdit: () => void;
+
+// @public (undocumented)
+export let setCurrentModule: (target: ModuleInstance) => void;
+
+// @public (undocumented)
+export let setEditorInstance: (instance: ModuleInstance) => void;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,4 +1,4 @@
-import { eventOptions } from "@mikefeng110808/ui-logic"
+import { eventOptions } from "@mikefeng110808/utils"
 
 export let apiParams = [{
   type:'id',

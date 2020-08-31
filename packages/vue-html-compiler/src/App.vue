@@ -3,13 +3,12 @@
     <EditorTemplate></EditorTemplate>
   </div>
 </template>
-<script>
+<script lang="ts">
 import EditorTemplate from "./pages/EditorTemplate.vue";
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "App",
-  components:{
-    EditorTemplate
-  }
-};
+@Component({components: {EditorTemplate }})
+export default class App extends Vue {
+
+}
 </script>

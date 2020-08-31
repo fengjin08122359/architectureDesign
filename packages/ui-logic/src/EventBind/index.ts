@@ -2,7 +2,7 @@ import { DataList } from "@mikefeng110808/basic"
 
 import {
   gennerateUUID
-} from "../utils"
+} from "@mikefeng110808/utils"
 
 export interface OutEventPayload {
   key: keyof HTMLElementEventMap
@@ -22,6 +22,9 @@ export class InEventBind  {
   setValue (val: any) {
     this.opt.tid = val.tid || ''
   }
+  getValue() {
+    return this.opt
+  }
 }
 
 export class OutEventBind  {
@@ -34,6 +37,9 @@ export class OutEventBind  {
   setValue (val: any) {
     this.opt.tid = val.tid || ''
     this.opt.key = val.key || ''
+  }
+  getValue() {
+    return this.opt
   }
 }
 export class EventBind {
@@ -53,7 +59,7 @@ export class EventBind {
     });
     return event
   }
-  
+
   addOut(data?: OutEventPayload) {
     var event = new OutEventBind(data || {
       tid:'',
@@ -65,7 +71,7 @@ export class EventBind {
     });
     return event
   }
-  
+
   removeIn (id: string){
     this.inList.remove(id)
   }
@@ -85,5 +91,11 @@ export class EventBind {
     this.outList.clear()
   }
   save () {
+  }
+  getValue () {
+    return {
+      inValue: this.getInList().map(item => item.getValue()),
+      outValue: this.getOutList().map(item => item.getValue())
+    }
   }
 }

@@ -44,9 +44,9 @@ export class SingleUI {
     // (undocumented)
     rawData: SingleUIPayload;
     render(...res: any): any;
-    save(value: string): void;
     setDisabled(flag?: boolean): boolean;
     setKeyValue({ key, value, children }: SingleUIValuePayload): void;
+    setValue(value: any): void;
     // (undocumented)
     type: string;
     // (undocumented)
@@ -62,7 +62,7 @@ export interface SingleUIPayload {
     // (undocumented)
     key?: string;
     // (undocumented)
-    props: SingleUIProps;
+    props?: SingleUIProps;
     // (undocumented)
     rawComponents?: string[];
     // (undocumented)
@@ -93,10 +93,11 @@ export interface templatePayload {
 
 // @public (undocumented)
 export class UIList {
-    constructor(list: any[], options?: optionsPayload);
+    constructor(list?: any[], options?: optionsPayload);
     addTemplate({ key, value }: templatePayload): void;
     // (undocumented)
     classTarget: typeof UIList;
+    clearTemplate(): void;
     // (undocumented)
     componentHasRendered: DataList;
     // (undocumented)
@@ -117,10 +118,12 @@ export class UIList {
     options: optionsPayload;
     // (undocumented)
     rawList: SingleUIPayload[];
+    removeTemplate(key: string): void;
     // (undocumented)
     render(): any[];
     reset(): void;
-    save(data: SingleUIValuePayload[]): void;
+    setList(list: SingleUIPayload[]): void;
+    setValue(data: SingleUIValuePayload[]): void;
     }
 
 // @public

@@ -22,13 +22,14 @@ import TableDataConfigVueUIComponent from './components/TableDataConfigVueUI.vue
 
 
 import { apiList, eventList } from '@mikefeng110808/ui-design'
-import { UI } from '@mikefeng110808/ui-logic'
+import { ModuleUI } from '@mikefeng110808/ui-module'
+import { ApiList, EventList } from '@mikefeng110808/ui-generator'
 
 
 Vue.use(ElementUI)
 export class EventListVueUI extends VueUI{
-  apiList
-  eventList
+  apiList: ApiList
+  eventList: EventList
   constructor(params:SingleUIPayload) {
     super(params);
     this.apiList = apiList
@@ -43,7 +44,7 @@ export class EventListVueUI extends VueUI{
 
 
 export class BasicVueUI extends VueUI{
-  ui: UI
+  ui: ModuleUI
   isCompiler: boolean
   constructor(params:SingleUIPayload) {
     super(params);
@@ -152,11 +153,11 @@ export class TimeGroupVueUI extends BasicVueUI{
       key: 1,
       value: '年报'
     },{
-      
+
       key: 2,
       value: '三季'
     },{
-      
+
       key: 3,
       value: '中期'
     },{
@@ -350,11 +351,11 @@ export class TableVueUI extends BasicVueUI{
         if (target) {
           return {
             [scope.row.prop]:target.label
-          } 
+          }
         } else {
           return {
             [scope.row.prop]:''
-          } 
+          }
         }
       }
       return this.list[item.prop]

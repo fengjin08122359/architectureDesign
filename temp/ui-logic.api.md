@@ -5,91 +5,53 @@
 ```ts
 
 import { DataList } from '@mikefeng110808/basic';
-
-// @public (undocumented)
-export class ComponentMultipleUI extends ComponentSingleUI {
-    constructor(dom?: HTMLElement);
-    // (undocumented)
-    children: DataList;
-    // (undocumented)
-    combi(ui: ComponentMultipleUI): void;
-    // (undocumented)
-    findUI(ui: ComponentMultipleUI): import("../../../basic/src").DataPayload[];
-    // (undocumented)
-    unCombi(ui: ComponentMultipleUI): void;
-}
-
-// @public (undocumented)
-export interface ComponentMultipleUIPayload extends ComponentSingleUIPayload {
-    // (undocumented)
-    children: DataList;
-    // (undocumented)
-    id: string;
-}
-
-// Warning: (ae-forgotten-export) The symbol "UI" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export class ComponentSingleUI extends UI {
-    constructor(dom?: HTMLElement);
-    // (undocumented)
-    editable: boolean;
-    // (undocumented)
-    insertable: boolean;
-}
-
-// Warning: (ae-forgotten-export) The symbol "UIPayload" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface ComponentSingleUIPayload extends UIPayload {
-    // (undocumented)
-    editable: boolean;
-    // (undocumented)
-    insertable: boolean;
-}
-
-// @public (undocumented)
-export class ContainerUI extends UI {
-    constructor(dom?: HTMLElement);
-    // (undocumented)
-    editable: boolean;
-    // (undocumented)
-    insertable: boolean;
-}
-
-// @public (undocumented)
-export interface ContainerUIPayload extends UIPayload {
-    // (undocumented)
-    editable: boolean;
-    // (undocumented)
-    insertable: boolean;
-}
+import { SingleUIPayload } from '@mikefeng110808/logic';
 
 // @public (undocumented)
 export class EventBind {
-    constructor(dom: HTMLElement);
+    constructor();
+    // Warning: (ae-forgotten-export) The symbol "InEventPayload" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "InEventBind" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    bind<K extends keyof HTMLElementEventMap>(key: K, event: EventListener, options?: boolean | AddEventListenerOptions): void;
+    addIn(data?: InEventPayload): InEventBind;
+    // Warning: (ae-forgotten-export) The symbol "OutEventPayload" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "OutEventBind" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    dataList: DataList;
+    addOut(data?: OutEventPayload): OutEventBind;
     // (undocumented)
-    dom: HTMLElement;
+    clearIn(): void;
     // (undocumented)
-    unbind<K extends keyof HTMLElementEventMap>(key: K): void;
+    clearOut(): void;
+    // (undocumented)
+    getInList(): any[];
+    // (undocumented)
+    getOutList(): any[];
+    // (undocumented)
+    getValue(): {
+        inValue: any[];
+        outValue: any[];
+    };
+    // (undocumented)
+    inList: DataList;
+    // (undocumented)
+    outList: DataList;
+    // (undocumented)
+    removeIn(id: string): void;
+    // (undocumented)
+    removeOut(id: string): void;
+    // (undocumented)
+    save(): void;
 }
 
 // @public (undocumented)
-export let gennerateUUID: () => string;
-
-// @public (undocumented)
 class Position_2 {
-    constructor(dom: HTMLElement);
+    constructor();
     // (undocumented)
     bottom: any;
     // (undocumented)
     display: any;
-    // (undocumented)
-    dom: HTMLElement;
     // (undocumented)
     height: any;
     // (undocumented)
@@ -101,7 +63,7 @@ class Position_2 {
     // (undocumented)
     right: any;
     // (undocumented)
-    setKeyValue<K extends keyof (PositionPayload | CSSStyleDeclaration)>(key: K, value: any): void;
+    setKeyValue<K extends keyof (PositionPayload)>(key: K, value: any): void;
     // (undocumented)
     top: any;
     // (undocumented)
@@ -139,15 +101,95 @@ export interface PositionPayload {
 // @public (undocumented)
 export class SelfProp {
     constructor();
+    // (undocumented)
+    getValue(): any;
+    // (undocumented)
+    opt: any;
+    // (undocumented)
+    params: SingleUIPayload[];
+    // (undocumented)
+    setParam(data?: SingleUIPayload[]): void;
+    // (undocumented)
+    setValue(value: any): void;
 }
 
 // @public (undocumented)
 export class Style {
-    constructor(dom: HTMLElement);
+    constructor();
+    // (undocumented)
+    [x: string]: any;
+    // (undocumented)
+    changed: number;
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    getValue(): {} & this;
+    // (undocumented)
+    move(x: number, y: number): void;
     // (undocumented)
     setKeyValue<K extends keyof (CSSStyleDeclaration)>(key: K, value: any): void;
     // (undocumented)
-    style: CSSStyleDeclaration;
+    setValue(val: any): void;
+}
+
+// @public (undocumented)
+export class UI {
+    constructor();
+    // (undocumented)
+    eventBind: EventBind;
+    // (undocumented)
+    getValue(): any;
+    // (undocumented)
+    selfProp: SelfProp;
+    // (undocumented)
+    setSelfProp(selfProp: SelfProp): void;
+    // (undocumented)
+    style: Style;
+}
+
+// @public (undocumented)
+export class UIInstance implements UIInstancePayload {
+    constructor();
+    // (undocumented)
+    canDrag: boolean;
+    // (undocumented)
+    canDragFilter(): boolean;
+    // (undocumented)
+    children: UIInstance[];
+    // (undocumented)
+    combi(target: UI): UIInstance;
+    // (undocumented)
+    findContainUI(tree: UIInstance, moduleId: string): UIInstance | null;
+    // (undocumented)
+    getChildren(): UIInstance[];
+    // (undocumented)
+    getValue(): any;
+    // (undocumented)
+    moduleId: string;
+    // (undocumented)
+    move(x: number, y: number): void;
+    // (undocumented)
+    setTarget(target: UI): void;
+    // (undocumented)
+    target: UI;
+    // (undocumented)
+    unCombi(moduleId: string): void;
+}
+
+// @public (undocumented)
+export interface UIInstancePayload {
+    // (undocumented)
+    moduleId: string;
+}
+
+// @public (undocumented)
+export interface UIPayload {
+    // (undocumented)
+    eventBind: EventBind;
+    // (undocumented)
+    selfProp: SelfProp;
+    // (undocumented)
+    style: Style;
 }
 
 

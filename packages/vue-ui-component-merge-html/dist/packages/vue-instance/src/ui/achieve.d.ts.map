@@ -1,0 +1,1 @@
+{"version":3,"file":"achieve.d.ts","sourceRoot":"","sources":["achieve.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,KAAK,EAAE,gBAAgB,EAAE,MAAM,GAAG,CAAA;AAC3C,OAAO,EAAE,eAAe,EAAE,MAAM,0BAA0B,CAAA;AAG1D,qBAAa,UAAW,SAAQ,KAAK;gBACvB,MAAM,EAAC,eAAe;IAGlC,cAAc,CAAC,MAAM,EAAE,gBAAgB;CAKxC"}

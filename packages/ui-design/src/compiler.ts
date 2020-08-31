@@ -1,5 +1,5 @@
 
-import { ModuleInstance } from '@mikefeng110808/ui-generator'
+import { ModuleInstance } from '@mikefeng110808/ui-module'
 import { restoreInstance } from './save'
 import { storage } from './storage'
 

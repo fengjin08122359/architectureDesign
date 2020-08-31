@@ -1,6 +1,6 @@
-import { styleOptions } from "../utils";
+import { convertPx, setPx, styleOptions } from "@mikefeng110808/utils";
 
-export class Style { 
+export class Style {
     changed: number;
     [x:string]: any
     constructor () {
@@ -14,7 +14,7 @@ export class Style {
         return Object.assign({}, this)
     }
     setValue (val:any) {
-        
+
         for (let [key, value] of Object.entries(val)) {
             try {
                 this.setKeyValue(key as any, value)
@@ -27,6 +27,12 @@ export class Style {
                 delete this[key]
             }
         }
+    }
+    move (x: number, y: number) {
+      var left = convertPx(this.target.style.left) + x
+      var top = convertPx(this.target.style.top) + y
+      this.target.style.setKeyValue('left', setPx(left))
+      this.target.style.setKeyValue('top', setPx(top))
     }
 }
 

@@ -1090,7 +1090,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "constructor(list: "
+                  "text": "constructor(list?: "
                 },
                 {
                   "kind": "Content",
@@ -1128,33 +1128,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "@mikefeng110808/vue-instance!VueUIList#componentHasRendered:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "componentHasRendered: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DataList",
-                  "canonicalReference": "@mikefeng110808/vue-instance!DataList:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "releaseTag": "Public",
-              "name": "componentHasRendered",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              },
-              "isStatic": false
             },
             {
               "kind": "Method",

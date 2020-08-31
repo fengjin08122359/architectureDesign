@@ -1,6 +1,6 @@
-import { ContainerUI, ComponentSingleUI, ComponentMultipleUI } from "@mikefeng110808/ui-logic";
 import { Props } from ".";
-import { BasicSelfProp, CardContainerSelfProp, ContainerSelfProp, MergeSelfProp, CardContainerUI, ButtonSelfProp, InputSelfProp, NumberSelfProp, TimePickerSelfProp, TimeGroupSelfProp, SelectSelfProp, CheckboxSelfProp, CheckBoxGroupSelfProp, RadioSelfProp, MulSelectSelfProp, IframeSelfProp } from "./ui";
+import { CardContainerSelfProp, ContainerSelfProp, MergeSelfProp, CardContainerUI, ButtonSelfProp, InputSelfProp, NumberSelfProp, TimePickerSelfProp, TimeGroupSelfProp, SelectSelfProp, CheckboxSelfProp, CheckBoxGroupSelfProp, RadioSelfProp, MulSelectSelfProp, IframeSelfProp } from "./ui";
+import { ContainerUI, ComponentSingleUI, ComponentMultipleUI } from '@mikefeng110808/ui-module'
 
 
 export let container: Props[] = [{
@@ -157,11 +157,11 @@ export let basic: Props[] = [{
             key: 1,
             value: '年报'
           },{
-            
+
             key: 2,
             value: '三季'
           },{
-            
+
             key: 3,
             value: '中期'
           },{

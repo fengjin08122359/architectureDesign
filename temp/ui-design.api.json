@@ -17,6 +17,123 @@
       "members": [
         {
           "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!addApi:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "addApi: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => import(\"../../ui-generator/src\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Api",
+              "canonicalReference": "@mikefeng110808/ui-design!Api:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "addApi",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!addEvent:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "addEvent: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => import(\"../../ui-generator/src\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "Event",
+              "canonicalReference": "@mikefeng110808/ui-design!Event:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "addEvent",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!ApiGenerate:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ApiGenerate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ApiGenerate",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!ApiGenerate:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ApiGenerate` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!apiList:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "apiList: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ApiList",
+              "canonicalReference": "@mikefeng110808/ui-design!ApiList:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "apiList",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@mikefeng110808/ui-design!basicModules:var",
           "docComment": "",
           "excerptTokens": [
@@ -26,8 +143,8 @@
             },
             {
               "kind": "Reference",
-              "text": "ComponentSingleUI",
-              "canonicalReference": "@mikefeng110808/ui-design!ComponentSingleUI:class"
+              "text": "Props",
+              "canonicalReference": "@mikefeng110808/ui-design!Props:interface"
             },
             {
               "kind": "Content",
@@ -43,6 +160,71 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!clearCurrentEl:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "clearCurrentEl: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "clearCurrentEl",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!compilerInstance:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "compilerInstance: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "compilerInstance",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!containerModules:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "containerModules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "containerModules",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@mikefeng110808/ui-design!continerModules:var",
           "docComment": "",
           "excerptTokens": [
@@ -52,8 +234,8 @@
             },
             {
               "kind": "Reference",
-              "text": "ContainerUI",
-              "canonicalReference": "@mikefeng110808/ui-design!ContainerUI:class"
+              "text": "Props",
+              "canonicalReference": "@mikefeng110808/ui-design!Props:interface"
             },
             {
               "kind": "Content",
@@ -69,6 +251,488 @@
         },
         {
           "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!currentEl:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "currentEl: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "currentEl",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!editorInstance:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "editorInstance: "
+            },
+            {
+              "kind": "Reference",
+              "text": "EditorInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!~EditorInstance:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "editorInstance",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!EventGenerate:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class EventGenerate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EventGenerate",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!EventGenerate:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `EventGenerate` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!eventList:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "eventList: "
+            },
+            {
+              "kind": "Reference",
+              "text": "EventList",
+              "canonicalReference": "@mikefeng110808/ui-design!EventList:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "eventList",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!generateModule:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "generateModule: "
+            },
+            {
+              "kind": "Content",
+              "text": "(props: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Props",
+              "canonicalReference": "@mikefeng110808/ui-design!Props:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => import(\"../../ui-module/src\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "ContainerUI",
+              "canonicalReference": "@mikefeng110808/ui-design!ContainerUI:class"
+            },
+            {
+              "kind": "Content",
+              "text": " | import(\"../../ui-module/src\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "ComponentSingleUI",
+              "canonicalReference": "@mikefeng110808/ui-design!ComponentSingleUI:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "generateModule",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class GeneratePiece "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "GeneratePiece",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `GeneratePiece` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#add:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add({ key, value }: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "templatePayload",
+                  "canonicalReference": "@mikefeng110808/ui-design!templatePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ key, value }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#generate:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "generate(list: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIPayload",
+                  "canonicalReference": "@mikefeng110808/ui-design!SingleUIPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VueUI",
+                  "canonicalReference": "@mikefeng110808/ui-design!VueUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "list",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  }
+                }
+              ],
+              "name": "generate"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#getValue:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValue(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "import(\"../../logic/src\")."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SingleUIValuePayload",
+                  "canonicalReference": "@mikefeng110808/ui-design!SingleUIValuePayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [],
+              "name": "getValue"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#remove:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "remove"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#render:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "render(render: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VueRenderPayload",
+                  "canonicalReference": "@mikefeng110808/ui-design!VueRenderPayload:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "render",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "render"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece#uiList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "uiList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VueUIList",
+                  "canonicalReference": "@mikefeng110808/ui-design!VueUIList:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "uiList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!InEventGenerate:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class InEventGenerate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "InEventGenerate",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!InEventGenerate:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `InEventGenerate` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
           "canonicalReference": "@mikefeng110808/ui-design!mergeModules:var",
           "docComment": "",
           "excerptTokens": [
@@ -78,8 +742,8 @@
             },
             {
               "kind": "Reference",
-              "text": "ComponentMultipleUI",
-              "canonicalReference": "@mikefeng110808/ui-design!ComponentMultipleUI:class"
+              "text": "Props",
+              "canonicalReference": "@mikefeng110808/ui-design!Props:interface"
             },
             {
               "kind": "Content",
@@ -91,6 +755,427 @@
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 3
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!ModuleGenrate:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ModuleGenrate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ModuleGenrate",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleGenrate:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ModuleGenrate` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleGenrate#isCompiler:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isCompiler: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "isCompiler",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleGenrate#setTarget:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setTarget(ui: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ModuleUI",
+                  "canonicalReference": "@mikefeng110808/ui-design!ModuleUI:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ui",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "setTarget"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!OutEventGenerate:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class OutEventGenerate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "OutEventGenerate",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!OutEventGenerate:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `OutEventGenerate` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@mikefeng110808/ui-design!PropGeneratePiece:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class PropGeneratePiece extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "GeneratePiece",
+              "canonicalReference": "@mikefeng110808/ui-design!GeneratePiece:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PropGeneratePiece",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@mikefeng110808/ui-design!PropGeneratePiece:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `PropGeneratePiece` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": []
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!removeApi:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "removeApi: "
+            },
+            {
+              "kind": "Content",
+              "text": "(id: string) => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "removeApi",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!removeEvent:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "removeEvent: "
+            },
+            {
+              "kind": "Content",
+              "text": "(id: string) => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "removeEvent",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!restoreFromConfig:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "restoreFromConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "restoreFromConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!restoreFromEdit:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "restoreFromEdit: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "restoreFromEdit",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!restoreInstance:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "restoreInstance: "
+            },
+            {
+              "kind": "Content",
+              "text": "(instance: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            },
+            {
+              "kind": "Content",
+              "text": ", res: any) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "restoreInstance",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!saveFromConfig:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "saveFromConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "saveFromConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!saveFromEdit:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "saveFromEdit: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "saveFromEdit",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!setCurrentModule:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setCurrentModule: "
+            },
+            {
+              "kind": "Content",
+              "text": "(target: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "setCurrentModule",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@mikefeng110808/ui-design!setEditorInstance:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setEditorInstance: "
+            },
+            {
+              "kind": "Content",
+              "text": "(instance: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ModuleInstance",
+              "canonicalReference": "@mikefeng110808/ui-design!ModuleInstance:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "setEditorInstance",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
           }
         }
       ]

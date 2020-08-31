@@ -1,39 +1,60 @@
-import { UI } from "@mikefeng110808/ui-logic";
+import { UI, UIPayload, SelfProp } from "@mikefeng110808/ui-logic";
+import {
+  gennerateUUID,
+} from "@mikefeng110808/utils";
 
-
-export interface UIPayload {
-  eventBind: EventBind;
-  style: Style;
+export interface ModuleUIPayload extends UIPayload {
   id: string;
-  selfProp: SelfProp
+  selfProp: ModuleSelfProp
   name ? : string
   dom ? : HTMLElement;
+  editable: boolean;
+  insertable: boolean
 }
 
-export class UI {
-  eventBind: EventBind;
-  style: Style
+
+
+
+export class ModuleUI extends UI {
   id: string;
-  selfProp: SelfProp;
   name ? : string;
   dom ? : HTMLElement;
   typeId?: string
   moduleIdList: any[]
+  editable: boolean;
+  insertable: boolean
+  selfProp: ModuleSelfProp
   constructor() {
+    super()
     this.id = gennerateUUID()
-    this.eventBind = new EventBind()
-    this.style = new Style()
-    this.selfProp = new SelfProp()
     this.moduleIdList = []
+    this.editable = true
+    this.insertable = true
+    this.selfProp = new ModuleSelfProp()
+  }
+  getValue (): any {
+    return {
+      typeId: this.typeId,
+      id:this.id,
+      insertable:this.insertable,
+      editable:this.editable,
+      moduleIdList: this.moduleIdList,
+      eventBind: {
+        value:  this.eventBind.getValue()
+      },
+      selfProp: {
+        value: this.selfProp.getValue()
+      },
+      style:{
+        value: this.style.getValue()
+      }
+    }
   }
   setDom(dom: HTMLElement) {
     this.dom = dom
   }
   setId(id ? : string) {
     this.id = id || gennerateUUID()
-  }
-  setSelfProp(selfProp: SelfProp) {
-    this.selfProp = selfProp
   }
   filterChildren (instance:any):boolean {
     return this.moduleIdList.find(item => item == instance.moduleId)
@@ -46,16 +67,9 @@ export class UI {
   }
 }
 
-
-export class SelfProp {
-  opt: any
-  params: SingleUIPayload[];
+export class ModuleSelfProp extends SelfProp {
   constructor() {
-    this.opt = {}
-    this.params = []
-  }
-  setParam(data:SingleUIPayload[] = []) {
-    this.params = data
+    super()
   }
   getStyle(): any {
     return {
@@ -72,18 +86,4 @@ export class SelfProp {
       left: 'auto',
     }
   }
-  getValue ():any {
-    return this.opt
-  }
-  setValue (value: any) {
-    this.opt = value || {}
-  }
 }
-
-
-export class ModuleUI extends UI {
-  constructor() {
-    super()
-  }
-}
-

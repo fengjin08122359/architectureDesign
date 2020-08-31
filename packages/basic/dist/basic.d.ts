@@ -44,6 +44,12 @@ export declare class DataList {
      */
     remove(name: string): void;
     /**
+     *clear
+     *
+     * @memberof DataList
+     */
+    clear(): void;
+    /**
      *get
      *
      * @param {string} name

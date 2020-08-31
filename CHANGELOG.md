@@ -1,3 +1,13 @@
+## [1.0.2-alpha.23](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.20...v1.0.2-alpha.23) (2020-08-31)
+
+
+### Bug Fixes
+
+* vue-ui ([9911477](https://github.com/fengjin08122359/architectureDesign/commit/9911477bce1031f7fe9a806c8a12f456ab92d247))
+* vue-ui ([7f642ff](https://github.com/fengjin08122359/architectureDesign/commit/7f642ffb7c536661290340c3db170ac7127c9c79))
+
+
+
 ## [1.0.2-alpha.22](https://github.com/fengjin08122359/architectureDesign/compare/v1.0.2-alpha.20...v1.0.2-alpha.22) (2020-07-03)
 
 

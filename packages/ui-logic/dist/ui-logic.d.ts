@@ -1,49 +1,49 @@
 import { DataList } from '@mikefeng110808/basic';
-
-export declare class ComponentMultipleUI extends ComponentSingleUI {
-    children: DataList;
-    constructor(dom?: HTMLElement);
-    combi(ui: ComponentMultipleUI): void;
-    unCombi(ui: ComponentMultipleUI): void;
-    findUI(ui: ComponentMultipleUI): import("../../../basic/src").DataPayload[];
-}
-
-export declare interface ComponentMultipleUIPayload extends ComponentSingleUIPayload {
-    children: DataList;
-    id: string;
-}
-
-export declare class ComponentSingleUI extends UI {
-    editable: boolean;
-    insertable: boolean;
-    constructor(dom?: HTMLElement);
-}
-
-export declare interface ComponentSingleUIPayload extends UIPayload {
-    editable: boolean;
-    insertable: boolean;
-}
-
-export declare class ContainerUI extends UI {
-    editable: boolean;
-    insertable: boolean;
-    constructor(dom?: HTMLElement);
-}
-
-export declare interface ContainerUIPayload extends UIPayload {
-    editable: boolean;
-    insertable: boolean;
-}
+import { SingleUIPayload } from '@mikefeng110808/logic';
 
 export declare class EventBind {
-    dataList: DataList;
-    dom: HTMLElement;
-    constructor(dom: HTMLElement);
-    bind<K extends keyof HTMLElementEventMap>(key: K, event: EventListener, options?: boolean | AddEventListenerOptions): void;
-    unbind<K extends keyof HTMLElementEventMap>(key: K): void;
+    inList: DataList;
+    outList: DataList;
+    constructor();
+    addIn(data?: InEventPayload): InEventBind;
+    addOut(data?: OutEventPayload): OutEventBind;
+    removeIn(id: string): void;
+    removeOut(id: string): void;
+    getInList(): any[];
+    getOutList(): any[];
+    clearIn(): void;
+    clearOut(): void;
+    save(): void;
+    getValue(): {
+        inValue: any[];
+        outValue: any[];
+    };
 }
 
-export declare let gennerateUUID: () => string;
+declare class InEventBind {
+    opt: InEventPayload;
+    id: string;
+    constructor(opt: InEventPayload);
+    setValue(val: any): void;
+    getValue(): InEventPayload;
+}
+
+declare interface InEventPayload {
+    tid: string;
+}
+
+declare class OutEventBind {
+    opt: OutEventPayload;
+    id: string;
+    constructor(opt: OutEventPayload);
+    setValue(val: any): void;
+    getValue(): OutEventPayload;
+}
+
+declare interface OutEventPayload {
+    key: keyof HTMLElementEventMap;
+    tid: string;
+}
 
 declare class Position_2 {
     left: any;
@@ -56,9 +56,8 @@ declare class Position_2 {
     width: any;
     height: any;
     overflow: any;
-    dom: HTMLElement;
-    constructor(dom: HTMLElement);
-    setKeyValue<K extends keyof (PositionPayload | CSSStyleDeclaration)>(key: K, value: any): void;
+    constructor();
+    setKeyValue<K extends keyof (PositionPayload)>(key: K, value: any): void;
 }
 export { Position_2 as Position }
 
@@ -76,35 +75,58 @@ export declare interface PositionPayload {
 }
 
 export declare class SelfProp {
+    opt: any;
+    params: SingleUIPayload[];
     constructor();
+    setParam(data?: SingleUIPayload[]): void;
+    getValue(): any;
+    setValue(value: any): void;
 }
 
 export declare class Style {
-    style: CSSStyleDeclaration;
-    constructor(dom: HTMLElement);
+    changed: number;
+    [x: string]: any;
+    constructor();
     setKeyValue<K extends keyof (CSSStyleDeclaration)>(key: K, value: any): void;
+    getValue(): {} & this;
+    setValue(val: any): void;
+    clear(): void;
+    move(x: number, y: number): void;
 }
 
-declare class UI {
-    dom: HTMLElement;
+export declare class UI {
     eventBind: EventBind;
-    position: Position_2;
     style: Style;
-    id: string;
     selfProp: SelfProp;
-    name?: string;
-    constructor(dom: HTMLElement);
-    setDom(dom: HTMLElement): void;
+    constructor();
+    setSelfProp(selfProp: SelfProp): void;
+    getValue(): any;
 }
 
-declare interface UIPayload {
-    dom: HTMLElement;
+export declare class UIInstance implements UIInstancePayload {
+    children: UIInstance[];
+    target: UI;
+    moduleId: string;
+    canDrag: boolean;
+    constructor();
+    canDragFilter(): boolean;
+    setTarget(target: UI): void;
+    combi(target: UI): UIInstance;
+    unCombi(moduleId: string): void;
+    findContainUI(tree: UIInstance, moduleId: string): UIInstance | null;
+    move(x: number, y: number): void;
+    getValue(): any;
+    getChildren(): UIInstance[];
+}
+
+export declare interface UIInstancePayload {
+    moduleId: string;
+}
+
+export declare interface UIPayload {
     eventBind: EventBind;
-    position: Position_2;
     style: Style;
-    id: string;
     selfProp: SelfProp;
-    name?: string;
 }
 
 export { }

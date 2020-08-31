@@ -1,6 +1,6 @@
 {
   "name": "@mikefeng110808/utils",
-  "version": "1.0.2-alpha.22",
+  "version": "1.0.2-alpha.23",
   "description": "@mikefeng110808/utils",
   "main": "index.js",
   "module": "dist/utils.esm-bundler.js",
@@ -23,8 +23,8 @@
   "author": "Mike Feng",
   "license": "MIT",
   "dependencies": {
-    "@mikefeng110808/logic": "1.0.2-alpha.22",
-    "@mikefeng110808/basic": "1.0.2-alpha.22"
+    "@mikefeng110808/logic": "1.0.2-alpha.23",
+    "@mikefeng110808/basic": "1.0.2-alpha.23"
   },
   "devDependencies": {
     "lodash": "^4.17.15"

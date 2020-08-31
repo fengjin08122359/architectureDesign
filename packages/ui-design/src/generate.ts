@@ -6,16 +6,15 @@ import {
   ButtonVueUI,
   InputVueUI as InputCompVueUI,
   NumberVueUI as NumberCompVueUI,
-  TimePickerVueUI, 
+  TimePickerVueUI,
   TimeGroupVueUI,
   SelectVueUI as SelectCompVueUI, CheckBoxVueUI, CheckBoxGroupVueUI, RadioVueUI,
   MulSelectVueUI as MulSelectCompVueUI,
   IframeVueUI, TableVueUI,
   TableDataConfigVueUI
 } from "@mikefeng110808/ui-components";
-import {
-  UI
-} from "@mikefeng110808/ui-logic";
+
+import { ModuleUI } from '@mikefeng110808/ui-module'
 import {
   apiParams,
   eventParams,
@@ -75,7 +74,7 @@ export class GeneratePiece {
       key: 'boolean',
       value: BooleanVueUI,
     })
-    
+
   }
   add({
     key,
@@ -130,7 +129,7 @@ export class ModuleGenrate extends GeneratePiece {
       key: '5',
       value: InputCompVueUI
     })
-    
+
     this.add({
       key: '6',
       value: NumberCompVueUI
@@ -163,7 +162,7 @@ export class ModuleGenrate extends GeneratePiece {
       key: '13',
       value: MulSelectCompVueUI
     })
-    
+
     this.add({
       key: '17',
       value: TableVueUI
@@ -173,7 +172,7 @@ export class ModuleGenrate extends GeneratePiece {
       value: IframeVueUI
     })
   }
-  setTarget(ui: UI, ) {
+  setTarget(ui: ModuleUI, ) {
     this.uiList.setList([{
       key: ui.id,
       props: {

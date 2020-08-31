@@ -1,5 +1,11 @@
 'use strict';
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -18,14 +24,14 @@ var SingleUI = /*#__PURE__*/function () {
 
     this.key = params.key || ""; //键
 
-    this.props = params.props || {
+    this.props = _objectSpread({
       label: "",
       required: "",
       data: [],
       disabled: false,
       show: true,
       placeholder: ""
-    }; //属性列表包含其他属性
+    }, params.props); //属性列表包含其他属性
 
     this.valid = params.valid || []; //验证信息
 
@@ -59,14 +65,14 @@ var SingleUI = /*#__PURE__*/function () {
       return result;
     }
     /**
-     *save
-     * @param {string} value
+     *setValue
+     * @param {any} value
      * @memberof SingleUI
      */
 
   }, {
-    key: "save",
-    value: function save(value) {
+    key: "setValue",
+    value: function setValue(value) {
       var oldValue = this.value;
       this.value = value;
 
@@ -208,7 +214,7 @@ var SingleUI = /*#__PURE__*/function () {
           children = _ref2.children;
 
       if (this.getKey() != "" && this.getKey() == key) {
-        this.save(value);
+        this.setValue(value);
         children.forEach(function (item) {
           var target = _this2.children.find(function (target) {
             return item.key == target.getKey();
@@ -261,7 +267,10 @@ var SingleUI = /*#__PURE__*/function () {
 }();
 
 var UIList = /*#__PURE__*/function () {
-  function UIList(list, options) {
+  function UIList() {
+    var list = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var options = arguments.length > 1 ? arguments[1] : undefined;
+
     _classCallCheck(this, UIList);
 
     this.options = options || {
@@ -277,12 +286,25 @@ var UIList = /*#__PURE__*/function () {
   }
   /**
    *reset
-   *
+   * @param {SingleUIPayload} list
    * @memberof UIList
    */
 
 
   _createClass(UIList, [{
+    key: "setList",
+    value: function setList(list) {
+      this.rawList = list;
+      this.list = [];
+      this.reset();
+    }
+    /**
+     *reset
+     *
+     * @memberof UIList
+     */
+
+  }, {
     key: "reset",
     value: function reset() {
       var _this3 = this;
@@ -310,6 +332,7 @@ var UIList = /*#__PURE__*/function () {
     value: function addTemplate(_ref3) {
       var key = _ref3.key,
           value = _ref3.value;
+      var rawValue = this.getValue();
       var target = this.templateList.find(function (item) {
         return item.key == key;
       });
@@ -322,6 +345,40 @@ var UIList = /*#__PURE__*/function () {
           value: value
         });
       }
+
+      this.reset();
+      this.setValue(rawValue);
+    }
+    /**
+     *removeTemplate
+     *
+     * @param {string} key
+     * @memberof UIList
+     */
+
+  }, {
+    key: "removeTemplate",
+    value: function removeTemplate(key) {
+      var rawValue = this.getValue();
+      this.templateList = this.templateList.filter(function (item) {
+        return item.key !== key;
+      });
+      this.reset();
+      this.setValue(rawValue);
+    }
+    /**
+     *clearTemplate
+     *
+     * @memberof UIList
+     */
+
+  }, {
+    key: "clearTemplate",
+    value: function clearTemplate() {
+      var rawValue = this.getValue();
+      this.templateList = [];
+      this.reset();
+      this.setValue(rawValue);
     }
     /**
      *getTemplate
@@ -391,14 +448,14 @@ var UIList = /*#__PURE__*/function () {
       });
     }
     /**
-     *save
+     *setValue
      * @param {SingleUIValuePayload} data
      * @memberof UIList
      */
 
   }, {
-    key: "save",
-    value: function save(data) {
+    key: "setValue",
+    value: function setValue(data) {
       var _this5 = this;
 
       // [{key:"",value:"", children: [{key:"",value:"", children:[]}]}]

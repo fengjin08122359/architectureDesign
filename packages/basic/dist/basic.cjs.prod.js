@@ -136,6 +136,17 @@ var DataList = /*#__PURE__*/function () {
       });
     }
     /**
+     *clear
+     *
+     * @memberof DataList
+     */
+
+  }, {
+    key: "clear",
+    value: function clear() {
+      this.datas = [];
+    }
+    /**
      *get
      *
      * @param {string} name

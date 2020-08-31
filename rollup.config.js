@@ -162,8 +162,8 @@ function createConfig(format, output, plugins = []) {
       ),
       ...nodePlugins,
       ...plugins,
-      VuePlugin(),
-      // tsVuePlugin(),
+      // VuePlugin(),
+      tsVuePlugin(null),
     ],
     output,
     onwarn: (msg, warn) => {
